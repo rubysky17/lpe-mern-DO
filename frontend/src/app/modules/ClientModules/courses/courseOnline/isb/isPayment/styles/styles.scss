@@ -1,0 +1,45 @@
+.ccs_wrapper {
+  img {
+    width: 100%;
+  }
+}
+.form-for-buy {
+  &.is {
+    position: absolute;
+    top: 50%;
+    left: 5% !important;
+    transform: translateY(-50%);
+    width: 400px;
+    padding: 30px;
+    border-radius: 20px;
+
+    background: #eaf2fa;
+  }
+}
+
+.bg-form {
+  &.is {
+    background: rgb(49, 190, 125);
+    background: radial-gradient(
+      circle,
+      rgba(49, 190, 125, 1) 0%,
+      rgba(22, 136, 84, 1) 100%
+    );
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .img-bg {
+    width: 100%;
+    height: auto !important;
+  }
+  .bg-form.is {
+    display: flex;
+    padding: 40px 10px !important;
+  }
+
+  .form-for-buy.is {
+    position: unset;
+    transform: unset;
+  }
+}

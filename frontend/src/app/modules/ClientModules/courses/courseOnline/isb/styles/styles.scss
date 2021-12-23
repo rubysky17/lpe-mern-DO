@@ -1,0 +1,342 @@
+// @font-face {
+//   font-family: Manrope;
+//   src: url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;700&family=Roboto+Condensed:wght@300;400&display=swap");
+// }
+
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&family=Inter:wght@200;300;400&family=Manrope:wght@300;400;700&family=Roboto+Condensed:wght@300;400&display=swap");
+
+.isb-banner {
+  background: rgb(49, 231, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(170, 245, 255, 1) 0%,
+    rgba(191, 255, 183, 1) 100%
+  );
+  font-weight: 600;
+
+  position: relative;
+  height: 650px;
+
+  &_container {
+    height: 100%;
+  }
+
+  .inner-text {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: #173435;
+
+    h2 {
+      font-size: 72px;
+      font-weight: 600;
+      line-height: 1em;
+      letter-spacing: -2px;
+      margin-bottom: 30px;
+      font-family: "Comfortaa", sans-serif;
+    }
+
+    p {
+      font-size: 21px;
+      font-family: "Inter", sans-serif;
+      font-weight: 300;
+    }
+  }
+
+  .banner-img {
+    position: absolute;
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.dash-color {
+  background: #3fd5d3;
+  height: 3px;
+
+  margin-top: 150px;
+  width: 150px;
+  margin: 50px auto 0;
+  border: 5px;
+}
+
+.isb-intended {
+  background: url("https://lpe.vn/img/isb/isb-bg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  height: 650px;
+  margin-top: 50px;
+  color: #fff;
+}
+
+.intended-text {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  h2 {
+    margin-bottom: 30px;
+    font-family: "Comfortaa", sans-serif;
+    font-size: 38px;
+  }
+}
+
+.intended-text_block {
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+
+  .indended-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 300;
+
+    .icon-inline {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 13px;
+      color: #8c82fc;
+      margin-right: 10px;
+    }
+
+    .text-inline > strong {
+      font-weight: 700;
+      color: #8c82fc;
+    }
+  }
+}
+
+.img-isb {
+  padding: 50px 0;
+
+  h2 {
+    text-align: center;
+    font-family: "Comfortaa", sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+  }
+
+  p {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 18px;
+    font-family: "Inter", sans-serif;
+    font-weight: 300;
+  }
+
+  .slick-item {
+    img {
+      // height: 350px;
+      cursor: pointer;
+    }
+  }
+}
+
+.isb-QA {
+  background-image: url("https://lpe.vn/img/isb/isb-7.png");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+
+  .container {
+    height: 600px;
+  }
+
+  .isb-banner_container {
+    position: relative;
+
+    .intended-pic {
+      img {
+        position: absolute;
+        bottom: 0;
+      }
+    }
+  }
+
+  h2 {
+    color: #fff;
+  }
+
+  .text-QA {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #fff;
+  }
+}
+
+.isb-price {
+  h2 {
+    font-family: "Comfortaa", sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+  }
+
+  .bg-price {
+    background: #16693f;
+    height: fit-content;
+    padding: 80px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .isb-banner {
+    height: 700px;
+  }
+  .inner-pic {
+    .banner-img {
+      bottom: 0px !important;
+      top: unset;
+    }
+  }
+
+  .isb-intended {
+    height: 600px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .inner-pic {
+    img {
+      height: 400px !important;
+    }
+  }
+
+  .isb-banner {
+    height: 400px;
+    .isb-banner_container {
+      .inner-text {
+        h2 {
+          font-size: 56px !important;
+        }
+
+        p {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+
+  .isb-intended {
+    height: auto;
+
+    .intended-pic {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        width: 90% !important;
+      }
+    }
+
+    .intended-text {
+      padding-bottom: 30px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .isb-banner {
+    height: fit-content !important;
+
+    .banner-img {
+      position: unset !important;
+      transform: unset !important;
+      width: unset !important;
+    }
+
+    .isb-banner_container {
+      .inner-text {
+        text-align: center;
+        padding: 30px 0;
+        h2 {
+          font-size: 50px !important;
+        }
+
+        p {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+
+  .inner-pic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .banner-img {
+      position: unset !important;
+      width: 70%;
+    }
+  }
+
+  // .dash-color {
+  //   margin-top: 400px;
+  // }
+
+  .intended-text {
+    h2 {
+      font-size: 35px;
+      text-align: center;
+    }
+  }
+
+  .slick-item {
+    img {
+      width: 100% !important;
+    }
+  }
+
+  .isb-QA {
+    .intended-pic {
+      img {
+        position: unset !important;
+      }
+    }
+
+    .container {
+      height: auto !important;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .icon-inline {
+    i {
+      font-size: 20px !important;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .inner-pic {
+    .banner-img {
+      width: 90%;
+    }
+  }
+
+  // .dash-color {
+  //   margin-top: 350px;
+  // }
+}

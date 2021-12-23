@@ -1,0 +1,64 @@
+import React from "react";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { adminRoutes, privateRoutes, publicRoutes } from "./app/config/routes";
+
+import { HomeTemplate } from "template/homeTemplate";
+import { PrivateTemplate } from "template/privateTemplate";
+
+import ErrorPage from "app/modules/Error";
+import { AdminTemplate } from "template/adminTemplate";
+
+import AutoScroll from "./app/components/autoScroll";
+
+import "react-image-lightbox/style.css";
+import "react-modal-video/scss/modal-video.scss";
+
+import "swiper/swiper-bundle.min.css";
+import "swiper/swiper.min.css";
+
+function App() {
+  return (
+    <Router>
+      <AutoScroll />
+
+      <Switch>
+        {publicRoutes.map((route, index) => {
+          return (
+            <HomeTemplate
+              exact
+              path={route.path}
+              Component={route.component}
+              key={index}
+            />
+          );
+        })}
+
+        {privateRoutes.map((route, index) => {
+          return (
+            <PrivateTemplate
+              exact
+              path={route.path}
+              Component={route.component}
+              key={index}
+            />
+          );
+        })}
+
+        {adminRoutes.map((route, index) => {
+          return (
+            <AdminTemplate
+              exact
+              path={route.path}
+              Component={route.component}
+              key={index}
+            />
+          );
+        })}
+
+        <HomeTemplate exact path="*" Component={ErrorPage} />
+      </Switch>
+    </Router>
+  );
+}
+
+export default App;
