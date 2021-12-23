@@ -2,7 +2,7 @@ FROM node:16 as builder
 
 WORKDIR '/app'
 
-COPY package.json yarn.lock ./
+COPY package.json package-lock.json ./
 
 RUN yarn install --frozen-lockfile 
 
