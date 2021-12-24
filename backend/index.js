@@ -13,40 +13,27 @@ const swaggerDocument = require("./swagger.json");
 
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
-// connect to database
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
-});
-
-// mongoose.connect(
-//   "mongodb+srv://manhdat:lpeteam@clusterlpe.b49ua.mongodb.net/be_lpe?retryWrites=true&w=majority",
-//   {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//     useCreateIndex: true,
-//     useFindAndModify: false,
-//   }
-// );
-
-const db = mongoose.connection;
-
-db.on("error", console.error.bind(console, "connection error:"));
-
-db.once("open", function () {
-  console.log("Connect Success to the database!!!");
-});
-
-// init app
 app.use(express.json());
 app.use(cors());
 app.use("/api", rootRouter);
 
+try {
+  mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+
+  mongoose.connection.on("connected", function () {
+    console.log("connection established successfully");
+  });
+} catch (err) {
+  console.log("on connecting mongoose error", err);
+}
+
+// init app
+
 // App Running
-const port =
-  process.env.NODE_ENV === "production" ? process.env.PORT || 80 : 5000;
+const port = 5000 || process.env.PORT;
 
 app.listen(port, function () {
   console.log(
