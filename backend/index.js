@@ -5,10 +5,10 @@ const cors = require("cors");
 const app = express();
 require("dotenv").config();
 
+const User = require("./models/users.model");
+
 app.use(bodyParser.json());
 app.use(cors());
-
-const User = require("./models/users");
 
 try {
   mongoose.connect(process.env.MONGODB_URI, {
