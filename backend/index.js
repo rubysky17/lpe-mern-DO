@@ -1,21 +1,14 @@
 const express = require("express");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
-const mongoose = require("mongoose");
-const { config } = require("./src/config");
+require("dotenv").config();
 
-// import main Router
-const { rootRouter } = require("./src/routers/rootRouter");
-
-// Swagger
-const swaggerUI = require("swagger-ui-express");
-const swaggerDocument = require("./swagger.json");
-
-app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument));
-
-app.use(express.json());
+app.use(bodyParser.json());
 app.use(cors());
-app.use("/api", rootRouter);
+
+const User = require("./models/users");
 
 try {
   mongoose.connect(process.env.MONGODB_URI, {
@@ -30,15 +23,30 @@ try {
   console.log("on connecting mongoose error", err);
 }
 
-// init app
+app.get("/", async (req, res) => {
+  res.send("Hello world");
+});
 
-// App Running
+app.post("/new-user", async (req, res) => {
+  const { name } = req.body;
+  const user = new User({ name });
+  await user.save();
+  res.send(user);
+});
+
+app.get("/all", async (req, res) => {
+  const users = await User.find({});
+  res.send(users);
+});
+
+app.delete("/user/:id", async (req, res) => {
+  const { id } = req.params;
+  await User.findByIdAndDelete(id);
+  res.send({ message: "Delete Successfully" });
+});
+
 const port = 5000 || process.env.PORT;
 
-app.listen(port, function () {
-  console.log(
-    "Express server listening on port %d in %s mode",
-    this.address().port,
-    app.settings.env
-  );
+app.listen(port, () => {
+  console.log(`Backend is listening on the port ${port}`);
 });
