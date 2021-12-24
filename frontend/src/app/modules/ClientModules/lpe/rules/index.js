@@ -2,9 +2,9 @@ import useSiteTitle from "core/hooks/useSiteTitle";
 import { useTranslation } from "react-i18next";
 
 import LPEBanner from "app/components/banner";
+import banner from "assets/images/source/banner/noi-quy-quy-dinh.jpg";
 
 import "./styles/styles.scss";
-import { API_SOURCE } from "app/const/Api";
 
 function Rules() {
   useSiteTitle("rules");
@@ -35,7 +35,7 @@ function Rules() {
     <>
       {/* Background Title */}
       <LPEBanner
-        bannerImg={`${API_SOURCE}/banner/noi-quy-quy-dinh.jpg`}
+        bannerImg={banner}
         headText="Hãy cùng với chúng tôi tìm hiểu thêm về LPE"
         subText="Nội quy và chính sách để phục vụ khách hàng tốt hơn"
       />

@@ -3,7 +3,13 @@ import useSiteTitle from "core/hooks/useSiteTitle";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
-import { API_SOURCE } from "app/const/Api";
+
+// import media dile
+import tuyendung01 from "assets/images/source/tuyendung/tuyen-dung1.jpg";
+import tuyendung02 from "assets/images/source/tuyendung/tuyen-dung2.jpg";
+import tuyendung03 from "assets/images/source/tuyendung/tuyen-dung3.jpg";
+import tuyendung04 from "assets/images/source/tuyendung/tuyen-dung4.jpg";
+import banner from "assets/images/source/banner/thong-tin-tuyen-dung.jpg";
 
 import "./styles/styles.scss";
 
@@ -80,18 +86,13 @@ function Recruitment() {
     },
   ];
 
-  const companyImgSrc = [
-    `${API_SOURCE}/tuyendung/tuyen-dung1.jpg`,
-    `${API_SOURCE}/tuyendung/tuyen-dung2.jpg`,
-    `${API_SOURCE}/tuyendung/tuyen-dung3.jpg`,
-    `${API_SOURCE}/tuyendung/tuyen-dung4.jpg`,
-  ];
+  const companyImgSrc = [tuyendung01, tuyendung02, tuyendung03, tuyendung04];
 
   return (
     <div className="recruitment-page">
       {/* Background Title */}
       <LPEBanner
-        bannerImg="https://lpe.vn/thenewlpe/banner/thong-tin-tuyen-dung.jpg"
+        bannerImg={banner}
         headText="Hãy cùng với chúng tôi tạo nên bước đột phá"
         subText="Đó là một hành trình và tất cả chúng ta chỉ mới ở điểm khởi đầu"
       />

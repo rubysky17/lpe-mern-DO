@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import useSiteTitle from "core/hooks/useSiteTitle";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useTranslation } from "react-i18next";
 import ModalVideo from "react-modal-video";
 import ServiceItem from "./components/serviceItem";
 import Title from "./components/title";
@@ -8,10 +9,20 @@ import TestimonialCard from "./components/testimonialCart";
 import BannerCarousel from "./components/bannerCarousel";
 import { LPELightBox } from "app/components/lightBox";
 import { getIdVideo } from "core/utils/videoLinkUtil";
-import { useTranslation } from "react-i18next";
+
+// import media file
+import hinh01 from "assets/images/source/hinh01.jpg";
+import hinh02 from "assets/images/source/hinh02.jpg";
+import hinh03 from "assets/images/source/hinh03.jpg";
+import hinh04 from "assets/images/source/hinh04.jpg";
+import thuthanh from "assets/images/source/thu-thanh.jpg";
+import bonDat from "assets/images/source/bon-dat.jpg";
+import ngocThanh from "assets/images/source/ngoc-thanh.jpg";
+
+import vasVideo from "assets/images/source/banner-video.jpg";
+import personalTest from "assets/images/source/personal-test.jpg";
 
 import "./styles/styles.scss";
-import { API_SOURCE } from "app/const/Api";
 
 export default function Home() {
   useSiteTitle("home_page");
@@ -57,16 +68,16 @@ export default function Home() {
 
   const swiperStudentPic = [
     {
-      imgSrc: `${API_SOURCE}/hinh01.jpg`,
+      imgSrc: hinh01,
     },
     {
-      imgSrc: `${API_SOURCE}/hinh02.jpg`,
+      imgSrc: hinh02,
     },
     {
-      imgSrc: `${API_SOURCE}/hinh03.jpg`,
+      imgSrc: hinh03,
     },
     {
-      imgSrc: `${API_SOURCE}/hinh04.jpg`,
+      imgSrc: hinh04,
     },
   ];
 
@@ -77,7 +88,7 @@ export default function Home() {
       hero: t("chair_man_talk"),
       name: `${t("ms")} Hà Thị Thu Thanh`,
       job: `(${t("chair_man")}  Deloitte Việt Nam)`,
-      ava: `${API_SOURCE}/thu-thanh.jpg`,
+      ava: thuthanh,
     },
     {
       id: 2,
@@ -85,7 +96,7 @@ export default function Home() {
       hero: t("ceo_talk"),
       name: `${t("mr")} Trương Bổn Đạt`,
       job: `(${t("ceo")} Vietphulabel)`,
-      ava: `${API_SOURCE}/bon-dat.jpg`,
+      ava: bonDat,
     },
     {
       id: 3,
@@ -93,7 +104,7 @@ export default function Home() {
       hero: t("project_consultant_talk"),
       name: `${t("ms")} Nguyễn Thuỵ Ngọc Thanh`,
       job: t("project_consultant"),
-      ava: `${API_SOURCE}/ngoc-thanh.jpg`,
+      ava: ngocThanh,
     },
   ];
 
@@ -188,7 +199,7 @@ export default function Home() {
           <div
             className="paralax-video"
             style={{
-              backgroundImage: `url(${API_SOURCE}/banner-video.jpg)`,
+              backgroundImage: `url(${vasVideo})`,
             }}
           >
             <div
@@ -229,7 +240,7 @@ export default function Home() {
       <section
         className="person-test mt-5"
         style={{
-          backgroundImage: `url(${API_SOURCE}/personal-test.jpg)`,
+          backgroundImage: `url(${personalTest})`,
         }}
       >
         <div className="wrapper-content_person">

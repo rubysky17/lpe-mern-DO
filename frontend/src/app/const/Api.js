@@ -1,9 +1,6 @@
 export const API_VERSION = "/v1";
-// export const API_ENDPOINT = "http://localhost:8080/api"; //Development
-// export const API_ENDPOINT = process.env.REACT_APP_BACKEND_URL;
-export const API_ENDPOINT = process.env.REACT_APP_BACKEND_URL;
-export const API_SOURCE = "http://13.213.54.74:8080/uploads/source"; //Production
 
+export const API_ENDPOINT = process.env.REACT_APP_BACKEND_URL;
 export const SIGN_IN = "/auth/sign-in";
 export const SIGN_UP = "/auth/sign-up";
 export const FORGOT_PASSWORD = "/auth/forgot-password";

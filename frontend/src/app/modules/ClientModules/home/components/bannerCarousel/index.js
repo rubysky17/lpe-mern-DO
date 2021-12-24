@@ -7,16 +7,18 @@ import ModalVideo from "react-modal-video";
 
 import { getIdVideo } from "core/utils/videoLinkUtil";
 
+// import media file
 import lpe from "assets/images/lpe.jpg";
 import vas from "assets/images/vas.jpg";
 import lhgt from "assets/images/lhgt.jpg";
 import rossi from "assets/images/rossi.jpg";
 import Video from "assets/video-demo.mp4";
+import vasThumbnail from "assets/images/source/thumbnail-vas.jpg";
+import gtThumbnail from "assets/images/source/thumbnail-gt.jpg";
 
 import "swiper/components/pagination/pagination.min.css";
 
 import "./styles/styles.scss";
-import { API_SOURCE } from "app/const/Api";
 
 SwiperCore.use([Autoplay, Pagination, Navigation]);
 
@@ -36,7 +38,7 @@ const topUpSrc = [
     desc: "intro_vas",
     linkVideo: "https://www.youtube.com/watch?v=DZGkncRVn44",
     linkInfo: "/lpe/mr-vas",
-    imgVideo: `${API_SOURCE}/thumbnail-vas.jpg`,
+    imgVideo: vasThumbnail,
   },
   {
     imgSrc: lhgt,
@@ -44,7 +46,7 @@ const topUpSrc = [
     desc: "intro_gt",
     linkVideo: "https://www.youtube.com/watch?v=fAkvJPXMfjU",
     linkInfo: "/lpe/ms-la-ha-giang-thanh",
-    imgVideo: `${API_SOURCE}/thumbnail-gt.jpg`,
+    imgVideo: gtThumbnail,
   },
   {
     imgSrc: rossi,

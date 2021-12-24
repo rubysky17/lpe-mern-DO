@@ -8,8 +8,31 @@ import VasVideo from "./components/video";
 import Timeline from "./components/timeline";
 import useSiteTitle from "core/hooks/useSiteTitle";
 
+// import media file
+import bang01 from "assets/images/source/mrvas/bang-1.jpg";
+import bang02 from "assets/images/source/mrvas/bang-2.jpg";
+import bang03 from "assets/images/source/mrvas/bang-3.jpg";
+import bang04 from "assets/images/source/mrvas/bang-4.jpg";
+import bang05 from "assets/images/source/mrvas/bang-5.jpg";
+import bang06 from "assets/images/source/mrvas/bang-6.jpg";
+import bang07 from "assets/images/source/mrvas/bang-7.jpg";
+import bang08 from "assets/images/source/mrvas/bang-8.jpg";
+import bang09 from "assets/images/source/mrvas/bang-9.jpg";
+import bang10 from "assets/images/source/mrvas/bang-10.jpg";
+
+import catelogy01 from "assets/images/source//mrvas/catelogy01.jpg";
+import catelogy02 from "assets/images/source//mrvas/catelogy02.jpg";
+import catelogy03 from "assets/images/source//mrvas/catelogy03.jpg";
+import catelogy04 from "assets/images/source//mrvas/catelogy04.jpg";
+import catelogy05 from "assets/images/source//mrvas/catelogy05.jpg";
+import catelogy06 from "assets/images/source//mrvas/catelogy06.jpg";
+
+import vasBanner from "assets/images/source/mrvas/banner-vas.jpg";
+import vasFooter from "assets/images/source/mrvas/banner-bottom-vas.jpg";
+
+import mrvasPorfolio from "assets/images/source/mrvas/mrvas-porfolio.jpg";
+
 import "./styles/styles.scss";
-import { API_SOURCE } from "app/const/Api";
 
 function MrVas() {
   useSiteTitle("mr_vas");
@@ -72,25 +95,25 @@ function MrVas() {
   };
 
   const certificationList = [
-    `${API_SOURCE}/mrvas/bang-1.jpg`,
-    `${API_SOURCE}/mrvas/bang-2.jpg`,
-    `${API_SOURCE}/mrvas/bang-3.jpg`,
-    `${API_SOURCE}/mrvas/bang-4.jpg`,
-    `${API_SOURCE}/mrvas/bang-5.jpg`,
-    `${API_SOURCE}/mrvas/bang-6.jpg`,
-    `${API_SOURCE}/mrvas/bang-7.jpg`,
-    `${API_SOURCE}/mrvas/bang-8.jpg`,
-    `${API_SOURCE}/mrvas/bang-9.jpg`,
-    `${API_SOURCE}/mrvas/bang-10.jpg`,
+    bang01,
+    bang02,
+    bang03,
+    bang04,
+    bang05,
+    bang06,
+    bang07,
+    bang08,
+    bang09,
+    bang10,
   ];
 
   const catelogyImg = [
-    `${API_SOURCE}/mrvas/catelogy02.jpg`,
-    `${API_SOURCE}/mrvas/catelogy03.jpg`,
-    `${API_SOURCE}/mrvas/catelogy04.jpg`,
-    `${API_SOURCE}/mrvas/catelogy01.jpg`,
-    `${API_SOURCE}/mrvas/catelogy05.jpg`,
-    `${API_SOURCE}/mrvas/catelogy06.jpg`,
+    catelogy02,
+    catelogy03,
+    catelogy04,
+    catelogy01,
+    catelogy05,
+    catelogy06,
   ];
 
   return (
@@ -98,7 +121,7 @@ function MrVas() {
       <div
         className="bannerVas"
         style={{
-          backgroundImage: `url("${API_SOURCE}/mrvas/banner-vas.jpg")`,
+          backgroundImage: `url("${vasBanner}")`,
         }}
       >
         <div className="overlay"></div>
@@ -141,8 +164,8 @@ function MrVas() {
             }}
           >
             <img
-              src={`${API_SOURCE}/mrvas/mrvas-porfolio.jpg`}
-              alt={`${API_SOURCE}/mrvas/mrvas-porfolio.jpg`}
+              src={mrvasPorfolio}
+              alt={mrvasPorfolio}
               className="img-fluid"
               style={{
                 height: "500px",
@@ -227,7 +250,7 @@ function MrVas() {
       <div
         className="bannerBottomVas"
         style={{
-          backgroundImage: `url(${API_SOURCE}/mrvas/banner-bottom-vas.jpg)`,
+          backgroundImage: `url(${vasFooter})`,
         }}
       >
         <div className="overlay"></div>

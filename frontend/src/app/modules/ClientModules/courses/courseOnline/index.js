@@ -2,7 +2,13 @@ import React from "react";
 import LPEBanner from "app/components/banner";
 import CardItemOnline from "./components/cardItem";
 import useSiteTitle from "core/hooks/useSiteTitle";
-import { API_SOURCE } from "app/const/Api";
+
+// import media file
+import ccs from "assets/images/source/online/ccs.jpg";
+import bfw from "assets/images/source/online/bfw.jpg";
+import vl from "assets/images/source/online/vl.jpg";
+import isb from "assets/images/source/online/isb.jpg";
+import banner from "assets/images/source/banner/khoa-hoc-online-banner.jpg";
 
 import "./styles/styles.scss";
 
@@ -15,21 +21,21 @@ function CourseOnline() {
       name: "crisis conqueror",
       desc: " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       link: "/chuong-trinh-huan-luyen/online/ccs",
-      img: `${API_SOURCE}/online/ccs.jpg`,
+      img: ccs,
     },
     {
       id: 2,
       name: "beauty from within",
       desc: " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       link: "/chuong-trinh-huan-luyen/online/beauty-from-within",
-      img: `${API_SOURCE}/online/bfw.jpg`,
+      img: bfw,
     },
     {
       id: 3,
       name: "visionary leadership",
       desc: " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       link: "/chuong-trinh-huan-luyen/online/visionary-leadership",
-      img: `${API_SOURCE}/online/vl.jpg`,
+      img: vl,
     },
     // {
     //   id: 4,
@@ -43,7 +49,7 @@ function CourseOnline() {
       name: "immune system booster",
       desc: " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       link: "/chuong-trinh-huan-luyen/online/immune-system-booster",
-      img: `${API_SOURCE}/online/isb.jpg`,
+      img: isb,
     },
     // {
     //   id: 6,
@@ -56,7 +62,7 @@ function CourseOnline() {
   return (
     <div className="courseOnline-page">
       <LPEBanner
-        bannerImg={`${API_SOURCE}/banner/khoa-hoc-online-banner.jpg`}
+        bannerImg={banner}
         headText="Khóa học Online"
         subText="LPE có các khóa học trực tuyến nhằm cung cấp kiến thức cho những học viên có nhu cầu học từ xa."
       />

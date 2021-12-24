@@ -5,11 +5,32 @@ import ModalVideo from "react-modal-video";
 import { getIdVideo } from "core/utils/videoLinkUtil";
 import useSiteTitle from "core/hooks/useSiteTitle";
 
+// import media file
+import category01 from "assets/images/source/lahagiangthanh/category01.jpg";
+import category02 from "assets/images/source/lahagiangthanh/category02.jpg";
+import category03 from "assets/images/source/lahagiangthanh/category03.jpg";
+import category04 from "assets/images/source/lahagiangthanh/category04.jpg";
+import category05 from "assets/images/source/lahagiangthanh/category05.jpg";
+import category06 from "assets/images/source/lahagiangthanh/category06.jpg";
+
+import bangCap1 from "assets/images/source/lahagiangthanh/bang-cap1.png";
+import bangCap2 from "assets/images/source/lahagiangthanh/bang-cap2.png";
+import bangCap3 from "assets/images/source/lahagiangthanh/bang-cap3.png";
+import bangCap4 from "assets/images/source/lahagiangthanh/bang-cap4.png";
+import bangCap5 from "assets/images/source/lahagiangthanh/bang-cap5.png";
+import bangCap6 from "assets/images/source/lahagiangthanh/bang-cap6.png";
+import bangCap7 from "assets/images/source/lahagiangthanh/bang-cap7.png";
+import bangCap8 from "assets/images/source/lahagiangthanh/bang-cap8.png";
+
+import gtPorfolio from "assets/images/source/lahagiangthanh/gt-background.png";
+import gtAvatar from "assets/images/source/lahagiangthanh/gt-avatar.jpg";
+import gtBottom from "assets/images/source/lahagiangthanh/banner-bottom.jpg";
+
 import "./styles/styles.scss";
-import { API_SOURCE } from "app/const/Api";
 
 function MsLaHaGiangThanh() {
   useSiteTitle("lahagiangthanh");
+
   const [isActiveTab, setIsActiveTab] = useState("aboutMe");
   const certificationRef = useRef();
   const [video, setVideo] = useState("");
@@ -51,48 +72,48 @@ function MsLaHaGiangThanh() {
   const catelogyImg = [
     {
       id: 1,
-      imgSrc: `${API_SOURCE}/lahagiangthanh/category01.jpg`,
+      imgSrc: category01,
       heading: "Huấn Luyện Coaching Chuyên sâu",
     },
     {
       id: 2,
-      imgSrc: `${API_SOURCE}/lahagiangthanh/category05.jpg`,
+      imgSrc: category05,
 
       heading: "Trại Huấn Luyện Lãnh Đạo",
     },
     {
       id: 3,
-      imgSrc: `${API_SOURCE}/lahagiangthanh/category03.jpg`,
+      imgSrc: category03,
       heading: "Khám Phá Thiên Tài Trong Bạn",
     },
     {
       id: 4,
-      imgSrc: `${API_SOURCE}/lahagiangthanh/category04.jpg`,
+      imgSrc: category04,
       heading: "Tư Vấn Trị Liệu",
     },
     {
       id: 5,
-      imgSrc: `${API_SOURCE}/lahagiangthanh/category06.jpg`,
+      imgSrc: category06,
 
       heading: "Đẹp Từ Bên Trong",
     },
     {
       id: 6,
-      imgSrc: `${API_SOURCE}/lahagiangthanh/category02.jpg`,
+      imgSrc: category02,
 
       heading: "Tìm Lại Lẽ Sống & Khát Vọng Thành Công",
     },
   ];
 
   const certificateList = [
-    `${API_SOURCE}/lahagiangthanh/bang-cap1.png`,
-    `${API_SOURCE}/lahagiangthanh/bang-cap2.png`,
-    `${API_SOURCE}/lahagiangthanh/bang-cap3.png`,
-    `${API_SOURCE}/lahagiangthanh/bang-cap4.png`,
-    `${API_SOURCE}/lahagiangthanh/bang-cap5.png`,
-    `${API_SOURCE}/lahagiangthanh/bang-cap6.png`,
-    `${API_SOURCE}/lahagiangthanh/bang-cap7.png`,
-    `${API_SOURCE}/lahagiangthanh/bang-cap8.png`,
+    bangCap1,
+    bangCap2,
+    bangCap3,
+    bangCap4,
+    bangCap5,
+    bangCap6,
+    bangCap7,
+    bangCap8,
   ];
 
   const openTab = (tabName) => {
@@ -166,27 +187,9 @@ function MsLaHaGiangThanh() {
           </div>
 
           <div className="gtBackGround">
-            <img
-              src={`${API_SOURCE}/lahagiangthanh/gt-background.png`}
-              alt={`${API_SOURCE}/lahagiangthanh/gt-background.png`}
-              className="gtBgImg"
-            />
+            <img src={gtPorfolio} alt={gtPorfolio} className="gtBgImg" />
           </div>
         </div>
-
-        {/* <div className="container py-5">
-          <Fade bottom>
-            <iframe
-              width="1100"
-              height="600"
-              src="https://www.youtube.com/embed/fAkvJPXMfjU"
-              title="YouTube video player"
-              frameBorder="0"
-              allowfullcreen="true"
-              className="videoGt"
-            ></iframe>
-          </Fade>
-        </div> */}
 
         {/* See More */}
         <div className="container" style={{ padding: "30px 0" }} id="infomore">
@@ -198,11 +201,7 @@ function MsLaHaGiangThanh() {
           >
             {/* Hình ảnh Coach */}
             <div className="col-12 col-lg-6 px-0">
-              <img
-                src={`${API_SOURCE}/lahagiangthanh/gt-avatar.jpg`}
-                alt="imgCoach"
-                className="imgGt"
-              />
+              <img src={gtAvatar} alt="imgCoach" className="imgGt" />
             </div>
 
             {/* Menu tab */}
@@ -318,7 +317,7 @@ function MsLaHaGiangThanh() {
           <div
             className="bgQuotes"
             style={{
-              background: `url(${API_SOURCE}/lahagiangthanh/banner-bottom.jpg)`,
+              background: `url(${gtBottom})`,
               backgroundAttachment: "fixed",
             }}
           >

@@ -5,8 +5,26 @@ import SwiperCore, { Scrollbar, Navigation } from "swiper";
 import CourseItemOffline from "./components/courseItem";
 import useSiteTitle from "core/hooks/useSiteTitle";
 
+// import media file
+import khoa01 from "assets/images/source/offline/khoa01.jpg";
+import khoa02 from "assets/images/source/offline/khoa02.jpg";
+import khoa03 from "assets/images/source/offline/khoa03.jpg";
+import khoa04 from "assets/images/source/offline/khoa04.jpg";
+import khoa05 from "assets/images/source/offline/khoa05.jpg";
+import khoa06 from "assets/images/source/offline/khoa06.jpg";
+import khoa07 from "assets/images/source/offline/khoa07.jpg";
+import khoa08 from "assets/images/source/offline/khoa08.jpg";
+import khoa09 from "assets/images/source/offline/khoa09.jpg";
+import khoa10 from "assets/images/source/offline/khoa10.jpg";
+import Combo from "assets/images/source/offline/Combo.jpg";
+
+import LTC from "assets/images/source/offline/LTC.jpg";
+import OAC from "assets/images/source/offline/OAC.jpg";
+import PAR from "assets/images/source/offline/PAR.jpg";
+
+import banner from "assets/images/source/banner/khoa-hoc-offline-banner.jpg";
+
 import "./styles/styles.scss";
-import { API_SOURCE } from "app/const/Api";
 
 // install Swiper modules
 SwiperCore.use([Scrollbar, Navigation]);
@@ -19,7 +37,7 @@ function CourseOffline() {
       id: 1,
       name: "khóa 1",
       title: "tìm lại lẽ sống và khát vọng thành công",
-      bgCourse: `${API_SOURCE}/offline/khoa01.jpg`,
+      bgCourse: khoa01,
       textColor: "#fff",
       link: "/chuong-trinh-huan-luyen/offline/tim-lai-le-song-va-khat-vong-thanh-cong",
     },
@@ -27,7 +45,7 @@ function CourseOffline() {
       id: 2,
       name: "khóa 2",
       title: "nghệ thuật sống hạnh phúc và hòa hợp",
-      bgCourse: `${API_SOURCE}/offline/khoa02.jpg`,
+      bgCourse: khoa02,
       textColor: "#333",
       link: "/chuong-trinh-huan-luyen/offline/nghe-thuat-song-hanh-phuc-va-hoa-hop",
     },
@@ -35,7 +53,7 @@ function CourseOffline() {
       id: 3,
       name: "khóa 3",
       title: "thắp sáng cuộc đời bạn",
-      bgCourse: `${API_SOURCE}/offline/khoa03.jpg`,
+      bgCourse: khoa03,
       textColor: "#fff",
       link: "/chuong-trinh-huan-luyen/offline/thap-sang-cuoc-doi-ban",
     },
@@ -43,7 +61,7 @@ function CourseOffline() {
       id: 4,
       name: "khóa 4",
       title: "sức khỏe toàn diện",
-      bgCourse: `${API_SOURCE}/offline/khoa04.jpg`,
+      bgCourse: khoa04,
       textColor: "#fff",
       link: "/chuong-trinh-huan-luyen/offline/suc-khoe-toan-dien",
     },
@@ -51,7 +69,7 @@ function CourseOffline() {
       id: 5,
       name: "khóa 5",
       title: "tư duy xuất chúng",
-      bgCourse: `${API_SOURCE}/offline/khoa05.jpg`,
+      bgCourse: khoa05,
       link: "/chuong-trinh-huan-luyen/offline/tu-duy-xuat-chung",
     },
     {
@@ -59,7 +77,7 @@ function CourseOffline() {
       name: "khóa 6",
       title:
         "ứng dụng lập trình ngôn gnữ tư duy vào cuộc sống - tư vấn trị liệu",
-      bgCourse: `${API_SOURCE}/offline/khoa06.jpg`,
+      bgCourse: khoa06,
       textColor: "#fff",
       link: "/chuong-trinh-huan-luyen/offline/ung-dung-lap-trinh-ngon-ngu-tu-duy-vao-cuoc-song-tu-van-tri-lieu",
     },
@@ -70,7 +88,7 @@ function CourseOffline() {
       id: 11,
       name: "Combo 6",
       title: "Các khóa Combo 6",
-      bgCourse: `${API_SOURCE}/offline/Combo.jpg`,
+      bgCourse: Combo,
       textColor: "#fff",
       link: "/chuong-trinh-huan-luyen/offline",
     },
@@ -79,7 +97,7 @@ function CourseOffline() {
       name: "khóa 7",
       title:
         "niềm tin và giá trị đầy nội lực của những con người tân tiến nhất - niềm tin và giá trị của những con người xuất chúng",
-      bgCourse: `${API_SOURCE}/offline/khoa07.jpg`,
+      bgCourse: khoa07,
       textColor: "#fff",
       link: "/chuong-trinh-huan-luyen/offline/niem-tin-va-gia-tri-day-noi-luc-cua-nhung-con-nguoi-tan-tien-nhat",
     },
@@ -87,7 +105,7 @@ function CourseOffline() {
       id: 8,
       name: "khóa 8",
       title: "nghệ thuật lãnh đão xuất chúng và nghệ thuật giao tiếp cấp cao",
-      bgCourse: `${API_SOURCE}/offline/khoa08.jpg`,
+      bgCourse: khoa08,
       textColor: "#fff",
       link: "/chuong-trinh-huan-luyen/offline/nghe-thuat-lanh-dao-xuat-chung-va-nghe-thuat-giao-tiep-cap-cao",
     },
@@ -96,7 +114,7 @@ function CourseOffline() {
       name: "khóa 9",
       title:
         "TÌM LẠI NHÂN DẠNG ĐÍCH THỰC CỦA BẠN VÀ SỬ DỤNG KHOA HỌC TÂM THỨC ĐỂ ĐẠT ĐƯỢC THÀNH CÔNG CỰC ĐẠI - KIẾN TẠO ĐỜI SỐNG TÂM LINH",
-      bgCourse: `${API_SOURCE}/offline/khoa09.jpg`,
+      bgCourse: khoa09,
       textColor: "#fff",
       link: "/chuong-trinh-huan-luyen/offline/tim-lai-nhan-dang-dich-thuc-kien-tao-doi-song-tam-linh",
     },
@@ -105,7 +123,7 @@ function CourseOffline() {
       name: "khóa 10",
       title:
         "CHINH PHỤC TÂM TRÍ & CƠ THỂ CỦA BẢN THÂN VÀ LÀM CHỦ CUỘC ĐỜI CỦA MỘT MASTER NLP - BẬC THẦY CUỘC ĐỜI",
-      bgCourse: `${API_SOURCE}/offline/khoa10.jpg`,
+      bgCourse: khoa10,
       textColor: "#fff",
       link: "/chuong-trinh-huan-luyen/offline/chinh-phuc-tam-tri-co-the-cua-ban-than-va-lam-chu-cuoc-doi",
     },
@@ -116,7 +134,7 @@ function CourseOffline() {
       id: 1,
       name: "Trại huấn luyện lãnh đạo",
       title: "Trại huấn luyện lãnh đạo",
-      bgCourse: `${API_SOURCE}/offline/LTC.jpg`,
+      bgCourse: LTC,
       textColor: "#fff",
       link: "/chuong-trinh-huan-luyen/offline/trai-huan-luyen-lanh-dao",
     },
@@ -124,7 +142,7 @@ function CourseOffline() {
       id: 2,
       name: "Trại thiếu niên xuất chúng",
       title: "Trại thiếu niên xuất chúng",
-      bgCourse: `${API_SOURCE}/offline/OAC.jpg`,
+      bgCourse: OAC,
       textColor: "#fff",
       link: "/chuong-trinh-huan-luyen/offline/trai-thieu-nien-xuat-chung",
     },
@@ -132,7 +150,7 @@ function CourseOffline() {
       id: 3,
       name: "Nghệ thuật truyền cảm hứng & nuôi dạy con xuất chúng",
       title: "Nghệ thuật truyền cảm hứng & nuôi dạy con xuất chúng",
-      bgCourse: `${API_SOURCE}/offline/PAR.jpg`,
+      bgCourse: PAR,
       textColor: "#fff",
       link: "/chuong-trinh-huan-luyen/offline/nghe-thuat-truyen-cam-hung-nuoi-day-con-xuat-chung",
     },
@@ -141,7 +159,7 @@ function CourseOffline() {
   return (
     <div className="courseOffline-page">
       <LPEBanner
-        bannerImg={`${API_SOURCE}/banner/khoa-hoc-offline-banner.jpg`}
+        bannerImg={banner}
         headText="Khóa học Offline"
         subText="LPE có các khóa học trực tiếp nhằm cung cấp trải nghiệm học tốt nhất cho học viên."
       />

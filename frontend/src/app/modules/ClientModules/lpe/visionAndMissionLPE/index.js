@@ -1,8 +1,12 @@
 import LPEBanner from "app/components/banner";
-import { API_SOURCE } from "app/const/Api";
 import useSiteTitle from "core/hooks/useSiteTitle";
 
 import InterlacedContent from "./components/blockContentInterlaced";
+
+// import media file
+import banner from "assets/images/source/banner/tam-nhin-su-menh.jpg";
+import bird1 from "assets/images/source/vision/bird01.png";
+import bird3 from "assets/images/source/vision/bird03.png";
 
 import "./styles/styles.scss";
 
@@ -13,7 +17,7 @@ function VisionPage() {
     <div className="vision-page">
       <div>
         <LPEBanner
-          bannerImg={`${API_SOURCE}/banner/tam-nhin-su-menh.jpg`}
+          bannerImg={banner}
           headText="Leading Performance Education"
           subText="Making Champions - Creating Legacies"
           subText2="Kiến Tạo Nhà Vô Địch - Để Lại Di Sản Đời Sau"
@@ -44,11 +48,7 @@ function VisionPage() {
               </p>
             </div>
             <div className="col-12 col-lg-6 mb-3 wrapper-bird-img">
-              <img
-                className="img-fluid bird-img"
-                src={`${API_SOURCE}/vision/bird03.png`}
-                alt={`${API_SOURCE}/vision/bird03.png`}
-              />
+              <img className="img-fluid bird-img" src={bird3} alt={bird3} />
             </div>
 
             <div className="col-12 col-lg-6 mb-3">
@@ -72,11 +72,7 @@ function VisionPage() {
             </div>
 
             <div className="col-12 col-lg-6 mb-3 wrapper-bird-img">
-              <img
-                className="img-fluid bird-img"
-                src={`${API_SOURCE}/vision/bird01.png`}
-                alt={`${API_SOURCE}/vision/bird01.png`}
-              />
+              <img className="img-fluid bird-img" src={bird1} alt={bird1} />
             </div>
           </div>
 

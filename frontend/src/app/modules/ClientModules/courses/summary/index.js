@@ -6,8 +6,7 @@ import LPEBanner from "app/components/banner";
 import OnlineCourse from "assets/images/onl-course.webp";
 import OfflineCourse from "assets/images/off-course.webp";
 import MediaCourse from "assets/images/media-course.webp";
-
-import { API_SOURCE } from "app/const/Api";
+import banner from "assets/images/source/banner/chuong-trinh-dao-tao.jpg";
 
 import "./styles/styles.scss";
 
@@ -47,7 +46,7 @@ function Courses() {
   return (
     <div className="summaryCate pb-5">
       <LPEBanner
-        bannerImg={`${API_SOURCE}/banner/chuong-trinh-dao-tao.jpg`}
+        bannerImg={banner}
         headText="Chương trình huấn luyện"
         subText="LPE cung cấp rất nhiều chương trình huấn luyện phù hợp với tất cả mọi lứa tuổi, ngành nghề khác nhau."
       />

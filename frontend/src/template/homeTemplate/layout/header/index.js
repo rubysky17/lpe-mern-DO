@@ -22,8 +22,10 @@ import SidebarHeader from "./components/sidebar";
 
 import { logOutAction } from "core/redux/actions/authAction";
 
+// media file
+import logo from "assets/images/source/lpe-nlp-logo.png";
+
 import "./styles/styles.scss";
-import { API_SOURCE } from "app/const/Api";
 
 const useStyles = makeStyles(() => ({
   btnPopOver: {
@@ -160,11 +162,7 @@ function LPEHeader() {
         <Toolbar className="headerContent">
           {/* LOGO */}
           <Link to="/">
-            <img
-              src={`${API_SOURCE}/lpe-nlp-logo.png`}
-              alt={`${API_SOURCE}/lpe-nlp-logo.png`}
-              className="imgLogo"
-            />
+            <img src={logo} alt={logo} className="imgLogo" />
           </Link>
 
           <ul className="header-dropdown">

@@ -1,5 +1,5 @@
-import { API_SOURCE } from "app/const/Api";
 import React from "react";
+import bird2 from "assets/images/source/vision/bird02.png";
 
 function InterlacedContent() {
   return (
@@ -27,11 +27,7 @@ function InterlacedContent() {
         </div>
 
         <div className="col-12 col-lg-4 wrapper-bird-img mt-3">
-          <img
-            className="img-fluid"
-            src={`${API_SOURCE}/vision/bird02.png`}
-            alt={`${API_SOURCE}/vision/bird02.png`}
-          />
+          <img className="img-fluid" src={bird2} alt={bird2} />
         </div>
       </div>
     </div>
