@@ -4,6 +4,11 @@ WORKDIR '/app'
 
 COPY package.json ./
 
+RUN apt-get -y update && \
+    apt-get -y install build-essential && \
+    curl -sL https://deb.nodesource.com/setup | bash - && \
+    apt-get install -y nodejs
+
 RUN npm install --production
 
 COPY . .
