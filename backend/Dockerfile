@@ -1,10 +1,10 @@
-FROM node:13.12.0-alpine
+FROM node:14.17
 
 WORKDIR '/app'
 
-COPY  package.json ./
+COPY package.json package-lock.json ./
 
-RUN npm install
+RUN npm ci
 
 COPY . .
 
