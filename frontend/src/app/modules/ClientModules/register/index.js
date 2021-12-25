@@ -4,29 +4,70 @@ import axios from "axios";
 import withAuth from "core/hooks/useAuth";
 import TextInput from "app/components/textInput";
 import LPEButton from "app/components/button";
-import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
 import { API_ENDPOINT, CODE_SUCCESS, SIGN_UP } from "app/const/Api";
 import { convertFullDate, timeToUnix } from "core/utils/dateUtil";
 import { ValidationEmail } from "core/utils/emailUtil";
 import { phoneValidate } from "core/utils/phoneUtil";
-import LocalizationProvider from "@mui/lab/LocalizationProvider";
-import AdapterDateFns from "@mui/lab/AdapterDateFns";
-import { TextField } from "@mui/material";
+import {
+  KeyboardDatePicker,
+  MuiPickersUtilsProvider,
+} from "@material-ui/pickers";
+import DateFnsUtils from "@date-io/date-fns";
+import { makeStyles } from "@mui/styles";
 
 import useSiteTitle from "core/hooks/useSiteTitle";
 
 import "./styles/styles.scss";
 
+const useStyles = makeStyles((theme) => ({
+  loginBtn: {
+    marginTop: "10px",
+    marginBottom: "10px",
+    backgroundColor: "#3777BC",
+    color: "#fff",
+    textTransform: "capitalize",
+    fontSize: "16px",
+    "&:hover": {
+      backgroundColor: "#6499e7",
+    },
+  },
+  datePicker: {
+    width: "100%",
+    "& > label": {
+      fontSize: "17px",
+      fontWeight: "bold",
+      color: "#333",
+      marginBottom: "0",
+      top: "17px",
+      fontFamily: "product-sans, sans-serif",
+    },
+    "& > label + .MuiInput-formControl": {
+      border: "1px solid #dbeaf5",
+      borderRadius: "5px",
+      padding: "10px",
+      marginTop: "3rem",
+    },
+    "& > label + .MuiInput-formControl:before": {
+      display: "none",
+    },
+    "&:focus > label + .MuiInput-formControl:before": {
+      display: "none",
+    },
+    "& .MuiInputLabel-shrink": {
+      transform: "unset",
+      transformOrigin: "unset",
+    },
+  },
+}));
+
 function Register() {
   useSiteTitle("register");
+  const classes = useStyles();
   const refForm = useRef();
   const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({});
   const [birthDay, setBirthDay] = useState("2000-09-20T21:11:54");
-  const [selectedDate, setSelectedDate] = useState(
-    new Date() // default Date
-  );
 
   const handleRegister = () => {
     const dataSubmit = {};
@@ -142,7 +183,6 @@ function Register() {
 
   const handleDateChange = (date) => {
     setBirthDay(convertFullDate(date));
-    setSelectedDate(date);
   };
 
   const RenderUI = (step) => {
@@ -151,109 +191,111 @@ function Register() {
         return (
           <>
             <div className="registerContainer">
-              <div className="row">
-                <div className="formContainer">
-                  <form ref={refForm}>
-                    <div className="row">
-                      <div className="col-12">
-                        <TextInput
-                          label="Họ và tên"
-                          placeHolder="Nguyễn Văn A"
-                          type="text"
-                          name="name"
-                          error={error.name}
-                          typeInput="text"
-                        />
-                      </div>
+              <div className="formContainer">
+                <h3 className="text-center pt-3 text-secondary">
+                  Đăng ký tài khoản
+                </h3>
+                <form ref={refForm}>
+                  <div className="row">
+                    <div className="col-12">
+                      <TextInput
+                        label="Họ và tên"
+                        placeHolder="Nguyễn Văn A"
+                        type="text"
+                        name="name"
+                        error={error.name}
+                        typeInput="text"
+                      />
                     </div>
-
-                    <div className="row">
-                      <div className="col-12 col-md-6">
-                        <TextInput
-                          label="Email"
-                          placeHolder="JohnDoe@gmail.com"
-                          type="email"
-                          name="email"
-                          error={error.email}
-                          typeInput="text"
-                        />
-                      </div>
-
-                      <div className="col-12 col-md-6">
-                        <TextInput
-                          label="Số điện thoại"
-                          placeHolder="09XXXXXXXX"
-                          type="phone"
-                          name="phone"
-                          error={error.phone}
-                          typeInput="text"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="row">
-                      <div
-                        className="col-12 col-md-6 mt-6 mt-md-0"
-                        style={{
-                          display: "flex",
-                          alignItems: "flex-end",
-                          marginBottom: "14px",
-                        }}
-                      >
-                        <LocalizationProvider
-                          dateAdapter={AdapterDateFns}
-                          className="datePicker-register"
-                        >
-                          <DesktopDatePicker
-                            label="Ngày sinh"
-                            id="date-picker-dialog"
-                            inputFormat="dd/MM/yyyy"
-                            value={selectedDate}
-                            onChange={handleDateChange}
-                            name="birthDay"
-                            renderInput={(params) => <TextField {...params} />}
-                          />
-                        </LocalizationProvider>
-                      </div>
-
-                      <div className="col-12 col-md-6">
-                        <TextInput
-                          label="Giới tính"
-                          placeHolder="Nhập giới tính"
-                          name="gender"
-                          error={error.gender}
-                          typeInput="select"
-                        />
-                      </div>
-                    </div>
-
-                    <TextInput
-                      label="Mật khẩu"
-                      placeHolder="Nhập mật khẩu"
-                      type="password"
-                      name="password"
-                      error={error.password}
-                      typeInput="text"
-                    />
-
-                    <TextInput
-                      label="Nhập lại mật khẩu"
-                      placeHolder="Nhập lại mật khẩu"
-                      type="password"
-                      name="repassword"
-                      error={error.repassword}
-                      typeInput="text"
-                    />
-                  </form>
-
-                  <div className="positionButton">
-                    <LPEButton
-                      action={handleRegister}
-                      name="Tạo tài khoản"
-                      loading={loading}
-                      classStyled="registerBtn"
-                    />
                   </div>
+
+                  <div className="row">
+                    <div className="col-12 col-md-6">
+                      <TextInput
+                        label="Email"
+                        placeHolder="JohnDoe@gmail.com"
+                        type="email"
+                        name="email"
+                        error={error.email}
+                        typeInput="text"
+                      />
+                    </div>
+
+                    <div className="col-12 col-md-6">
+                      <TextInput
+                        label="Số điện thoại"
+                        placeHolder="09XXXXXXXX"
+                        type="phone"
+                        name="phone"
+                        error={error.phone}
+                        typeInput="text"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="row">
+                    <div
+                      className="col-12 col-md-6 mt-6 mt-md-0"
+                      style={{
+                        display: "flex",
+                        alignItems: "flex-end",
+                        marginBottom: "14px",
+                        width: "100%",
+                      }}
+                    >
+                      <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                        <KeyboardDatePicker
+                          className={classes.datePicker}
+                          id="date-picker-dialog"
+                          label="Ngày sinh"
+                          format="dd/MM/yyyy"
+                          value={birthDay}
+                          onChange={handleDateChange}
+                          KeyboardButtonProps={{
+                            "aria-label": "change date",
+                          }}
+                          name="birthDay"
+                        />
+                      </MuiPickersUtilsProvider>
+                    </div>
+
+                    <div className="col-12 col-md-6">
+                      <TextInput
+                        label="Giới tính"
+                        placeHolder="Nhập giới tính"
+                        name="gender"
+                        error={error.gender}
+                        typeInput="select"
+                      />
+                    </div>
+                  </div>
+
+                  <TextInput
+                    label="Mật khẩu"
+                    placeHolder="Nhập mật khẩu"
+                    type="password"
+                    name="password"
+                    error={error.password}
+                    typeInput="text"
+                  />
+
+                  <TextInput
+                    label="Nhập lại mật khẩu"
+                    placeHolder="Nhập lại mật khẩu"
+                    type="password"
+                    name="repassword"
+                    error={error.repassword}
+                    typeInput="text"
+                  />
+                </form>
+
+                <div className="positionButton">
+                  <LPEButton
+                    action={handleRegister}
+                    name="Tạo tài khoản"
+                    loading={loading}
+                    classStyled="registerBtn"
+                  />
                 </div>
               </div>
             </div>

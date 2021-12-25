@@ -102,9 +102,10 @@ $border-radius: 10px;
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 992px) {
   .registerContainer {
     min-height: unset;
+    width: 100%;
   }
   .OTPContainer {
     height: unset;
