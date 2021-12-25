@@ -11,8 +11,7 @@ const {
 } = require("../controllers/product.controller");
 
 const {
-  uploadImageSingle,
-  multipleImageUpload,
+  uploadImageMultiple,
 } = require("../middlewares/upload/upload-image.middleware");
 
 // Get ALL product list
@@ -22,7 +21,7 @@ productRouter.get("/", getAll);
 productRouter.get("/:id", getDetail);
 
 // Create new product
-productRouter.post("/", multipleImageUpload("productImage", 10), create);
+productRouter.post("/", uploadImageMultiple("productImage", 10), create);
 
 // Edit product by ID
 productRouter.put("/:id", edit);

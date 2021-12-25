@@ -78,21 +78,18 @@ const uploadAvatar = async (req, res) => {
   try {
     const { file, user } = req;
 
-    // const result = await cloudinary.uploader.upload(file.path);
-
-    // const urlImage = `${config.server.hostName}/api/image/${file.filename}`;
+    const urlImage = `${process.env.SERVER_HOSTNAME}/api/image/${file.filename}`;
 
     const updateUser = await User.findById(user._id).exec();
 
     if (updateUser) {
-      updateUser.avatar = result.secure_url;
-      updateUser.avatar_id = result.public_id;
+      updateUser.avatar = urlImage;
 
       await updateUser.save();
 
       res.status(200).send({
         status: "success",
-        data: result.secure_url,
+        data: result.urlImage,
       });
     } else {
       res.status(400).send({
@@ -112,10 +109,7 @@ const deleteAvatar = async (req, res) => {
     const deleteUserAvatar = await User.findById(user._id).exec();
 
     if (deleteUserAvatar) {
-      // await cloudinary.uploader.destroy(deleteUserAvatar.avatar_id);
-
       deleteUserAvatar.avatar = "";
-      deleteUserAvatar.avatar_id = "";
 
       await deleteUserAvatar.save();
 

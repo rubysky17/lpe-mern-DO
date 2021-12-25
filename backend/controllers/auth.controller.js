@@ -29,7 +29,7 @@ const signIn = async (req, res) => {
         secretKey
       );
 
-      res.status(200).send({ status: "success", token: token, userLogin });
+      res.status(200).send({ status: "success", token, userLogin });
     } else {
       res.status(500).send({
         status: "failed",
@@ -70,7 +70,7 @@ const signUp = async (req, res) => {
         Xin chào, LPE nếu bạn đang đăng ký tài khoản tại LPE thì bạn hãy click vào link bên dưới
       </h1>
 
-      <a href="${process.env.LOCAL_HOSTNAME_FE}/xac-nhan-dang-ky/${token}">
+      <a href="${process.env.SERVER_HOSTNAME}/xac-nhan-dang-ky/${token}">
         Click Vào Đây
       </a>
 
@@ -190,7 +190,7 @@ const forgotPassword = async (req, res) => {
       Để lấy lại mật khẩu bạn truy cập đường link bên dưới.
     </p>
     <br />
-    <a href="${process.env.LOCAL_HOSTNAME_FE}/xac-nhan-quen-mat-khau/${token}">Click vào đây</a>
+    <a href="${process.env.SERVER_HOSTNAME}/xac-nhan-quen-mat-khau/${token}">Click vào đây</a>
     `;
 
     // Create a link contains token email

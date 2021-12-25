@@ -1,17 +1,24 @@
 const multer = require("multer");
 
 const uploadImageSingle = (type) => {
+  const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, `./public/images/${type}`); // setup chổ cần lưu file
+    },
+    filename: function (req, file, cb) {
+      cb(null, Date.now() + "_" + file.originalname); // đặt lại tên cho file
+    },
+  });
   const upload = multer({
-    storage: multer.diskStorage({}),
+    storage: storage,
     fileFilter: function (req, file, cb) {
       const extensionImageList = [".png", ".jpg", ".jpeg"];
       const extension = file.originalname.slice(-4);
       const check = extensionImageList.includes(extension);
-
       if (check) {
         cb(null, true);
       } else {
-        cb(new Error("Error file extension!"));
+        cb(new Error("extension không hợp lệ"));
       }
     },
   });
@@ -19,28 +26,27 @@ const uploadImageSingle = (type) => {
   return upload.single(type);
 };
 
-const multipleImageUpload = (type, amount) => {
-  const upload = multer({
-    storage: multer.diskStorage({}),
-    fileFilter: function (req, file, cb) {
-      // let extensionList = ["image/png", "image/jpeg", "image/jpg"];
-
-      // if (extensionList.indexOf(file.mimetype) === -1) {
-      //   cb(new Error("Error file extension!"), null);
-      // } else {
-      //   cb(null, true);
-      // }
-
-      const extensionImageList = [".png", ".jpg", ".jpeg"];
-      const extension = file.originalname.slice(-4);
-      const check = extensionImageList.includes(extension);
-
-      if (check) {
-        cb(null, true);
-      } else {
-        cb(new Error("Error file extension!"));
-      }
+const uploadImageMultiple = (type, amount) => {
+  const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, `./public/images/${type}`); // setup chổ cần lưu file
     },
+    filename: function (req, file, cb) {
+      cb(null, Date.now() + "_" + file.originalname); // đặt lại tên cho file
+    },
+  });
+  const upload = multer({
+    storage: storage,
+    // fileFilter: function (req, file, cb) {
+    //   const extensionImageList = [".png", ".jpg"];
+    //   const extension = file.originalname.slice(-4);
+    //   const check = extensionImageList.includes(extension);
+    //   if (check) {
+    //     cb(null, true);
+    //   } else {
+    //     cb(new Error("extension không hợp lệ"));
+    //   }
+    // },
   });
 
   return upload.array(type, amount);
@@ -48,5 +54,5 @@ const multipleImageUpload = (type, amount) => {
 
 module.exports = {
   uploadImageSingle,
-  multipleImageUpload,
+  uploadImageMultiple,
 };
