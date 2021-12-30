@@ -17,7 +17,6 @@ import "./styles/styles.scss";
 
 function Login() {
   useSiteTitle("login");
-  console.log("env", process.env.REACT_APP_BACKEND_URL);
 
   const dispatch = useDispatch();
   const [error, setError] = useState({});

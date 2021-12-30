@@ -167,6 +167,58 @@
   display: none;
 }
 
+.menuItem {
+  cursor: pointer;
+
+  &:hover {
+    background: unset !important;
+    a {
+      color: unset !important;
+
+      i {
+        color: default !important;
+      }
+    }
+  }
+
+  a {
+    padding: 15px 20px;
+    display: block;
+    width: 100%;
+    font-size: 20px;
+    color: #273167;
+    i {
+      color: #3777bc;
+    }
+  }
+
+  &Active {
+    background: #eff3ff;
+
+    &:hover {
+      background: #eff3ff !important;
+      a {
+        color: unset !important;
+
+        i {
+          color: default !important;
+        }
+      }
+    }
+
+    a {
+      padding: 15px 20px;
+      display: block;
+      width: 100%;
+      font-size: 20px;
+      color: #273167;
+      i {
+        color: #3777bc;
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 1082px) {
   .header-dropdown {
     font-size: 13px;

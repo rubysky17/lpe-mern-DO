@@ -64,7 +64,7 @@ function AccountDetail() {
 
         <div className="row mt-5">
           {/* Table */}
-          <div className="col-4 d-none d-xl-block">
+          <div className="col-4 d-none d-lg-block">
             <div className="menuBox">
               <Link to="/thong-tin-tai-khoan/ho-so" className="infoUser">
                 {/* avatar */}
@@ -118,7 +118,7 @@ function AccountDetail() {
           </div>
 
           {/* Info */}
-          <div className="col-12 col-xl-8">
+          <div className="col-12 col-lg-8">
             {screen === "ho-so" && (
               <>
                 <div className="heading">

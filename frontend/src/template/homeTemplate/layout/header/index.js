@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import { AppBar, Button, Container, Toolbar } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { useTranslation } from "react-i18next";
@@ -41,7 +41,42 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
+const menuTab = [
+  {
+    href: `/thong-tin-tai-khoan/khu-vuc-hoc-tap/`,
+    name: "Khu vực học tập",
+    icon: <i className="fab fa-discourse mr-3"></i>,
+    screen: "khu-vuc-hoc-tap",
+  },
+  {
+    href: `/thong-tin-tai-khoan/thanh-vien-vip/`,
+    name: "Thành viên VIP",
+    icon: <i className="far fa-gem text-warning mr-3"></i>,
+    screen: "thanh-vien-vip",
+  },
+  {
+    href: `/thong-tin-tai-khoan/doi-mat-khau`,
+    name: "Đổi mật khẩu",
+    icon: <i className="fas fa-lock mr-3"></i>,
+    screen: "doi-mat-khau",
+  },
+  {
+    href: `/thong-tin-tai-khoan/chi-tiet-don-hang/`,
+    name: "Chi tiết đơn hàng",
+    icon: <i className="fab fa-buffer mr-3"></i>,
+    screen: "chi-tiet-don-hang",
+  },
+  {
+    href: `/thong-tin-tai-khoan/nhan-ho-tro/`,
+    name: "Nhận hỗ trợ",
+    icon: <i className="fas fa-headphones-alt mr-3"></i>,
+    screen: "nhan-ho-tro",
+  },
+];
+
 function LPEHeader() {
+  let location = useLocation();
+
   const { userInfo } = useSelector((state) => state.auth);
   const history = useHistory();
   const { t } = useTranslation("common");
@@ -54,7 +89,7 @@ function LPEHeader() {
   const locale = localStorage.getItem("i18nextLng");
   const token = localStorage.getItem("accessToken");
   const [state, setState] = useState({
-    top: false,
+    left: false,
     right: false,
   });
 
@@ -161,9 +196,24 @@ function LPEHeader() {
       <AppBar>
         <Toolbar className="headerContent">
           {/* LOGO */}
-          <Link to="/">
-            <img src={logo} alt={logo} className="imgLogo" />
-          </Link>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            {location.pathname.split("/")[1] === "thong-tin-tai-khoan" && (
+              <i
+                className="fal fa-bars d-block d-lg-none mr-2"
+                onClick={toggleDrawer("left", true)}
+              ></i>
+            )}
+
+            <Link to="/">
+              <img src={logo} alt={logo} className="imgLogo" />
+            </Link>
+          </div>
 
           <ul className="header-dropdown">
             {CONTENT_MENU?.map((ele, index) => {
@@ -271,6 +321,39 @@ function LPEHeader() {
               menuContent={CONTENT_MENU}
               userInfo={userInfo}
             />
+          </LPEDrawer>
+
+          <LPEDrawer
+            anchor="left"
+            isOpen={state["left"]}
+            onToggle={toggleDrawer}
+            disableScrollLock
+          >
+            <div className="sideMenu-info">
+              <div className="menuLogin">
+                <i
+                  className="fal fa-chevron-left"
+                  onClick={toggleDrawer("left", false)}
+                ></i>
+              </div>
+
+              <ul className="menuSide">
+                {menuTab.map((item, index) => {
+                  return (
+                    <li
+                      className="menuItem"
+                      key={index}
+                      onClick={toggleDrawer("left", false)}
+                    >
+                      <Link to={item.href}>
+                        {item.icon}
+                        {item.name}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
           </LPEDrawer>
         </Toolbar>
       </AppBar>

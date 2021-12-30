@@ -1,3 +1,4 @@
+require("dotenv").config();
 // Import library
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -6,7 +7,6 @@ const { rootRouter } = require("./routers/rootRouter");
 const app = express();
 const db = require("./config/db");
 const path = require("path");
-require("dotenv").config();
 
 const publicPathDirectory = path.join(__dirname, "./public");
 

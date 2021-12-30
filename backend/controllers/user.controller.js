@@ -1,5 +1,6 @@
 const { User } = require("../models/users.model");
 const bcrypt = require("bcryptjs");
+const fs = require("fs");
 
 const getList = async (req, res) => {
   try {
@@ -49,10 +50,6 @@ const remove = async (req, res) => {
     const { id } = req.params;
     let user = await User.findById(id);
 
-    if (user.avatar_id) {
-      // await cloudinary.uploader.destroy(user.avatar_id);
-    }
-
     const userDelete = await User.deleteOne({
       _id: id,
     });
@@ -75,30 +72,24 @@ const update = async (req, res) => {
 };
 
 const uploadAvatar = async (req, res) => {
+  const { file, user } = req;
+
+  const urlImage = `${process.env.SERVER_HOSTNAME}/${file.path}`;
+
   try {
-    const { file, user } = req;
+    await User.findByIdAndUpdate(user._id, {
+      avatar: urlImage,
+    }).exec();
 
-    const urlImage = `${process.env.SERVER_HOSTNAME}/api/image/${file.filename}`;
-
-    const updateUser = await User.findById(user._id).exec();
-
-    if (updateUser) {
-      updateUser.avatar = urlImage;
-
-      await updateUser.save();
-
-      res.status(200).send({
-        status: "success",
-        data: result.urlImage,
-      });
-    } else {
-      res.status(400).send({
-        status: "failed",
-        message: "Can't file user",
-      });
-    }
+    res.status(200).send({
+      status: "success",
+      data: urlImage,
+    });
   } catch (error) {
-    res.status(500).send(error);
+    res.status(400).send({
+      status: "failed",
+      message: "Can't find user",
+    });
   }
 };
 
@@ -108,20 +99,31 @@ const deleteAvatar = async (req, res) => {
 
     const deleteUserAvatar = await User.findById(user._id).exec();
 
-    if (deleteUserAvatar) {
-      deleteUserAvatar.avatar = "";
+    const getFileAvatarname = deleteUserAvatar.avatar
+      .split("/")
+      .slice(-1)
+      .pop();
 
-      await deleteUserAvatar.save();
+    try {
+      fs.unlinkSync(`${getFileAvatarname}`);
 
-      res.status(200).send({
-        status: "success",
-        message: "Xóa thành công",
-      });
-    } else {
-      res.status(400).send({
-        status: "failed",
-        message: "Can't find user",
-      });
+      if (deleteUserAvatar) {
+        await User.findByIdAndUpdate(user._id, {
+          avatar: "",
+        }).exec();
+
+        res.status(200).send({
+          status: "success",
+          message: "Xóa thành công",
+        });
+      } else {
+        res.status(400).send({
+          status: "failed",
+          message: "Can't find user",
+        });
+      }
+    } catch (error) {
+      res.status(500).send(error);
     }
   } catch (error) {
     res.status(500).send(error);

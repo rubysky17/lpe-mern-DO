@@ -10,6 +10,11 @@ export const VERIFY_FORGET_PASSWORD = "/auth/verify-forgot-password";
 export const CHANGE_PASSWORD = "/auth/change-password";
 export const CATEGORY = "/category";
 
+// users
+export const USERS = "/users";
+export const UPLOAD_AVATAR = "/users/upload-avatar";
+export const REMOVE_AVATAR = "/users/delete-avatar";
+
 // Code status
 export const CODE_SUCCESS = 200;
 export const CODE_FAILURE = 403;

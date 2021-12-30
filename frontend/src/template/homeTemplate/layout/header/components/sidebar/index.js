@@ -130,6 +130,17 @@ function SidebarHeader({ onToggle, menuContent }) {
           />
         </div>
 
+        {userInfo.role === "admin" && (
+          <>
+            <Link to="/admin" className="logOut">
+              <p className="titleUrl">Quản trị</p>
+            </Link>
+            {/* <div className="logOut">
+              <p className="titleUrl">Quản trị</p>
+            </div> */}
+          </>
+        )}
+
         <ul className="menuSide">
           {menuContent?.map((ele, index) => {
             return (

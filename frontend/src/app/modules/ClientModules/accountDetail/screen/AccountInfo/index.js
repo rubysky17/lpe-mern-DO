@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import DateFnsUtils from "@date-io/date-fns";
 import { makeStyles } from "@mui/styles";
@@ -12,6 +12,12 @@ import {
   KeyboardDatePicker,
   MuiPickersUtilsProvider,
 } from "@material-ui/pickers";
+
+import {
+  deleteAvatarAction,
+  updateAvatarAction,
+  updateUserAction,
+} from "core/redux/actions/userAction";
 
 import "./styles/styles.scss";
 
@@ -59,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
 function AccountInfo({ id, userInfo }) {
   const classes = useStyles();
   const [birthDay, setBirthDay] = useState();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [loadingImage, setLoadingImage] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState({});
@@ -126,10 +132,10 @@ function AccountInfo({ id, userInfo }) {
     }
   };
 
-  // const handleSubmit = (dataSubmit) => {
-  //   dispatch(updateUserAction(id, dataSubmit, setIsLoading));
-  //   setError({});
-  // };
+  const handleSubmit = (dataSubmit) => {
+    dispatch(updateUserAction(id, dataSubmit, setIsLoading));
+    setError({});
+  };
 
   const handleChangeImage = (e) => {
     setError("");
@@ -152,18 +158,20 @@ function AccountInfo({ id, userInfo }) {
       if (file) {
         formData.append("avatar", file);
 
-        // dispatch(updateAvatarAction(formData, setLoadingImage));
+        dispatch(updateAvatarAction(formData, setLoadingImage));
       }
     } else {
       setLoadingImage(false);
+
       setError("Chỉ hỗ trợ file ảnh tối đa 3MB");
     }
   };
 
   const handleDeleteImage = (path) => {
     setLoadingImage(true);
-    // const filename = path.replace(/^.*[\\\/]/, "");
-    // dispatch(deleteAvatarAction(filename, setLoadingImage));
+    const filename = path.replace(/^.*[\\\/]/, "");
+
+    dispatch(deleteAvatarAction(filename, setLoadingImage));
   };
 
   return (
@@ -184,7 +192,7 @@ function AccountInfo({ id, userInfo }) {
                   <div className="profileMedia">
                     {!loadingImage ? (
                       <>
-                        {!!userInfo.avatar ? (
+                        {userInfo.avatar !== "" ? (
                           <div className="wrapperUpload">
                             <img
                               src={userInfo.avatar}
@@ -303,7 +311,7 @@ function AccountInfo({ id, userInfo }) {
 
                 <div className="col-12 col-lg-6 mt-4">
                   <LPEButton
-                    action={handleDataSubmit}
+                    action={handleSubmit}
                     name="Lưu lại"
                     loading={isLoading}
                     fullWidth
