@@ -22,7 +22,7 @@ const {
   uploadImageSingle,
 } = require("../middlewares/upload/upload-image.middleware");
 
-userRouter.get("/", getList);
+userRouter.get("/", authenticate, authorize(["admin"]), getList);
 userRouter.get("/:id", getDetail);
 userRouter.post("/", authenticate, authorize(["admin"]), create);
 userRouter.put("/:id", authenticate, update);

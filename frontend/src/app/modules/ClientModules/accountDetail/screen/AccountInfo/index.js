@@ -74,8 +74,10 @@ function AccountInfo({ id, userInfo }) {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    userInfo && setBirthDay(userInfo.birthDay);
-  }, [userInfo]);
+    userInfo && setBirthDay(convertFullDate(userInfo?.birthDay));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleDateChange = (date) => {
     setBirthDay(convertFullDate(date));
@@ -126,7 +128,7 @@ function AccountInfo({ id, userInfo }) {
     setErrorMessage(errorMsg);
 
     if (Object.keys(errorMsg).length === 0) {
-      // handleSubmit(dataSubmit);
+      handleSubmit(dataSubmit);
     } else {
       setIsLoading(false);
     }
@@ -311,7 +313,7 @@ function AccountInfo({ id, userInfo }) {
 
                 <div className="col-12 col-lg-6 mt-4">
                   <LPEButton
-                    action={handleSubmit}
+                    action={handleDataSubmit}
                     name="Lưu lại"
                     loading={isLoading}
                     fullWidth

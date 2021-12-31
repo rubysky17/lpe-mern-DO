@@ -74,7 +74,7 @@ const update = async (req, res) => {
 const uploadAvatar = async (req, res) => {
   const { file, user } = req;
 
-  const urlImage = `${process.env.SERVER_HOSTNAME}/${file.path}`;
+  const urlImage = `${process.env.DEV_HOSTNAME}/${file.path}`;
 
   try {
     await User.findByIdAndUpdate(user._id, {

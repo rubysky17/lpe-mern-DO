@@ -9,6 +9,7 @@ import TestimonialCard from "./components/testimonialCart";
 import BannerCarousel from "./components/bannerCarousel";
 import { LPELightBox } from "app/components/lightBox";
 import { getIdVideo } from "core/utils/videoLinkUtil";
+import LazyLoad from "react-lazyload";
 
 // import media file
 import hinh01 from "assets/images/source/hinh01.jpg";
@@ -119,23 +120,27 @@ export default function Home() {
 
   return (
     <div className="home-page">
-      <BannerCarousel />
+      <LazyLoad offset={100}>
+        <BannerCarousel />
+      </LazyLoad>
 
-      <div className="container services">
-        <div className="service-caption py-5 text-center">
-          <Title
-            title={t("activities")}
-            description={t("activities_desc")}
-            textAlign="center"
-          />
+      <LazyLoad offset={100}>
+        <div className="container services">
+          <div className="service-caption py-5 text-center">
+            <Title
+              title={t("activities")}
+              description={t("activities_desc")}
+              textAlign="center"
+            />
+          </div>
+
+          <section className="row">
+            {service_list.map((service, index) => {
+              return <ServiceItem service={service} key={index} />;
+            })}
+          </section>
         </div>
-
-        <section className="row">
-          {service_list.map((service, index) => {
-            return <ServiceItem service={service} key={index} />;
-          })}
-        </section>
-      </div>
+      </LazyLoad>
 
       <section className="student-pic">
         <div className="student-caption py-5 text-center">

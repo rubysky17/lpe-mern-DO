@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import LPELoading from "app/components/loading";
+import DataTable from "template/adminTemplate/components/table";
 
-function Home() {
+function UserManager() {
   const [isLoading, setIsLoading] = useState(true);
 
   // Loading Data
@@ -20,12 +21,12 @@ function Home() {
       {isLoading ? (
         <LPELoading />
       ) : (
-        <div>
-          <p>DashBoard</p>
+        <div className="container">
+          <DataTable />
         </div>
       )}
     </>
   );
 }
 
-export default Home;
+export default UserManager;

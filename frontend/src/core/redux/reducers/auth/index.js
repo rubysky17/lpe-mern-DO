@@ -58,7 +58,7 @@ export const authReducer = (state = initialState, action) => {
     case UPDATE_USER: {
       const result = { ...state.userInfo, ...action.userUpdate };
 
-      state.userUpdate = result;
+      state.userInfo = result;
 
       return { ...state };
     }

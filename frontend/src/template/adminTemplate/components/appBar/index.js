@@ -11,6 +11,7 @@ import { styled } from "@mui/material/styles";
 // Component
 import LPEAvatar from "app/components/avatar";
 import LPEPopover from "app/components/popover";
+
 // Action
 import { logOutAction } from "core/redux/actions/authAction";
 
@@ -110,10 +111,7 @@ function Appbar({ onHandleDrawerOpen, isOpen }) {
           aria-label="open drawer"
           onClick={handleDrawerOpen}
           edge="start"
-          sx={{
-            marginRight: "36px",
-            ...(isOpen && { visibility: "hidden" }),
-          }}
+          sx={{ mr: 2 }}
         >
           <MenuIcon />
         </IconButton>

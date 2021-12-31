@@ -72,7 +72,6 @@ export const updateAvatarAction = (formData, setLoadingImage) => {
         },
       })
         .then((res) => {
-          console.log(res);
           setLoadingImage(false);
 
           dispatch({
@@ -140,12 +139,17 @@ export const deleteAvatarAction = (filename, setLoadingImage) => {
 };
 
 export const updateUserAction = (id, dataUpdate, setIsLoading) => {
+  const token = localStorage.getItem(KEY_TOKEN);
+
   return async (dispatch) => {
     try {
       await axios({
         url: API_ENDPOINT + USERS + `${id}`,
         method: "PUT",
         data: dataUpdate,
+        headers: {
+          token: `${token}`,
+        },
       })
         .then((res) => {
           dispatch({

@@ -90,7 +90,7 @@ function BannerCarousel() {
             <SwiperSlide key={index}>
               <div className="row">
                 <div className="col-12 col-lg-5 pr-0">
-                  <div className="banner-item_innerText">
+                  <div className="banner-item_innerText h-100">
                     {v.video && (
                       <video
                         width="100%"

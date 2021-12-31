@@ -13,14 +13,14 @@ import category04 from "assets/images/source/lahagiangthanh/category04.jpg";
 import category05 from "assets/images/source/lahagiangthanh/category05.jpg";
 import category06 from "assets/images/source/lahagiangthanh/category06.jpg";
 
-import bangCap1 from "assets/images/source/lahagiangthanh/bang-cap1.png";
-import bangCap2 from "assets/images/source/lahagiangthanh/bang-cap2.png";
-import bangCap3 from "assets/images/source/lahagiangthanh/bang-cap3.png";
-import bangCap4 from "assets/images/source/lahagiangthanh/bang-cap4.png";
-import bangCap5 from "assets/images/source/lahagiangthanh/bang-cap5.png";
-import bangCap6 from "assets/images/source/lahagiangthanh/bang-cap6.png";
-import bangCap7 from "assets/images/source/lahagiangthanh/bang-cap7.png";
-import bangCap8 from "assets/images/source/lahagiangthanh/bang-cap8.png";
+import bangCap1 from "assets/images/source/lahagiangthanh/bang-cap1.jpg";
+import bangCap2 from "assets/images/source/lahagiangthanh/bang-cap2.jpg";
+import bangCap3 from "assets/images/source/lahagiangthanh/bang-cap3.jpg";
+import bangCap4 from "assets/images/source/lahagiangthanh/bang-cap4.jpg";
+import bangCap5 from "assets/images/source/lahagiangthanh/bang-cap5.jpg";
+import bangCap6 from "assets/images/source/lahagiangthanh/bang-cap6.jpg";
+import bangCap7 from "assets/images/source/lahagiangthanh/bang-cap7.jpg";
+import bangCap8 from "assets/images/source/lahagiangthanh/bang-cap8.jpg";
 
 import gtPorfolio from "assets/images/source/lahagiangthanh/gt-background.png";
 import gtAvatar from "assets/images/source/lahagiangthanh/gt-avatar.jpg";
@@ -200,7 +200,14 @@ function MsLaHaGiangThanh() {
             }}
           >
             {/* Hình ảnh Coach */}
-            <div className="col-12 col-lg-6 px-0">
+            <div
+              className="col-12 col-lg-6 px-0"
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
               <img src={gtAvatar} alt="imgCoach" className="imgGt" />
             </div>
 

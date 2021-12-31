@@ -2,6 +2,7 @@ import Client from "app/modules/ClientModules";
 import Admin from "app/modules/AdminModules";
 import { OFFLINE_PATH_CLIENT } from "./routes-coursesoffline";
 import { ONLINE_PATH_CLIENT } from "./routes-coursesonline";
+
 // PATH FOR MODULES CLIENT
 export const URL_PATH_CLIENT = {
   HOME: "/",
@@ -24,7 +25,9 @@ export const URL_PATH_CLIENT = {
 
 // PATH FOR MODULES ADMIN
 export const URL_PATH_ADMIN = {
-  HOME: "/admin",
+  HOME: "/",
+  USER_MANAGER: "/quan-ly-nguoi-dung",
+  PRODUCT_MANAGER: "/quan-ly-san-pham",
 };
 
 // Public Pages for HOME Template
@@ -221,6 +224,16 @@ export const adminRoutes = [
   {
     component: Admin.Home,
     exact: true,
-    path: URL_PATH_ADMIN.HOME,
+    path: "/admin" + URL_PATH_ADMIN.HOME,
+  },
+  {
+    component: Admin.UserManager,
+    exact: true,
+    path: "/admin" + URL_PATH_ADMIN.USER_MANAGER,
+  },
+  {
+    component: Admin.ProductsManager,
+    exact: true,
+    path: "/admin" + URL_PATH_ADMIN.PRODUCT_MANAGER,
   },
 ];
