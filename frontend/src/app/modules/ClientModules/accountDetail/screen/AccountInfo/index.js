@@ -171,7 +171,7 @@ function AccountInfo({ id, userInfo }) {
 
   const handleDeleteImage = (path) => {
     setLoadingImage(true);
-    const filename = path.replace(/^.*[\\\/]/, "");
+    const filename = path.replace(/^.*[\\/]/, "");
 
     dispatch(deleteAvatarAction(filename, setLoadingImage));
   };

@@ -10,7 +10,7 @@ import moment from "moment-timezone";
 // const timezone = "Asia/Ho_Chi_Minh";
 
 export const convertFullDate = (fullDate, typeFormat) => {
-  return moment(fullDate).format();
+  return moment(fullDate).format(typeFormat);
 };
 
 /**

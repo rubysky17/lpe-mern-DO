@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Route, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { styled } from "@mui/material/styles";
-import { Box, CssBaseline } from "@mui/material";
+import { Box } from "@mui/material";
 import useSiteTitle from "core/hooks/useSiteTitle";
 
 // Component
@@ -51,10 +51,10 @@ export const AdminTemplate = ({ Component, ...restProps }) => {
   useSiteTitle("admin");
 
   const dispatch = useDispatch();
-  const [isLoading, setIsLoading] = useState(false);
   const { userInfo } = useSelector((state) => state.auth);
-  const accessToken = localStorage.getItem(KEY_TOKEN);
+  const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const accessToken = localStorage.getItem(KEY_TOKEN);
 
   useEffect(() => {
     if (accessToken !== null || isEmpty(userInfo)) {
@@ -91,8 +91,6 @@ export const AdminTemplate = ({ Component, ...restProps }) => {
                 ) : (
                   <>
                     <Box sx={{ display: "flex" }}>
-                      <CssBaseline />
-
                       <Appbar
                         isOpen={isOpen}
                         onHandleDrawerOpen={handleDrawerOpen}

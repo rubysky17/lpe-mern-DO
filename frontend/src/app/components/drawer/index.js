@@ -12,7 +12,9 @@ function LPEDrawer({ anchor, disableScrollLock, children, isOpen, onToggle }) {
     <Drawer
       anchor={anchor}
       open={openDrawer}
-      onClose={onToggle(anchor, false)}
+      onClose={() => {
+        onToggle(anchor, false);
+      }}
       disableScrollLock={disableScrollLock}
     >
       {children}

@@ -5,6 +5,7 @@ import {
   REMOVE_AVATAR,
   UPLOAD_AVATAR,
   USERS,
+  USER_UPDATE,
 } from "app/const/Api";
 
 import {
@@ -144,7 +145,7 @@ export const updateUserAction = (id, dataUpdate, setIsLoading) => {
   return async (dispatch) => {
     try {
       await axios({
-        url: API_ENDPOINT + USERS + `${id}`,
+        url: API_ENDPOINT + USER_UPDATE + `${id}`,
         method: "PUT",
         data: dataUpdate,
         headers: {

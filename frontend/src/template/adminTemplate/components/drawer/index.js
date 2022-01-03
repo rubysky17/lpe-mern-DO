@@ -13,6 +13,11 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
+import CategoryIcon from "@mui/icons-material/Category";
+import DynamicFeedIcon from "@mui/icons-material/DynamicFeed";
+import ReceiptIcon from "@mui/icons-material/Receipt";
+import AnimationIcon from "@mui/icons-material/Animation";
 
 const drawerWidth = 240;
 
@@ -31,6 +36,37 @@ const menuMagager = [
     text: "Quản lý Blog",
     icon: <AutoStoriesIcon />,
     link: "/admin/quan-ly-bai-viet",
+  },
+];
+
+const menuAction = [
+  {
+    text: "Thêm người dùng",
+    icon: <PersonAddAltIcon />,
+    link: "/admin/them-nguoi-dung",
+  },
+  {
+    text: "Thêm sản phẩm",
+    icon: <CategoryIcon />,
+    link: "/admin/them-san-pham",
+  },
+  {
+    text: "Thêm bài viết",
+    icon: <DynamicFeedIcon />,
+    link: "/admin/them-bai-viet",
+  },
+];
+
+const menuInvoice = [
+  {
+    text: "Hóa đơn Shop",
+    icon: <ReceiptIcon />,
+    link: "/admin/xem-hoa-don",
+  },
+  {
+    text: "Hóa đơn khóa học",
+    icon: <AnimationIcon />,
+    link: "/admin/xem-hoa-don-khoa-hoc-dang-ky",
   },
 ];
 
@@ -79,6 +115,42 @@ export default function AdminDrawer({ isOpen, onHandleDrawerClose }) {
       <div className="wrapper-menu-admin">
         <List>
           {menuMagager?.map((item, index) => (
+            <NavLink
+              to={item.link}
+              exact
+              activeClassName="menu-selected"
+              key={index}
+            >
+              <ListItem>
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.text} />
+              </ListItem>
+            </NavLink>
+          ))}
+        </List>
+
+        <Divider />
+
+        <List>
+          {menuAction?.map((item, index) => (
+            <NavLink
+              to={item.link}
+              exact
+              activeClassName="menu-selected"
+              key={index}
+            >
+              <ListItem>
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.text} />
+              </ListItem>
+            </NavLink>
+          ))}
+        </List>
+
+        <Divider />
+
+        <List>
+          {menuInvoice?.map((item, index) => (
             <NavLink
               to={item.link}
               exact

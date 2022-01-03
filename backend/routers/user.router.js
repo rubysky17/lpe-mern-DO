@@ -5,11 +5,12 @@ const userRouter = express.Router();
 const {
   getList,
   getDetail,
-  update,
   create,
   remove,
   uploadAvatar,
   deleteAvatar,
+  updateWithRoleClient,
+  updateWithRoleAdmin,
 } = require("../controllers/user.controller");
 
 // import middleware
@@ -25,7 +26,18 @@ const {
 userRouter.get("/", authenticate, authorize(["admin"]), getList);
 userRouter.get("/:id", getDetail);
 userRouter.post("/", authenticate, authorize(["admin"]), create);
-userRouter.put("/:id", authenticate, update);
+
+// update with client
+userRouter.put("/client/:id", authenticate, updateWithRoleClient);
+
+// update with admin
+userRouter.put(
+  "/admin/:id",
+  authenticate,
+  authorize(["admin"]),
+  updateWithRoleAdmin
+);
+
 userRouter.delete("/:id", authenticate, authorize(["admin"]), remove);
 
 userRouter.post(

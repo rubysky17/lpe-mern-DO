@@ -12,6 +12,8 @@ export const CATEGORY = "/category";
 
 // users
 export const USERS = "/users/";
+export const USER_UPDATE = "/users/client/";
+export const ADMIN_UPDATE = "/users/admin/";
 export const UPLOAD_AVATAR = "/users/upload-avatar";
 export const REMOVE_AVATAR = "/users/delete-avatar";
 

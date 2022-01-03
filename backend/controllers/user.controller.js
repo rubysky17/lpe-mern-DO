@@ -60,7 +60,25 @@ const remove = async (req, res) => {
   }
 };
 
-const update = async (req, res) => {
+const updateWithRoleClient = async (req, res) => {
+  const { id } = req.params;
+  const { password } = req.body;
+
+  if (password)
+    return res.status(400).send({
+      status: "failed",
+      data: "Client can't not update with password",
+    });
+
+  try {
+    const result = await User.findByIdAndUpdate(id, { ...req.body }).exec();
+    res.status(200).send(result);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
+
+const updateWithRoleAdmin = async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -133,9 +151,10 @@ const deleteAvatar = async (req, res) => {
 module.exports = {
   getList,
   getDetail,
-  update,
   create,
   remove,
   uploadAvatar,
   deleteAvatar,
+  updateWithRoleClient,
+  updateWithRoleAdmin,
 };
