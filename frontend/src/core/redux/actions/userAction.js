@@ -1,6 +1,7 @@
 import axios from "axios";
 
 import {
+  ADMIN_UPDATE,
   API_ENDPOINT,
   REMOVE_AVATAR,
   UPLOAD_AVATAR,
@@ -8,16 +9,16 @@ import {
   USER_UPDATE,
 } from "app/const/Api";
 
-import {
-  DELETE_AVATAR,
-  GET_IP_LOCAL,
-  GET_USER_INFO,
-  UPDATE_AVATAR,
-  UPDATE_USER,
-} from "../constant/userConstant";
+import { GET_IP_LOCAL, UPDATE_USER_IN_LIST } from "../constant/userConstant";
 
 import { showToast } from "core/utils/toastUtil";
 import { KEY_TOKEN } from "app/const/App";
+import {
+  DELETE_AVATAR,
+  GET_USER_INFO,
+  UPDATE_AVATAR,
+  UPDATE_USER,
+} from "../constant/authConstant";
 
 export const getIpLocalAction = () => {
   return (dispatch) => {
@@ -156,6 +157,47 @@ export const updateUserAction = (id, dataUpdate, setIsLoading) => {
           dispatch({
             type: UPDATE_USER,
             userUpdate: dataUpdate,
+          });
+
+          setIsLoading(false);
+
+          showToast("success", "Cập nhật thông tin thành công", {
+            timeout: 5000,
+          });
+        })
+        .catch((err) => {
+          console.error(err.response.data);
+        });
+    } catch (error) {
+      console.log("error", error);
+      setIsLoading(false);
+
+      showToast("error", "Cập nhật thông tin thất bại", {
+        timeout: 5000,
+      });
+    }
+  };
+};
+
+export const adminUpdateUserAction = (id, dataUpdate, setIsLoading) => {
+  const token = localStorage.getItem(KEY_TOKEN);
+
+  return async (dispatch) => {
+    try {
+      await axios({
+        url: API_ENDPOINT + ADMIN_UPDATE + `${id}`,
+        method: "PUT",
+        data: dataUpdate,
+        headers: {
+          token: `${token}`,
+        },
+      })
+        .then((res) => {
+          // On Redux
+          dispatch({
+            type: UPDATE_USER_IN_LIST,
+            userUpdate: dataUpdate,
+            id,
           });
 
           setIsLoading(false);

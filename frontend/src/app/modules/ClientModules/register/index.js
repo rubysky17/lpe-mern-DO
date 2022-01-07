@@ -8,10 +8,10 @@ import { API_ENDPOINT, CODE_SUCCESS, SIGN_UP } from "app/const/Api";
 import { convertFullDate, timeToUnix } from "core/utils/dateUtil";
 import { ValidationEmail } from "core/utils/emailUtil";
 import { phoneValidate } from "core/utils/phoneUtil";
-import {
-  KeyboardDatePicker,
-  MuiPickersUtilsProvider,
-} from "@material-ui/pickers";
+// import {
+//   KeyboardDatePicker,
+//   MuiPickersUtilsProvider,
+// } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 import { makeStyles } from "@mui/styles";
 
@@ -243,7 +243,7 @@ function Register() {
                         width: "100%",
                       }}
                     >
-                      <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                      {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <KeyboardDatePicker
                           className={classes.datePicker}
                           id="date-picker-dialog"
@@ -256,7 +256,7 @@ function Register() {
                           }}
                           name="birthDay"
                         />
-                      </MuiPickersUtilsProvider>
+                      </MuiPickersUtilsProvider> */}
                     </div>
 
                     <div className="col-12 col-md-6">

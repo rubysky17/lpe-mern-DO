@@ -4,6 +4,7 @@ const fs = require("fs");
 
 const getList = async (req, res) => {
   try {
+    const { opts } = req.body;
     const userList = await User.find({}).exec();
 
     res.status(200).send(userList);
@@ -81,8 +82,16 @@ const updateWithRoleClient = async (req, res) => {
 const updateWithRoleAdmin = async (req, res) => {
   const { id } = req.params;
 
+  const { password } = req.body;
+
   try {
-    const result = await User.findByIdAndUpdate(id, { ...req.body }).exec();
+    const salt = bcrypt.genSaltSync(10);
+    const hashPassword = bcrypt.hashSync(password, salt);
+
+    const result = await User.findByIdAndUpdate(id, {
+      ...req.body,
+      password: hashPassword,
+    }).exec();
     res.status(200).send(result);
   } catch (error) {
     res.status(500).send(error);
@@ -148,6 +157,17 @@ const deleteAvatar = async (req, res) => {
   }
 };
 
+const postWithFormData = async (req, res) => {
+  const { file } = req;
+
+  const { name } = req.body;
+
+  res.json({
+    file,
+    name,
+  });
+};
+
 module.exports = {
   getList,
   getDetail,
@@ -157,4 +177,5 @@ module.exports = {
   deleteAvatar,
   updateWithRoleClient,
   updateWithRoleAdmin,
+  postWithFormData,
 };

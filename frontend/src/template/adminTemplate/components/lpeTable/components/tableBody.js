@@ -9,12 +9,12 @@ function LPETableBody({
   order,
   orderBy,
   rowsPerPage,
+  view,
   page,
   dataTable,
   onHandleClick,
   onHandleEdit,
-  view,
-  onHandleToggleDrawer,
+  onOpenDrawer,
 }) {
   const [selectedItem, setSelectedItem] = React.useState();
 
@@ -83,7 +83,7 @@ function LPETableBody({
                 isItemSelected={isItemSelected}
                 onHandleClick={onHandleClick}
                 onHandleEdit={onHandleEdit}
-                onHandleToggleDrawer={onHandleToggleDrawer}
+                onOpenDrawer={onOpenDrawer}
                 dataItem={item}
                 labelId={labelId}
               />

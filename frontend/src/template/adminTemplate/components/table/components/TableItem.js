@@ -1,7 +1,7 @@
 import React from "react";
-import { TableCell, TableRow } from "@material-ui/core";
 import { convertFullDate, unixToTime } from "core/utils/dateUtil";
 import LPEAvatar from "app/components/avatar";
+import { TableCell, TableRow } from "@mui/material";
 
 function RenderTableItem({ type, item }) {
   return (

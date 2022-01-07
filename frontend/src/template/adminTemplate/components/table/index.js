@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { TableBody } from "@material-ui/core";
 import useTable from "./useTable";
 import RenderTableItem from "./components/TableItem";
+import { TableBody } from "@mui/material";
 
 function DataTable({ header, dataTable, type }) {
   const [filterFn, setFilterFn] = useState({

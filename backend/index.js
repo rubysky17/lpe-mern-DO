@@ -11,6 +11,7 @@ const path = require("path");
 const publicPathDirectory = path.join(__dirname, "./public");
 
 app.use(bodyParser.json());
+app.use(express.urlencoded());
 app.use(cors());
 app.use("/", rootRouter);
 app.use("/public", express.static(publicPathDirectory));

@@ -8,10 +8,10 @@ import { phoneValidate } from "core/utils/phoneUtil";
 import TextInput from "app/components/textInput";
 import LPEButton from "app/components/button";
 
-import {
-  KeyboardDatePicker,
-  MuiPickersUtilsProvider,
-} from "@material-ui/pickers";
+// import {
+//   KeyboardDatePicker,
+//   MuiPickersUtilsProvider,
+// } from "@material-ui/pickers";
 
 import {
   deleteAvatarAction,
@@ -295,7 +295,7 @@ function AccountInfo({ id, userInfo }) {
                 </div>
 
                 <div className="col-12 col-lg-6 mt-4">
-                  <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                  {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
                     <KeyboardDatePicker
                       className={classes.datePicker}
                       id="date-picker-dialog"
@@ -308,7 +308,7 @@ function AccountInfo({ id, userInfo }) {
                       }}
                       name="birthDay"
                     />
-                  </MuiPickersUtilsProvider>
+                  </MuiPickersUtilsProvider> */}
                 </div>
 
                 <div className="col-12 col-lg-6 mt-4">

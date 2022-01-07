@@ -4,7 +4,6 @@ import Checkbox from "@mui/material/Checkbox";
 import LPEAvatar from "app/components/avatar";
 import ModeEditOutlinedIcon from "@mui/icons-material/ModeEditOutlined";
 
-import { convertFullDate, unixToTime } from "core/utils/dateUtil";
 import { Button } from "@mui/material";
 
 function TableList({
@@ -13,17 +12,14 @@ function TableList({
   onHandleClick,
   dataItem,
   labelId,
-  onHandleToggleDrawer,
+  onOpenDrawer,
 }) {
-  const duedates = (time) => {
-    return convertFullDate(unixToTime(time), "DD-MM-yyyy");
-  };
-
   const handleChoiceItem = (e, id) => {
     onHandleClick && onHandleClick(e, id);
   };
-  const handleToggleDrawer = () => {
-    onHandleToggleDrawer && onHandleToggleDrawer();
+
+  const handleOpenDrawer = (item) => {
+    onOpenDrawer && onOpenDrawer(item);
   };
 
   return (
@@ -48,19 +44,30 @@ function TableList({
           </TableCell>
           <TableCell align="left">{dataItem.email}</TableCell>
           <TableCell align="left">{dataItem.phone}</TableCell>
-          <TableCell align="left">{dataItem.gender}</TableCell>
+          {/* <TableCell align="left">{dataItem.gender}</TableCell>
           <TableCell align="left">{dataItem.ICN || "không"}</TableCell>
           <TableCell align="left">{dataItem.address || "không"}</TableCell>
           <TableCell align="left">
             {duedates(dataItem.birthDay) || "không"}
+          </TableCell> */}
+
+          <TableCell align="left">
+            <div
+              className={`${
+                dataItem.role === "admin" ? "admin-style" : "client-style"
+              } role-item`}
+            >
+              <p> {dataItem.role}</p>
+            </div>
           </TableCell>
-          <TableCell align="left">{dataItem.role || "không"}</TableCell>
 
           <TableCell align="left">
             <Button
               variant="outlined"
               startIcon={<ModeEditOutlinedIcon />}
-              onClick={handleToggleDrawer}
+              onClick={() => {
+                handleOpenDrawer(dataItem);
+              }}
             >
               Chỉnh sửa
             </Button>

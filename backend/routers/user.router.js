@@ -25,7 +25,13 @@ const {
 
 userRouter.get("/", authenticate, authorize(["admin"]), getList);
 userRouter.get("/:id", getDetail);
-userRouter.post("/", authenticate, authorize(["admin"]), create);
+userRouter.post(
+  "/",
+  authenticate,
+  authorize(["admin"]),
+  uploadImageSingle("avatar"),
+  create
+);
 
 // update with client
 userRouter.put("/client/:id", authenticate, updateWithRoleClient);

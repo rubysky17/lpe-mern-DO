@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react";
-import LPELoading from "app/components/loading";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { TextField } from "@mui/material";
 
+import LPELoading from "app/components/loading";
 import LPETable from "template/adminTemplate/components/lpeTable";
-import EditUser from "./components/editUser";
+import EditUser from "./components/editUser/index.js.js";
+import FilterUser from "./components/filerUser/index.js";
+import LPEPopover from "app/components/popover/index.js";
+import LPEDrawer from "app/components/drawer/index.js";
 
 import "./styles/styles.scss";
 
@@ -13,19 +16,26 @@ const headCells = [
   { id: "name", label: "Tên", disableSorting: false, numeric: false },
   { id: "email", label: "Email", disableSorting: false, numeric: false },
   { id: "phone", label: "Số điện thoại", disableSorting: true, numeric: false },
-  { id: "gender", label: "Giới tính", disableSorting: true, numeric: false },
-  { id: "ICN", label: "CMND/CCCD", disableSorting: true, numeric: false },
-  { id: "address", label: "Địa chỉ", disableSorting: true, numeric: false },
-  { id: "birthDay", label: "Ngày sinh", disableSorting: false, numeric: false },
+  // { id: "gender", label: "Giới tính", disableSorting: true, numeric: false },
+  // { id: "ICN", label: "CMND/CCCD", disableSorting: true, numeric: false },
+  // { id: "address", label: "Địa chỉ", disableSorting: true, numeric: false },
+  // { id: "birthDay", label: "Ngày sinh", disableSorting: false, numeric: false },
   { id: "role", label: "Quyền", disableSorting: true, numeric: false },
   { id: "action", label: "Thao tác", disableSorting: true, numeric: false },
 ];
+
+const anchor = { vertical: "bottom", horizontal: "right" };
+const transfrom = { vertical: "top", horizontal: "right" };
+
 function UserManager() {
   const { userList } = useSelector((state) => state.user);
+  const { userInfo } = useSelector((state) => state.auth);
+  const refFilter = useRef(null);
 
   const [isLoading, setIsLoading] = useState(true);
   const [dataTable, setDataTable] = useState([]);
   const [openDrawer, setOpenDrawer] = useState(false);
+  const [userEdit, setUserEdit] = useState({});
 
   // Loading Data
   useEffect(() => {
@@ -39,8 +49,10 @@ function UserManager() {
   }, []);
 
   useEffect(() => {
-    userList && setDataTable(userList);
-  }, [userList]);
+    const dataTable = userList.filter((y) => y._id !== userInfo._id);
+
+    userList && setDataTable(dataTable);
+  }, [userInfo._id, userList]);
 
   const handleSearch = (e) => {
     let target = e.target;
@@ -68,6 +80,15 @@ function UserManager() {
     setOpenDrawer(!openDrawer);
   };
 
+  const handleOpenDrawer = (itemEditing) => {
+    setUserEdit(itemEditing);
+    setOpenDrawer(true);
+  };
+
+  const handleCloseDrawer = () => {
+    setOpenDrawer(false);
+  };
+
   return (
     <>
       {isLoading ? (
@@ -89,12 +110,38 @@ function UserManager() {
             tableHead={headCells}
             tableData={dataTable}
             view="user"
-            sideComponent={<EditUser onToggleDrawer={toggleDrawer} />}
-            isOpenDrawer={openDrawer}
-            onToggleDrawer={toggleDrawer}
+            onOpenPopover={(e) => {
+              refFilter.current.handleClick(e);
+            }}
+            onOpenDrawer={handleOpenDrawer}
           />
         </div>
       )}
+
+      {/* Popover filter here */}
+      <LPEPopover
+        ref={refFilter}
+        anchor={anchor}
+        transfrom={transfrom}
+        content={
+          <FilterUser
+            onClosePopOver={(e) => {
+              refFilter.current.handleCloseClick(e);
+            }}
+          />
+        }
+      />
+
+      {/* Drawer edit screen here */}
+
+      <LPEDrawer
+        anchor="left"
+        isOpen={openDrawer}
+        onToggle={handleCloseDrawer}
+        disableScrollLock
+      >
+        <EditUser onToggleDrawer={toggleDrawer} userEdit={userEdit} />
+      </LPEDrawer>
     </>
   );
 }

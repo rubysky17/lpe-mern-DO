@@ -1,47 +1,21 @@
-import React, { useState } from "react";
 import {
   Table,
-  TableHead,
-  TableRow,
   TableCell,
-  makeStyles,
+  TableHead,
   TablePagination,
+  TableRow,
   TableSortLabel,
-} from "@material-ui/core";
-
-const useStyles = makeStyles((theme) => ({
-  table: {
-    marginTop: theme.spacing(3),
-    "& thead th": {
-      fontWeight: "600",
-      color: "#d65d6f",
-    },
-    "& tbody td": {
-      fontWeight: "300",
-    },
-    "& tbody tr:hover": {
-      backgroundColor: "#fffbf2",
-      cursor: "pointer",
-    },
-  },
-
-  pagination: {
-    marginTop: "50px",
-  },
-}));
+} from "@mui/material";
+import React, { useState } from "react";
 
 export default function useTable(records, headCells, filterFn) {
-  const classes = useStyles();
-
   const pages = [5, 10, 15, 20];
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(pages[page]);
   const [order, setOrder] = useState();
   const [orderBy, setOrderBy] = useState();
 
-  const TblContainer = ({ children }) => (
-    <Table className={classes.table}>{children}</Table>
-  );
+  const TblContainer = ({ children }) => <Table>{children}</Table>;
 
   const TblHead = (props) => {
     // Sắp xếp
@@ -98,7 +72,6 @@ export default function useTable(records, headCells, filterFn) {
       count={records.length}
       onChangePage={handleChangePage}
       onChangeRowsPerPage={handleChangeRowsPerPage}
-      className={classes.pagination}
       labelRowsPerPage="Số item mỗi trang"
     />
   );

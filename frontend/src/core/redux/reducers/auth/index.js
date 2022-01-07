@@ -1,11 +1,13 @@
 import { KEY_TOKEN } from "app/const/App";
-import { AUTH_LOGIN, LOGOUT_ACCOUNT } from "core/redux/constant/authConstant";
+
 import {
+  AUTH_LOGIN,
   DELETE_AVATAR,
   GET_USER_INFO,
+  LOGOUT_ACCOUNT,
   UPDATE_AVATAR,
   UPDATE_USER,
-} from "core/redux/constant/userConstant";
+} from "core/redux/constant/authConstant";
 
 const initialState = {
   userInfo: {},
@@ -62,6 +64,7 @@ export const authReducer = (state = initialState, action) => {
 
       return { ...state };
     }
+
     default:
       return { ...state };
   }

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Table from "@mui/material/Table";
 import TableContainer from "@mui/material/TableContainer";
@@ -8,37 +8,25 @@ import Paper from "@mui/material/Paper";
 import LPETableHead from "./components/tableHead";
 import LPETableBody from "./components/tableBody";
 import TableToolbar from "./components/tableToolbar";
-import TableFilter from "./components/tableFilter";
-import LPEPopover from "app/components/popover";
-import LPEDrawer from "app/components/drawer";
 
 export default function LPETable({
   tableName,
   tableHead,
   tableData,
   view,
-  sideComponent,
-  isOpenDrawer,
-  onToggleDrawer,
-  onHandleEdit,
+  onOpenPopover,
+  onOpenDrawer,
 }) {
   const [order, setOrder] = useState("asc");
   const [orderBy, setOrderBy] = useState("");
   const [selected, setSelected] = useState([]);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [page, setPage] = useState(0);
-  const anchor = { vertical: "bottom", horizontal: "right" };
-  const transfrom = { vertical: "top", horizontal: "right" };
-  const refFilter = useRef();
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
     setOrder(isAsc ? "desc" : "asc");
     setOrderBy(property);
-  };
-
-  const handleToggleDrawer = () => {
-    onToggleDrawer && onToggleDrawer();
   };
 
   const handleSelectAllClick = (event) => {
@@ -91,9 +79,7 @@ export default function LPETable({
           numSelected={selected.length}
           tableName={tableName}
           onHandleDelete={handleDelete}
-          onHandleToggleFillterPanel={(e) => {
-            refFilter.current.handleClick(e);
-          }}
+          onHandleToggleFillterPanel={onOpenPopover}
         />
 
         <TableContainer>
@@ -121,7 +107,7 @@ export default function LPETable({
               dataTable={tableData}
               onHandleClick={handleClick}
               view={view}
-              onHandleToggleDrawer={handleToggleDrawer}
+              onOpenDrawer={onOpenDrawer}
             />
           </Table>
         </TableContainer>
@@ -135,24 +121,6 @@ export default function LPETable({
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
           labelRowsPerPage="Số dòng"
-        />
-
-        {sideComponent && (
-          <LPEDrawer
-            anchor="left"
-            isOpen={isOpenDrawer}
-            onToggle={handleToggleDrawer}
-            disableScrollLock
-          >
-            {sideComponent}
-          </LPEDrawer>
-        )}
-
-        <LPEPopover
-          ref={refFilter}
-          anchor={anchor}
-          transfrom={transfrom}
-          content={<TableFilter />}
         />
       </Paper>
     </Box>

@@ -28,6 +28,7 @@ export const URL_PATH_ADMIN = {
   HOME: "/",
   USER_MANAGER: "/quan-ly-nguoi-dung",
   PRODUCT_MANAGER: "/quan-ly-san-pham",
+  ADD_USER: "/them-nguoi-dung",
 };
 
 // Public Pages for HOME Template
@@ -235,5 +236,10 @@ export const adminRoutes = [
     component: Admin.ProductsManager,
     exact: true,
     path: "/admin" + URL_PATH_ADMIN.PRODUCT_MANAGER,
+  },
+  {
+    component: Admin.AddUser,
+    exact: true,
+    path: "/admin" + URL_PATH_ADMIN.ADD_USER,
   },
 ];
