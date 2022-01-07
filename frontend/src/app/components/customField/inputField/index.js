@@ -31,7 +31,7 @@ function InputField(props) {
 
   const { name } = field;
   const { errors, touched } = form;
-  const showError = errors[name] && touched[name];
+  const showError = errors[name];
 
   return (
     <TextField

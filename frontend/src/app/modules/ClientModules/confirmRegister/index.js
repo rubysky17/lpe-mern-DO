@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import useSiteTitle from "core/hooks/useSiteTitle";
 
 import { API_ENDPOINT, VERIFY_REGISTER } from "app/const/Api";
-import useSiteTitle from "core/hooks/useSiteTitle";
-import { useParams } from "react-router-dom";
-import LPEButton from "app/components/button";
 
 import "./styles/styles.scss";
 
@@ -39,20 +38,16 @@ function ConfirmRegister() {
               <h5>Tạo tài khoản thành công</h5>
             </div>
 
-            <p className="descText">Tài khoản của bạn đã được xác thực</p>
+            <p className="descText px-4">Tài khoản của bạn đã được xác thực</p>
 
-            <p className="descText">
+            <p className="descText px-4">
               Giờ đây bạn có thể đăng nhập và sử dụng tài khoản.
             </p>
 
-            <div className="formInput">
-              <LPEButton
-                name="Đăng nhập"
-                classStyled="confirmBtn"
-                // action={() => {
-                //   router.push("/dang-nhap");
-                // }}
-              />
+            <div className="formInput mt-3">
+              <Link to="/dang-nhap" className="confirmBtn my-3">
+                Đăng nhập
+              </Link>
             </div>
           </div>
         )}

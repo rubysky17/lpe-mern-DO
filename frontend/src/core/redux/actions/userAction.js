@@ -9,7 +9,11 @@ import {
   USER_UPDATE,
 } from "app/const/Api";
 
-import { GET_IP_LOCAL, UPDATE_USER_IN_LIST } from "../constant/userConstant";
+import {
+  ADD_USER,
+  GET_IP_LOCAL,
+  UPDATE_USER_IN_LIST,
+} from "../constant/userConstant";
 
 import { showToast } from "core/utils/toastUtil";
 import { KEY_TOKEN } from "app/const/App";
@@ -214,6 +218,50 @@ export const adminUpdateUserAction = (id, dataUpdate, setIsLoading) => {
       setIsLoading(false);
 
       showToast("error", "Cập nhật thông tin thất bại", {
+        timeout: 5000,
+      });
+    }
+  };
+};
+
+export const addUserAction = (userInfo, setIsLoading) => {
+  const token = localStorage.getItem(KEY_TOKEN);
+
+  return async (dispatch) => {
+    try {
+      await axios({
+        url: API_ENDPOINT + USERS,
+        method: "POST",
+        data: userInfo,
+        headers: {
+          token: `${token}`,
+        },
+      })
+        .then((res) => {
+          dispatch({
+            type: ADD_USER,
+            user: res.data,
+          });
+
+          setIsLoading(false);
+
+          showToast("success", "Thêm thành công", {
+            timeout: 5000,
+          });
+        })
+        .catch((err) => {
+          console.error(err.response.data);
+
+          showToast("error", "Thêm thất bại (Email đã tồn tại)", {
+            timeout: 5000,
+          });
+          setIsLoading(false);
+        });
+    } catch (error) {
+      console.log("error", error);
+      setIsLoading(false);
+
+      showToast("error", "Thêm thất bại", {
         timeout: 5000,
       });
     }

@@ -5,21 +5,25 @@ import TextField from "@mui/material/TextField";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DatePicker from "@mui/lab/DatePicker";
-import { convertFullDate } from "core/utils/dateUtil";
+import { timeToUnix } from "core/utils/dateUtil";
 
 function DatePickerField(props) {
-  const { field, label, placeholder, disabled, className } = props;
+  const { field, label, placeholder, disabled, className, form } = props;
 
   const handleChangeDate = (value) => {
     const changeEvent = {
       target: {
         name: field.name,
-        value: convertFullDate(value),
+        value: +timeToUnix(value),
       },
     };
 
     field.onChange(changeEvent);
   };
+
+  const { name } = field;
+  const { errors, touched } = form;
+  const showError = errors[name] && touched[name];
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -32,10 +36,13 @@ function DatePickerField(props) {
         onChange={handleChangeDate}
         format="DD/MM/yyyy"
         views={["day", "month", "year"]}
+        error={showError}
+        helperText={errors[name]}
         renderInput={(params) => (
           <TextField
             {...params}
-            helperText={null}
+            error={showError}
+            helperText={errors[name]}
             style={{
               width: "100%",
             }}

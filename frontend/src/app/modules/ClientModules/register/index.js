@@ -1,165 +1,45 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
-
+import * as Yup from "yup";
 import withAuth from "core/hooks/useAuth";
-import TextInput from "app/components/textInput";
-import LPEButton from "app/components/button";
-import { API_ENDPOINT, CODE_SUCCESS, SIGN_UP } from "app/const/Api";
-import { convertFullDate, timeToUnix } from "core/utils/dateUtil";
-import { ValidationEmail } from "core/utils/emailUtil";
-import { phoneValidate } from "core/utils/phoneUtil";
-// import {
-//   KeyboardDatePicker,
-//   MuiPickersUtilsProvider,
-// } from "@material-ui/pickers";
-import DateFnsUtils from "@date-io/date-fns";
-import { makeStyles } from "@mui/styles";
-
+import { FastField, Form, Formik } from "formik";
+import { styled } from "@mui/material/styles";
+import { Button } from "@mui/material";
 import useSiteTitle from "core/hooks/useSiteTitle";
+
+import InputField from "app/components/customField/inputField";
+import SelectField from "app/components/customField/selectField";
+import DatePickerField from "app/components/customField/datePickerField";
+
+import { DEFALT_OPTIONS } from "app/components/customField/selectField/options";
+import { API_ENDPOINT, CODE_SUCCESS, SIGN_UP } from "app/const/Api";
 
 import "./styles/styles.scss";
 
-const useStyles = makeStyles((theme) => ({
-  loginBtn: {
-    marginTop: "10px",
-    marginBottom: "10px",
-    backgroundColor: "#3777BC",
-    color: "#fff",
-    textTransform: "capitalize",
-    fontSize: "16px",
-    "&:hover": {
-      backgroundColor: "#6499e7",
-    },
-  },
-  datePicker: {
-    width: "100%",
-    "& > label": {
-      fontSize: "17px",
-      fontWeight: "bold",
-      color: "#333",
-      marginBottom: "0",
-      top: "17px",
-      fontFamily: "product-sans, sans-serif",
-    },
-    "& > label + .MuiInput-formControl": {
-      border: "1px solid #dbeaf5",
-      borderRadius: "5px",
-      padding: "10px",
-      marginTop: "3rem",
-    },
-    "& > label + .MuiInput-formControl:before": {
-      display: "none",
-    },
-    "&:focus > label + .MuiInput-formControl:before": {
-      display: "none",
-    },
-    "& .MuiInputLabel-shrink": {
-      transform: "unset",
-      transformOrigin: "unset",
-    },
-  },
-}));
+const phoneRegExp = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+const passRegExp =
+  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}$/;
+
+const ButtonSubmit = styled(Button)`
+  color: #fff;
+  background: #3777bc;
+
+  :hover {
+    color: #fff;
+    background: #3777bc;
+  }
+`;
 
 function Register() {
   useSiteTitle("register");
-  const classes = useStyles();
-  const refForm = useRef();
   const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState({});
-  const [birthDay, setBirthDay] = useState("2000-09-20T21:11:54");
+  const [error, setError] = useState("");
 
-  const handleRegister = () => {
-    const dataSubmit = {};
-    const errorMsg = {};
-
-    // Vòng loop checking empty input
-    for (let index = 0; index < refForm.current.length; index++) {
-      const { name, value, type } = refForm.current[index];
-      if (!value || !value.length) {
-        if (type !== "button") {
-          if (name.length) {
-            errorMsg[name] = "Không được bỏ trống trường này";
-          }
-        }
-      } else {
-        switch (name) {
-          case "birthDay": {
-            dataSubmit["birthDay"] = timeToUnix(birthDay);
-            break;
-          }
-          // passing repassword
-          case "repassword": {
-            break;
-          }
-          // passing password
-          case "password": {
-            break;
-          }
-          case "": {
-            break;
-          }
-          default:
-            dataSubmit[name] = value.trim();
-            break;
-        }
-      }
-    }
-
-    // Kiểm tra tên đăng ký
-    const name = refForm.current["name"].value.trim();
-    if (name.length > 30) {
-      errorMsg["name"] = "Tên không vượt quá 30 ký tự";
-      refForm.current["name"].focus();
-    }
-
-    // Kiểm tra email có hợp lệ
-    const email = refForm.current["email"].value;
-    if (email.trim().length) {
-      if (!ValidationEmail(email)) {
-        errorMsg["email"] = "Email không hợp lệ";
-        refForm.current["email"].focus();
-      }
-    }
-
-    // Kiểm tra số điện thoại có hợp lệ
-    const phone = refForm.current["phone"].value;
-    if (phone.trim().length) {
-      if (!phoneValidate(phone)) {
-        errorMsg["phone"] = "Số điện thoại không hợp lệ";
-        refForm.current["phone"].focus();
-      }
-    }
-
-    // Kiểm tra mật khẩu
-    const password = refForm.current["password"].value;
-    const repassword = refForm.current["repassword"].value;
-
-    if (password.trim().length) {
-      if (password.length < 6) {
-        errorMsg["password"] = "Mật khẩu không được nhỏ hơn 6 ký tự";
-      } else {
-        if (password.trim() !== repassword.trim()) {
-          errorMsg["repassword"] = "Không khớp với mật khẩu trên";
-        } else {
-          dataSubmit["password"] = password;
-        }
-      }
-    }
-
-    // Hiển thị lỗi về phía client
-    setError(errorMsg);
-    console.log("errorMsg", errorMsg);
-    // Kiểm tra object nếu lỗi sẽ không thực hiện hàm đăng ký
-    if (Object.keys(errorMsg).length === 0) {
-      console.log("run");
-
-      handleSubmit(dataSubmit, setLoading);
-    }
-  };
-
-  const handleSubmit = async (data) => {
+  const handleRegister = async (data) => {
     setLoading(true);
+
+    delete data["rePassword"];
 
     await axios({
       method: "POST",
@@ -174,16 +54,49 @@ function Register() {
       })
       .catch((err) => {
         setLoading(false);
-        setError({
-          email: "Email đã tồn tại",
-        });
+        setError("Email này đã được đăng ký");
         console.log(err);
       });
   };
 
-  const handleDateChange = (date) => {
-    setBirthDay(convertFullDate(date));
+  const initialValues = {
+    name: "",
+    gender: "nam",
+    email: "",
+    phone: "",
+    birthDay: Number(new Date()),
+    password: "",
+    rePassword: "",
   };
+
+  const validationSchema = Yup.object().shape({
+    name: Yup.string()
+      .required("Vui lòng nhập trường này.")
+      .min(3, "Có ít nhất là 3 ký tự.")
+      .max(40, "Có nhiều nhất là 40 ký tự."),
+    email: Yup.string()
+      .required("Vui lòng nhập trường này")
+      .email("Email chưa đúng"),
+    phone: Yup.string()
+      .required("Vui lòng nhập trường này")
+      .matches(phoneRegExp, "Số điện thoại chưa đúng."),
+    birthDay: Yup.number("Vui lòng nhập đúng định dạng")
+      .required("Vui lòng nhập trường này")
+      .min(new Date(1900, 0, 1), "Ngày thấp nhất không dưới năm 1900")
+      .max(new Date(), "Ngày lớn nhất không được quá hôm nay"),
+    gender: Yup.mixed().oneOf(["nam", "nu"], "Vui lòng nhập đúng trường này"),
+    password: Yup.string()
+      .required("Vui lòng không để trống")
+      .matches(
+        passRegExp,
+        "Mật khẩu có ít nhất 8 ký tự, bao gồm chữ thường, số và ít nhất 1 ký tự in hoa, ký tự đặc biệt."
+      ),
+
+    rePassword: Yup.string().oneOf(
+      [Yup.ref("password"), null],
+      "Mật khẩu không khớp"
+    ),
+  });
 
   const RenderUI = (step) => {
     switch (step) {
@@ -191,112 +104,122 @@ function Register() {
         return (
           <>
             <div className="registerContainer">
-              <div className="formContainer">
+              <div
+                className="formContainer"
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  flexDirection: "column",
+                }}
+              >
                 <h3 className="text-center pt-3 text-secondary">
                   Đăng ký tài khoản
                 </h3>
-                <form ref={refForm}>
-                  <div className="row">
-                    <div className="col-12">
-                      <TextInput
-                        label="Họ và tên"
-                        placeHolder="Nguyễn Văn A"
-                        type="text"
-                        name="name"
-                        error={error.name}
-                        typeInput="text"
-                      />
-                    </div>
-                  </div>
 
-                  <div className="row">
-                    <div className="col-12 col-md-6">
-                      <TextInput
-                        label="Email"
-                        placeHolder="JohnDoe@gmail.com"
-                        type="email"
-                        name="email"
-                        error={error.email}
-                        typeInput="text"
-                      />
-                    </div>
+                <Formik
+                  initialValues={initialValues}
+                  validationSchema={validationSchema}
+                  onSubmit={handleRegister}
+                >
+                  {(formikProps) => {
+                    const { values, errors, touched } = formikProps;
 
-                    <div className="col-12 col-md-6">
-                      <TextInput
-                        label="Số điện thoại"
-                        placeHolder="09XXXXXXXX"
-                        type="phone"
-                        name="phone"
-                        error={error.phone}
-                        typeInput="text"
-                      />
-                    </div>
-                  </div>
+                    console.log({ values, errors, touched });
 
-                  <div className="row">
-                    <div
-                      className="col-12 col-md-6 mt-6 mt-md-0"
-                      style={{
-                        display: "flex",
-                        alignItems: "flex-end",
-                        marginBottom: "14px",
-                        width: "100%",
-                      }}
-                    >
-                      {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                        <KeyboardDatePicker
-                          className={classes.datePicker}
-                          id="date-picker-dialog"
-                          label="Ngày sinh"
-                          format="dd/MM/yyyy"
-                          value={birthDay}
-                          onChange={handleDateChange}
-                          KeyboardButtonProps={{
-                            "aria-label": "change date",
-                          }}
-                          name="birthDay"
-                        />
-                      </MuiPickersUtilsProvider> */}
-                    </div>
+                    return (
+                      <Form
+                        className="row mt-4 py-3"
+                        style={{
+                          maxWidth: "700px",
+                        }}
+                      >
+                        <div className="col-12">
+                          <FastField
+                            name="name"
+                            component={InputField}
+                            label="Tên đầy đủ"
+                            placeholder="Nhập tên"
+                            className="w-100 mb-4"
+                          />
+                        </div>
 
-                    <div className="col-12 col-md-6">
-                      <TextInput
-                        label="Giới tính"
-                        placeHolder="Nhập giới tính"
-                        name="gender"
-                        error={error.gender}
-                        typeInput="select"
-                      />
-                    </div>
-                  </div>
+                        <div className="col-12 col-md-6">
+                          <FastField
+                            name="email"
+                            component={InputField}
+                            label="Email"
+                            placeholder="Nhập email"
+                            className="w-100 mb-4"
+                          />
 
-                  <TextInput
-                    label="Mật khẩu"
-                    placeHolder="Nhập mật khẩu"
-                    type="password"
-                    name="password"
-                    error={error.password}
-                    typeInput="text"
-                  />
+                          {error && <p className="text-danger mb-4">{error}</p>}
+                        </div>
 
-                  <TextInput
-                    label="Nhập lại mật khẩu"
-                    placeHolder="Nhập lại mật khẩu"
-                    type="password"
-                    name="repassword"
-                    error={error.repassword}
-                    typeInput="text"
-                  />
-                </form>
+                        <div className="col-12 col-md-6">
+                          <FastField
+                            name="phone"
+                            component={InputField}
+                            label="Số điện thoại"
+                            placeholder="Nhập số điện thoại"
+                            className="w-100 mb-4"
+                            autocomplete
+                          />
+                        </div>
 
-                <div className="positionButton">
-                  <LPEButton
-                    action={handleRegister}
-                    name="Tạo tài khoản"
-                    loading={loading}
-                    classStyled="registerBtn"
-                  />
-                </div>
+                        <div className="col-12 col-md-6">
+                          <FastField
+                            name="gender"
+                            component={SelectField}
+                            label="Giới tính"
+                            placeholder="Nhập giới tính"
+                            className="w-100 mb-4"
+                            options={DEFALT_OPTIONS.gender}
+                          />
+                        </div>
+
+                        <div className="col-12 col-md-6">
+                          <FastField
+                            name="birthDay"
+                            component={DatePickerField}
+                            label="Ngày sinh"
+                            placeholder="Nhập ngày sinh"
+                            className="w-100 mb-4"
+                          />
+                        </div>
+
+                        <div className="col-12">
+                          <FastField
+                            name="password"
+                            type="password"
+                            component={InputField}
+                            label="Mật khẩu"
+                            placeholder="Nhập mật khẩu"
+                            className="w-100 mb-4"
+                          />
+                        </div>
+
+                        <div className="col-12">
+                          <FastField
+                            name="rePassword"
+                            type="password"
+                            component={InputField}
+                            label="Nhập lại mật khẩu"
+                            placeholder="Nhập lại mật khẩu"
+                            className="w-100 mb-4"
+                          />
+                        </div>
+
+                        <div className="col-12 justify-content-end d-flex">
+                          <ButtonSubmit type="submit">
+                            Xác nhận
+                            {loading && <div className="loader ml-1"></div>}
+                          </ButtonSubmit>
+                        </div>
+                      </Form>
+                    );
+                  }}
+                </Formik>
               </div>
             </div>
           </>
@@ -310,7 +233,7 @@ function Register() {
                   <h5>LPE đã gửi một Email xác thực đến cho bạn</h5>
                 </div>
 
-                <p className="descText">
+                <p className="descText px-4">
                   Vui lòng kiểm tra hộp thư đến, có thể Email nằm trong mục spam
                   của bạn.
                 </p>

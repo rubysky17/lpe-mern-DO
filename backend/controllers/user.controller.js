@@ -4,7 +4,6 @@ const fs = require("fs");
 
 const getList = async (req, res) => {
   try {
-    const { opts } = req.body;
     const userList = await User.find({}).exec();
 
     res.status(200).send(userList);
@@ -30,20 +29,35 @@ const getDetail = async (req, res) => {
 };
 
 const create = async (req, res) => {
-  const { password } = req.body;
+  const { file } = req;
+  const { password, email } = req.body;
 
-  try {
-    const salt = bcrypt.genSaltSync(10);
-    const hashPassword = bcrypt.hashSync(password, salt);
+  const findItem = await User.findByEmail(email);
 
-    const newUser = new User({ ...req.body, password: hashPassword });
-
-    await newUser.save();
-
-    res.status(201).send(newUser);
-  } catch (error) {
-    res.status(500).send(error);
+  if (findItem) {
+    return res.status(500).send({
+      status: "failed",
+      data: "Email Existed!!!",
+    });
   }
+
+  let urlImage = "";
+  const salt = bcrypt.genSaltSync(10);
+  const hashPassword = bcrypt.hashSync(password, salt);
+
+  if (file) {
+    urlImage = `${process.env.DEV_HOSTNAME}/${file.path}`;
+  }
+
+  const newUser = new User({
+    ...req.body,
+    password: hashPassword,
+    avatar: urlImage.length ? urlImage : "",
+  });
+
+  await newUser.save();
+
+  return res.status(201).send(newUser);
 };
 
 const remove = async (req, res) => {

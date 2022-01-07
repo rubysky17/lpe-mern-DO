@@ -34,7 +34,7 @@ const UserSchema = new Schema(
     },
     avatar: {
       type: String,
-      defaultL: "",
+      default: "",
     },
     birthDay: {
       type: Number,

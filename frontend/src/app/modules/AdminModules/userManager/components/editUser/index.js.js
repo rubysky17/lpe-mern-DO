@@ -36,12 +36,7 @@ function EditUser({ onToggleDrawer, userEdit }) {
   const phoneRegExp = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
 
   const handleEdit = (data) => {
-    const dataSubmit = {
-      ...data,
-      birthDay: +timeToUnix(data.birthDay),
-    };
-
-    dispatch(adminUpdateUserAction(userEdit._id, dataSubmit, setIsLoading));
+    dispatch(adminUpdateUserAction(userEdit._id, data, setIsLoading));
   };
 
   const handleCloseEdit = () => {

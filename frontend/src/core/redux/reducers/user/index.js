@@ -1,4 +1,5 @@
 import {
+  ADD_USER,
   GET_USER,
   UPDATE_USER_IN_LIST,
 } from "core/redux/constant/userConstant";
@@ -25,6 +26,14 @@ export const userReducer = (state = initialState, action) => {
 
       state.userList = list;
 
+      return { ...state };
+    }
+
+    case ADD_USER: {
+      const list = [...state.userList];
+      list.push(action.user);
+
+      state.userList = list;
       return { ...state };
     }
 
