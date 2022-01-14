@@ -21,6 +21,7 @@ export const URL_PATH_CLIENT = {
   CONFIRMREGISTER: "/xac-nhan-dang-ky/:token",
   CONFIRMFORGOTPASSWORD: "/xac-nhan-quen-mat-khau/:token",
   FORGOTPASSWORD: "/quen-mat-khau",
+  BLOG_LIST: "/bai-dang",
 };
 
 // PATH FOR MODULES ADMIN
@@ -29,6 +30,7 @@ export const URL_PATH_ADMIN = {
   USER_MANAGER: "/quan-ly-nguoi-dung",
   PRODUCT_MANAGER: "/quan-ly-san-pham",
   ADD_USER: "/them-nguoi-dung",
+  ADD_POST: "/them-bai-viet",
 };
 
 // Public Pages for HOME Template
@@ -209,6 +211,11 @@ export const publicRoutes = [
     exact: true,
     path: URL_PATH_CLIENT.FORGOTPASSWORD,
   },
+  {
+    component: Client.BlogList,
+    exact: true,
+    path: URL_PATH_CLIENT.BLOG_LIST,
+  },
 ];
 
 // Private Pages for HOME Template
@@ -241,5 +248,10 @@ export const adminRoutes = [
     component: Admin.AddUser,
     exact: true,
     path: "/admin" + URL_PATH_ADMIN.ADD_USER,
+  },
+  {
+    component: Admin.AddPost,
+    exact: true,
+    path: "/admin" + URL_PATH_ADMIN.ADD_POST,
   },
 ];

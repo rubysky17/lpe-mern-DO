@@ -9,6 +9,7 @@ import i18n from "assets/i18n";
 import "react-toastify/dist/ReactToastify.css";
 import "assets/fonts/fontawsome.min.css";
 import "assets/styles/common.scss";
+import "react-loading-skeleton/dist/skeleton.css";
 
 import store from "core/redux/store/configStore";
 import { ToastContainer } from "react-toastify";

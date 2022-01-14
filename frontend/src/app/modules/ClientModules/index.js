@@ -42,6 +42,10 @@ import VisionPage from "./lpe/visionAndMissionLPE";
 import Rules from "./lpe/rules";
 import Recruitment from "./lpe/recruitment";
 
+// Blog
+import BlogList from "./blogList";
+import BlogDetail from "./blogDetail";
+
 const Client = {
   Home,
   Login,
@@ -79,6 +83,8 @@ const Client = {
   ConfirmRegister,
   ForgotPassword,
   VerifyForgotPassword,
+  BlogList,
+  BlogDetail,
 };
 
 export default Client;

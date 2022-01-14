@@ -15,17 +15,7 @@ function Home() {
     };
   }, []);
 
-  return (
-    <>
-      {isLoading ? (
-        <LPELoading />
-      ) : (
-        <div>
-          <p>DashBoard</p>
-        </div>
-      )}
-    </>
-  );
+  return <>{isLoading ? <LPELoading /> : <p>Home </p>}</>;
 }
 
 export default Home;

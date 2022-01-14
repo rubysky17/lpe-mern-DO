@@ -52,7 +52,10 @@ userRouter.post(
   uploadImageSingle("avatar"),
   uploadAvatar
 );
+
 userRouter.post("/delete-avatar", authenticate, deleteAvatar);
+
+userRouter.get("/search");
 
 module.exports = {
   userRouter,

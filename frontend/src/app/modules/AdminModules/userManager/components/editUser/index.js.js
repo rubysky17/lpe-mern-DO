@@ -10,7 +10,6 @@ import DatePickerField from "app/components/customField/datePickerField";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 
-import { convertFullDate, timeToUnix } from "core/utils/dateUtil";
 import { DEFALT_OPTIONS } from "app/components/customField/selectField/options";
 import { adminUpdateUserAction } from "core/redux/actions/userAction";
 
@@ -49,7 +48,7 @@ function EditUser({ onToggleDrawer, userEdit }) {
     email: userEdit?.email,
     phone: userEdit?.phone,
     address: userEdit?.address || "",
-    birthDay: convertFullDate(userEdit?.birthDay),
+    birthDay: userEdit?.birthDay,
     role: userEdit?.role,
     password: "",
   };

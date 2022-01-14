@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
+import axios from "axios";
 import { TextField } from "@mui/material";
 
 import LPELoading from "app/components/loading";
@@ -8,6 +9,9 @@ import EditUser from "./components/editUser/index.js.js";
 import FilterUser from "./components/filerUser/index.js";
 import LPEPopover from "app/components/popover/index.js";
 import LPEDrawer from "app/components/drawer/index.js";
+
+import { API_ENDPOINT, USERS_SEARCH } from "app/const/Api.js";
+import { KEY_TOKEN } from "app/const/App.js";
 
 import "./styles/styles.scss";
 
@@ -36,6 +40,8 @@ function UserManager() {
   const [dataTable, setDataTable] = useState([]);
   const [openDrawer, setOpenDrawer] = useState(false);
   const [userEdit, setUserEdit] = useState({});
+  const [isFilter, setIsFilter] = useState(false);
+  const [dataFiler, setDataFiler] = useState({});
 
   // Loading Data
   useEffect(() => {
@@ -89,6 +95,31 @@ function UserManager() {
     setOpenDrawer(false);
   };
 
+  const handleFilter = (filterData) => {
+    setIsFilter(true);
+    setDataFiler(filterData);
+
+    const token = localStorage.getItem(KEY_TOKEN);
+    console.log("filterData", filterData);
+
+    try {
+      axios({
+        url: API_ENDPOINT + USERS_SEARCH,
+        method: "get",
+        data: filterData,
+        headers: {
+          token: `${token}`,
+        },
+      })
+        .then((res) => {
+          console.log("data", res.data);
+        })
+        .catch((err) => console.log(err));
+    } catch (err) {
+      console.log(err.response.data);
+    }
+  };
+
   return (
     <>
       {isLoading ? (
@@ -128,6 +159,7 @@ function UserManager() {
             onClosePopOver={(e) => {
               refFilter.current.handleCloseClick(e);
             }}
+            onHandleFilter={handleFilter}
           />
         }
       />

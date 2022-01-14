@@ -63,10 +63,10 @@ export const CONTENT_MENU = [
     ],
   },
 
-  // {
-  //   title: "posts",
-  //   url: "/bai-viet",
-  // },
+  {
+    title: "posts",
+    url: "/bai-dang",
+  },
   // {
   //   title: "personality_test",
   //   url: "/bai-thu-tinh-cach",

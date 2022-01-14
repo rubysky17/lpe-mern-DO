@@ -1,0 +1,47 @@
+.addblog-screen {
+  position: relative;
+  height: 100%;
+  .lpe-editor-title {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+
+    & > input {
+      width: 650px !important;
+      border: none;
+      padding: 20px 0;
+      font-size: 30px;
+
+      &::placeholder {
+        font-size: 30px;
+        color: #adb5bd;
+      }
+    }
+  }
+
+  .fixed-layout {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    .btn-addblog {
+      padding: 10px 20px;
+      border-radius: 8px;
+
+      &-preview {
+        background: none;
+        margin-right: 20px;
+        border: 1px solid #79828a;
+        color: #79828a;
+      }
+
+      &-post {
+        background: #597def;
+        margin-right: 20px;
+        border: 1px solid #597def;
+        color: #fff;
+      }
+    }
+  }
+}

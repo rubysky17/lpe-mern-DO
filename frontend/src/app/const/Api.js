@@ -12,10 +12,14 @@ export const CATEGORY = "/category";
 
 // users
 export const USERS = "/users/";
+export const USERS_SEARCH = "/users/search/";
 export const USER_UPDATE = "/users/client/";
 export const ADMIN_UPDATE = "/users/admin/";
 export const UPLOAD_AVATAR = "/users/upload-avatar";
 export const REMOVE_AVATAR = "/users/delete-avatar";
+
+// BLOG
+export const UPLOAD_IMAGE_BLOG = "/blog/upload-image-blog";
 
 // Code status
 export const CODE_SUCCESS = 200;

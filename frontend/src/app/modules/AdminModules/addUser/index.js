@@ -68,7 +68,10 @@ function AddUser() {
         "Mật khẩu có ít nhất 8 ký tự, bao gồm chữ thường, số và ít nhất 1 ký tự in hoa, ký tự đặc biệt."
       ),
     address: Yup.string().max(400, "Có nhiều nhất là 400 ký tự."),
-    role: Yup.string().required("Vui lòng nhập trường này."),
+    role: Yup.mixed().oneOf(
+      ["client", "admin"],
+      "Vui lòng nhập đúng trường này"
+    ),
   });
 
   const changeImage = (e) => {

@@ -30,7 +30,7 @@ function InputField(props) {
   const { field, type, label, placeholder, disabled, className, form } = props;
 
   const { name } = field;
-  const { errors, touched } = form;
+  const { errors } = form;
   const showError = errors[name];
 
   return (

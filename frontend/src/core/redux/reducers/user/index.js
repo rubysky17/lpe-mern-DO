@@ -10,7 +10,7 @@ const initialState = {
 
 export const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    // Lấy dnah sách tất cả người dùng
+    // Lấy danh sách tất cả người dùng
     case GET_USER:
       state.userList = action.data;
       return { ...state };
