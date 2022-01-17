@@ -10,7 +10,7 @@ import { DEFALT_OPTIONS } from "app/components/customField/selectField/options";
 
 import SelectField from "app/components/customField/selectField";
 import { styled } from "@mui/material/styles";
-import UploadAvatar from "./components/uploadImage";
+import UploadImage from "./components/uploadImage";
 import { addUserAction } from "core/redux/actions/userAction";
 
 const ButtonSubmit = styled(Button)`
@@ -151,10 +151,11 @@ function AddUser() {
                     flexDirection: "column",
                   }}
                 >
-                  <UploadAvatar
-                    avatar={avatar}
+                  <UploadImage
+                    image={avatar}
                     onChangeImage={changeImage}
                     removeImage={handleRemoveImage}
+                    type="avatar"
                   />
 
                   <p className="text-secondary text-center mt-3">

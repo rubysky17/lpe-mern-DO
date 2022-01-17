@@ -14,12 +14,15 @@ const LPEEditor = forwardRef((props, ref) => {
   const handleSave = React.useCallback(async () => {
     const savedData = await editorCore.current.save();
 
-    console.log("savedData", savedData);
+    return savedData;
   }, []);
 
   useImperativeHandle(ref, () => ({
     handleSave() {
-      handleSave();
+      handleSave && handleSave();
+    },
+    getBlocks: () => {
+      return handleSave();
     },
   }));
 

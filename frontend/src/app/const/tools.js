@@ -5,19 +5,20 @@ import { API_ENDPOINT, UPLOAD_IMAGE_BLOG } from "./Api";
 import Embed from "@editorjs/embed";
 import Paragraph from "@editorjs/paragraph";
 import List from "@editorjs/list";
-import Warning from "@editorjs/warning";
-import Code from "@editorjs/code";
-import LinkTool from "@editorjs/link";
 import Image from "@editorjs/image";
-import Raw from "@editorjs/raw";
 import Header from "@editorjs/header";
 import Quote from "@editorjs/quote";
-import Marker from "@editorjs/marker";
-import CheckList from "@editorjs/checklist";
 import Delimiter from "@editorjs/delimiter";
-import InlineCode from "@editorjs/inline-code";
 import SimpleImage from "@editorjs/simple-image";
 import AlignmentTuneTool from "editorjs-text-alignment-blocktune";
+
+// import Warning from "@editorjs/warning";
+// import Code from "@editorjs/code";
+// import LinkTool from "@editorjs/link";
+// import Raw from "@editorjs/raw";
+// import Marker from "@editorjs/marker";
+// import CheckList from "@editorjs/checklist";
+// import InlineCode from "@editorjs/inline-code";
 
 export const EDITOR_TOOLS_BLOG = {
   list: {
@@ -56,14 +57,10 @@ export const EDITOR_TOOLS_BLOG = {
       },
     },
   },
-  warning: Warning,
-  code: Code,
-  linkTool: LinkTool,
   image: {
     class: Image,
     config: {
       // Config Push Upload file image for Blog
-
       uploader: {
         async uploadByFile(file) {
           // your ajax request for uploading
@@ -92,11 +89,14 @@ export const EDITOR_TOOLS_BLOG = {
       },
     },
   },
-  raw: Raw,
   quote: Quote,
-  marker: Marker,
-  checklist: CheckList,
   delimiter: Delimiter,
-  inlineCode: InlineCode,
   simpleImage: SimpleImage,
+  // raw: Raw,
+  // marker: Marker,
+  // checklist: CheckList,
+  // inlineCode: InlineCode,
+  // warning: Warning,
+  // code: Code,
+  // linkTool: LinkTool,
 };

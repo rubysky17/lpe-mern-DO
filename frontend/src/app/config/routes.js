@@ -22,6 +22,7 @@ export const URL_PATH_CLIENT = {
   CONFIRMFORGOTPASSWORD: "/xac-nhan-quen-mat-khau/:token",
   FORGOTPASSWORD: "/quen-mat-khau",
   BLOG_LIST: "/bai-dang",
+  BLOG_DETAIL: "/bai-dang/:url",
 };
 
 // PATH FOR MODULES ADMIN
@@ -215,6 +216,11 @@ export const publicRoutes = [
     component: Client.BlogList,
     exact: true,
     path: URL_PATH_CLIENT.BLOG_LIST,
+  },
+  {
+    component: Client.BlogDetail,
+    exact: true,
+    path: URL_PATH_CLIENT.BLOG_DETAIL,
   },
 ];
 

@@ -14,6 +14,14 @@ const uploadImage = (req, res) => {
   }
 };
 
+const create = (req, res) => {};
+
+const remove = (req, res) => {};
+
+const edit = (req, res) => {};
+
 module.exports = {
   uploadImage,
+  create,
+  edit,
 };

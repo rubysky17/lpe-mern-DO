@@ -1,27 +1,12 @@
+$primary-color: #31be7d;
+
 .addblog-screen {
   position: relative;
   height: 100%;
-  .lpe-editor-title {
-    display: flex;
-    align-content: center;
-    justify-content: center;
-
-    & > input {
-      width: 650px !important;
-      border: none;
-      padding: 20px 0;
-      font-size: 30px;
-
-      &::placeholder {
-        font-size: 30px;
-        color: #adb5bd;
-      }
-    }
-  }
 
   .fixed-layout {
     position: absolute;
-    bottom: 0;
+    bottom: 0%;
     left: 50%;
     transform: translateX(-50%);
 
@@ -37,10 +22,97 @@
       }
 
       &-post {
-        background: #597def;
+        background: $primary-color;
         margin-right: 20px;
-        border: 1px solid #597def;
+        border: 1px solid $primary-color;
         color: #fff;
+      }
+    }
+  }
+}
+
+.blog-outside {
+  width: 650px;
+  margin: 0 auto;
+
+  label {
+    color: $primary-color;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+
+  .wrapperUpload-cover {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+
+    position: relative;
+
+    &:hover {
+      .buttonDeleteImage {
+        display: flex;
+        opacity: 1;
+      }
+    }
+  }
+
+  .labelCover {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    background-color: white;
+    border: 2px dashed #495057;
+    border-radius: 8px;
+    img {
+      max-width: 55%;
+    }
+    input {
+      display: none;
+    }
+  }
+
+  .topic-blog {
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    select {
+      padding: 12px 15px;
+      width: 300px;
+      border-radius: 8px;
+      border: 2px solid $primary-color;
+    }
+  }
+
+  .title-blog {
+    textarea {
+      min-width: 650px !important;
+      margin-top: 20px;
+      font-size: 22px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 2px solid $primary-color;
+
+      &::placeholder {
+        color: #adb5bd;
+        font-size: 22px;
       }
     }
   }
