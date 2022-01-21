@@ -1,16 +1,25 @@
-import React, { useState, useRef, forwardRef } from "react";
+import React, {
+  useState,
+  useRef,
+  forwardRef,
+  useImperativeHandle,
+} from "react";
 import UploadImage from "app/modules/AdminModules/addUser/components/uploadImage";
+import { useSelector } from "react-redux";
 
-const InputOutside = forwardRef((props, refs) => {
-  const { error } = props;
-
+const InputOutside = forwardRef((props, ref) => {
+  const { errors } = props;
+  const { list } = useSelector((state) => state.topic);
+  const [errorImage, setErrorImage] = useState("");
   const [cover, setCover] = useState(null);
-  const [errors, setErrors] = useState("");
-
-  const refInput = useRef(refs);
+  const [file, setFile] = useState(null);
+  const [valueForm, setValueForm] = useState({
+    topic: list[0]._id,
+    title: "",
+  });
 
   const changeImage = (e) => {
-    // setError("");
+    setErrorImage("");
 
     const file = e.target.files[0];
 
@@ -19,7 +28,7 @@ const InputOutside = forwardRef((props, refs) => {
     }
 
     if (!file.name.match(/\.(jpg|jpeg|png|gif)$/)) {
-      // return setError("Chỉ hỗ trợ file hình ảnh");
+      return setErrorImage("Chỉ hỗ trợ file hình ảnh");
     }
 
     if (file.size / 1024 / 1024 < 1) {
@@ -27,19 +36,39 @@ const InputOutside = forwardRef((props, refs) => {
         const createUrl = URL.createObjectURL(file);
 
         setCover(createUrl);
-        // setFile(file);
+        setFile(file);
+        console.log("ham run");
       }
     } else {
-      // setError("Chỉ hỗ trợ file ảnh tối đa 1MB");
+      setErrorImage("Chỉ hỗ trợ file ảnh tối đa 1MB");
     }
   };
 
   const handleRemoveImage = () => {
+    setFile(null);
     setCover(null);
   };
 
+  const handleChangeForm = (e) => {
+    const { value, name } = e.target;
+
+    setValueForm({
+      ...valueForm,
+      [name]: value,
+    });
+  };
+
+  useImperativeHandle(ref, () => ({
+    getImage() {
+      return file;
+    },
+    getValue() {
+      return valueForm;
+    },
+  }));
+
   return (
-    <div className="blog-outside">
+    <form className="blog-outside" ref={ref}>
       {/* upload Image */}
       <label className="text-left mb-3">Cover bài viết</label>
 
@@ -55,25 +84,41 @@ const InputOutside = forwardRef((props, refs) => {
           Cho phép upload file ảnh *.jpeg, *.jpg, *.png với kích cỡ không quá
           1MB
         </p>
+
+        {errorImage && <p className="text-danger">{errorImage}</p>}
       </div>
 
       {/* category */}
-      <div className="category-blog">
-        <label for="category">Chọn danh mục</label>
+      <div className="topic-blog">
+        <label htmlFor="topic">Chọn danh mục</label>
 
-        <select name="category" id="category">
-          <option value="volvo">Danh mục 1</option>
-          <option value="saab">Danh mục 2</option>
-          <option value="mercedes">Danh mục 3</option>
-          <option value="audi">Danh mục 4</option>
+        <select
+          name="topic"
+          id="topic"
+          onChange={handleChangeForm}
+          value={valueForm.topic}
+        >
+          {list?.map((option, index) => {
+            return (
+              <option value={option._id} key={index}>
+                {option.name.toLowerCase()}
+              </option>
+            );
+          })}
         </select>
       </div>
 
       {/* title */}
       <div className="title-blog">
-        <textarea name="title" placeholder="Tiêu đề bài viết" />
+        <textarea
+          name="title"
+          placeholder="Tiêu đề bài viết"
+          onChange={handleChangeForm}
+        />
       </div>
-    </div>
+
+      {errors.length > 0 && <p className="text-danger">{errors}</p>}
+    </form>
   );
 });
 

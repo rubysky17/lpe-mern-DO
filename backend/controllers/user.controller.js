@@ -5,8 +5,6 @@ const fs = require("fs");
 const getList = async (req, res) => {
   const opts = req.body;
 
-  console.log("opts", opts);
-
   try {
     const userList = await User.find({}).exec();
 

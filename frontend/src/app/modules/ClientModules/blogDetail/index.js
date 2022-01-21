@@ -1,25 +1,50 @@
-import { convertBlocksToHtml } from "core/utils/editorUtil";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import axios from "axios";
+import LPELoading from "app/components/loading";
+import { API_ENDPOINT, BLOG } from "app/const/Api";
+import { convertBlocksToHtml } from "core/utils/editorUtil";
 
 import "./styles/index.scss";
 
-const demo_blocks = [];
-
 function BlogDetail() {
+  let { url } = useParams();
   const [blocks, setBlocks] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [blogInfo, setBlogInfo] = useState([]);
 
-  // Convert blocks to html
+  const getBlogDetail = () => {
+    setIsLoading(true);
+
+    axios({
+      url: API_ENDPOINT + BLOG + url,
+    })
+      .then((response) => {
+        setIsLoading(false);
+
+        const jsonConvert = JSON.parse(response.data.data.content);
+        const newBlocks = convertBlocksToHtml(jsonConvert);
+        console.log(response.data.data);
+        setBlocks(newBlocks);
+        setBlogInfo(response.data.data);
+      })
+      .catch((error) => {
+        setIsLoading(false);
+
+        console.log(error);
+      });
+  };
+
   useEffect(() => {
-    const newBlocks = convertBlocksToHtml(demo_blocks);
+    getBlogDetail();
 
-    setBlocks(newBlocks);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   // Set title for website
   useEffect(() => {
     const prevTitle = document.title;
-    document.title =
-      "Câu hỏi: Đâu là những thiên kiến nhận thức quan trọng nhất mà chúng ta cần lưu ý?";
+    document.title = blogInfo?.title;
 
     return () => {
       document.title = prevTitle;
@@ -27,42 +52,59 @@ function BlogDetail() {
   });
 
   return (
-    <div className="lpe-blog-detail">
-      <div className="author-container">
-        <div className="category">
-          <Link to="/">Truyền cảm hứng</Link>
-        </div>
+    <>
+      {isLoading ? (
+        <LPELoading />
+      ) : (
+        <>
+          {blogInfo ? (
+            <div className="lpe-blog-detail">
+              <div className="author-container">
+                <div className="category">
+                  {blogInfo.topicId && (
+                    <Link to={`${blogInfo.topicId.name}`}>
+                      {blogInfo.topicId.name}
+                    </Link>
+                  )}
+                </div>
 
-        {/* Title */}
-        <h1 className="blog-title">
-          Câu hỏi: Đâu là những thiên kiến nhận thức quan trọng nhất mà chúng ta
-          cần lưu ý?
-        </h1>
+                {/* Title */}
+                <h1 className="blog-title">{blogInfo.title}</h1>
 
-        <div className="author-info-block">
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWcIaxYAD-WEsrmkZJisCmmf4MfC5vUyP3pg&usqp=CAU"
-            alt="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWcIaxYAD-WEsrmkZJisCmmf4MfC5vUyP3pg&usqp=CAU"
-            className="img-fluid"
-          />
+                <div className="author-info-block">
+                  {blogInfo.author && (
+                    <img
+                      src={blogInfo.author.avatar}
+                      alt={blogInfo.author.avatar}
+                      className="img-fluid mr-2"
+                    />
+                  )}
 
-          <div className="author-info-block_name">
-            <p className="name">
-              <strong>đại tá monogram</strong>
-            </p>
+                  <div className="author-info-block_name">
+                    <p className="name">
+                      {blogInfo.author && (
+                        <strong>{blogInfo.author.name}</strong>
+                      )}
+                    </p>
 
-            <p className="created-at">14 tháng 1</p>
-          </div>
-        </div>
-      </div>
+                    <p className="created-at">14 tháng 1</p>
+                  </div>
+                </div>
+              </div>
 
-      {blocks && (
-        <div
-          className="content-container"
-          dangerouslySetInnerHTML={{ __html: blocks }}
-        ></div>
+              {blocks && (
+                <div
+                  className="content-container"
+                  dangerouslySetInnerHTML={{ __html: blocks }}
+                ></div>
+              )}
+            </div>
+          ) : (
+            <p>Empty</p>
+          )}
+        </>
       )}
-    </div>
+    </>
   );
 }
 

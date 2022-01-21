@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, memo } from "react";
 
 function UploadImage({ image, onChangeImage, removeImage, type }) {
   const hiddenRef = useRef(null);
@@ -58,7 +58,7 @@ function UploadImage({ image, onChangeImage, removeImage, type }) {
               <input
                 type="file"
                 id="avatarundefined"
-                name="avatar"
+                name="cover"
                 ref={hiddenRef}
                 onChange={onChangeImage}
               />
@@ -76,4 +76,4 @@ function UploadImage({ image, onChangeImage, removeImage, type }) {
   );
 }
 
-export default UploadImage;
+export default memo(UploadImage);

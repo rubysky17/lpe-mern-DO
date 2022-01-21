@@ -27,6 +27,10 @@ $color-primary: #374679;
 .banner-item_innerText {
   position: relative;
 
+  img {
+    width: 100% !important;
+  }
+
   .btnPlay-video {
     position: absolute;
     top: 50%;

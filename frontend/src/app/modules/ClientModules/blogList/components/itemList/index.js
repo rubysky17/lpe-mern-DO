@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Skeleton from "react-loading-skeleton";
 import { Link } from "react-router-dom";
 
@@ -51,40 +51,37 @@ function ItemList({ loading, data }) {
         {loading ? (
           <Skeleton count={8} />
         ) : (
-          <Link to="/">
+          <Link to={`/bai-dang/${data.url}`}>
             <article className="lpe-blog small-item">
               <div className="right-content">
                 <img
-                  src="https://img.vietcetera.com/uploads/images/06-jan-2022/untitled-1-1641460571203.jpg"
-                  alt="https://img.vietcetera.com/uploads/images/06-jan-2022/untitled-1-1641460571203.jpg"
+                  src={data.cover}
+                  alt={data.cover}
                   className="img-fluid w-100 lpe-blog-small__img"
                 />
               </div>
 
               <div className="left-content">
-                <Link to="/topic">
+                <Link to={`${data.topicId._id}`}>
                   <p className="text-uppercase lpe-blog-small__topic">
-                    điện ảnh
+                    {data.topicId.name}
                   </p>
                 </Link>
 
-                <h2 className="lpe-blog-small__title">
-                  Blockchain 101 : Block #0 - Lịch sử hình thành Blockchain và
-                  Bitcoin.
-                </h2>
+                <h2 className="lpe-blog-small__title">{data.title}</h2>
 
                 <div className="lpe-blog-small__author">
                   <div className="lpe-blog-small__author-avatar">
                     <img
-                      src="https://img.vietcetera.com/uploads/images/28-may-2021/186510184-388400872423759-8729387870001938347-n-160x160.jpg"
-                      alt="https://img.vietcetera.com/uploads/images/28-may-2021/186510184-388400872423759-8729387870001938347-n-160x160.jpg"
+                      src={data.author.avatar}
+                      alt={data.author.avatar}
                       className="author-img"
                     />
                   </div>
 
                   <div className="lpe-blog-small__author-name">
                     <p className="text-uppercase author-name">
-                      Vũ Hoàng Long (Người Kể Chuyện)
+                      {data.author.name}
                     </p>
                     <p className="time-ago">7 giờ trước</p>
                   </div>
@@ -104,19 +101,9 @@ function ItemList({ loading, data }) {
       </h1>
 
       <div className="row blog-list">
-        {/* Big item */}
-        {specialBlogItem()}
-        {specialBlogItem()}
-        {/* small item */}
-
-        {normalBlogItem()}
-        {normalBlogItem()}
-        {normalBlogItem()}
-        {normalBlogItem()}
-        {normalBlogItem()}
-        {normalBlogItem()}
-        {normalBlogItem()}
-        {normalBlogItem()}
+        {data.map((blog, index) => {
+          return <Fragment key={index}>{normalBlogItem(blog)}</Fragment>;
+        })}
       </div>
     </>
   );

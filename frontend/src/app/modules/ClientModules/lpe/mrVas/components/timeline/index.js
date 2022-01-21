@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import SwiperCore, { Pagination, Navigation } from "swiper";
 
 import "swiper/components/pagination/pagination.min.css";
@@ -37,6 +36,8 @@ function Timeline() {
           navigation={true}
           speed={1500}
           ref={refPagination}
+          allowTouchMove={false}
+          noSwiping
         >
           <SwiperSlide
             style={{

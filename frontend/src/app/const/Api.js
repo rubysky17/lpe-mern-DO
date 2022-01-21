@@ -21,6 +21,13 @@ export const REMOVE_AVATAR = "/users/delete-avatar";
 // BLOG
 export const UPLOAD_IMAGE_BLOG = "/blog/upload-image-blog";
 
+// TOPIC
+export const TOPIC = "/topic/";
+
+// Blog
+export const BLOG = "/blog/";
+export const CREATE_BLOG = "/blog/create-post";
+
 // Code status
 export const CODE_SUCCESS = 200;
 export const CODE_FAILURE = 403;

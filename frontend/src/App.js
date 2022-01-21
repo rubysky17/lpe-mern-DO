@@ -2,11 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { adminRoutes, privateRoutes, publicRoutes } from "./app/config/routes";
 
-import { HomeTemplate } from "template/homeTemplate";
-import { PrivateTemplate } from "template/privateTemplate";
-
+import { AdminTemplate, HomeTemplate, PrivateTemplate } from "template";
 import ErrorPage from "app/modules/Error";
-import { AdminTemplate } from "template/adminTemplate";
 
 import AutoScroll from "./app/components/autoScroll";
 
@@ -35,7 +32,7 @@ function App() {
 
         {privateRoutes.map((route, index) => {
           return (
-            <PrivateTemplate
+            <HomeTemplate
               exact
               path={route.path}
               Component={route.component}

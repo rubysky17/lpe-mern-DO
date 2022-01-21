@@ -5,6 +5,8 @@ import { createReactEditorJS } from "react-editor-js";
 const ReactEditorJS = createReactEditorJS();
 
 const LPEEditor = forwardRef((props, ref) => {
+  const { tools, placeholder, defaultValue } = props;
+
   const editorCore = useRef(null);
 
   const handleInitialize = React.useCallback((instance) => {
@@ -28,8 +30,8 @@ const LPEEditor = forwardRef((props, ref) => {
 
   return (
     <ReactEditorJS
-      tools={props.tools}
-      placeholder={props.placeholder}
+      tools={tools}
+      placeholder={placeholder}
       onInitialize={handleInitialize}
     />
   );
@@ -38,11 +40,13 @@ const LPEEditor = forwardRef((props, ref) => {
 LPEEditor.propTypes = {
   tools: PropTypes.object.isRequired,
   placeholder: PropTypes.string.isRequired,
+  defaultValue: PropTypes.object,
 };
 
 LPEEditor.defaultProps = {
   tools: {},
   placeholder: "",
+  defaultValue: {},
 };
 
 export default LPEEditor;

@@ -13,6 +13,7 @@ import MemberVip from "./screen/memberVip";
 import { logOutAction } from "core/redux/actions/authAction";
 
 import "./styles/styles.scss";
+import withAuth from "core/hooks/useAuth";
 
 function AccountDetail() {
   useSiteTitle("account_detail");
@@ -204,4 +205,4 @@ function AccountDetail() {
   );
 }
 
-export default AccountDetail;
+export default withAuth(AccountDetail);

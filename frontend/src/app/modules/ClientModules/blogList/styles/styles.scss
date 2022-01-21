@@ -85,6 +85,7 @@
       .right-content {
         img {
           border-radius: 8px;
+          max-height: 300px;
         }
       }
 
@@ -99,7 +100,7 @@
         }
 
         .lpe-blog-small__title {
-          min-height: 84px;
+          max-height: 84px;
           -webkit-line-clamp: 3;
           -webkit-box-orient: vertical;
           color: #292929;

@@ -1,5 +1,6 @@
-import { LPELightBox } from "app/components/lightBox";
 import React, { useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { LPELightBox } from "app/components/lightBox";
 import ModalVideo from "react-modal-video";
 
 import { getIdVideo } from "core/utils/videoLinkUtil";
@@ -74,34 +75,38 @@ function MsLaHaGiangThanh() {
       id: 1,
       imgSrc: category01,
       heading: "Huấn Luyện Coaching Chuyên sâu",
+      href: "",
     },
     {
       id: 2,
       imgSrc: category05,
 
       heading: "Trại Huấn Luyện Lãnh Đạo",
+      href: "/chuong-trinh-huan-luyen/offline/trai-huan-luyen-lanh-dao",
     },
     {
       id: 3,
       imgSrc: category03,
       heading: "Khám Phá Thiên Tài Trong Bạn",
+      href: "",
     },
     {
       id: 4,
       imgSrc: category04,
       heading: "Tư Vấn Trị Liệu",
+      href: "",
     },
     {
       id: 5,
       imgSrc: category06,
-
       heading: "Đẹp Từ Bên Trong",
+      href: "/chuong-trinh-huan-luyen/online/beauty-from-within",
     },
     {
       id: 6,
       imgSrc: category02,
-
       heading: "Tìm Lại Lẽ Sống & Khát Vọng Thành Công",
+      href: "/chuong-trinh-huan-luyen/offline/tim-lai-le-song-va-khat-vong-thanh-cong",
     },
   ];
 
@@ -284,11 +289,11 @@ function MsLaHaGiangThanh() {
 
                   <div className="overlay"></div>
 
-                  <div className="shortInfo">
-                    <h4>{catelogy.heading}</h4>
-
-                    <p>{catelogy.text}</p>
-                  </div>
+                  <Link to={catelogy.href}>
+                    <div className="shortInfo">
+                      <h4>{catelogy.heading}</h4>
+                    </div>
+                  </Link>
                 </div>
               );
             })}

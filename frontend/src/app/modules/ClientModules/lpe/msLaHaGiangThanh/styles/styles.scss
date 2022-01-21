@@ -8,8 +8,6 @@ $color-primary: #57d1c9;
   }
 
   .shortInfo {
-    bottom: 50px;
-    left: 50px;
     opacity: 1;
     visibility: visible;
   }
@@ -285,7 +283,19 @@ $color-primary: #57d1c9;
       color: #999;
       margin: 1rem 0;
     }
+
+    @media screen and (max-width: 768px) {
+      h3 {
+        font-size: 30px;
+        padding: 0 10px;
+      }
+
+      p {
+        padding: 0 10px;
+      }
+    }
   }
+
   .overlay {
     @include transitionKits;
     position: absolute;
@@ -300,14 +310,14 @@ $color-primary: #57d1c9;
 
   .shortInfo {
     @include transitionKits;
-    width: 80%;
+    padding: 0 10px;
     position: absolute;
     color: #fff;
     opacity: 0;
     visibility: hidden;
 
-    bottom: 44px;
-    left: 40px;
+    bottom: 20px;
+    left: 20px;
   }
 
   @media screen and (max-width: 992px) {
@@ -338,6 +348,10 @@ $color-primary: #57d1c9;
     .gtIntroduce {
       width: 80% !important;
       padding: 0px !important;
+    }
+
+    .shortInfo {
+      font-size: 20px;
     }
   }
 

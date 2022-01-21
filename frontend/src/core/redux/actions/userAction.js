@@ -17,6 +17,7 @@ import {
 
 import { showToast } from "core/utils/toastUtil";
 import { KEY_TOKEN } from "app/const/App";
+
 import {
   DELETE_AVATAR,
   GET_USER_INFO,

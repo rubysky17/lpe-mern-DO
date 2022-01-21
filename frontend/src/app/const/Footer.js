@@ -12,7 +12,7 @@ export const LEFT_MENU = [
   {
     id: 3,
     name: "vision_lpe",
-    path: "/lpe/tam-nhin-su-menh",
+    path: "/lpe/tam-nhin-su-menh-lpe",
   },
   {
     id: 4,
@@ -22,7 +22,7 @@ export const LEFT_MENU = [
   {
     id: 5,
     name: "rules",
-    path: "/lpe/noi-quy-va-chinh-sach",
+    path: "/lpe/noi-quy-quy-dinh",
   },
 ];
 

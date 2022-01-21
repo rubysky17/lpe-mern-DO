@@ -7,10 +7,10 @@ function withAuth(WrappedComponent) {
     if (typeof window !== "undefined") {
       const accessToken = localStorage.getItem(KEY_TOKEN);
 
-      if (!accessToken) {
+      if (accessToken) {
         return <WrappedComponent {...props} />;
-      } else if (accessToken) {
-        return <Redirect to="/" />;
+      } else if (!accessToken) {
+        return <Redirect to="/dang-nhap" />;
       }
 
       // If we are on server, return null

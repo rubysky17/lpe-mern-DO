@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import useSiteTitle from "core/hooks/useSiteTitle";
 
 // Component from project
@@ -14,8 +14,10 @@ import withAuth from "core/hooks/useAuth";
 import { loginAction } from "core/redux/actions/authAction";
 
 import "./styles/styles.scss";
+import { KEY_TOKEN } from "app/const/App";
 
 function Login() {
+  const isLogined = Boolean(localStorage.getItem(KEY_TOKEN));
   useSiteTitle("login");
 
   const dispatch = useDispatch();
@@ -63,66 +65,71 @@ function Login() {
 
   const handleSubmit = (data) => {
     dispatch(loginAction(data, setLoading, setError, history));
-    setLoading(true);
   };
 
   return (
-    <div className="loginContainer">
-      <div className="formContainer">
-        <h3 className="text-center pt-3 text-secondary">Đăng nhập</h3>
+    <>
+      {!isLogined ? (
+        <div className="loginContainer">
+          <div className="formContainer">
+            <h3 className="text-center pt-3 text-secondary">Đăng nhập</h3>
 
-        <form
-          ref={refForm}
-          style={{
-            width: "330px",
-          }}
-        >
-          <TextInput
-            label="Email"
-            placeHolder="Nhập Email"
-            type="text"
-            name="email"
-            error={error.email}
-            typeInput="text"
-          />
+            <form
+              ref={refForm}
+              style={{
+                width: "330px",
+              }}
+            >
+              <TextInput
+                label="Email"
+                placeHolder="Nhập Email"
+                type="text"
+                name="email"
+                error={error.email}
+                typeInput="text"
+              />
 
-          <TextInput
-            label="Mật khẩu"
-            placeHolder="Nhập mật khẩu tài khoản"
-            type="password"
-            name="password"
-            error={error.password}
-            typeInput="text"
-          />
-        </form>
+              <TextInput
+                label="Mật khẩu"
+                placeHolder="Nhập mật khẩu tài khoản"
+                type="password"
+                name="password"
+                error={error.password}
+                typeInput="text"
+              />
+            </form>
 
-        <LPEButton
-          action={handleLogin}
-          name="Đăng nhập"
-          loading={loading}
-          fullWidth
-          sizeButton="large"
-          classStyled="loginBtn"
-        />
+            <LPEButton
+              action={handleLogin}
+              name="Đăng nhập"
+              loading={loading}
+              fullWidth
+              sizeButton="large"
+              classStyled="loginBtn"
+            />
 
-        <Link
-          to="/quen-mat-khau"
-          className="forgetPassword"
-          style={{
-            marginTop: "20px",
-          }}
-        >
-          Quên mật khẩu?
-        </Link>
+            <Link
+              to="/quen-mat-khau"
+              className="forgetPassword"
+              style={{
+                marginTop: "20px",
+              }}
+            >
+              Quên mật khẩu?
+            </Link>
 
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <Link to="/dang-ky" className="createButton">
-            Tạo tài khoản mới
-          </Link>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <Link to="/dang-ky" className="createButton">
+                Tạo tài khoản mới
+              </Link>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      ) : (
+        <Redirect to="/" />
+      )}
+    </>
   );
 }
 
-export default withAuth(Login);
+export default Login;

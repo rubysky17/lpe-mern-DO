@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useDispatch } from "react-redux";
 
 import LPELoading from "app/components/loading";
 import LPEEditor from "app/components/editor";
@@ -13,11 +14,14 @@ import { convertStringToSlug } from "core/utils/convertToSlug";
 import { EDITOR_TOOLS_BLOG } from "app/const/tools";
 
 import "./styles/index.scss";
+import { postBlogAction } from "core/redux/actions/blogAction";
 
 function AddPost() {
+  const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingPost, setIsLoadingPost] = useState(false);
   const [rawToHtml, setRawToHtml] = useState([]);
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState([]);
   const refEditor = useRef(null);
   const refModal = useRef(null);
   const refOutside = useRef(null);
@@ -34,20 +38,67 @@ function AddPost() {
   }, []);
 
   const handlePostBlog = async () => {
+    setErrors("");
+    setIsLoadingPost(true);
+
     const val = await refEditor.current.getBlocks();
-    const html = convertBlocksToHtml(val.blocks);
+    // const html = convertBlocksToHtml(val.blocks);
+    const value = refOutside.current.getValue();
+    const cover = refOutside.current.getImage();
+    console.log("cover", cover);
 
-    // const stringToSlug = convertStringToSlug(refHeading.current.value);
+    if (!cover) {
+      setIsLoadingPost(false);
 
-    // console.log({ stringToSlug });
+      setErrors("Cover bài viết chưa đúng hoặc chưa tồn tại.");
+      return;
+    }
+
+    if (!val.blocks.length) {
+      setIsLoadingPost(false);
+
+      setErrors("Bài viết chưa có nội dung.");
+      return;
+    }
+
+    if (!value.title || value.title.length < 0) {
+      setIsLoadingPost(false);
+
+      setErrors("Tiêu đề bài viết chưa có.");
+      return;
+    }
+
+    const stringToSlug = convertStringToSlug(value.title);
+    const blocks = JSON.stringify(val.blocks);
+    const generate = Math.random()
+      .toString(36)
+      .replace(/[^a-z]+/g, "")
+      .substr(0, 10);
+
+    console.log(generate);
+
+    const formData = new FormData();
+
+    const dataSubmit = {
+      topicId: value.topic,
+      title: value.title,
+      content: blocks,
+      url: stringToSlug + "-" + generate,
+      blog: cover,
+    };
+
+    for (let props in dataSubmit) {
+      formData.append(props, dataSubmit[props]);
+    }
+
+    dispatch(postBlogAction(formData, setIsLoadingPost));
+    setIsLoadingPost(false);
   };
 
   // Preview Button handler
   const handlePreview = async () => {
     const val = await refEditor.current.getBlocks();
     const html = convertBlocksToHtml(val.blocks);
-
-    console.log("html", val);
 
     setRawToHtml(html);
 
@@ -60,7 +111,7 @@ function AddPost() {
         <LPELoading />
       ) : (
         <div className="row">
-          <InputOutside refs={refOutside} errors={errors} />
+          <InputOutside ref={refOutside} errors={errors} />
 
           <div className="col-12 mt-4">
             <LPEEditor
@@ -83,6 +134,7 @@ function AddPost() {
             <button
               className="btn-addblog btn-addblog-post"
               onClick={handlePostBlog}
+              disabled={isLoadingPost}
             >
               Đăng bài
             </button>

@@ -15,6 +15,8 @@ const {
   create,
   remove,
   edit,
+  getAll,
+  getDetail,
 } = require("../controllers/blog.controller");
 
 // Upload Image when write blog
@@ -28,6 +30,11 @@ blogRouter.post(
   uploadImageSingle("blog"),
   create
 );
+
+// All blog list
+blogRouter.get("/", getAll);
+// All blog list
+blogRouter.get("/:url", getDetail);
 
 // delete blog
 // blogRouter.delete("/delete-post", authenticate, authorize(["admin"]), remove);

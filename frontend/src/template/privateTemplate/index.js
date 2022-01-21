@@ -9,12 +9,13 @@ import LPELoading from "app/components/loading";
 
 export const PrivateTemplate = ({ Component, ...restProps }) => {
   const token = localStorage.getItem(KEY_TOKEN);
+  const isLogin = Boolean(token);
   const [isLoading, setIsLoading] = React.useState(false);
   const dispatch = useDispatch();
 
   // FETCH_API_USER
   React.useEffect(() => {
-    if (token !== null) {
+    if (isLogin) {
       setIsLoading(true);
       dispatch(appAction(setIsLoading));
     } else {
@@ -30,7 +31,7 @@ export const PrivateTemplate = ({ Component, ...restProps }) => {
       render={(propsRoute) => {
         return (
           <>
-            {token ? (
+            {isLogin ? (
               <>
                 <Header />
                 {isLoading ? <LPELoading /> : <Component {...propsRoute} />}

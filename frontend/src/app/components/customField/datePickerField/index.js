@@ -22,8 +22,8 @@ function DatePickerField(props) {
   };
 
   const { name } = field;
-  const { errors, touched } = form;
-  const showError = errors[name] && touched[name];
+  const { errors } = form;
+  const showError = errors[name];
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -34,10 +34,11 @@ function DatePickerField(props) {
         placeholder={placeholder}
         className={className}
         onChange={handleChangeDate}
-        format="DD/MM/yyyy"
-        views={["day", "month", "year"]}
         error={showError}
         helperText={errors[name]}
+        format="dd-MMM-yyyy"
+        views={["year", "month", "day"]}
+        openTo="year"
         renderInput={(params) => (
           <TextField
             {...params}

@@ -51,6 +51,7 @@ const authorize = (userTypeArray) => {
     // xem user có quyền thực hiện action đó không
     if (userTypeArray.findIndex((role) => role === user.role) > -1) {
       // user có đủ quyền
+
       return next();
     } else {
       // Nếu user không có quyền

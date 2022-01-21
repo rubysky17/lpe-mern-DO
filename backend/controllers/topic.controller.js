@@ -9,7 +9,10 @@ const getAll = async (req, res) => {
       message: "Empty List",
     });
   } else {
-    res.status(200).send(getList);
+    res.status(200).send({
+      status: "success",
+      data: getList,
+    });
   }
 };
 

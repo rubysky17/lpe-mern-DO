@@ -121,6 +121,13 @@ $color-lighter: rgb(113, 128, 150);
       font-style: italic;
     }
 
+    .blog-image {
+      display: block;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     .blog-image_stretched {
       margin-left: calc(-100vw / 2 + $width-content / 2);
       margin-right: calc(-100vw / 2 + $width-content / 2);
@@ -128,7 +135,6 @@ $color-lighter: rgb(113, 128, 150);
       .blog-image {
         display: block;
         width: 100%;
-        max-width: 100%;
         margin-left: auto;
         margin-right: auto;
       }

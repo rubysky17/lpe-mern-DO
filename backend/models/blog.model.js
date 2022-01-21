@@ -2,7 +2,6 @@ const { Schema, model } = require("mongoose");
 
 const BlogSchema = new Schema(
   {
-    name: String,
     topicId: {
       type: Schema.Types.ObjectId,
       ref: "Topic",
@@ -22,7 +21,7 @@ const BlogSchema = new Schema(
       required: true,
     },
     content: {
-      type: String,
+      type: [],
       required: true,
     },
     blogStatus: {

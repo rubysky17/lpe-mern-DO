@@ -120,9 +120,7 @@ export default function Home() {
 
   return (
     <div className="home-page">
-      <LazyLoad offset={100}>
-        <BannerCarousel />
-      </LazyLoad>
+      <BannerCarousel />
 
       <LazyLoad offset={100}>
         <div className="container services">
