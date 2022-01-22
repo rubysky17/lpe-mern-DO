@@ -63,6 +63,16 @@
   }
 }
 
+.form-login {
+  width: 400px;
+}
+
+@media screen and (max-width: 992px) {
+  .form-login {
+    width: 100% !important;
+  }
+}
+
 @media screen and (max-width: 992px) {
   .loginContainer {
     background-color: #fff;

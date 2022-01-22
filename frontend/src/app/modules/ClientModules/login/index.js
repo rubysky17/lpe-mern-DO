@@ -1,71 +1,69 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, Redirect, useHistory } from "react-router-dom";
 import useSiteTitle from "core/hooks/useSiteTitle";
 
-// Component from project
-import LPEButton from "app/components/button";
-import TextInput from "app/components/textInput";
+// MUI
+import { styled } from "@mui/material/styles";
+import { Button } from "@mui/material";
 
-// util file
-import { ValidationEmail } from "core/utils/emailUtil";
-import withAuth from "core/hooks/useAuth";
+// Formik
+import * as Yup from "yup";
+import { FastField, Form, Formik } from "formik";
+import InputField from "app/components/customField/inputField";
 
+// Action
 import { loginAction } from "core/redux/actions/authAction";
 
-import "./styles/styles.scss";
+// const
 import { KEY_TOKEN } from "app/const/App";
 
+import "./styles/styles.scss";
+
+const ButtonSubmit = styled(Button)`
+  color: #fff;
+  background: #3777bc;
+  padding: 10px 20px;
+
+  :hover {
+    color: #fff;
+    background: #3777bc;
+  }
+`;
+
+const passRegExp =
+  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}$/;
+
 function Login() {
-  const isLogined = Boolean(localStorage.getItem(KEY_TOKEN));
   useSiteTitle("login");
+  const isLogined = Boolean(localStorage.getItem(KEY_TOKEN));
 
   const dispatch = useDispatch();
-  const [error, setError] = useState({});
+  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const refForm = useRef(null);
   const history = useHistory();
 
-  const handleLogin = () => {
-    const email = refForm.current["email"].value;
-    const password = refForm.current["password"].value;
-
-    if (!email) {
-      setError({
-        email: "Email không được bỏ trống",
-      });
-
-      refForm.current["email"].focus();
-      return;
-    } else {
-      if (!ValidationEmail(email)) {
-        setError({
-          email: "Email không hợp lệ",
-        });
-        refForm.current["email"].focus();
-        return;
-      }
-    }
-
-    if (!password) {
-      setError({
-        password: "Mật khẩu không được bỏ trống",
-      });
-      refForm.current["password"].focus();
-      return;
-    }
-
-    const dataSubmit = {
-      email,
-      password,
-    };
-
-    handleSubmit(dataSubmit);
-  };
-
-  const handleSubmit = (data) => {
+  const handleLogin = (data) => {
     dispatch(loginAction(data, setLoading, setError, history));
   };
+
+  const initialValues = {
+    email: "",
+    password: "",
+  };
+
+  const validationSchema = Yup.object().shape({
+    password: Yup.string()
+      .required("Vui lòng không để trống")
+      .matches(
+        passRegExp,
+        "Mật khẩu có ít nhất 8 ký tự, bao gồm chữ thường, số và ít nhất 1 ký tự in hoa, ký tự đặc biệt."
+      ),
+
+    email: Yup.string()
+      .required("Vui lòng nhập trường này")
+      .email("Email chưa đúng"),
+  });
 
   return (
     <>
@@ -74,39 +72,58 @@ function Login() {
           <div className="formContainer">
             <h3 className="text-center pt-3 text-secondary">Đăng nhập</h3>
 
-            <form
-              ref={refForm}
-              style={{
-                width: "330px",
-              }}
+            <Formik
+              initialValues={initialValues}
+              validationSchema={validationSchema}
+              onSubmit={handleLogin}
             >
-              <TextInput
-                label="Email"
-                placeHolder="Nhập Email"
-                type="text"
-                name="email"
-                error={error.email}
-                typeInput="text"
-              />
+              {(formikProps) => {
+                const { values, errors, touched } = formikProps;
 
-              <TextInput
-                label="Mật khẩu"
-                placeHolder="Nhập mật khẩu tài khoản"
-                type="password"
-                name="password"
-                error={error.password}
-                typeInput="text"
-              />
-            </form>
+                console.log({ values, errors, touched });
 
-            <LPEButton
-              action={handleLogin}
-              name="Đăng nhập"
-              loading={loading}
-              fullWidth
-              sizeButton="large"
-              classStyled="loginBtn"
-            />
+                return (
+                  <Form
+                    className="mt-4 py-3 form-login"
+                    style={{
+                      width: "400px",
+                    }}
+                  >
+                    <div className="col-12">
+                      <FastField
+                        name="email"
+                        component={InputField}
+                        label="Email"
+                        placeholder="Nhập email"
+                        className="w-100 mb-4"
+                      />
+
+                      {error && (
+                        <p className="text-left text-danger mb-4">{error}</p>
+                      )}
+                    </div>
+
+                    <div className="col-12">
+                      <FastField
+                        name="password"
+                        type="password"
+                        component={InputField}
+                        label="Mật khẩu"
+                        placeholder="Nhập mật khẩu"
+                        className="w-100 mb-4"
+                      />
+                    </div>
+
+                    <div className="col-12">
+                      <ButtonSubmit type="submit">
+                        Đăng nhập
+                        {loading && <div className="loader ml-1"></div>}
+                      </ButtonSubmit>
+                    </div>
+                  </Form>
+                );
+              }}
+            </Formik>
 
             <Link
               to="/quen-mat-khau"

@@ -12,8 +12,9 @@ import MemberVip from "./screen/memberVip";
 
 import { logOutAction } from "core/redux/actions/authAction";
 
-import "./styles/styles.scss";
 import withAuth from "core/hooks/useAuth";
+
+import "./styles/styles.scss";
 
 function AccountDetail() {
   useSiteTitle("account_detail");

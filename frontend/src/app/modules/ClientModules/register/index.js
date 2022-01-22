@@ -148,7 +148,7 @@ function Register() {
                           />
                         </div>
 
-                        <div className="col-12 col-md-6">
+                        <div className="col-12 col-md-6 mb-2">
                           <FastField
                             name="birthDay"
                             component={DatePickerField}
@@ -220,4 +220,4 @@ function Register() {
   return <>{RenderUI(step)}</>;
 }
 
-export default withAuth(Register);
+export default Register;

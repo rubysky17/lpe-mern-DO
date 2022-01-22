@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
-import { adminRoutes, privateRoutes, publicRoutes } from "./app/config/routes";
+import { adminRoutes, publicRoutes } from "./app/config/routes";
 
-import { AdminTemplate, HomeTemplate, PrivateTemplate } from "template";
+import { AdminTemplate, HomeTemplate } from "template";
 import ErrorPage from "app/modules/Error";
 
 import AutoScroll from "./app/components/autoScroll";
@@ -20,17 +20,6 @@ function App() {
 
       <Switch>
         {publicRoutes.map((route, index) => {
-          return (
-            <HomeTemplate
-              exact
-              path={route.path}
-              Component={route.component}
-              key={index}
-            />
-          );
-        })}
-
-        {privateRoutes.map((route, index) => {
           return (
             <HomeTemplate
               exact

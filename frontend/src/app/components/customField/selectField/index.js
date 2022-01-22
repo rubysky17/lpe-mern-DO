@@ -4,32 +4,8 @@ import PropTypes from "prop-types";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import { FormControl, FormHelperText, InputLabel } from "@mui/material";
-// import { makeStyles } from "@mui/styles";
-
-// const useStyles = makeStyles(() => ({
-//   root: {
-//     "& label": {
-//       color: "#55b34a",
-//     },
-//     "& .MuiOutlinedInput-underline:after": {
-//       borderBottomColor: "#55b34a",
-//     },
-//     "& .MuiOutlinedInput-root": {
-//       "& fieldset": {
-//         borderColor: "#55b34a",
-//       },
-//       "&:hover fieldset": {
-//         borderColor: "#55b34a",
-//       },
-//       "&.Mui-focused fieldset": {
-//         borderColor: "#55b34a",
-//       },
-//     },
-//   },
-// }));
 
 function SelectField(props) {
-  // const classes = useStyles();
   const { field, label, placeholder, disabled, className, options, form } =
     props;
 

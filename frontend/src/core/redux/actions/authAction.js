@@ -6,6 +6,7 @@ import {
   SIGN_IN,
   SIGN_UP,
 } from "app/const/Api";
+import { KEY_TOKEN } from "app/const/App";
 
 import axios from "axios";
 import { showToast } from "core/utils/toastUtil";
@@ -38,7 +39,7 @@ export const loginAction = (data, setLoading, setError, history) => {
             });
 
             // Lưu accessToken xuống LocalStorage
-            localStorage.setItem("accessToken", token);
+            localStorage.setItem(KEY_TOKEN, token);
 
             setLoading(false);
 
@@ -47,12 +48,12 @@ export const loginAction = (data, setLoading, setError, history) => {
         })
         .catch((error) => {
           console.log("error", error);
-          setError({ email: "Email hoặc mật khẩu bạn nhập không đúng" });
+          setError("Email hoặc mật khẩu bạn nhập không đúng");
           setLoading(false);
         });
     } catch (error) {
       if (error.status === CODE_FAILURE_AUTHENTICATION) {
-        setError({ email: "Email hoặc mật khẩu bạn nhập không đúng" });
+        setError("Email hoặc mật khẩu bạn nhập không đúng");
         setLoading(false);
       }
 

@@ -7,19 +7,21 @@ import { appAction } from "core/redux/actions/appAction";
 import Header from "./layout/header";
 import Footer from "./layout/footer";
 import LPELoading from "app/components/loading";
+
 import { KEY_TOKEN } from "app/const/App";
 
 export const HomeTemplate = ({ Component, ...restProps }) => {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
-  const accessToken = localStorage.getItem(KEY_TOKEN);
-  const isLogin = Boolean(accessToken);
 
   // FETCH_API_USER
   useEffect(() => {
-    if (isLogin) {
-      setIsLoading(true);
+    setIsLoading(true);
+
+    if (Boolean(localStorage.getItem(KEY_TOKEN))) {
       dispatch(appAction(setIsLoading));
+
+      setIsLoading(false);
     } else {
       setIsLoading(false);
     }

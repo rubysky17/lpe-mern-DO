@@ -37,6 +37,11 @@ export const URL_PATH_ADMIN = {
 // Public Pages for HOME Template
 export const publicRoutes = [
   {
+    component: Client.AccountDetail,
+    exact: true,
+    path: URL_PATH_CLIENT.ACCOUNT_DETAIL,
+  },
+  {
     component: Client.Home,
     exact: true,
     path: URL_PATH_CLIENT.HOME,
@@ -221,15 +226,6 @@ export const publicRoutes = [
     component: Client.BlogDetail,
     exact: true,
     path: URL_PATH_CLIENT.BLOG_DETAIL,
-  },
-];
-
-// Private Pages for HOME Template
-export const privateRoutes = [
-  {
-    component: Client.AccountDetail,
-    exact: true,
-    path: URL_PATH_CLIENT.ACCOUNT_DETAIL,
   },
 ];
 
