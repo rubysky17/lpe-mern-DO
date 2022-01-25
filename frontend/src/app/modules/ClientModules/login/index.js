@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { Link, Redirect, useHistory } from "react-router-dom";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, Redirect } from "react-router-dom";
 import useSiteTitle from "core/hooks/useSiteTitle";
 
 // MUI
@@ -22,29 +22,23 @@ import "./styles/styles.scss";
 
 const ButtonSubmit = styled(Button)`
   color: #fff;
-  background: #3777bc;
+  background: #007bff;
   padding: 10px 20px;
 
   :hover {
     color: #fff;
-    background: #3777bc;
+    background: #007bff;
   }
 `;
 
-const passRegExp =
-  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}$/;
-
 function Login() {
   useSiteTitle("login");
+  const dispatch = useDispatch();
+  const { loading, error } = useSelector((state) => state.auth);
   const isLogined = Boolean(localStorage.getItem(KEY_TOKEN));
 
-  const dispatch = useDispatch();
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const history = useHistory();
-
   const handleLogin = (data) => {
-    dispatch(loginAction(data, setLoading, setError, history));
+    dispatch(loginAction(data));
   };
 
   const initialValues = {
@@ -53,12 +47,7 @@ function Login() {
   };
 
   const validationSchema = Yup.object().shape({
-    password: Yup.string()
-      .required("Vui lòng không để trống")
-      .matches(
-        passRegExp,
-        "Mật khẩu có ít nhất 8 ký tự, bao gồm chữ thường, số và ít nhất 1 ký tự in hoa, ký tự đặc biệt."
-      ),
+    password: Yup.string().required("Vui lòng không để trống"),
 
     email: Yup.string()
       .required("Vui lòng nhập trường này")
@@ -71,6 +60,8 @@ function Login() {
         <div className="loginContainer">
           <div className="formContainer">
             <h3 className="text-center pt-3 text-secondary">Đăng nhập</h3>
+
+            {error && <p className="text-left text-danger mb-4">{error}</p>}
 
             <Formik
               initialValues={initialValues}
@@ -97,10 +88,6 @@ function Login() {
                         placeholder="Nhập email"
                         className="w-100 mb-4"
                       />
-
-                      {error && (
-                        <p className="text-left text-danger mb-4">{error}</p>
-                      )}
                     </div>
 
                     <div className="col-12">
@@ -111,6 +98,7 @@ function Login() {
                         label="Mật khẩu"
                         placeholder="Nhập mật khẩu"
                         className="w-100 mb-4"
+                        typePassword="icon"
                       />
                     </div>
 

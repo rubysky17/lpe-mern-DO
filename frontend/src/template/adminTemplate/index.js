@@ -3,6 +3,7 @@ import { Route, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { styled } from "@mui/material/styles";
 import { Box } from "@mui/material";
+import CssBaseline from "@mui/material/CssBaseline";
 import useSiteTitle from "core/hooks/useSiteTitle";
 
 // Component
@@ -91,6 +92,7 @@ export const AdminTemplate = ({ Component, ...restProps }) => {
                 ) : (
                   <>
                     <Box sx={{ display: "flex" }}>
+                      <CssBaseline />
                       <Appbar
                         isOpen={isOpen}
                         onHandleDrawerOpen={handleDrawerOpen}

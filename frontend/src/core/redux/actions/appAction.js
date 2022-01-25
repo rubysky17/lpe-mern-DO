@@ -10,13 +10,19 @@ import {
   USERS,
 } from "app/const/Api";
 
-import { AUTH_LOGIN } from "../constant/authConstant";
+import { LOGIN_SUCCESS } from "../constant/authConstant";
 import { GET_USER } from "../constant/userConstant";
 import { GET_TOPIC } from "../constant/topicConstant";
 import { GET_BLOG } from "../constant/blogConstant";
 
+import {
+  APP_LOADING,
+  APP_LOADING_FAILED,
+  APP_LOADING_SUCCESS,
+} from "core/redux/constant/appConstant";
+
 const accessToken = localStorage.getItem(KEY_TOKEN);
-const isLogin = Boolean(localStorage.getItem(KEY_TOKEN));
+const isLogin = Boolean(accessToken);
 
 const fetchUserData = new Promise((resolve, reject) => {
   if (isLogin) {
@@ -88,19 +94,30 @@ const fetchAllBlog = new Promise((resolve, reject) => {
     });
 });
 
-export const appAction = (setIsLoading) => {
+export const appAction = () => {
   return async (dispatch) => {
+    dispatch({
+      type: APP_LOADING,
+    });
+
     Promise.all([fetchUserData])
       .then((response) => {
         dispatch({
-          type: AUTH_LOGIN,
-          user: response[0], // return info user
+          type: LOGIN_SUCCESS,
+          payload: response[0], // return info user
         });
 
-        setIsLoading(false);
+        dispatch({
+          type: APP_LOADING_SUCCESS,
+        });
       })
-      .catch((err) => {
-        console.log("error", err);
+      .catch((error) => {
+        dispatch({
+          type: APP_LOADING_FAILED,
+          payload: error,
+        });
+
+        console.log("error", error);
       });
   };
 };
@@ -132,6 +149,34 @@ export const adminAction = (setIsLoading) => {
       .catch((error) => {
         console.log("error", error);
         setIsLoading(false);
+      });
+  };
+};
+
+// demo
+export const demoAction = () => {
+  return async (dispatch) => {
+    dispatch({
+      type: APP_LOADING,
+      payload: false,
+    });
+
+    Promise.all([fetchAllTopic, fetchAllBlog])
+      .then((response) => {
+        console.log("response", response);
+
+        dispatch({
+          type: APP_LOADING,
+          payload: true,
+        });
+      })
+      .catch((err) => {
+        dispatch({
+          type: APP_LOADING,
+          payload: true,
+          message: err,
+        });
+        console.log("error", err);
       });
   };
 };

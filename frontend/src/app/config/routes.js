@@ -23,6 +23,8 @@ export const URL_PATH_CLIENT = {
   FORGOTPASSWORD: "/quen-mat-khau",
   BLOG_LIST: "/bai-dang",
   BLOG_DETAIL: "/bai-dang/:url",
+  LIFE_MAP: "/life-map",
+  DEMO: "/demo",
 };
 
 // PATH FOR MODULES ADMIN
@@ -36,6 +38,11 @@ export const URL_PATH_ADMIN = {
 
 // Public Pages for HOME Template
 export const publicRoutes = [
+  {
+    component: Client.Demo,
+    exact: true,
+    path: URL_PATH_CLIENT.DEMO,
+  },
   {
     component: Client.AccountDetail,
     exact: true,
@@ -226,6 +233,11 @@ export const publicRoutes = [
     component: Client.BlogDetail,
     exact: true,
     path: URL_PATH_CLIENT.BLOG_DETAIL,
+  },
+  {
+    component: Client.LifeMap,
+    exact: true,
+    path: URL_PATH_CLIENT.LIFE_MAP,
   },
 ];
 

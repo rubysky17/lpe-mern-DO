@@ -1,37 +1,37 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-import TextField from "@mui/material/TextField";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import InputAdornment from "@mui/material/InputAdornment";
-import IconButton from "@mui/material/IconButton";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { makeStyles } from "@mui/styles";
-
-const useStyles = makeStyles({
-  customInputLabel: {
-    "& legend": {
-      visibility: "visible",
-    },
-  },
-});
+import {
+  Checkbox,
+  FormControlLabel,
+  FormGroup,
+  TextField,
+} from "@mui/material";
 
 function InputField(props) {
-  const classes = useStyles();
-  const { field, type, label, placeholder, disabled, className, form } = props;
-  const [showPassword, setShowPassword] = useState(false);
+  const {
+    field,
+    type,
+    label,
+    placeholder,
+    disabled,
+    className,
+    typePassword,
+    form,
+  } = props;
 
   const { name } = field;
   const { errors, touched } = form;
   const showError = errors[name] && touched[name];
 
-  const handleClickShowPassword = () => {
-    setShowPassword(!showPassword);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleChange = (event) => {
+    setShowPassword(event.target.checked);
   };
 
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -41,7 +41,7 @@ function InputField(props) {
           placeholder={placeholder}
           variant="outlined"
           label={label}
-          type={type}
+          type="text"
           disabled={disabled}
           className={className}
           error={showError}
@@ -55,31 +55,51 @@ function InputField(props) {
       )}
 
       {type === "password" && (
-        <OutlinedInput
-          classes={{ notchedOutline: classes.customInputLabel }}
-          placeholder={placeholder}
-          variant="outlined"
-          label={label}
-          disabled={disabled}
-          className={className}
-          error={showError}
-          helperText={showError && errors[name]}
-          type={showPassword ? "text" : "password"}
-          // field of Formik have 4 important props
-          {...field}
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={handleClickShowPassword}
-                onMouseDown={handleMouseDownPassword}
-                edge="end"
-              >
-                {showPassword ? <VisibilityOff /> : <Visibility />}
-              </IconButton>
-            </InputAdornment>
-          }
-        />
+        <div>
+          <TextField
+            placeholder={placeholder}
+            variant="outlined"
+            label={label}
+            type={showPassword ? "text" : "password"}
+            disabled={disabled}
+            className={`${className}`}
+            error={showError}
+            helperText={showError && errors[name]}
+            autoComplete="off"
+            aria-autocomplete="none"
+            spellCheck={false}
+            // field of Formik have 4 important props
+            {...field}
+            InputProps={
+              typePassword === "icon" && {
+                endAdornment: (
+                  <div
+                    onClick={handleTogglePassword}
+                    style={{
+                      cursor: "pointer",
+                    }}
+                  >
+                    {showPassword ? (
+                      <i className="fal fa-eye-slash"></i>
+                    ) : (
+                      <i class="far fa-eye"></i>
+                    )}
+                  </div>
+                ),
+              }
+            }
+          />
+
+          {typePassword === "checkbox" && (
+            <FormGroup className="w-100 mb-4">
+              <FormControlLabel
+                control={<Checkbox />}
+                label="Hiện mật khẩu"
+                onChange={handleChange}
+              />
+            </FormGroup>
+          )}
+        </div>
       )}
     </>
   );
@@ -93,6 +113,7 @@ InputField.propTypes = {
   label: PropTypes.string,
   placeholder: PropTypes.string,
   disabled: PropTypes.bool,
+  typePassword: PropTypes.string,
 };
 
 InputField.defaultProps = {
@@ -100,6 +121,7 @@ InputField.defaultProps = {
   label: "",
   placeholder: "",
   disabled: false,
+  typePassword: "icon",
 };
 
 export default InputField;

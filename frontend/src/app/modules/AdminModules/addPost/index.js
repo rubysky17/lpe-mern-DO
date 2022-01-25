@@ -142,7 +142,7 @@ function AddPost() {
         </div>
       )}
 
-      <LPEModal ref={refModal}>
+      <LPEModal ref={refModal} width={900} height="80vh">
         <PreviewBlog render={rawToHtml} />
       </LPEModal>
     </div>

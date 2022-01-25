@@ -1,17 +1,19 @@
 import { useState } from "react";
 import axios from "axios";
 import * as Yup from "yup";
-import withAuth from "core/hooks/useAuth";
 import { FastField, Form, Formik } from "formik";
 import { styled } from "@mui/material/styles";
 import { Button } from "@mui/material";
 import useSiteTitle from "core/hooks/useSiteTitle";
+
+import { Redirect } from "react-router-dom";
 
 import InputField from "app/components/customField/inputField";
 import SelectField from "app/components/customField/selectField";
 import DatePickerField from "app/components/customField/datePickerField";
 import { DEFALT_OPTIONS } from "app/components/customField/selectField/options";
 import { API_ENDPOINT, CODE_SUCCESS, SIGN_UP } from "app/const/Api";
+import { KEY_TOKEN } from "app/const/App";
 
 import { YupSchema } from "app/const/yup";
 
@@ -29,6 +31,7 @@ const ButtonSubmit = styled(Button)`
 
 function Register() {
   useSiteTitle("register");
+  const isLogined = Boolean(localStorage.getItem(KEY_TOKEN));
   const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -217,7 +220,7 @@ function Register() {
     }
   };
 
-  return <>{RenderUI(step)}</>;
+  return <>{!isLogined ? RenderUI(step) : <Redirect to="/" />}</>;
 }
 
 export default Register;

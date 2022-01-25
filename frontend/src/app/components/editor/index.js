@@ -33,6 +33,7 @@ const LPEEditor = forwardRef((props, ref) => {
       tools={tools}
       placeholder={placeholder}
       onInitialize={handleInitialize}
+      defaultValue={defaultValue}
     />
   );
 });

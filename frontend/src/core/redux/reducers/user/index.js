@@ -4,13 +4,22 @@ import {
   UPDATE_USER_IN_LIST,
 } from "core/redux/constant/userConstant";
 
+import {
+  FETCH_ALL_USER_REQUESTING,
+  FETCH_ALL_USER_SUCCESS,
+  FETCH_ALL_USER_FAILED,
+} from "core/redux/constant/userConstant";
+
 const initialState = {
   userList: [],
+  requesting: false,
+  success: false,
+  message: null,
 };
 
 export const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    // Lấy danh sách tất cả người dùng
+    // FETCH ALL USER LIST
     case GET_USER:
       state.userList = action.data;
       return { ...state };
@@ -35,6 +44,29 @@ export const userReducer = (state = initialState, action) => {
 
       state.userList = list;
       return { ...state };
+    }
+
+    // DEMO NEW REDUX
+    case FETCH_ALL_USER_REQUESTING: {
+      return { ...state, requesting: true };
+    }
+
+    case FETCH_ALL_USER_SUCCESS: {
+      return {
+        ...state,
+        requesting: false,
+        success: true,
+        userList: action.payload,
+      };
+    }
+
+    case FETCH_ALL_USER_FAILED: {
+      return {
+        ...state,
+        requesting: false,
+        success: false,
+        message: action.message,
+      };
     }
 
     default:

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Route } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { appAction } from "core/redux/actions/appAction";
 
@@ -12,18 +12,12 @@ import { KEY_TOKEN } from "app/const/App";
 
 export const HomeTemplate = ({ Component, ...restProps }) => {
   const dispatch = useDispatch();
-  const [isLoading, setIsLoading] = useState(false);
+  const { loading } = useSelector((state) => state.app);
 
   // FETCH_API_USER
   useEffect(() => {
-    setIsLoading(true);
-
     if (Boolean(localStorage.getItem(KEY_TOKEN))) {
-      dispatch(appAction(setIsLoading));
-
-      setIsLoading(false);
-    } else {
-      setIsLoading(false);
+      dispatch(appAction());
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -36,7 +30,7 @@ export const HomeTemplate = ({ Component, ...restProps }) => {
         return (
           <>
             <Header />
-            {isLoading ? <LPELoading /> : <Component {...propsRoute} />}
+            {loading ? <LPELoading /> : <Component {...propsRoute} />}
             <Footer />
           </>
         );

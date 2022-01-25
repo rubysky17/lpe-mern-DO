@@ -1,7 +1,6 @@
 import {
   API_ENDPOINT,
   CHANGE_PASSWORD,
-  CODE_FAILURE_AUTHENTICATION,
   CODE_SUCCESS,
   SIGN_IN,
   SIGN_UP,
@@ -10,52 +9,49 @@ import { KEY_TOKEN } from "app/const/App";
 
 import axios from "axios";
 import { showToast } from "core/utils/toastUtil";
-import { AUTH_LOGIN, LOGOUT_ACCOUNT } from "../constant/authConstant";
+import {
+  LOGIN_FAILED,
+  LOGIN_REQUESTING,
+  LOGIN_SUCCESS,
+  LOGOUT_ACCOUNT,
+} from "../constant/authConstant";
 
 /**
- *
- * @param {*} data : Data gửi lên cho server
- * @param {*} setLoading : loading nút đăng nhập
- * @param {*} setError : Thông báo lỗi về client nếu có lỗi
- * @returns
+ *  Đăng nhập
+ * @param {*} data email, password
  */
-export const loginAction = (data, setLoading, setError, history) => {
+export const loginAction = (data) => {
   return async (dispatch) => {
+    dispatch({
+      type: LOGIN_REQUESTING,
+    });
     try {
       await axios({
         url: API_ENDPOINT + SIGN_IN,
         method: "POST",
         data,
-      })
-        .then((response) => {
-          if (response.status === CODE_SUCCESS) {
-            // Get data của user từ phía client
-            const { userLogin, token } = response.data;
+      }).then((response) => {
+        if (response.status === CODE_SUCCESS) {
+          // Get data của user từ phía client
+          const { userLogin, token } = response.data;
 
-            // Dispatch action lên redux
-            dispatch({
-              type: AUTH_LOGIN,
-              user: userLogin,
-            });
+          // Dispatch action lên redux
+          dispatch({
+            type: LOGIN_SUCCESS,
+            payload: userLogin,
+          });
 
-            // Lưu accessToken xuống LocalStorage
-            localStorage.setItem(KEY_TOKEN, token);
+          // Lưu accessToken xuống LocalStorage
+          localStorage.setItem(KEY_TOKEN, token);
 
-            setLoading(false);
-
-            history.push("/");
-          }
-        })
-        .catch((error) => {
-          console.log("error", error);
-          setError("Email hoặc mật khẩu bạn nhập không đúng");
-          setLoading(false);
-        });
+          window.location.reload();
+        }
+      });
     } catch (error) {
-      if (error.status === CODE_FAILURE_AUTHENTICATION) {
-        setError("Email hoặc mật khẩu bạn nhập không đúng");
-        setLoading(false);
-      }
+      dispatch({
+        type: LOGIN_FAILED,
+        payload: "Email hoặc mật khẩu bạn nhập không đúng",
+      });
 
       console.log("error", error);
     }

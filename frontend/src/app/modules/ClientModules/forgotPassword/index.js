@@ -3,17 +3,44 @@ import { useState, useRef, useEffect } from "react";
 
 // utils and constant
 import { useHistory } from "react-router-dom";
-import { Button } from "@mui/material";
 
 import TextInput from "app/components/textInput";
 import { ValidationEmail } from "core/utils/emailUtil";
 import { API_ENDPOINT, CODE_SUCCESS, FORGOT_PASSWORD } from "app/const/Api";
 import useSiteTitle from "core/hooks/useSiteTitle";
+import { makeStyles } from "@mui/styles";
+import LPEButton from "app/components/button";
 // styles
+
+const useStyles = makeStyles((theme) => ({
+  btnSave: {
+    marginTop: "10px",
+    marginBottom: "10px",
+    backgroundColor: "#3777BC",
+    color: "#fff",
+    textTransform: "capitalize",
+    fontSize: "16px",
+    "&:hover": {
+      backgroundColor: "#6499e7",
+    },
+  },
+
+  btnCancel: {
+    marginTop: "10px",
+    marginBottom: "10px",
+    backgroundColor: "#adb5bd",
+    color: "#fff",
+    textTransform: "capitalize",
+    fontSize: "16px",
+    "&:hover": {
+      backgroundColor: "#adb5bd",
+    },
+  },
+}));
 
 function ForgetPassword() {
   useSiteTitle("forgot_password");
-
+  const classes = useStyles();
   const history = useHistory();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({});
@@ -116,22 +143,20 @@ function ForgetPassword() {
             </p>
 
             <div className="wrapperButton">
-              <Button
+              <LPEButton
                 onClick={handleCancel}
-                className="findButton"
+                classStyled={classes.btnCancel}
                 disabled={loading}
-              >
-                Hủy
-              </Button>
+                name="Hủy"
+              />
 
               <div style={{ display: "flex", justifyContent: "center" }}>
-                <Button
+                <LPEButton
                   onClick={handleSubmit}
-                  classStyled="loginBtn"
+                  classStyled={classes.btnSave}
                   disabled={loading}
-                >
-                  {loading ? `Gửi lại sau ${counter}s` : "Tìm kiếm"}
-                </Button>
+                  name={loading ? `Gửi lại sau ${counter}s` : "Tìm kiếm"}
+                />
               </div>
             </div>
           </form>

@@ -1,9 +1,4 @@
-import React, {
-  useState,
-  useRef,
-  forwardRef,
-  useImperativeHandle,
-} from "react";
+import React, { useState, forwardRef, useImperativeHandle } from "react";
 import UploadImage from "app/modules/AdminModules/addUser/components/uploadImage";
 import { useSelector } from "react-redux";
 

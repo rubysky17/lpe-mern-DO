@@ -1,8 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 
-import DateFnsUtils from "@date-io/date-fns";
-import { makeStyles } from "@mui/styles";
 import { convertFullDate, timeToUnix } from "core/utils/dateUtil";
 import { phoneValidate } from "core/utils/phoneUtil";
 import TextInput from "app/components/textInput";
@@ -20,9 +18,10 @@ import {
 } from "core/redux/actions/userAction";
 
 import "./styles/styles.scss";
+import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles((theme) => ({
-  loginBtn: {
+  btnSave: {
     marginTop: "10px",
     marginBottom: "10px",
     backgroundColor: "#3777BC",
@@ -33,33 +32,33 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: "#6499e7",
     },
   },
-  datePicker: {
-    width: "100%",
-    "& > label": {
-      fontSize: "17px",
-      fontWeight: "bold",
-      color: "#333",
-      marginBottom: "0",
-      top: "17px",
-      fontFamily: "product-sans, sans-serif",
-    },
-    "& > label + .MuiInput-formControl": {
-      border: "1px solid #dbeaf5",
-      borderRadius: "5px",
-      padding: "10px",
-      marginTop: "3rem",
-    },
-    "& > label + .MuiInput-formControl:before": {
-      display: "none",
-    },
-    "&:focus > label + .MuiInput-formControl:before": {
-      display: "none",
-    },
-    "& .MuiInputLabel-shrink": {
-      transform: "unset",
-      transformOrigin: "unset",
-    },
-  },
+  // datePicker: {
+  //   width: "100%",
+  //   "& > label": {
+  //     fontSize: "17px",
+  //     fontWeight: "bold",
+  //     color: "#333",
+  //     marginBottom: "0",
+  //     top: "17px",
+  //     fontFamily: "product-sans, sans-serif",
+  //   },
+  //   "& > label + .MuiInput-formControl": {
+  //     border: "1px solid #dbeaf5",
+  //     borderRadius: "5px",
+  //     padding: "10px",
+  //     marginTop: "3rem",
+  //   },
+  //   "& > label + .MuiInput-formControl:before": {
+  //     display: "none",
+  //   },
+  //   "&:focus > label + .MuiInput-formControl:before": {
+  //     display: "none",
+  //   },
+  //   "& .MuiInputLabel-shrink": {
+  //     transform: "unset",
+  //     transformOrigin: "unset",
+  //   },
+  // },
 }));
 
 function AccountInfo({ id, userInfo }) {
@@ -78,10 +77,6 @@ function AccountInfo({ id, userInfo }) {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const handleDateChange = (date) => {
-    setBirthDay(convertFullDate(date));
-  };
 
   const handleDataSubmit = () => {
     setErrorMessage({});
@@ -318,17 +313,7 @@ function AccountInfo({ id, userInfo }) {
                     loading={isLoading}
                     fullWidth
                     sizeButton="large"
-                    style={{
-                      marginTop: "10px",
-                      marginBottom: "10px",
-                      backgroundColor: "#3777BC",
-                      color: "#fff",
-                      textTransform: "capitalize",
-                      fontSize: "16px",
-                      "&:hover": {
-                        backgroundColor: "#6499e7",
-                      },
-                    }}
+                    classStyled={classes.btnSave}
                   />
                 </div>
               </div>

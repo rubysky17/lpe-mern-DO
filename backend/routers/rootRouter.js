@@ -16,6 +16,13 @@ rootRouter.use("/product", productRouter);
 rootRouter.use("/topic", topicRouter);
 rootRouter.use("/blog", blogRouter);
 
+rootRouter.get("/demo", (req, res) => {
+  return res.send({
+    status: "success",
+    data: "Thành công",
+  });
+});
+
 module.exports = {
   rootRouter,
 };

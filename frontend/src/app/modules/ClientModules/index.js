@@ -46,6 +46,12 @@ import Recruitment from "./lpe/recruitment";
 import BlogList from "./blogList";
 import BlogDetail from "./blogDetail";
 
+// Map
+import LifeMap from "./lifeMap";
+
+// Demo
+import Demo from "./demo";
+
 const Client = {
   Home,
   Login,
@@ -85,6 +91,8 @@ const Client = {
   VerifyForgotPassword,
   BlogList,
   BlogDetail,
+  LifeMap,
+  Demo,
 };
 
 export default Client;

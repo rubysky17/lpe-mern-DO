@@ -20,10 +20,6 @@ const headCells = [
   { id: "name", label: "Tên", disableSorting: false, numeric: false },
   { id: "email", label: "Email", disableSorting: false, numeric: false },
   { id: "phone", label: "Số điện thoại", disableSorting: true, numeric: false },
-  // { id: "gender", label: "Giới tính", disableSorting: true, numeric: false },
-  // { id: "ICN", label: "CMND/CCCD", disableSorting: true, numeric: false },
-  // { id: "address", label: "Địa chỉ", disableSorting: true, numeric: false },
-  // { id: "birthDay", label: "Ngày sinh", disableSorting: false, numeric: false },
   { id: "role", label: "Quyền", disableSorting: true, numeric: false },
   { id: "action", label: "Thao tác", disableSorting: true, numeric: false },
 ];
@@ -40,8 +36,6 @@ function UserManager() {
   const [dataTable, setDataTable] = useState([]);
   const [openDrawer, setOpenDrawer] = useState(false);
   const [userEdit, setUserEdit] = useState({});
-  const [isFilter, setIsFilter] = useState(false);
-  const [dataFiler, setDataFiler] = useState({});
 
   // Loading Data
   useEffect(() => {
@@ -96,9 +90,6 @@ function UserManager() {
   };
 
   const handleFilter = (filterData) => {
-    setIsFilter(true);
-    setDataFiler(filterData);
-
     const token = localStorage.getItem(KEY_TOKEN);
     console.log("filterData", filterData);
 

@@ -1,24 +1,18 @@
-import { Button } from "@mui/material";
 import PropTypes from "prop-types";
+import { Button } from "@mui/material";
 
-function LPEButton({
-  action,
-  loading,
-  name,
-  sizeButton,
-  classStyled,
-  fullWidth,
-}) {
+function LPEButton({ handleOnClick, loading, name, classStyled, fullWidth }) {
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <Button
-        onClick={action}
+        onClick={handleOnClick}
         fullWidth={fullWidth}
-        size={sizeButton}
+        variant="contained"
         className={classStyled}
         disabled={loading}
       >
         {loading && <div className="loader"></div>}
+
         {name}
       </Button>
     </div>
@@ -30,6 +24,7 @@ LPEButton.propTypes = {
   action: PropTypes.func,
   type: PropTypes.string,
   loading: PropTypes.bool,
+  classStyled: PropTypes.string,
 };
 
 export default LPEButton;

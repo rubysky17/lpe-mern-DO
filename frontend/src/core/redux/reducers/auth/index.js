@@ -1,25 +1,24 @@
 import { KEY_TOKEN } from "app/const/App";
 
 import {
-  AUTH_LOGIN,
   DELETE_AVATAR,
   GET_USER_INFO,
+  LOGIN_FAILED,
+  LOGIN_REQUESTING,
+  LOGIN_SUCCESS,
   LOGOUT_ACCOUNT,
   UPDATE_AVATAR,
   UPDATE_USER,
 } from "core/redux/constant/authConstant";
 
 const initialState = {
+  loading: false,
   userInfo: {},
+  error: "",
 };
 
 export const authReducer = (state = initialState, action) => {
   switch (action.type) {
-    // Đăng nhập
-    case AUTH_LOGIN:
-      state.userInfo = action.user;
-      return { ...state };
-
     // Đăng xuất
     case LOGOUT_ACCOUNT:
       localStorage.removeItem(KEY_TOKEN);
@@ -63,6 +62,31 @@ export const authReducer = (state = initialState, action) => {
       state.userInfo = result;
 
       return { ...state };
+    }
+    // -----------------------------------------------------------
+    case LOGIN_REQUESTING: {
+      return {
+        ...state,
+        loading: true,
+        error: "",
+      };
+    }
+
+    case LOGIN_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        error: "",
+        userInfo: action.payload,
+      };
+    }
+
+    case LOGIN_FAILED: {
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
     }
 
     default:
