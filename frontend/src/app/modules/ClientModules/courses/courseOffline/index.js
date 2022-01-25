@@ -32,6 +32,25 @@ SwiperCore.use([Scrollbar, Navigation]);
 function CourseOffline() {
   useSiteTitle("offline_page");
 
+  const ICTA = [
+    {
+      id: 1,
+      name: "ICPC & IMCPC",
+      title: "chương trình đào tạo tư vấn trị liệu NLP đạt chuẩn quốc tế",
+      bgCourse: khoa01,
+      textColor: "#fff",
+      link: "/chuong-trinh-huan-luyen/offline/dao-tao-tu-van-tri-lieu-nlp-dat-chuan-quoc-te",
+    },
+    {
+      id: 2,
+      name: "ITTC",
+      title: "người kế thừa dại học cuộc đời",
+      bgCourse: khoa02,
+      textColor: "#fff",
+      link: "/chuong-trinh-huan-luyen/offline/nguoi-thua-ke-dai-hoc-cuoc-doi",
+    },
+  ];
+
   const combo6 = [
     {
       id: 1,
@@ -163,6 +182,41 @@ function CourseOffline() {
         headText="Khóa học Offline"
         subText="LPE có các khóa học trực tiếp nhằm cung cấp trải nghiệm học tốt nhất cho học viên."
       />
+
+      <div className="container">
+        <div className="heading">
+          <h3 className="heading-text">ICTA</h3>
+          <p className="heading-desc">Combo ICPC - IMCPC - ITTC</p>
+        </div>
+
+        <Swiper
+          scrollbar={{
+            hide: true,
+          }}
+          className="mySwiper my-3"
+          breakpoints={{
+            1200: {
+              slidesPerView: 3,
+              spaceBetween: 20,
+            },
+          }}
+          navigation={true}
+        >
+          {ICTA.map((y) => {
+            return (
+              <SwiperSlide key={y.id}>
+                <CourseItemOffline
+                  name={y.name}
+                  title={y.title}
+                  bgCourse={y.bgCourse}
+                  textColor={y.textColor}
+                  link={y.link}
+                />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      </div>
 
       <div className="container">
         <div className="heading">

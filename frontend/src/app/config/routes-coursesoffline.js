@@ -14,4 +14,6 @@ export const OFFLINE_PATH_CLIENT = {
   OAC: `${MAIN_PATH}/trai-thieu-nien-xuat-chung`,
   LTC: `${MAIN_PATH}/trai-huan-luyen-lanh-dao`,
   PAR: `${MAIN_PATH}/nghe-thuat-truyen-cam-hung-nuoi-day-con-xuat-chung`,
+  ICPC: `${MAIN_PATH}/dao-tao-tu-van-tri-lieu-nlp-dat-chuan-quoc-te`,
+  ITTC: `${MAIN_PATH}/nguoi-thua-ke-dai-hoc-cuoc-doi`,
 };

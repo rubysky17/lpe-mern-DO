@@ -147,6 +147,16 @@ export const publicRoutes = [
     path: OFFLINE_PATH_CLIENT.PAR,
   },
   {
+    component: Client.CourseOfflineICPC,
+    exact: true,
+    path: OFFLINE_PATH_CLIENT.ICPC,
+  },
+  {
+    component: Client.CourseOfflineITTC,
+    exact: true,
+    path: OFFLINE_PATH_CLIENT.ITTC,
+  },
+  {
     component: Client.CourseOnlineRUNFASTER,
     exact: true,
     path: ONLINE_PATH_CLIENT.RUNFASTER,
