@@ -1,4 +1,5 @@
 import firebase from "firebase";
+// npm i firebase@8.10.0
 
 if (!firebase.apps.length) {
   firebase.initializeApp({
