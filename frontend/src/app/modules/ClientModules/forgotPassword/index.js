@@ -1,50 +1,24 @@
 import axios from "axios";
 import { useState, useRef, useEffect } from "react";
-
-// utils and constant
 import { useHistory } from "react-router-dom";
+import useSiteTitle from "core/hooks/useSiteTitle";
 
 import TextInput from "app/components/textInput";
+import LPEButton from "app/components/button";
+
 import { ValidationEmail } from "core/utils/emailUtil";
 import { API_ENDPOINT, CODE_SUCCESS, FORGOT_PASSWORD } from "app/const/Api";
-import useSiteTitle from "core/hooks/useSiteTitle";
-import { makeStyles } from "@mui/styles";
-import LPEButton from "app/components/button";
+
 // styles
-
-const useStyles = makeStyles((theme) => ({
-  btnSave: {
-    marginTop: "10px",
-    marginBottom: "10px",
-    backgroundColor: "#3777BC",
-    color: "#fff",
-    textTransform: "capitalize",
-    fontSize: "16px",
-    "&:hover": {
-      backgroundColor: "#6499e7",
-    },
-  },
-
-  btnCancel: {
-    marginTop: "10px",
-    marginBottom: "10px",
-    backgroundColor: "#adb5bd",
-    color: "#fff",
-    textTransform: "capitalize",
-    fontSize: "16px",
-    "&:hover": {
-      backgroundColor: "#adb5bd",
-    },
-  },
-}));
+import "./styles/styles.scss";
 
 function ForgetPassword() {
   useSiteTitle("forgot_password");
-  const classes = useStyles();
   const history = useHistory();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({});
   const [counter, setCounter] = useState(60);
+  const refForm = useRef();
 
   useEffect(() => {
     const timer =
@@ -56,8 +30,6 @@ function ForgetPassword() {
       clearInterval(timer);
     };
   }, [counter]);
-
-  const refForm = useRef();
 
   const handleCancel = () => {
     history.goBack();
@@ -110,6 +82,7 @@ function ForgetPassword() {
       })
       .catch(() => {
         setLoading(false);
+
         setError({
           email: "Email không được tìm thấy",
         });
@@ -144,16 +117,16 @@ function ForgetPassword() {
 
             <div className="wrapperButton">
               <LPEButton
-                onClick={handleCancel}
-                classStyled={classes.btnCancel}
+                handleOnClick={handleCancel}
+                classStyled="forgot__btn--cancel mr-3"
                 disabled={loading}
                 name="Hủy"
               />
 
               <div style={{ display: "flex", justifyContent: "center" }}>
                 <LPEButton
-                  onClick={handleSubmit}
-                  classStyled={classes.btnSave}
+                  handleOnClick={handleSubmit}
+                  classStyled="forgot__btn--save"
                   disabled={loading}
                   name={loading ? `Gửi lại sau ${counter}s` : "Tìm kiếm"}
                 />

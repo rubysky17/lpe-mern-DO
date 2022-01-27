@@ -1,21 +1,21 @@
 import { useState } from "react";
 import axios from "axios";
-import * as Yup from "yup";
-import { FastField, Form, Formik } from "formik";
-import { styled } from "@mui/material/styles";
-import { Button } from "@mui/material";
+import { Redirect } from "react-router-dom";
 import useSiteTitle from "core/hooks/useSiteTitle";
 
-import { Redirect } from "react-router-dom";
+import * as Yup from "yup";
+import { YupSchema } from "app/const/yup";
+import { FastField, Form, Formik } from "formik";
 
+import { styled } from "@mui/material/styles";
+import { Button } from "@mui/material";
 import InputField from "app/components/customField/inputField";
 import SelectField from "app/components/customField/selectField";
 import DatePickerField from "app/components/customField/datePickerField";
+
 import { DEFALT_OPTIONS } from "app/components/customField/selectField/options";
 import { API_ENDPOINT, CODE_SUCCESS, SIGN_UP } from "app/const/Api";
 import { KEY_TOKEN } from "app/const/App";
-
-import { YupSchema } from "app/const/yup";
 
 import "./styles/styles.scss";
 
@@ -157,7 +157,7 @@ function Register() {
                             component={DatePickerField}
                             label="Ngày sinh"
                             placeholder="Nhập ngày sinh"
-                            className="w-100 mb-4"
+                            className="w-100 mb-2 mb-md-4"
                           />
                         </div>
 
@@ -168,7 +168,7 @@ function Register() {
                             component={InputField}
                             label="Mật khẩu"
                             placeholder="Nhập mật khẩu"
-                            className="w-100 mb-4"
+                            className="w-100 mb-2 mb-md-4"
                           />
                         </div>
 

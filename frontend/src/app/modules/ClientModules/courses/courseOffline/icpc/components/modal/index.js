@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useClickOutside } from "core/hooks/useClickOutSide";
 import "./styles/styles.scss";
 

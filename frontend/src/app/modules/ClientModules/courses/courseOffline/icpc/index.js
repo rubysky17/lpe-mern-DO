@@ -1,5 +1,5 @@
 import "./styles/styles.scss";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import Modal from "./components/modal";
 
 function ICPC() {

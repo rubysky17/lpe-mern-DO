@@ -23,8 +23,8 @@ function DatePickerField(props) {
   };
 
   const { name } = field;
-  const { errors } = form;
-  const showError = errors[name];
+  const { errors, touched } = form;
+  const showError = errors[name] && touched[name];
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -44,7 +44,7 @@ function DatePickerField(props) {
           <TextField
             {...params}
             error={showError}
-            helperText={errors[name]}
+            helperText={showError && errors[name]}
             style={{
               width: "100%",
             }}

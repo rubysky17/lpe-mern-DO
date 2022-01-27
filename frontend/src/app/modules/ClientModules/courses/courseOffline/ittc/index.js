@@ -7,8 +7,6 @@ import TimeLine from "./components/timeline";
 import Video from "./components/video";
 import Catagory from "./components/catagory";
 import ItemList from "./components/itemList";
-import FadeInWhenVisible from "./components/fadeIn";
-// npm install framer-motion@4.1.17
 import LoadingITTC from "./components/loading";
 import priceImg from "./assets/priceittc.png";
 

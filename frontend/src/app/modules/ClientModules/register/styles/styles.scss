@@ -103,6 +103,13 @@ $border-radius: 10px;
     min-height: unset;
     width: 100%;
   }
+
+  .formContainerOTP {
+    padding: 50px 0;
+    min-height: unset;
+    width: 100%;
+    border-radius: unset;
+  }
   .OTPContainer {
     height: unset;
   }

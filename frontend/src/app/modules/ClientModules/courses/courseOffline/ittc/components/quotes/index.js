@@ -1,11 +1,9 @@
 import React from "react";
-import { motion } from "framer-motion";
-
 import "./styles/styles.scss";
 
 function Quotes() {
   return (
-    <motion.div className="ittc-quotes container">
+    <div className="ittc-quotes container">
       <div
         className="row text-center"
         style={{
@@ -21,7 +19,7 @@ function Quotes() {
           </p>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 

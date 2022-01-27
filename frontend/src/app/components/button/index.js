@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
 import { Button } from "@mui/material";
+import PropTypes from "prop-types";
 
 function LPEButton({ handleOnClick, loading, name, classStyled, fullWidth }) {
   return (

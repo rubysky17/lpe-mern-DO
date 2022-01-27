@@ -59,7 +59,7 @@ const create = async (req, res) => {
       });
     }
 
-    const urlImage = `${process.env.DEV_HOSTNAME}/${file.path}`;
+    const urlImage = `${process.env.SERVER_HOSTNAME}/${file.path}`;
 
     const newBlog = new Blog({
       topicId,

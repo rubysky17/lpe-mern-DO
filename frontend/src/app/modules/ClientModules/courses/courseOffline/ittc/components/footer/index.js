@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 
 import { timeToUnix } from "core/utils/dateUtil";
-import { create, db } from "app/const/firebase";
+import { create } from "app/const/firebase";
 import { InputLabel, makeStyles, TextField } from "@material-ui/core";
 
 import "./styles/styles.scss";

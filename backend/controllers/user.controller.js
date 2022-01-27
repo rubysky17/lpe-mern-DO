@@ -48,7 +48,7 @@ const create = async (req, res) => {
   const hashPassword = bcrypt.hashSync(password, salt);
 
   if (file) {
-    urlImage = `${process.env.DEV_HOSTNAME}/${file.path}`;
+    urlImage = `${process.env.SERVER_HOSTNAME}/${file.path}`;
   }
 
   const newUser = new User({
@@ -117,7 +117,7 @@ const updateWithRoleAdmin = async (req, res) => {
 const uploadAvatar = async (req, res) => {
   const { file, user } = req;
 
-  const urlImage = `${process.env.DEV_HOSTNAME}/${file.path}`;
+  const urlImage = `${process.env.SERVER_HOSTNAME}/${file.path}`;
 
   try {
     await User.findByIdAndUpdate(user._id, {
