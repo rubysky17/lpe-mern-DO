@@ -1,5 +1,5 @@
-import React from "react";
 import { demoAction } from "core/redux/actions/appAction";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 function Demo() {

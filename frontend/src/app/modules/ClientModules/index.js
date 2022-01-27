@@ -56,6 +56,10 @@ import LifeMap from "./lifeMap";
 // Demo
 import Demo from "./demo";
 
+// Corperate
+
+import { Education, Performance, Corporation, Coach } from "./cooperate";
+
 const Client = {
   Home,
   Login,
@@ -99,6 +103,10 @@ const Client = {
   BlogDetail,
   LifeMap,
   Demo,
+  Performance,
+  Education,
+  Corporation,
+  Coach,
 };
 
 export default Client;

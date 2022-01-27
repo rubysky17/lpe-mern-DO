@@ -22,12 +22,12 @@ import "./styles/styles.scss";
 
 const ButtonSubmit = styled(Button)`
   color: #fff;
-  background: #007bff;
+  background: #3777bc;
   padding: 10px 20px;
 
   :hover {
     color: #fff;
-    background: #007bff;
+    background: #6499e7;
   }
 `;
 

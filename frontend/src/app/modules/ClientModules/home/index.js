@@ -38,22 +38,22 @@ export default function Home() {
       cat_icon: <i className="fad fa-building"></i>,
       title: t("performance"),
       // description: "Giới thiệu sơ lược về khóa học dành cho tin tức",
-      link: "/",
+      link: "/hop-tac/toi-uu-thanh-tich",
     },
     {
       cat_icon: <i className="far fa-chart-line"></i>,
       title: t("corporation"),
-      link: "/",
+      link: "/hop-tac/huan-luyen-doanh-nghiep",
     },
     {
       cat_icon: <i className="fas fa-graduation-cap"></i>,
       title: t("education"),
-      link: "/",
+      link: "/hop-tac/dao-tao-the-he-tre",
     },
     {
       cat_icon: <i className="fas fa-users"></i>,
       title: t("coach"),
-      link: "/",
+      link: "/hop-tac/tu-van-tri-lieu-ca-nhan",
     },
     {
       cat_icon: <i className="fas fa-shopping-cart"></i>,

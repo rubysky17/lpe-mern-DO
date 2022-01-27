@@ -37,5 +37,9 @@
   "admin": "Admin - LPE",
   "account_detail": "Account Detail - LPE",
   "blog_page": "Blog Page - LPE",
-  "life_map": "Life Map - LPE"
+  "life_map": "Life Map - LPE",
+  "performance": "Performance - LPE",
+  "education": "Education - LPE",
+  "coach": "Coach - LPE",
+  "corporation": "Corporation - LPE"
 }

@@ -24,6 +24,10 @@ export const URL_PATH_CLIENT = {
   BLOG_LIST: "/bai-dang",
   BLOG_DETAIL: "/bai-dang/:url",
   LIFE_MAP: "/life-map",
+  PERFORMANCE: "/hop-tac/toi-uu-thanh-tich",
+  CORPORATION: "/hop-tac/huan-luyen-doanh-nghiep",
+  EDUCATION: "/hop-tac/dao-tao-the-he-tre",
+  COACH: "/hop-tac/tu-van-tri-lieu-ca-nhan",
   DEMO: "/demo",
 };
 
@@ -248,6 +252,26 @@ export const publicRoutes = [
     component: Client.LifeMap,
     exact: true,
     path: URL_PATH_CLIENT.LIFE_MAP,
+  },
+  {
+    component: Client.Coach,
+    exact: true,
+    path: URL_PATH_CLIENT.COACH,
+  },
+  {
+    component: Client.Performance,
+    exact: true,
+    path: URL_PATH_CLIENT.PERFORMANCE,
+  },
+  {
+    component: Client.Education,
+    exact: true,
+    path: URL_PATH_CLIENT.EDUCATION,
+  },
+  {
+    component: Client.Corporation,
+    exact: true,
+    path: URL_PATH_CLIENT.CORPORATION,
   },
 ];
 

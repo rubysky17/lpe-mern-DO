@@ -46,19 +46,23 @@ export const CONTENT_MENU = [
   },
   {
     title: "cooperate",
-    url: "/hop-tac",
+    url: "/",
     childMenu: [
       {
         title: "performance",
-        url: "/",
+        url: "/hop-tac/toi-uu-thanh-tich",
       },
       {
         title: "corporation",
-        url: "/",
+        url: "/hop-tac/huan-luyen-doanh-nghiep",
       },
       {
         title: "education",
-        url: "/",
+        url: "/hop-tac/dao-tao-the-he-tre",
+      },
+      {
+        title: "coaching",
+        url: "/hop-tac/tu-van-tri-lieu-ca-nhan",
       },
     ],
   },
