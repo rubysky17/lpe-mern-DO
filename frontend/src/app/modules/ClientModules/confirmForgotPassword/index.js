@@ -1,89 +1,58 @@
+import { useState } from "react";
+import axios from "axios";
+import { useParams, useHistory } from "react-router-dom";
+import useSiteTitle from "core/hooks/useSiteTitle";
+import * as Yup from "yup";
+import { FastField, Form, Formik } from "formik";
+
+// component
 import LPEButton from "app/components/button";
-import TextInput from "app/components/textInput";
+import InputField from "app/components/customField/inputField";
+import { styled } from "@mui/material/styles";
+import { Button } from "@mui/material";
+
+// constant
 import {
   API_ENDPOINT,
   CODE_SUCCESS,
   VERIFY_FORGET_PASSWORD,
 } from "app/const/Api";
-import axios from "axios";
-import useSiteTitle from "core/hooks/useSiteTitle";
-import { useRef, useState } from "react";
-import { useParams } from "react-router-dom";
-import { useHistory } from "react-router-dom";
-
-// component
-
-// constant
+import { isEmpty } from "core/utils/isEmpty";
 
 // styles
 import "./styles/styles.scss";
 
-// const useStyles = makeStyles(() => ({
-//   confirmBtn: {
-//     marginTop: "10px",
-//     marginBottom: "10px",
-//     backgroundColor: "#3777BC",
-//     color: "#fff",
-//     textTransform: "capitalize",
-//     fontWeight: "bold",
-//     "&:hover": {
-//       backgroundColor: "#6499e7",
-//     },
-//   },
-// }));
+const ButtonSubmit = styled(Button)`
+  color: #fff;
+  background: #3777bc;
+
+  :hover {
+    color: #fff;
+    background: #3777bc;
+  }
+`;
+
+const passRegExp =
+  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}$/;
 
 function VerifyForgotPassword() {
   useSiteTitle("confirm_forgot_password");
-  let { token } = useParams();
+
+  const { token } = useParams();
   const history = useHistory();
-  const refForm = useRef();
-  // const classes = useStyles();
   const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({});
 
-  const handleSubmit = () => {
-    const password = refForm.current["password"].value;
-    const repassword = refForm.current["repassword"].value;
-
-    if (!password) {
-      setError({
-        password: "Không được bỏ trống",
-      });
-
-      refForm.current["password"].focus();
-      return;
-    }
-
-    if (password.trim().length) {
-      if (password.length < 6) {
-        setError({
-          password: "Mật khẩu không được nhỏ hơn 6 ký tự",
-        });
-        return;
-      } else {
-        if (password.trim() !== repassword.trim()) {
-          setError({
-            repassword: "Không khớp với mật khẩu trên",
-          });
-          refForm.current["repassword"].focus();
-          return;
-        }
-      }
-    }
-
-    changePasswordAction(repassword);
-  };
-
-  const changePasswordAction = async (submitData) => {
-    setError({});
+  const handleSubmit = async (data) => {
+    setError("");
     setLoading(true);
 
     await axios({
       method: "POST",
       url: API_ENDPOINT + VERIFY_FORGET_PASSWORD,
       data: {
-        password: submitData,
+        password: data.rePassword,
       },
       headers: {
         token: `${token}`,
@@ -97,17 +66,32 @@ function VerifyForgotPassword() {
       })
       .catch(() => {
         setLoading(false);
-        setError({
-          repassword: "Hết hạn truy xuất đường dẫn này!!",
-        });
+        setError("Hết hạn truy xuất đường dẫn này!!");
       });
   };
+
+  const initialValues = {
+    password: "",
+    rePassword: "",
+  };
+
+  const validationSchema = Yup.object().shape({
+    password: Yup.string()
+      .required("Vui lòng không để trống")
+      .matches(
+        passRegExp,
+        "Mật khẩu có ít nhất 8 ký tự, bao gồm chữ thường, số và ít nhất 1 ký tự in hoa, ký tự đặc biệt."
+      ),
+    rePassword: Yup.string()
+      .required("Vui lòng không để trống")
+      .oneOf([Yup.ref("password"), null], "Mật khẩu không khớp"),
+  });
 
   const renderUI = (step) => {
     switch (step) {
       case 0:
         return (
-          <main className="forgetContainer">
+          <main className="submitForgetContainer">
             <div className="formContainer">
               <div className="formHeading">
                 <h5>Xác nhận đổi mật khẩu mới</h5>
@@ -117,37 +101,59 @@ function VerifyForgotPassword() {
                 Vui lòng nhập mật khẩu mới cho tài khoản của bạn.
               </p>
 
-              <form className="formInput" ref={refForm}>
-                <TextInput
-                  label="Mật khẩu mới"
-                  placeHolder="Nhập mật khẩu mới"
-                  type="password"
-                  name="password"
-                  error={error.password}
-                  typeInput="text"
-                />
+              {error.length > 0 && <p className="text-danger">{error}</p>}
 
-                <TextInput
-                  label="Xác nhận mật khẩu mới"
-                  placeHolder="Nhập lại mật khẩu mới"
-                  type="password"
-                  name="repassword"
-                  error={error.repassword}
-                  typeInput="text"
-                />
+              <Formik
+                initialValues={initialValues}
+                validationSchema={validationSchema}
+                onSubmit={handleSubmit}
+              >
+                {(formikProps) => {
+                  const { values, errors, touched } = formikProps;
 
-                <div className="wrapperButton">
-                  <LPEButton
-                    name="Xác nhận"
-                    // classStyled={classes.confirmBtn}
-                    action={handleSubmit}
-                    loading={loading}
-                  />
-                </div>
-              </form>
+                  console.log({ values, errors, touched });
+
+                  return (
+                    <Form className="row py-3 m-0 ">
+                      <div className="col-12 mb-3 mb-md-0">
+                        <FastField
+                          name="password"
+                          type="password"
+                          component={InputField}
+                          label="Mật khẩu"
+                          placeholder="Nhập mật khẩu"
+                          className="w-100 mb-2 mb-md-4"
+                        />
+                      </div>
+
+                      <div className="col-12 mb-3 mb-md-0">
+                        <FastField
+                          name="rePassword"
+                          type="password"
+                          component={InputField}
+                          label="Nhập lại mật khẩu"
+                          placeholder="Nhập lại mật khẩu"
+                          className="w-100 mb-4"
+                        />
+                      </div>
+
+                      <div className="col-12 justify-content-end d-flex">
+                        <ButtonSubmit
+                          type="submit"
+                          disabled={!isEmpty(errors) || loading}
+                        >
+                          Xác nhận
+                          {loading && <div className="loader ml-1"></div>}
+                        </ButtonSubmit>
+                      </div>
+                    </Form>
+                  );
+                }}
+              </Formik>
             </div>
           </main>
         );
+
       case 1:
         return (
           <main className="forgetContainer">
@@ -156,19 +162,18 @@ function VerifyForgotPassword() {
                 <h5>Lấy lại mật khẩu thành công</h5>
               </div>
 
-              <p className="descText">
+              <p className="descText px-3">
                 Tài khoản của bạn đã được tạo mật khẩu mới
               </p>
 
-              <p className="descText">
+              <p className="descText px-3">
                 Giờ đây bạn có thể đăng nhập và sử dụng tài khoản.
               </p>
 
-              <div className="formInput">
+              <div className="formInput mt-3">
                 <LPEButton
                   name="Đăng nhập"
-                  // classStyled={classes.confirmBtn}
-                  action={() => {
+                  handleOnClick={() => {
                     history.push("/dang-nhap");
                   }}
                 />

@@ -17,7 +17,7 @@ function ForgetPassword() {
   const history = useHistory();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({});
-  const [counter, setCounter] = useState(10);
+  const [counter, setCounter] = useState(60);
   const issubmitForget = Boolean(localStorage.getItem("isSubmitForget"));
   const refForm = useRef();
 
@@ -50,7 +50,7 @@ function ForgetPassword() {
 
   // Check the first load page able to apply counter
   useEffect(() => {
-    issubmitForget ? setCounter(10) : setCounter(0);
+    issubmitForget ? setCounter(60) : setCounter(0);
     issubmitForget ? setLoading(true) : setLoading(false);
   }, [issubmitForget]);
 
