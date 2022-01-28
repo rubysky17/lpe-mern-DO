@@ -1,5 +1,5 @@
-import axios from "axios";
 import { useState, useRef, useEffect } from "react";
+import axios from "axios";
 import { useHistory } from "react-router-dom";
 import useSiteTitle from "core/hooks/useSiteTitle";
 
@@ -17,19 +17,42 @@ function ForgetPassword() {
   const history = useHistory();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({});
-  const [counter, setCounter] = useState(60);
+  const [counter, setCounter] = useState(10);
+  const issubmitForget = Boolean(localStorage.getItem("isSubmitForget"));
   const refForm = useRef();
 
+  // Life cycle for timer function to render new state of time
   useEffect(() => {
     const timer =
       counter > 0 &&
       setInterval(() => {
         setCounter((prevState) => prevState - 1);
       }, 1000);
+
     return () => {
       clearInterval(timer);
     };
   }, [counter]);
+
+  // Check to active button submit
+  useEffect(() => {
+    if (counter === 0) {
+      setLoading(false);
+    }
+  }, [counter]);
+
+  // Check to remove counter in localstorage
+  useEffect(() => {
+    if (counter === 0 && issubmitForget) {
+      localStorage.removeItem("isSubmitForget");
+    }
+  }, [counter, issubmitForget]);
+
+  // Check the first load page able to apply counter
+  useEffect(() => {
+    issubmitForget ? setCounter(10) : setCounter(0);
+    issubmitForget ? setLoading(true) : setLoading(false);
+  }, [issubmitForget]);
 
   const handleCancel = () => {
     history.goBack();
@@ -55,18 +78,16 @@ function ForgetPassword() {
       }
     }
 
+    // Save localstorage and countdown 60s
+    localStorage.setItem("isSubmitForget", true);
+    setLoading(true);
+    setCounter(60);
+
     forgetAction(email);
   };
 
   const forgetAction = async (email) => {
     setError({});
-    setLoading(true); //disable nút
-
-    setTimeout(() => {
-      setLoading(false); //active nút
-    }, 60000);
-
-    setCounter(60);
 
     await axios({
       method: "POST",
@@ -81,7 +102,7 @@ function ForgetPassword() {
         }
       })
       .catch(() => {
-        setLoading(false);
+        setLoading(false); // active button
 
         setError({
           email: "Email không được tìm thấy",
@@ -111,7 +132,7 @@ function ForgetPassword() {
               typeInput="text"
             />
 
-            <p className="text-warning text-left">
+            <p className="text-warning text-left mb-3">
               {loading && "Gửi lại nếu bạn không nhận được mail"}
             </p>
 
@@ -119,7 +140,6 @@ function ForgetPassword() {
               <LPEButton
                 handleOnClick={handleCancel}
                 classStyled="forgot__btn--cancel mr-3"
-                disabled={loading}
                 name="Hủy"
               />
 
@@ -129,6 +149,7 @@ function ForgetPassword() {
                   classStyled="forgot__btn--save"
                   disabled={loading}
                   name={loading ? `Gửi lại sau ${counter}s` : "Tìm kiếm"}
+                  loading={loading}
                 />
               </div>
             </div>
