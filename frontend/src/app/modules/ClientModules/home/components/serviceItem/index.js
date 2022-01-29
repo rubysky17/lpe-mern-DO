@@ -12,15 +12,9 @@ function ServiceItem({ service }) {
         <div className="service-item-caption">
           <h2>{service.title}</h2>
 
-          <p>{service.description}</p>
+          <p className="mb-0">{service.description}</p>
 
-          {service.redirect ? (
-            <a href={service.redirect} target="_blank" rel="noreferrer">
-              Đi tới
-            </a>
-          ) : (
-            <Link to={service.link}>Đi tới</Link>
-          )}
+          {!service.description && <Link to={service.link}>Đi tới</Link>}
         </div>
       </div>
     </div>

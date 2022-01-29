@@ -57,7 +57,8 @@ function LifeMap() {
       },
       detail: [
         {
-          text: "ABC",
+          text: "Điểm bắt đầu",
+          type: "heading",
         },
       ],
     },
@@ -72,7 +73,8 @@ function LifeMap() {
       },
       detail: [
         {
-          text: "ABC",
+          text: "Xây dựng ước mơ huấn luyện giúp đỡ những người khác có được sự rõ ràng và tập trung trong cuộc sống của họ, giải quyết những thách thức cá nhân và nghề nghiệp, và xây dựng một cuộc sống viên mãn hơn.",
+          type: "description",
         },
       ],
     },
@@ -87,7 +89,8 @@ function LifeMap() {
       },
       detail: [
         {
-          text: "ABC",
+          text: "Thực hiện Bước đầu tiên Hướng tới Sự nghiệp trở thành nhà tư vấn và nhận khách hàng bất kỳ đâu trên toàn quốc. Tận dụng phương pháp đã được chứng minh của ICPC để trở thành nhà huấn luyện thành công",
+          type: "description",
         },
       ],
     },
@@ -102,7 +105,8 @@ function LifeMap() {
       },
       detail: [
         {
-          text: "ABC",
+          text: "Đã đến lúc Việt Nam cần có một thế hệ kế thừa những điều tôi đã tạo dựng nên ở Đại học Cuộc Đời. Là cánh tay nối dài của tôi để lan toả giá trị đi khắp Việt Nam.",
+          type: "description",
         },
       ],
     },
@@ -120,7 +124,16 @@ function LifeMap() {
       },
       detail: [
         {
-          text: "Thầy ông nội nè con!!!",
+          type: "heading",
+          text: "Lv1 Discover your genius inside (Chương trình dành cho thanh thiếu niên)",
+        },
+        {
+          type: "description",
+          text: "Khám Phá Thiên Tài Trong Bạn",
+        },
+        {
+          type: "text",
+          text: 'Khác với người lớn, trẻ em như những tờ giấy trắng tinh có thể bị vấy bẩn nếu không được đào tạo và hướng dẫn đúng đắn. Khi cha mẹ trao cho con những định hướng và điều kiện phát triển phù hợp, con cái sẽ bước ra khỏi vùng "ngỗ nghịch" của độ tuổi thanh thiếu niên và dần dần hình thành "cái tôi đầy tài năng" bên trong mình.',
         },
       ],
       contentPosition: "top",
@@ -137,10 +150,19 @@ function LifeMap() {
       },
       detail: [
         {
-          text: "Hong pé ơi",
+          type: "heading",
+          text: "Lv2 Shine your future (Chương trình dành cho thanh thiếu niên)",
+        },
+        {
+          type: "description",
+          text: "Thắp Sáng Tương Lai",
+        },
+        {
+          type: "text",
+          text: "Nuôi dưỡng khả năng sáng tạo sẽ giúp trẻ sản sinh ra khí chất thiên tài, thậm chí vượt xa cả sự mong đợi từ cha mẹ. Sẽ thế nào khi các em hiểu được bản thân mình muốn trở thành ai trong tương lai và luôn học tập, phấn đấu vì mục tiêu của chính mình đặt ra?",
         },
       ],
-      contentPosition: "top",
+      contentPosition: "bottom",
     },
     {
       id: 3,
@@ -153,7 +175,16 @@ function LifeMap() {
       },
       detail: [
         {
-          text: "ABC",
+          type: "heading",
+          text: "OAC",
+        },
+        {
+          type: "description",
+          text: "Trại Thiếu Niên Xuất Chúng (Chương trình dành cho thanh thiếu niên)",
+        },
+        {
+          type: "text",
+          text: "Khi con cái chúng ta bước vào tuổi vị thành niên, các đang trong giai đoạn tìm tòi, khám phá và bỡ ngỡ trước mọi thứ. Và chương trình là một cơ hội để các em bứt ra khỏi vùng an toàn hằng ngày để trải nghiệm những tình huống, kiến thức hoàn toàn mới mẻ. Để trở nên vững vàng trước những vấn đề tương lai.",
         },
       ],
     },
@@ -168,7 +199,16 @@ function LifeMap() {
       },
       detail: [
         {
-          text: "ABC",
+          type: "heading",
+          text: "Beauty from within (Khóa học dành cho phụ nữ)",
+        },
+        {
+          type: "description",
+          text: "Lv1 Đẹp Từ Bên Trong",
+        },
+        {
+          type: "text",
+          text: 'Phụ nữ luôn mang trên vai những gánh nặng khác nhau trong cuộc sống. Họ thường chỉ quan tâm đến việc chăm lo cho người khác và quên đi chính bản thân mình. Nhưng, "sự tự tin" mới chính là vẻ đẹp vốn có của người phụ nữ. Và mỗi người cần học cách để "tìm lại" vẻ đẹp vốn có từ bên trong mình.',
         },
       ],
     },
@@ -183,7 +223,16 @@ function LifeMap() {
       },
       detail: [
         {
-          text: "ABC",
+          type: "heading",
+          text: "Love and belove (khóa học dành cho phụ nữ)",
+        },
+        {
+          type: "description",
+          text: "Lv2 Yêu Và Được Yêu",
+        },
+        {
+          type: "text",
+          text: "Chúng ta không thể mong cầu tình yêu thương từ người khác nếu bản thân chưa hiểu, chưa biết cách thực hành tình yêu chân thành với chính mình. Bất kỳ ai cũng xứng đáng ở bên cạnh một người dành cho mình tình yêu trọn vẹn, bất kỳ ai cũng có quyền xinh đẹp, được yêu & viên mãn.",
         },
       ],
     },
@@ -198,7 +247,16 @@ function LifeMap() {
       },
       detail: [
         {
-          text: "ABC",
+          type: "heading",
+          text: "Crisis Conqqueror Series (Chương trình học phát triển cá nhân)",
+        },
+        {
+          type: "description",
+          text: "Chuỗi khóa học chinh phục khủng hoảng",
+        },
+        {
+          type: "text",
+          text: "Đây là chuỗi 5 khóa học với những công cụ sắc bén giúp đánh thức nguồn lực từ bên trong bạn. Mỗi người sẽ có sự thay đổi vượt bậc trong tư duy, thiết lập kế hoạch mới và thực hiện những quy trình đầy sức mạnh để chúng ta thoát khỏi tình trạng hiện tại. Đổi mối cách bạn sống cuộc đời này, đảm bảo, linh hoạt và sẵn sàng trước mọi biến cố có thể đến. Kể cả là Covid.",
         },
       ],
     },
@@ -213,7 +271,12 @@ function LifeMap() {
       },
       detail: [
         {
-          text: "ABC",
+          type: "heading",
+          text: "Sách Obsessed (Chương trình học phát triển cá nhân)",
+        },
+        {
+          type: "text",
+          text: "Tham gia vào một cuộc phiêu lưu thông qua hành trình đọc sách và trải nghiệm thực tế cuốn sách trong 108 ngày. Áp dụng, thực hành và thuần thục để trở thành người xuất chúng và thành công mai sau.",
         },
       ],
     },
@@ -228,7 +291,12 @@ function LifeMap() {
       },
       detail: [
         {
-          text: "ABC",
+          type: "heading",
+          text: "Trại huấn luyện lạnh đạo (Chương trình học dành cho lãnh đạo)",
+        },
+        {
+          type: "text",
+          text: "Hội trại Lãnh đạo là một triết lý và là môi trường học khắc nghiệt giúp tăng cường nhận thức và khiến nhà lãnh đạo bộc phát được tài năng bên trong bản thân. Chúng tôi dựa trên thực tiễn này trong bối cảnh công việc, cho dù đó là với các công ty khởi nghiệp, chính phủ, tổ chức phi lợi nhuận, giáo dục, chuyển đổi nghề nghiệp, hoặc hơn thế nữa.",
         },
       ],
     },
@@ -243,7 +311,12 @@ function LifeMap() {
       },
       detail: [
         {
-          text: "ABC",
+          type: "heading",
+          text: "Vision leadership (khóa học dành cho lãnh đạo)",
+        },
+        {
+          type: "text",
+          text: "Làm thế nào để đẩy doanh nghiệp phát triển tốt ở giai đoạn khủng hoảng? Ở giai đoạn khủng hoảng hiện tại, bạn có thể có rất nhiều kiến thức chuyên môn, nhưng thứ sẽ giúp bạn vẫn phát triển tốt lại chính là một Tầm nhìn đủ lớn rộng & những cách thức áp dụng Tâm lý học vào việc kinh doanh.",
         },
       ],
     },
@@ -258,7 +331,16 @@ function LifeMap() {
       },
       detail: [
         {
-          text: "ABC",
+          type: "heading",
+          text: "Parenting (dành cho các bậc phụ huynh)",
+        },
+        {
+          type: "description",
+          text: "Nghệ Thuật Nuôi Dạy Con Xuất Chúng",
+        },
+        {
+          type: "text",
+          text: "Tất cả chúng ta đều làm cha, làm mẹ lần đầu tiên. Chúng ta chưa hề được định hướng hoặc có kinh nghiệm trong việc đó. Và tại đây bạn sẽ học được cách giao tiếp, định hướng, và hoà giải phù hợp với con cái mình, đồng thời hiểu hơn về căn nguyên sâu xa của những vấn đề đó.",
         },
       ],
     },
@@ -520,7 +602,15 @@ function LifeMap() {
 
                       <div className={`big_popup`}>
                         {island.detail.map((text) => {
-                          return <p>{text.text}</p>;
+                          return (
+                            <>
+                              {text.type === "heading" && <h4>{text.text}</h4>}
+                              {text.type === "description" && (
+                                <h6>{text.text}</h6>
+                              )}
+                              {text.type === "text" && <p>{text.text}</p>}
+                            </>
+                          );
                         })}
                       </div>
                     </div>
@@ -566,7 +656,15 @@ function LifeMap() {
 
                       <div className={`small_popup ${island.contentPosition}`}>
                         {island.detail.map((text) => {
-                          return <p>{text.text}</p>;
+                          return (
+                            <>
+                              {text.type === "heading" && <h4>{text.text}</h4>}
+                              {text.type === "description" && (
+                                <h6>{text.text}</h6>
+                              )}
+                              {text.type === "text" && <p>{text.text}</p>}
+                            </>
+                          );
                         })}
                       </div>
                     </div>
@@ -677,7 +775,13 @@ function LifeMap() {
       <LPEModal ref={refModal}>
         <div className="mobile-popup-modal">
           {content?.map((text) => {
-            return <p>{text.text}</p>;
+            return (
+              <>
+                {text.type === "heading" && <h4>{text.text}</h4>}
+                {text.type === "description" && <h6>{text.text}</h6>}
+                {text.type === "text" && <p>{text.text}</p>}
+              </>
+            );
           })}
         </div>
       </LPEModal>

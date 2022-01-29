@@ -10,6 +10,7 @@ import BannerCarousel from "./components/bannerCarousel";
 import { LPELightBox } from "app/components/lightBox";
 import { getIdVideo } from "core/utils/videoLinkUtil";
 import LazyLoad from "react-lazyload";
+import { Link } from "react-router-dom";
 
 // import media file
 import hinh01 from "assets/images/source/hinh01.jpg";
@@ -20,7 +21,7 @@ import thuthanh from "assets/images/source/thu-thanh.jpg";
 import bonDat from "assets/images/source/bon-dat.jpg";
 import ngocThanh from "assets/images/source/ngoc-thanh.jpg";
 
-import vasVideo from "assets/images/source/banner-video.jpg";
+// import vasVideo from "assets/images/source/banner-video.jpg";
 import personalTest from "assets/images/source/personal-test.jpg";
 
 import "./styles/styles.scss";
@@ -35,34 +36,34 @@ export default function Home() {
 
   const service_list = [
     {
-      cat_icon: <i className="fad fa-building"></i>,
+      cat_icon: <i className="fal fa-building"></i>,
       title: t("performance"),
-      // description: "Giới thiệu sơ lược về khóa học dành cho tin tức",
       link: "/hop-tac/toi-uu-thanh-tich",
     },
     {
-      cat_icon: <i className="far fa-chart-line"></i>,
+      cat_icon: <i className="fal fa-chart-bar"></i>,
       title: t("corporation"),
       link: "/hop-tac/huan-luyen-doanh-nghiep",
     },
     {
-      cat_icon: <i className="fas fa-graduation-cap"></i>,
+      cat_icon: <i className="fal fa-user-graduate"></i>,
       title: t("education"),
       link: "/hop-tac/dao-tao-the-he-tre",
     },
     {
-      cat_icon: <i className="fas fa-users"></i>,
+      cat_icon: <i className="fal fa-users"></i>,
       title: t("coach"),
       link: "/hop-tac/tu-van-tri-lieu-ca-nhan",
     },
     {
-      cat_icon: <i className="fas fa-shopping-cart"></i>,
+      cat_icon: <i className="fal fa-book-reader"></i>,
       title: t("individual"),
-      link: "/",
+      link: "/chuong-trinh-huan-luyen",
     },
     {
-      cat_icon: <i className="fas fa-newspaper"></i>,
+      cat_icon: <i className="fal fa-newspaper"></i>,
       title: t("lpe_adventure_club"),
+      description: "Sắp ra mắt",
       link: "#",
     },
   ];
@@ -191,7 +192,7 @@ export default function Home() {
         </Swiper>
       </section>
 
-      <section>
+      {/* <section>
         <div className="py-5 text-center">
           <Title
             title={t("video_title")}
@@ -215,7 +216,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className="container testimonials">
         <Title
@@ -247,9 +248,12 @@ export default function Home() {
         }}
       >
         <div className="wrapper-content_person">
-          <h2>{t("personality")}</h2>
+          <h2>{t("life_map")}</h2>
 
-          <p>{t("comming_soon")}</p>
+          {/* <p>{t("comming_soon")}</p> */}
+          <Link to="/life-map" className="btn btn-success">
+            Đi tới
+          </Link>
         </div>
       </section>
 

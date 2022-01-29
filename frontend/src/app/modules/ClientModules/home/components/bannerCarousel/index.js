@@ -15,6 +15,7 @@ import rossi from "assets/images/rossi.jpg";
 import Video from "assets/video-demo.mp4";
 import vasThumbnail from "assets/images/source/thumbnail-vas.jpg";
 import gtThumbnail from "assets/images/source/thumbnail-gt.jpg";
+import rossiThumbnail from "assets/images/source/thumbnail-rossi.jpg";
 
 import "swiper/components/pagination/pagination.min.css";
 
@@ -54,8 +55,7 @@ const topUpSrc = [
     desc: "intro_rossi",
     linkVideo: "https://www.youtube.com/watch?v=4N5WAMJuo6U",
     linkInfo: "",
-    imgVideo:
-      "https://images.pexels.com/photos/14111/pexels-photo-14111.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    imgVideo: rossiThumbnail,
   },
 ];
 
