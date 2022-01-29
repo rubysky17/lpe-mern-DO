@@ -43,7 +43,7 @@ services:
     environment:
       # URL này có nghĩa, khi bạn muốn kết nối bên trong container với một container khác mà không để lộ PORT
       # container service name và port mà nó đang chạy
-      - MONGODB_URI=MONGODB_URI=mongodb://root:example@mongoDb:27017/dockerizingMernApplicationTestDB?authSource=admin
+      - MONGODB_URI=mongodb://root:example@mongoDb:27017/dockerizingMernApplicationTestDB?authSource=admin
       - CHOKIDAR_USEPOLLING=true #for hot reloading
 
     depends_on: # Không chạy cho đến khi mongoDB bắt đầu
