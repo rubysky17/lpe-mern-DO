@@ -75,21 +75,35 @@ function MrVas() {
   const AboutMrVas = () => {
     return (
       <>
-        <h3 className="introName">VASANTH GOPALAN</h3>
+        <h3 className="introName">Mr. Vas - Coach Vas - Vasanth Gopalan</h3>
 
-        {[0, 1, 2].map((info, index) => {
-          return (
-            <p className="introTestDesc" key={index}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-              dapibus dolor turpis, eget ultrices erat volutpat eu. Aliquam
-              tincidunt risus et nisi vulputate, at mollis tellus rutrum. Duis
-              interdum lectus ex, ac elementum ipsum laoreet quis. Sed sagittis
-              mi odio, sed mollis lectus luctus at. Aliquam tellus neque,
-              fringilla vitae urna ac, tincidunt iaculis enim. Aliquam massa
-              dui, lobortis vitae ultrices
-            </p>
-          );
-        })}
+        <p className="introTestDesc mb-3">
+          - Mr. Vas là Nhà sáng lập và kiến tạo nên Leading Performance Group.
+          Ông đã dành gần 30 năm hoạt động quân đội, 20 năm nghiên cứu-thực hành
+          NLP, tất cả đều là để phục vụ con người, giúp cho mọi người được sống
+          một cuộc đời hạnh phúc trọn vẹn.
+        </p>
+
+        <p className="introTestDesc mb-3">
+          - Sau khi kết thúc khoảng thời gian hoạt động tại quân đội, Mr. Vas
+          nhận ra được sự nghiệp của mình sẽ bắt đầu từ đây. Ông vận dụng những
+          trải nghiệm của mình trong suốt 30 năm huấn luyện sĩ quan, đồng thời
+          dành công sức & thời gian để tìm tòi, nghiên cứu về các ngành Khoa học
+          Tâm Trí khác nhau. Để tự kiến tạo nên chuỗi Đại học Cuộc Đời - Nơi mỗi
+          người có thể tìm lại được giá trị đích thực của bản thân mình, học
+          cách vận dụng các nguồn lực và phát triển nó một cách tuyệt vời nhất
+          cho sự nghiệp - mối quan hệ - sức khoẻ của mình.
+        </p>
+
+        <p className="introTestDesc ">
+          - Đây là cốt lõi của những gì Vas mang đến cho khách hàng của mình.
+          Lập Trình Ngôn Ngữ Tư Duy (NLP) là chất xúc tác đã tạo nên sự thay đổi
+          đáng kể về định hướng trong mọi khía cạnh của cuộc đời Vas. Ông đã
+          sáng lập nên Leading Performance Group và đã phát triển nó thành một
+          công ty đào tạo thành công suốt hơn 12 năm hoạt động tại Singapore,
+          Malaysia, Indonesia, Việt Nam,... nơi mà thông qua đó ông thực hiện
+          Tầm Nhìn của mình.
+        </p>
       </>
     );
   };
@@ -211,7 +225,7 @@ function MrVas() {
         />
 
         <div className="row my-4">
-          {videoVas?.map((item) => {
+          {/* {videoVas?.map((item) => {
             return (
               <div className="col-12 col-md-6 col-lg-4 mb-3" key={item.id}>
                 <VasVideo
@@ -221,7 +235,42 @@ function MrVas() {
                 />
               </div>
             );
-          })}
+          })} */}
+          <div className="col-12 col-md-6 col-lg-4 mb-3">
+            <iframe
+              width="100%"
+              height="340"
+              src="https://www.youtube.com/embed/MTm9ckSaygs?list=PL_Semeu_FryBUpE-h6GCgwY8rj3qBQMBN"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
+
+          <div className="col-12 col-md-6 col-lg-4 mb-3">
+            <iframe
+              width="100%"
+              height="340"
+              src="https://www.youtube.com/embed/Let3SiiSl-0"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
+
+          <div className="col-12 col-md-6 col-lg-4 mb-3">
+            <iframe
+              width="100%"
+              height="340"
+              src="https://www.youtube.com/embed/bYu-cTghDxY"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
         </div>
       </div>
       <div className="container mt-5">

@@ -21,7 +21,7 @@ import thuthanh from "assets/images/source/thu-thanh.jpg";
 import bonDat from "assets/images/source/bon-dat.jpg";
 import ngocThanh from "assets/images/source/ngoc-thanh.jpg";
 
-// import vasVideo from "assets/images/source/banner-video.jpg";
+import vasVideo from "assets/images/source/banner-video.jpg";
 import personalTest from "assets/images/source/personal-test.jpg";
 
 import "./styles/styles.scss";
@@ -192,7 +192,7 @@ export default function Home() {
         </Swiper>
       </section>
 
-      {/* <section>
+      <section>
         <div className="py-5 text-center">
           <Title
             title={t("video_title")}
@@ -216,7 +216,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
       <section className="container testimonials">
         <Title

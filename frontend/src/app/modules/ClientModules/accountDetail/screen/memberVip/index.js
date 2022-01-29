@@ -1,32 +1,32 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./styles/styles.scss";
 
-const memberGift = [
-  {
-    img: "https://kt.city/static/gmb-tshirt.png",
-    content: "Áo thun miễn phí",
-  },
-  {
-    img: "https://kt.city/static/gmb-tshirt.png",
-    content: "Coupon 50%",
-  },
-  {
-    img: "https://kt.city/static/gmb-tshirt.png",
-    content: "Video mới nhất",
-  },
-  {
-    img: "https://kt.city/static/gmb-tshirt.png",
-    content: "Huy hiệu VIP",
-  },
-  {
-    img: "https://kt.city/static/gmb-tshirt.png",
-    content: "Ưu tiên hỗ trợ",
-  },
-  {
-    img: "https://kt.city/static/gmb-tshirt.png",
-    content: "Vé offline miễn phí",
-  },
-];
+// const memberGift = [
+//   {
+//     img: "https://kt.city/static/gmb-tshirt.png",
+//     content: "Áo thun miễn phí",
+//   },
+//   {
+//     img: "https://kt.city/static/gmb-tshirt.png",
+//     content: "Coupon 50%",
+//   },
+//   {
+//     img: "https://kt.city/static/gmb-tshirt.png",
+//     content: "Video mới nhất",
+//   },
+//   {
+//     img: "https://kt.city/static/gmb-tshirt.png",
+//     content: "Huy hiệu VIP",
+//   },
+//   {
+//     img: "https://kt.city/static/gmb-tshirt.png",
+//     content: "Ưu tiên hỗ trợ",
+//   },
+//   {
+//     img: "https://kt.city/static/gmb-tshirt.png",
+//     content: "Vé offline miễn phí",
+//   },
+// ];
 
 function MemberVip() {
   // Checking user is a VIP USER
@@ -35,24 +35,25 @@ function MemberVip() {
     <>
       <div className="isMemberVipBox">
         <div className="row">
-          <div className="col-12 col-lg-3 text-left text-lg-center">
+          {/* <div className="col-12 col-lg-3 text-left text-lg-center">
             <img
               src="https://kt.city/static/gmb-not-you.png"
               alt="https://kt.city/static/gmb-not-you.png"
               className="isMemberVipBoxImg"
             />
-          </div>
+          </div> */}
 
-          <div className="col-12 col-lg-9">
+          {/* <div className="col-12 col-lg-9">
             <p className="isMemberVipBoxText">
               Bạn chưa phải thành viên
               <span className="ml-1 text-warning">VIP</span>. Bấm nút dưới đây
               để tìm hiểu nhiều hơn về chương trình này.
             </p>
-          </div>
+          </div> */}
+          <p>Đang phát triển</p>
         </div>
 
-        <div
+        {/* <div
           className="row text-center"
           style={{
             justifyContent: "center",
@@ -81,7 +82,7 @@ function MemberVip() {
               </div>
             </div>
           );
-        })}
+        })} */}
       </div>
     </>
   );
