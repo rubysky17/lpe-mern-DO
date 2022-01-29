@@ -27,6 +27,7 @@ services:
       # - MONGODB_URI=MONGODB_URI=mongodb://root:example@mongoDb:27017/dockerizingMernApplicationTestDB?authSource=admin
       - MONGODB_URI=mongodb+srv://lpemember:Y7sw8OOYnTOJQf2e@clusterlpe.b49ua.mongodb.net/be_lpe?retryWrites=true&w=majority
       - CHOKIDAR_USEPOLLING=true #for hot reloading
+      # co
 
     # depends_on: # don't run untill mongoDb service will not start
     #   - mongoDb
