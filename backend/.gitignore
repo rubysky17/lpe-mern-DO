@@ -16,6 +16,10 @@
 # production
 /build
 
+
+# Public folder
+/public/images
+
 # misc
 .DS_Store
 *.pem
