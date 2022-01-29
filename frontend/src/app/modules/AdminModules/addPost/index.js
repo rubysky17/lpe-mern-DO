@@ -12,9 +12,9 @@ import { convertBlocksToHtml } from "core/utils/editorUtil";
 import { convertStringToSlug } from "core/utils/convertToSlug";
 
 import { EDITOR_TOOLS_BLOG } from "app/const/tools";
+import { postBlogAction } from "core/redux/actions/blogAction";
 
 import "./styles/index.scss";
-import { postBlogAction } from "core/redux/actions/blogAction";
 
 function AddPost() {
   const dispatch = useDispatch();

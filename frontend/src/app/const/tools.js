@@ -77,7 +77,7 @@ export const EDITOR_TOOLS_BLOG = {
               return {
                 success: 1,
                 file: {
-                  url: `https://lpe.vn/${res.data.url}`,
+                  url: `https://lpe.vn/api/${res.data.url}`,
                   // any other image data you want to store, such as width, height, color, extension, etc
                 },
               };
