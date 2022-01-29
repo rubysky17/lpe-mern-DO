@@ -108,6 +108,7 @@ function ChangePassword({ id }) {
           </div>
         </div>
       </form>
+
       <div className="row p-0">
         <div className="col-12 col-md-6">
           <LPEButton

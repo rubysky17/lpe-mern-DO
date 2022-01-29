@@ -1,76 +1,33 @@
 import { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import { convertFullDate, timeToUnix } from "core/utils/dateUtil";
-import { phoneValidate } from "core/utils/phoneUtil";
 import TextInput from "app/components/textInput";
 import LPEButton from "app/components/button";
 
-// import {
-//   KeyboardDatePicker,
-//   MuiPickersUtilsProvider,
-// } from "@material-ui/pickers";
+import LocalizationProvider from "@mui/lab/LocalizationProvider";
+import AdapterDateFns from "@mui/lab/AdapterDateFns";
+import DatePicker from "@mui/lab/DatePicker";
+import { TextField } from "@mui/material";
 
+import { phoneValidate } from "core/utils/phoneUtil";
+import { convertFullDate, timeToUnix } from "core/utils/dateUtil";
 import {
   deleteAvatarAction,
   updateAvatarAction,
-  updateUserAction,
 } from "core/redux/actions/userAction";
+import { updateUserAction } from "core/redux/actions/authAction";
 
 import "./styles/styles.scss";
-import { makeStyles } from "@mui/styles";
 
-const useStyles = makeStyles((theme) => ({
-  btnSave: {
-    marginTop: "10px",
-    marginBottom: "10px",
-    backgroundColor: "#3777BC",
-    color: "#fff",
-    textTransform: "capitalize",
-    fontSize: "16px",
-    "&:hover": {
-      backgroundColor: "#6499e7",
-    },
-  },
-  // datePicker: {
-  //   width: "100%",
-  //   "& > label": {
-  //     fontSize: "17px",
-  //     fontWeight: "bold",
-  //     color: "#333",
-  //     marginBottom: "0",
-  //     top: "17px",
-  //     fontFamily: "product-sans, sans-serif",
-  //   },
-  //   "& > label + .MuiInput-formControl": {
-  //     border: "1px solid #dbeaf5",
-  //     borderRadius: "5px",
-  //     padding: "10px",
-  //     marginTop: "3rem",
-  //   },
-  //   "& > label + .MuiInput-formControl:before": {
-  //     display: "none",
-  //   },
-  //   "&:focus > label + .MuiInput-formControl:before": {
-  //     display: "none",
-  //   },
-  //   "& .MuiInputLabel-shrink": {
-  //     transform: "unset",
-  //     transformOrigin: "unset",
-  //   },
-  // },
-}));
-
-function AccountInfo({ id, userInfo }) {
-  const classes = useStyles();
+function AccountInfo({ id }) {
+  const { loading, userInfo, error } = useSelector((state) => state.auth);
   const [birthDay, setBirthDay] = useState();
   const dispatch = useDispatch();
   const [loadingImage, setLoadingImage] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState({});
   const refForm = useRef();
   const hiddenRef = useRef(null);
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState("");
 
   useEffect(() => {
     userInfo && setBirthDay(convertFullDate(userInfo?.birthDay));
@@ -80,7 +37,6 @@ function AccountInfo({ id, userInfo }) {
 
   const handleDataSubmit = () => {
     setErrorMessage({});
-    setIsLoading(true);
 
     const dataSubmit = {};
     const errorMsg = {};
@@ -90,6 +46,10 @@ function AccountInfo({ id, userInfo }) {
     const phone = refForm.current["phone"].value;
     const identityCard = refForm.current["identityCard"].value;
     const address = refForm.current["address"].value;
+
+    dataSubmit["email"] = email;
+    dataSubmit["ICN"] = identityCard;
+    dataSubmit["address"] = address;
 
     // Checking Name
     if (!name.trim().length) {
@@ -103,10 +63,14 @@ function AccountInfo({ id, userInfo }) {
       dataSubmit["name"] = name;
     }
 
-    dataSubmit["email"] = email;
-    dataSubmit["ICN"] = identityCard;
-    dataSubmit["address"] = address;
-    dataSubmit["birthDay"] = timeToUnix(birthDay);
+    // Check birthday
+    if (birthDay < new Date(1900, 0, 1)) {
+      errorMsg["birthDay"] = "Ngày không hợp lệ";
+    } else if (birthDay > new Date()) {
+      errorMsg["birthDay"] = "Ngày không hợp lệ";
+    } else {
+      dataSubmit["birthDay"] = timeToUnix(birthDay);
+    }
 
     // Checking Phone
     if (phone.trim().length) {
@@ -120,22 +84,18 @@ function AccountInfo({ id, userInfo }) {
 
     dataSubmit["phone"] = phone;
 
+    console.log({ errorMsg });
+
     setErrorMessage(errorMsg);
 
     if (Object.keys(errorMsg).length === 0) {
-      handleSubmit(dataSubmit);
-    } else {
-      setIsLoading(false);
+      console.log({ dataSubmit });
+      dispatch(updateUserAction(id, dataSubmit));
     }
   };
 
-  const handleSubmit = (dataSubmit) => {
-    dispatch(updateUserAction(id, dataSubmit, setIsLoading));
-    setError({});
-  };
-
   const handleChangeImage = (e) => {
-    setError("");
+    setErrors("");
     setLoadingImage(true);
 
     const file = e.target.files[0];
@@ -146,7 +106,7 @@ function AccountInfo({ id, userInfo }) {
 
     if (!file.name.match(/\.(jpg|jpeg|png|gif)$/)) {
       setLoadingImage(false);
-      return setError("Chỉ hỗ trợ file hình ảnh");
+      return setErrors("Chỉ hỗ trợ file hình ảnh");
     }
 
     if (file.size / 1024 / 1024 < 1) {
@@ -160,7 +120,7 @@ function AccountInfo({ id, userInfo }) {
     } else {
       setLoadingImage(false);
 
-      setError("Chỉ hỗ trợ file ảnh tối đa 3MB");
+      setErrors("Chỉ hỗ trợ file ảnh tối đa 3MB");
     }
   };
 
@@ -169,6 +129,10 @@ function AccountInfo({ id, userInfo }) {
     const filename = path.replace(/^.*[\\/]/, "");
 
     dispatch(deleteAvatarAction(filename, setLoadingImage));
+  };
+
+  const handleChangeDate = (value) => {
+    setBirthDay(value);
   };
 
   return (
@@ -228,9 +192,10 @@ function AccountInfo({ id, userInfo }) {
                       <div className="loader image"></div>
                     )}
 
-                    {!!error.length && <p className="text-danger">{error}</p>}
+                    {!!errors.length && <p className="text-danger">{errors}</p>}
                   </div>
                 </div>
+
                 <div className="col-12 col-md-6">
                   <TextInput
                     placeHolder="Nguyễn Văn A"
@@ -289,32 +254,41 @@ function AccountInfo({ id, userInfo }) {
                   />
                 </div>
 
-                <div className="col-12 col-lg-6 mt-4">
-                  {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                    <KeyboardDatePicker
-                      className={classes.datePicker}
-                      id="date-picker-dialog"
+                <div className="col-12 col-lg-6 date-picker">
+                  <LocalizationProvider dateAdapter={AdapterDateFns}>
+                    <DatePicker
                       label="Ngày sinh"
-                      format="dd/MM/yyyy"
+                      onChange={handleChangeDate}
                       value={birthDay}
-                      onChange={handleDateChange}
-                      KeyboardButtonProps={{
-                        "aria-label": "change date",
-                      }}
-                      name="birthDay"
+                      error={errorMessage.birthDay}
+                      helperText={errorMessage.birthDay}
+                      format="dd-MM-yyyy"
+                      views={["year", "month", "day"]}
+                      openTo="year"
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          error={errorMessage.birthDay}
+                          helperText={errorMessage.birthDay}
+                          style={{
+                            width: "100%",
+                          }}
+                        />
+                      )}
                     />
-                  </MuiPickersUtilsProvider> */}
+                  </LocalizationProvider>
                 </div>
 
                 <div className="col-12 col-lg-6 mt-4">
                   <LPEButton
-                    action={handleDataSubmit}
+                    handleOnClick={handleDataSubmit}
                     name="Lưu lại"
-                    loading={isLoading}
                     fullWidth
                     sizeButton="large"
-                    classStyled={classes.btnSave}
+                    loading={loading}
                   />
+
+                  {error && <p className="text-danger mt-3">{error}</p>}
                 </div>
               </div>
             </div>

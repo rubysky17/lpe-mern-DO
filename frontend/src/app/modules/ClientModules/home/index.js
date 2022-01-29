@@ -196,7 +196,7 @@ export default function Home() {
         <div className="py-5 text-center">
           <Title
             title={t("video_title")}
-            description={t("video_desc")}
+            // description={t("video_desc")}
             textAlign="center"
           />
 
@@ -209,7 +209,9 @@ export default function Home() {
             <div
               className="btn-playVideo"
               onClick={() => {
-                handleOpenVideo("https://www.youtube.com/watch?v=bPB1hMOIQhw");
+                handleOpenVideo(
+                  "https://www.youtube.com/watch?v=ed3F3lkJCyg&t=33s"
+                );
               }}
             >
               <i className="fal fa-play"></i>

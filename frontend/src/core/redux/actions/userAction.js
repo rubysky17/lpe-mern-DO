@@ -6,7 +6,6 @@ import {
   REMOVE_AVATAR,
   UPLOAD_AVATAR,
   USERS,
-  USER_UPDATE,
 } from "app/const/Api";
 
 import {
@@ -18,12 +17,7 @@ import {
 import { showToast } from "core/utils/toastUtil";
 import { KEY_TOKEN } from "app/const/App";
 
-import {
-  DELETE_AVATAR,
-  GET_USER_INFO,
-  UPDATE_AVATAR,
-  UPDATE_USER,
-} from "../constant/authConstant";
+import { DELETE_AVATAR, UPDATE_AVATAR } from "../constant/authConstant";
 
 export const getIpLocalAction = () => {
   return (dispatch) => {
@@ -41,26 +35,6 @@ export const getIpLocalAction = () => {
         .catch((err) => console.log(err));
     } catch (err) {
       console.log(err.response.data);
-    }
-  };
-};
-
-export const getUserInfoAction = (id) => {
-  return async (dispatch) => {
-    try {
-      await axios({
-        url: API_ENDPOINT + USERS + `${id}`,
-        method: "GET",
-      })
-        .then((res) => {
-          dispatch({
-            type: GET_USER_INFO,
-            userInfo: res.data,
-          });
-        })
-        .catch((err) => console.log(err));
-    } catch (error) {
-      console.log(error);
     }
   };
 };
@@ -141,45 +115,6 @@ export const deleteAvatarAction = (filename, setLoadingImage) => {
         timeout: 5000,
       });
       console.log("error", error);
-    }
-  };
-};
-
-export const updateUserAction = (id, dataUpdate, setIsLoading) => {
-  const token = localStorage.getItem(KEY_TOKEN);
-
-  return async (dispatch) => {
-    try {
-      await axios({
-        url: API_ENDPOINT + USER_UPDATE + `${id}`,
-        method: "PUT",
-        data: dataUpdate,
-        headers: {
-          token: `${token}`,
-        },
-      })
-        .then((res) => {
-          dispatch({
-            type: UPDATE_USER,
-            userUpdate: dataUpdate,
-          });
-
-          setIsLoading(false);
-
-          showToast("success", "Cập nhật thông tin thành công", {
-            timeout: 5000,
-          });
-        })
-        .catch((err) => {
-          console.error(err.response.data);
-        });
-    } catch (error) {
-      console.log("error", error);
-      setIsLoading(false);
-
-      showToast("error", "Cập nhật thông tin thất bại", {
-        timeout: 5000,
-      });
     }
   };
 };

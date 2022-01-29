@@ -142,13 +142,13 @@ const deleteAvatar = async (req, res) => {
 
     const deleteUserAvatar = await User.findById(user._id).exec();
 
-    const getFileAvatarname = deleteUserAvatar.avatar
-      .split("/")
-      .slice(-1)
-      .pop();
+    // const getFileAvatarname = deleteUserAvatar.avatar
+    //   .split("/")
+    //   .slice(-1)
+    //   .pop();
 
     try {
-      fs.unlinkSync(`${getFileAvatarname}`);
+      // fs.unlinkSync(`${getFileAvatarname}`);
 
       if (deleteUserAvatar) {
         await User.findByIdAndUpdate(user._id, {

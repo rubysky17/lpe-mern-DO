@@ -4,7 +4,7 @@ import Title from "../../home/components/title";
 import { LPELightBox } from "app/components/lightBox";
 // import { Fade } from "react-reveal";
 
-import VasVideo from "./components/video";
+// import VasVideo from "./components/video";
 import Timeline from "./components/timeline";
 import useSiteTitle from "core/hooks/useSiteTitle";
 
@@ -41,23 +41,23 @@ function MrVas() {
   const categoryRef = useRef();
   const certificationRef = useRef();
 
-  const videoVas = [
-    {
-      id: 0,
-      imgSrc: "https://lpe.vn/storage/gioi-thieu/mr-vas/mrvas-6.jpg",
-      videoId: "n6Pnzi6r9NU",
-    },
-    {
-      id: 1,
-      imgSrc: "https://lpe.vn/storage/gioi-thieu/mr-vas/mrvas-6.jpg",
-      videoId: "u9vQcTYyQE4",
-    },
-    {
-      id: 2,
-      imgSrc: "https://lpe.vn/storage/gioi-thieu/mr-vas/mrvas-6.jpg",
-      videoId: "n6Pnzi6r9NU",
-    },
-  ];
+  // const videoVas = [
+  //   {
+  //     id: 0,
+  //     imgSrc: "https://lpe.vn/storage/gioi-thieu/mr-vas/mrvas-6.jpg",
+  //     videoId: "n6Pnzi6r9NU",
+  //   },
+  //   {
+  //     id: 1,
+  //     imgSrc: "https://lpe.vn/storage/gioi-thieu/mr-vas/mrvas-6.jpg",
+  //     videoId: "u9vQcTYyQE4",
+  //   },
+  //   {
+  //     id: 2,
+  //     imgSrc: "https://lpe.vn/storage/gioi-thieu/mr-vas/mrvas-6.jpg",
+  //     videoId: "n6Pnzi6r9NU",
+  //   },
+  // ];
 
   const handleOpenVideo = (id) => {
     setvideoId(id);
@@ -306,9 +306,8 @@ function MrVas() {
 
         <div className="bannerBottomText">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-            dapibus dolor turpis, eget ultrices erat volutpat eu. Aliquam
-            tincidunt risus et nisi vulputate, at mollis tellus rutrum.
+            "Một ngày nào đó, toàn thể nhân loại đã được tốt nghiệp Đại Học Cuộc
+            Đời. Họ đang sống mỗi khoảnh khắc trong mừng vui và phước lành".
           </p>
 
           <h3>VASANTH GOPALAN</h3>

@@ -91,9 +91,18 @@
   cursor: pointer;
 }
 
+.date-picker {
+  margin-top: 72px;
+}
+
 @media screen and (max-width: 1199px) {
   .labelAvatar {
     width: 125px;
     height: 125px;
+  }
+}
+@media screen and (max-width: 992px) {
+  .date-picker {
+    margin-top: 20px;
   }
 }

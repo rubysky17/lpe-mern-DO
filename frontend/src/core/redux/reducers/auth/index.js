@@ -2,13 +2,14 @@ import { KEY_TOKEN } from "app/const/App";
 
 import {
   DELETE_AVATAR,
-  GET_USER_INFO,
   LOGIN_FAILED,
   LOGIN_REQUESTING,
   LOGIN_SUCCESS,
   LOGOUT_ACCOUNT,
   UPDATE_AVATAR,
-  UPDATE_USER,
+  UPDATE_USER_REQUESTING,
+  UPDATE_USER_SUCCESS,
+  UPDATE_USER_FAILED,
 } from "core/redux/constant/authConstant";
 
 const initialState = {
@@ -24,12 +25,6 @@ export const authReducer = (state = initialState, action) => {
       localStorage.removeItem(KEY_TOKEN);
 
       state.userInfo = {};
-      return { ...state };
-
-    // lấy thông tin người dùng đăng nhập
-    case GET_USER_INFO:
-      state.userInfo = action.userInfo;
-
       return { ...state };
 
     // cập nhật hình ảnh đại diện
@@ -55,15 +50,31 @@ export const authReducer = (state = initialState, action) => {
       return { ...state };
     }
 
-    // cập nhật thông tin khách hàng
-    case UPDATE_USER: {
-      const result = { ...state.userInfo, ...action.userUpdate };
-
-      state.userInfo = result;
-
-      return { ...state };
+    case UPDATE_USER_REQUESTING: {
+      return {
+        ...state,
+        loading: true,
+        error: "",
+      };
     }
-    // -----------------------------------------------------------
+
+    case UPDATE_USER_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        error: "",
+        userInfo: { ...state.userInfo, ...action.payload },
+      };
+    }
+
+    case UPDATE_USER_FAILED: {
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    }
+
     case LOGIN_REQUESTING: {
       return {
         ...state,

@@ -4,6 +4,7 @@ import {
   CODE_SUCCESS,
   SIGN_IN,
   SIGN_UP,
+  USER_UPDATE,
 } from "app/const/Api";
 import { KEY_TOKEN } from "app/const/App";
 
@@ -14,6 +15,9 @@ import {
   LOGIN_REQUESTING,
   LOGIN_SUCCESS,
   LOGOUT_ACCOUNT,
+  UPDATE_USER_FAILED,
+  UPDATE_USER_REQUESTING,
+  UPDATE_USER_SUCCESS,
 } from "../constant/authConstant";
 
 /**
@@ -83,6 +87,51 @@ export const registerAction = (data, setLoading, setError) => {
       setError("Email đã tồn tại");
       setLoading(false);
       console.log(error);
+    }
+  };
+};
+
+export const updateUserAction = (id, dataUpdate) => {
+  const token = localStorage.getItem(KEY_TOKEN);
+
+  return async (dispatch) => {
+    dispatch({
+      type: UPDATE_USER_REQUESTING,
+    });
+
+    try {
+      await axios({
+        url: API_ENDPOINT + USER_UPDATE + `${id}`,
+        method: "PUT",
+        data: dataUpdate,
+        headers: {
+          token: `${token}`,
+        },
+      })
+        .then((res) => {
+          dispatch({
+            type: UPDATE_USER_SUCCESS,
+            payload: dataUpdate,
+          });
+
+          showToast("success", "Cập nhật thông tin thành công", {
+            timeout: 5000,
+          });
+        })
+        .catch((err) => {
+          console.error(err.response.data);
+        });
+    } catch (error) {
+      console.log("error", error);
+
+      dispatch({
+        type: UPDATE_USER_FAILED,
+        payload: error,
+      });
+
+      showToast("error", "Cập nhật thông tin thất bại", {
+        timeout: 5000,
+      });
     }
   };
 };
