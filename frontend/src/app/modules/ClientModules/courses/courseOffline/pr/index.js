@@ -1,6 +1,8 @@
 import React from "react";
 import useSiteTitle from "core/hooks/useSiteTitle";
 
+import { pr } from "../../assets/images/chuong-trinh-huan-luyen/offline";
+
 import "./styles/styles.scss";
 
 function PR() {
@@ -9,10 +11,7 @@ function PR() {
   return (
     <div className="pr mt-2">
       <div className="container-fluid p-0">
-        <img
-          src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pr/nghe-thuat-song-hanh-phuc-va-hoa-hop-pr-banner.jpg"
-          alt="img"
-        />
+        <img src={pr.pr01} alt={pr.pr01} />
         <div className="container">
           <div className="row mt-5">
             <div className="col-md-6 offset-md-3 mt-3">
@@ -26,27 +25,15 @@ function PR() {
               ></iframe>
             </div>
             <div className="col-md-8 offset-md-2 mt-3">
-              <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pr/nghe-thuat-song-hanh-phuc-va-hoa-hop-pr-lpe-chua-lanh-cac-moi-quan-he.png"
-                alt="img"
-              />
-              <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pr/nghe-thuat-song-hanh-phuc-va-hoa-hop-pr-lpe-form-left.png"
-                alt="img"
-              />
-              <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pr/nghe-thuat-song-hanh-phuc-va-hoa-hop-pr-lpe-chung-ta-ko-the-ton-tai.png"
-                alt="img"
-              />
+              <img src={pr.pr02} alt={pr.pr02} />
+              <img src={pr.pr03} alt={pr.pr03} />
+              <img src={pr.pr04} alt={pr.pr04} />
             </div>
           </div>
 
           <div className="row mt-3 flex-alignitem">
             <div className="col-md-7">
-              <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pr/nghe-thuat-song-hanh-phuc-va-hoa-hop-pr-lpe-chung-ta-ko-the-ton-tai-2.png"
-                alt="img"
-              />
+              <img src={pr.pr05} alt={pr.pr05} />
             </div>
             <div className="col-md-5">
               <p>
@@ -64,10 +51,7 @@ function PR() {
           </div>
           <div className="row mt-3 flex-alignitem">
             <div className="col-md-6">
-              <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pr/nghe-thuat-song-hanh-phuc-va-hoa-hop-pr-lpe-rac-roi-moi-quan-he.png"
-                alt="img"
-              />
+              <img src={pr.pr06} alt={pr.pr06} />
               <p className="problem">
                 Hầu hết mọi người đều nghĩ phải cần có ít nhất HAI NGƯỜI để mối
                 quan hệ trở nên tốt đẹp. Ai cũng mong chờ người kia thay đổi,
@@ -84,19 +68,13 @@ function PR() {
               </p>
             </div>
             <div className="col-md-6">
-              <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pr/nghe-thuat-song-hanh-phuc-va-hoa-hop-pr-lpe-gap-rac-roi-moi-quan-he.png"
-                alt="img"
-              />
+              <img src={pr.pr07} alt={pr.pr07} />
             </div>
           </div>
 
           <div className="row">
             <div className="col-10 offset-1">
-              <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pr/nghe-thuat-song-hanh-phuc-va-hoa-hop-pr-lpe-van-de-moi-quan-he.png"
-                alt="img"
-              />
+              <img src={pr.pr08} alt={pr.pr08} />
             </div>
           </div>
 
@@ -112,10 +90,7 @@ function PR() {
               tinh thần.
             </div>
             <div className="col-md-5">
-              <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pr/nghe-thuat-song-hanh-phuc-va-hoa-hop-pr-lpe-pr-myself.png"
-                alt="img"
-              />
+              <img src={pr.pr09} alt={pr.pr09} />
             </div>
           </div>
 
@@ -130,10 +105,7 @@ function PR() {
               chúng ta mất đi rất nhiều niềm vui và cơ hội trong cuộc đời.
             </div>
             <div className="col-md-5">
-              <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pr/nghe-thuat-song-hanh-phuc-va-hoa-hop-pr-lpe-pr-people.png"
-                alt="img"
-              />
+              <img src={pr.pr10} alt={pr.pr10} />
             </div>
           </div>
 
@@ -149,42 +121,22 @@ function PR() {
               khốc.
             </div>
             <div className="col-md-5">
-              <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pr/nghe-thuat-song-hanh-phuc-va-hoa-hop-pr-lpe-pr-earth.png"
-                alt="img"
-              />
+              <img src={pr.pr11} alt={pr.pr11} />
             </div>
           </div>
 
           <div className="row mt-4">
             <div className="col-10 offset-1 ">
-              <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pr/nghe-thuat-song-hanh-phuc-va-hoa-hop-pr-lpe-gia-tri-nhan-duoc.png"
-                alt="img"
-              />
-              <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pr/nghe-thuat-song-hanh-phuc-va-hoa-hop-pr-lpe-gia-tri-nhan-duoc-2.png"
-                alt="img"
-                className="hidden-sm-xs"
-              />
-              <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pr/nghe-thuat-song-hanh-phuc-va-hoa-hop-pr-lpe-gia-tri-nhan-duoc-mobile.png"
-                alt="img"
-                className="visible-sm-xs"
-              />
+              <img src={pr.pr12} alt={pr.pr12} />
+              <img src={pr.pr13} alt={pr.pr13} className="hidden-sm-xs" />
+              <img src={pr.pr14} alt={pr.pr14} className="visible-sm-xs" />
             </div>
           </div>
 
           <div className="row">
             <div className="col-10 offset-1">
-              <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pr/nghe-thuat-song-hanh-phuc-va-hoa-hop-pr-lpe-chia-se-hoc-vien.png"
-                alt="img"
-              />
-              <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pr/nghe-thuat-song-hanh-phuc-va-hoa-hop-pr-lpe-s8-03.png"
-                alt="img"
-              />
+              <img src={pr.pr15} alt={pr.pr15} />
+              <img src={pr.pr16} alt={pr.pr16} />
             </div>
             <h3 className=" mt-3 mb-5 col-8 offset-2 quote">
               Đầu tư cho những mối quan hệ chính là đầu tư “SINH LỜI” nhiều

@@ -1,4 +1,5 @@
 import React from "react";
+import useSiteTitle from "core/hooks/useSiteTitle";
 
 import BannerITTC from "./components/banner";
 import Content from "./components/content";
@@ -14,6 +15,7 @@ import priceImg from "./assets/priceittc.png";
 import "./styles/styles.scss";
 
 function ITTCPage() {
+  useSiteTitle("ittc");
   const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {

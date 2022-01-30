@@ -1,6 +1,7 @@
 import React from "react";
 import useSiteTitle from "core/hooks/useSiteTitle";
 import { Link } from "react-router-dom";
+import { ltc } from "../../assets/images/chuong-trinh-huan-luyen/offline";
 
 import "./styles/styles.scss";
 
@@ -10,11 +11,7 @@ function LTC() {
     <div className="container-fluid ltc text-center">
       <div>
         <div className="row flex-alignitem">
-          <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/ltc/trai-huan-luyen-lanh-dao-ltc-lpe-banner.jpg"
-            alt="img"
-            className="img-fluid w-100"
-          />
+          <img src={ltc.ltc01} alt={ltc.ltc01} className="img-fluid w-100" />
           <div className="col-md-6 offset-md-3 mt-3">
             <iframe
               height="315"
@@ -37,19 +34,13 @@ function LTC() {
             </p>
             <div className="row">
               <div className="col-md-6 mt-3">
-                <img
-                  src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/ltc/trai-huan-luyen-lanh-dao-ltc-lpe-hinh-01.jpg"
-                  alt="img"
-                />
+                <img src={ltc.ltc02} alt={ltc.ltc02} />
                 <Link to="/lpe/mr-vas">
                   Xem thêm thông tin của NLP Master Trainer Vasanth Gopalan
                 </Link>
               </div>
               <div className="col-md-6 mt-3">
-                <img
-                  src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/ltc/trai-huan-luyen-lanh-dao-ltc-lpe-hinh-02.jpg"
-                  alt="img"
-                />
+                <img src={ltc.ltc03} alt={ltc.ltc03} />
                 <Link to="/lpe/ms-la-ha-giang-thanh">
                   Xem thêm thông tin của NLP Master Trainer La Hạ Giang Thanh
                 </Link>
@@ -87,10 +78,7 @@ function LTC() {
                 </ul>
               </div>
               <div className="col-md-6 ">
-                <img
-                  src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/ltc/trai-huan-luyen-lanh-dao-ltc-lpe-hinh-03.jpg"
-                  alt="img"
-                />
+                <img src={ltc.ltc04} alt={ltc.ltc04} />
               </div>
             </div>
 
@@ -117,10 +105,7 @@ function LTC() {
                 </ul>
               </div>
               <div className="col-md-6 ">
-                <img
-                  src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/ltc/trai-huan-luyen-lanh-dao-ltc-lpe-hinh-04.jpg"
-                  alt="img"
-                />
+                <img src={ltc.ltc05} alt={ltc.ltc05} />
               </div>
             </div>
           </div>
@@ -132,8 +117,8 @@ function LTC() {
           </h3>
 
           <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/ltc/trai-huan-luyen-lanh-dao-ltc-lpe-hinh-05.jpg"
-            alt="img"
+            src={ltc.ltc06}
+            alt={ltc.ltc06}
             className=" col-md-10 offset-md-1"
           />
           <div className="mt-3 col-md-8 offset-md-2">
@@ -181,17 +166,14 @@ function LTC() {
                 </ul>
               </div>
               <div className="col-md-6 ">
-                <img
-                  src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/ltc/trai-huan-luyen-lanh-dao-ltc-lpe-hinh-06.jpg"
-                  alt="img"
-                />
+                <img src={ltc.ltc07} alt={ltc.ltc07} />
               </div>
             </div>
             <div className="row mt-5 text-center">
               <div className="special">
                 <img
-                  src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/ltc/trai-huan-luyen-lanh-dao-ltc-lpe-dac-biet.png"
-                  alt="img"
+                  src={ltc.ltc08c}
+                  alt={ltc.ltc08c}
                   className="specialTitle"
                 />
                 <p>QUYỀN LỢI THAM GIA ĐỘI NGŨ HỖ TRỢ CỦA LIFE UNIVERSITY</p>
@@ -203,11 +185,6 @@ function LTC() {
                   Nhiều quyền lợi ưu đãi về các khóa học khi đạt yêu cầu về thời
                   lượng tham gia Hỗ Trợ.
                 </p>
-                <img
-                  src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-gif-dang-ky-ngay.gif"
-                  alt="img"
-                  className="col-md-4 offset-md-4 col-sm-6 offset-sm-3"
-                />
               </div>
             </div>
           </div>

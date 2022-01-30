@@ -4,27 +4,20 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay, Pagination, Navigation } from "swiper";
 
 import "./styles/styles.scss";
+import { oac } from "../../assets/images/chuong-trinh-huan-luyen/offline";
 
 SwiperCore.use([Autoplay, Pagination, Navigation]);
 
 function OAC() {
   useSiteTitle("OAC_program");
 
-  const imgStudent = [
-    "https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/oac/trai-thieu-nien-xuat-chung-oac-lpe-hinhhocvien-01.jpg",
-    "https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/oac/trai-thieu-nien-xuat-chung-oac-lpe-hinhhocvien-02.jpg",
-    "https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/oac/trai-thieu-nien-xuat-chung-oac-lpe-hinhhocvien-03.jpg",
-    "https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/oac/trai-thieu-nien-xuat-chung-oac-lpe-hinhhocvien-04.jpg",
-  ];
+  const imgStudent = [oac.oac01, oac.oac02, oac.oac03, oac.oac04];
 
   return (
     <div className="container-fluid oac">
       <div className="">
         <div className="row flex-alignitem">
-          <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/oac/trai-thieu-nien-xuat-chung-oac-lpe-banner.jpg"
-            alt="img"
-          />
+          <img src={oac.oac05} alt={oac.oac05} />
           <div className="col-md-6 offset-md-3 mt-3">
             <iframe
               height="315"
@@ -40,11 +33,7 @@ function OAC() {
           <div className="col-xl-8 offset-xl-2">
             <div className="row flex-alignitem ">
               <div className="col-xl-3 offset-xl-0 col-sm-8 offset-sm-2">
-                <img
-                  src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/oac/trai-thieu-nien-xuat-chung-oac-lpe-hinh-01.png"
-                  alt="img"
-                  className="img-500"
-                />
+                <img src={oac.oac06} alt={oac.oac06} className="img-500" />
               </div>
               <div className="col-xl-9 ">
                 <div className="camp flex-alignitem">
@@ -105,14 +94,6 @@ function OAC() {
                 còn nhiều bài học & bài tập thực hành thú vị nữa đến với các bé.
               </p>
             </div>
-
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfN6GjwiRG6z_2NmYBTS4aOA3L4TdLwlSFXGt_f7edEV2SC4Q/viewform?usp=send_form">
-              <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-gif-dang-ky-ngay.gif"
-                alt="img"
-                className="mt-3 col-md-4 offset-md-4 col-sm-6 offset-sm-3 pb-3"
-              />
-            </a>
           </div>
         </div>
       </div>

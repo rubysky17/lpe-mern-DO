@@ -246,14 +246,6 @@ function CourseOffline() {
           }}
           className="mySwiper my-3"
           breakpoints={{
-            // 640: {
-            //   slidesPerView: 2,
-            //   spaceBetween: 20,
-            // },
-            // 768: {
-            //   slidesPerView: 4,
-            //   spaceBetween: 40,
-            // },
             1200: {
               slidesPerView: 3,
               spaceBetween: 20,
@@ -299,14 +291,6 @@ function CourseOffline() {
           }}
           className="mySwiper my-3"
           breakpoints={{
-            // 640: {
-            //   slidesPerView: 2,
-            //   spaceBetween: 20,
-            // },
-            // 768: {
-            //   slidesPerView: 4,
-            //   spaceBetween: 40,
-            // },
             1200: {
               slidesPerView: 3,
               spaceBetween: 20,

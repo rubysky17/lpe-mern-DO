@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay, Pagination, Navigation } from "swiper";
 
 import "./styles/styles.scss";
+import { par, pp } from "../../assets/images/chuong-trinh-huan-luyen/offline";
 
 SwiperCore.use([Autoplay, Pagination, Navigation]);
 
@@ -12,22 +13,18 @@ function PAR() {
   useSiteTitle("PAR_program");
 
   const imgStudent = [
-    "https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/par/nghe-thuat-nuoi-con-xuat-chung-lpe-hinh-03.jpg",
-    "https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/par/nghe-thuat-nuoi-con-xuat-chung-lpe-hinh-04.jpg",
-    "https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/par/nghe-thuat-nuoi-con-xuat-chung-lpe-hinh-05.jpg",
-    "https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/par/nghe-thuat-nuoi-con-xuat-chung-lpe-hinh-06.jpg",
-    "https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/par/nghe-thuat-nuoi-con-xuat-chung-lpe-hinh-07.jpg",
-    "https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/par/nghe-thuat-nuoi-con-xuat-chung-lpe-hinh-08.jpg",
+    par.par01,
+    par.par02,
+    par.par03,
+    par.par04,
+    par.par05,
+    par.par06,
   ];
 
   return (
     <div className="container-fluid par">
       <div className="row flex-alignitem">
-        <img
-          src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/par/nghe-thuat-nuoi-con-xuat-chung-lpe-banner.png"
-          alt="img"
-          className="img-fluid w-100"
-        />
+        <img src={par.par07} alt={par.par07} className="img-fluid w-100" />
         <div className="col-md-6 offset-md-3 mt-3">
           <iframe
             height="400"
@@ -54,10 +51,7 @@ function PAR() {
             </ul>
           </div>
           <div className="col-md-6 boxShadow">
-            <img
-              src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/par/nghe-thuat-nuoi-con-xuat-chung-lpe-hinh-01.png"
-              alt="img"
-            />
+            <img src={par.par08} alt={par.par08} />
           </div>
         </div>
 
@@ -81,10 +75,7 @@ function PAR() {
             <h3 className="text-center">
               BẠN ĐANG MUỐN KÍCH HOẠT VÀ PHÁT HUY TÀI NĂNG CỦA CON, VÌ:
             </h3>
-            <img
-              src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/par/nghe-thuat-nuoi-con-xuat-chung-lpe-hinh-02.png"
-              alt="img"
-            />
+            <img src={par.par09} alt={par.par09} />
             <ul>
               <li>Con có trí nhớ kém</li>
               <li>Con chưa được sáng tạo</li>
@@ -163,7 +154,7 @@ function PAR() {
 
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSecIyJSa010UdzhH5sY_QpaFvLQhKR8EdBrnXg3qnuwUNAPRg/viewform">
               <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-gif-dang-ky-ngay.gif"
+                src={pp.pp31}
                 alt="img"
                 className="mt-3 col-md-4 offset-md-4 col-sm-6 offset-sm-3 pb-3"
               />

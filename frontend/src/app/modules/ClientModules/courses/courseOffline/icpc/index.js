@@ -5,51 +5,35 @@ import banner from "./assets/banner-icpc.jpg";
 import certification from "./assets/bang-chung-nhan-nlp.png";
 import privilege01 from "./assets/privilege01.png";
 import privilege03 from "./assets/privilege03.png";
-// import quote1 from "./assets/quote-icpc.jpg";
 import quote2 from "./assets/quote2-icpc.jpg";
 
 import "./styles/styles.scss";
 
+const data_apply = [
+  "Hiểu ra căn nguyên mọi vấn đề, lý giải cho cách hành xử của con người ở mọi khía cạnh.",
+  "Nhận thức và xử lý những lỗ hỏng cảm xúc đã cản trở con người bạn ",
+  'Chữa lành những căn bệnh đến từ "thân" và "tâm", từ đơn giản đến phức tạp.',
+  "Biết được cách làm chủ mọi cuộc giao tiếp, làm chủ trạng thái cơ thể & duy trì năng lượng tích cực. ",
+  'Tìm lại đáp án cho câu hỏi "Tôi là ai" và "Tôi sống để làm gì".',
+  "Làm chủ Cơ thể & Tâm trí từ những quy trình NLP các cấp bậc. ",
+  "Trở thành Nhà Tư Vấn Trị Liệu chuyên sâu, có khả năng giúp đỡ cho người xung quanh.",
+  "Khám phá Nhân dạng và Lẽ Sống với cấp độ cao hơn.",
+];
+
+const Environment =
+  "Môi trường (Làm việc/Gia đình/Mối quan hệ): Chính là nơi bạn gặp phải vấn đề và không thể hiện bản thân hay hạnh phúc ở đó.";
+const Behavior =
+  "Hành vi: Bạn cần phải linh hoạt để có thể làm chủ trong mọi vấn đề, mọi trường hợp xảy đến.";
+const Capabilities =
+  "Năng lực: Trạng thái bên trong, những cảm xúc tích cực/ tiêu cực, sự tự tin đưa ra những quyết định của bạn.";
+const BeliefAndValues =
+  "Niềm tin & Giá trị: Thứ bạn không thể nhìn thấy. Nhưng lại tạo nên những quyết định, ảnh hưởng 99% đến hành động và kết quả.";
+const IdentityAndLifePurpose =
+  "Nhân dạng & Lẽ sống: Khi chúng ta biết mình là ai, hiểu rõ về bản chất con người và vai trò của bạn trong thế giới này. ";
+const SpiritualAndVision =
+  "Tâm linh & Tầm nhìn: Vận hành những nguồn lực nhiệm màu bạn chưa từng biết đến trong vũ trụ này. Nhìn thấy được tiềm năng cuộc sống vĩ đại của chính mình và của con người.";
+
 function ICPC() {
-  const data_apply = [
-    "Hiểu ra căn nguyên mọi vấn đề, lý giải cho cách hành xử của con người ở mọi khía cạnh.",
-    "Nhận thức và xử lý những lỗ hỏng cảm xúc đã cản trở con người bạn ",
-    'Chữa lành những căn bệnh đến từ "thân" và "tâm", từ đơn giản đến phức tạp.',
-    "Biết được cách làm chủ mọi cuộc giao tiếp, làm chủ trạng thái cơ thể & duy trì năng lượng tích cực. ",
-    'Tìm lại đáp án cho câu hỏi "Tôi là ai" và "Tôi sống để làm gì".',
-    "Làm chủ Cơ thể & Tâm trí từ những quy trình NLP các cấp bậc. ",
-    "Trở thành Nhà Tư Vấn Trị Liệu chuyên sâu, có khả năng giúp đỡ cho người xung quanh.",
-    "Khám phá Nhân dạng và Lẽ Sống với cấp độ cao hơn.",
-  ];
-  // const data = [
-  //   {
-  //     title: "Environment",
-  //     content:
-  //       "Môi trường (Làm việc/Gia đình/Mối quan hệ): Chính là nơi bạn gặp phải vấn đề và không thể hiện bản thân hay hạnh phúc ở đó.",
-  //   },
-  //   {
-  //     title: "Behavior",
-  //     content:
-  //       "Hành vi: Bạn cần phải linh hoạt để có thể làm chủ trong mọi vấn đề, mọi trường hợp xảy đến.",
-  //   },
-  //   {
-  //     title: "Belief & Values",
-  //     content:
-  //       "Niềm tin & Giá trị: Thứ bạn không thể nhìn thấy. Nhưng lại tạo nên những quyết định, ảnh hưởng 99% đến hành động và kết quả.",
-  //   },
-  // ];
-  const Environment =
-    "Môi trường (Làm việc/Gia đình/Mối quan hệ): Chính là nơi bạn gặp phải vấn đề và không thể hiện bản thân hay hạnh phúc ở đó.";
-  const Behavior =
-    "Hành vi: Bạn cần phải linh hoạt để có thể làm chủ trong mọi vấn đề, mọi trường hợp xảy đến.";
-  const Capabilities =
-    "Năng lực: Trạng thái bên trong, những cảm xúc tích cực/ tiêu cực, sự tự tin đưa ra những quyết định của bạn.";
-  const BeliefAndValues =
-    "Niềm tin & Giá trị: Thứ bạn không thể nhìn thấy. Nhưng lại tạo nên những quyết định, ảnh hưởng 99% đến hành động và kết quả.";
-  const IdentityAndLifePurpose =
-    "Nhân dạng & Lẽ sống: Khi chúng ta biết mình là ai, hiểu rõ về bản chất con người và vai trò của bạn trong thế giới này. ";
-  const SpiritualAndVision =
-    "Tâm linh & Tầm nhìn: Vận hành những nguồn lực nhiệm màu bạn chưa từng biết đến trong vũ trụ này. Nhìn thấy được tiềm năng cuộc sống vĩ đại của chính mình và của con người.";
   const [show, setShow] = useState(false);
   const [content, setContent] = useState(false);
   const [ICPC, setICPC] = useState({

@@ -1,6 +1,6 @@
 import React from "react";
 import useSiteTitle from "core/hooks/useSiteTitle";
-
+import { ph } from "../../assets/images/chuong-trinh-huan-luyen/offline";
 import "./styles/styles.scss";
 
 function PH() {
@@ -10,32 +10,20 @@ function PH() {
     <div className="container-fluid ph">
       <div className="">
         <div className="row">
-          <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/ph/suc-khoe-toan-dien-ph-lpe-banner.jpg"
-            alt="img"
-            className="img-fluid w-100"
-          />
+          <img src={ph.ph01} alt={ph.ph01} className="img-fluid w-100" />
           <a href="https://docs.google.com/forms/d/e/1FAIpQLSdcr3oTosQ_Hp_3cgpPciN4JB7NDiXzdjoPc4f8lcgm1_jjVw/viewform">
-            <img
-              src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/ph/suc-khoe-toan-dien-ph-lpe-dang-ki-nhan-uu-dai-1.png"
-              alt="img"
-              className="col-6 offset-3"
-            />
+            <img src={ph.ph02} alt={ph.ph02} className="col-6 offset-3" />
           </a>
+          <img src={ph.ph03} alt={ph.ph03} className="col-8 offset-2" />
           <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/ph/ph-lang-nghe-co-the.png"
-            alt="img"
-            className="col-8 offset-2"
-          />
-          <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/ph/suc-khoe-toan-dien-ph-lpe-lang-nghe-co-the-01.png"
-            alt="img"
+            src={ph.ph04}
+            alt={ph.ph04}
             className="col-10 offset-1 hidden-sm-xs"
           />
 
           <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/ph/suc-khoe-toan-dien-ph-lpe-lang-nghe-co-the-01-mobile.png"
-            alt="img"
+            src={ph.ph05}
+            alt={ph.ph05}
             className="col-8 offset-2 visible-sm-xs"
           />
         </div>
@@ -44,10 +32,7 @@ function PH() {
           <div className="col-md-10 offset-md-1">
             <div className="row flex-alignitem">
               <div className="col-md-3">
-                <img
-                  src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/ph/suc-khoe-toan-dien-ph-lpe-sick2.png"
-                  alt="img"
-                />
+                <img src={ph.ph06} alt={ph.ph06} />
               </div>
               <div className="col-md-6">
                 <div className="boxgreen">
@@ -75,10 +60,7 @@ function PH() {
                 </div>
               </div>
               <div className="col-md-3">
-                <img
-                  src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/ph/suc-khoe-toan-dien-ph-lpe-sick1.png"
-                  alt="img"
-                />
+                <img src={ph.ph07} alt={ph.ph07} />
               </div>
             </div>
           </div>
@@ -123,38 +105,21 @@ function PH() {
 
         <div className="row mt-3">
           <div className="col-md-10 offset-md-1">
-            <img
-              src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/ph/suc-khoe-toan-dien-ph-lpe-thay-doi-tich-cuc.png"
-              alt="img"
-            />
+            <img src={ph.ph08} alt={ph.ph08} />
           </div>
-          <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/ph/suc-khoe-toan-dien-ph-lpe-thay-doi-tich-cuc-2.jpg"
-            alt="img"
-            className="hidden-sm-xs"
-          />
+          <img src={ph.ph09} alt={ph.ph09} className="hidden-sm-xs" />
 
-          <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/ph/suc-khoe-toan-dien-ph-lpe-thay-doi-tich-cuc-2-mobile.jpg"
-            alt="img"
-            className="visible-sm-xs "
-          />
+          <img src={ph.ph10} alt={ph.ph10} className="visible-sm-xs " />
         </div>
 
         <div className="row mt-3">
           <div className="col-md-6 offset-md-3">
-            <img
-              src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/ph/suc-khoe-toan-dien-ph-lpe-doi-tuong-tham-gia.png"
-              alt="img"
-            />
+            <img src={ph.ph11} alt={ph.ph11} />
           </div>
           <div className="col-8 offset-2">
             <div className="row">
               <div className="col-md-6">
-                <img
-                  src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/ph/suc-khoe-toan-dien-ph-lpe-15-tuoi.png"
-                  alt="img"
-                />
+                <img src={ph.ph12} alt={ph.ph12} />
                 <div className="contentObject">
                   <h3>TỪ 15 TUỔI TRỞ LÊN</h3>
                   <p>
@@ -164,10 +129,7 @@ function PH() {
                 </div>
               </div>
               <div className="col-md-6">
-                <img
-                  src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/ph/suc-khoe-toan-dien-ph-lpe-stress.png"
-                  alt="img"
-                />
+                <img src={ph.ph13} alt={ph.ph13} />
                 <div className="contentObject">
                   <h3>VẤN ĐỀ SỨC KHỎE</h3>
                   <p>
@@ -177,10 +139,7 @@ function PH() {
                 </div>
               </div>
               <div className="col-md-6">
-                <img
-                  src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/ph/suc-khoe-toan-dien-ph-lpe-van-de-suc-khoe.png"
-                  alt="img"
-                />
+                <img src={ph.ph14} alt={ph.ph14} />
                 <div className="contentObject">
                   <h3>HAY BỊ STRESS, TRẦM CẢM</h3>
                   <p>
@@ -190,10 +149,7 @@ function PH() {
                 </div>
               </div>
               <div className="col-md-6">
-                <img
-                  src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/ph/suc-khoe-toan-dien-ph-lpe-loi-song-thieu-khoa-hoc.png"
-                  alt="img"
-                />
+                <img src={ph.ph15} alt={ph.ph15} />
                 <div className="contentObject">
                   <h3>LỐI SỐNG THIẾU KHOA HỌC</h3>
                   <p>
@@ -205,10 +161,7 @@ function PH() {
             </div>
           </div>
           <div className="col-md-8 offset-md-2">
-            <img
-              src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/ph/suc-khoe-toan-dien-ph-lpe-anh-hoc-vien-1.jpg"
-              alt="img"
-            />
+            <img src={ph.ph16} alt={ph.ph16} />
           </div>
         </div>
 
@@ -216,10 +169,7 @@ function PH() {
           <div className="col-10 offset-1">
             <div className="row flex-alignitem">
               <div className="col-md-6">
-                <img
-                  src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/ph/suc-khoe-toan-dien-ph-lpe-mr-vas.png"
-                  alt="img"
-                />
+                <img src={ph.ph17} alt={ph.ph17} />
                 <div className="boxgreen text-center">
                   <h3>NGƯỜI ĐỒNG HÀNH CÙNG BẠN:</h3>
                   <hr />
@@ -239,14 +189,8 @@ function PH() {
                 </div>
               </div>
               <div className="col-md-6 text-center">
-                <img
-                  src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/ph/suc-khoe-toan-dien-ph-lpe-chi-tiet-san-pham.png"
-                  alt="img"
-                />
-                <img
-                  src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/ph/suc-khoe-toan-dien-ph-lpe-chi-tiet-san-pham-2.png"
-                  alt="img"
-                />
+                <img src={ph.ph18} alt={ph.ph18} />
+                <img src={ph.ph19} alt={ph.ph19} />
                 <a
                   href="https://docs.google.com/forms/d/e/1FAIpQLSdcr3oTosQ_Hp_3cgpPciN4JB7NDiXzdjoPc4f8lcgm1_jjVw/viewform"
                   className="register "

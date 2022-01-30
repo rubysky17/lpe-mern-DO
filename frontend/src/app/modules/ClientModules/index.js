@@ -37,8 +37,6 @@ import CourseOnlineRFREGISTER from "./courses/courseOnline/runFaster/register";
 import CourseOnlineCCS from "./courses/courseOnline/ccs";
 import CourseOnlineBFW from "./courses/courseOnline/bfw";
 import CourseOnlineVL from "./courses/courseOnline/visionaryLeadership";
-import CourseOnlineISB from "./courses/courseOnline/isb";
-import CourseOnlineISBREGISTER from "./courses/courseOnline/isb/isPayment";
 // LPE
 import MrVas from "./lpe/mrVas";
 import MsLaHaGiangThanh from "./lpe/msLaHaGiangThanh";
@@ -91,8 +89,6 @@ const Client = {
   CourseOnlineBFW,
   CourseOnlineCCS,
   CourseOnlineVL,
-  CourseOnlineISB,
-  CourseOnlineISBREGISTER,
   CourseMedia,
   Register,
   Recruitment,

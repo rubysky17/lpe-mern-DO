@@ -1,6 +1,11 @@
 import React from "react";
 import useSiteTitle from "core/hooks/useSiteTitle";
 
+import graduate01 from "../../assets/images/chuong-trinh-huan-luyen/offline/graduate/chinh-phuc-tam-tri-va-co-the-lpe-banner.png";
+import graduate02 from "../../assets/images/chuong-trinh-huan-luyen/offline/graduate/chinh-phuc-tam-tri-va-co-the-lpe-hinh-hoc-vien-01.png";
+import graduate03 from "../../assets/images/chuong-trinh-huan-luyen/offline/graduate/chinh-phuc-tam-tri-va-co-the-lpe-hinh-hoc-vien-02.png";
+import graduate04 from "../../assets/images/chuong-trinh-huan-luyen/offline/graduate/chinh-phuc-tam-tri-va-co-the-lpe-hinh-hoc-vien-03.png";
+
 import "./styles/styles.scss";
 
 function GRADUATE() {
@@ -9,11 +14,7 @@ function GRADUATE() {
     <div className="graduate text-center container-fluid">
       <div>
         <div className="row">
-          <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/graduate/chinh-phuc-tam-tri-va-co-the-lpe-banner.png"
-            alt="img"
-            className="img-fluid w-100"
-          />
+          <img src={graduate01} alt={graduate01} className="img-fluid w-100" />
           <div className="col-md-6 offset-md-3 mt-3">
             <iframe
               height="315"
@@ -45,10 +46,7 @@ function GRADUATE() {
             </ul>
           </div>
           <div className="col-md-8 offset-md-2">
-            <img
-              src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/graduate/chinh-phuc-tam-tri-va-co-the-lpe-hinh-hoc-vien-01.png"
-              alt="img"
-            />
+            <img src={graduate02} alt={graduate02} />
           </div>
           <h2 className="background mt-3 p-2 col-md-6 offset-md-3  ">
             TRẢI NGHIỆM
@@ -59,10 +57,7 @@ function GRADUATE() {
             <h3>NGÀY 1,2,3</h3>
           </div>
           <div className="col-md-8 offset-md-2 mt-3">
-            <img
-              src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/graduate/chinh-phuc-tam-tri-va-co-the-lpe-hinh-hoc-vien-02.png"
-              alt="img"
-            />
+            <img src={graduate03} alt={graduate03} />
             <p className="mt-3">
               Áp dụng mọi thứ bạn đã học trong hành trình Chinh Phục Ngọn Núi
               Fansipan cao nhất Đông Dương (Lộ trình khó nhất).
@@ -72,10 +67,7 @@ function GRADUATE() {
             <h3>NGÀY 4,5,6: GIÁ TRỊ CỐT LÕI</h3>
           </div>
           <div className="col-md-8 offset-md-2 mt-3">
-            <img
-              src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/graduate/chinh-phuc-tam-tri-va-co-the-lpe-hinh-hoc-vien-03.png"
-              alt="img"
-            />
+            <img src={graduate04} alt={graduate04} />
             <p className="mt-3">
               Tư vấn và đúc kết tất cả các trải nghiệm và bài học đã trải qua.
               Liên hệ đến các Nguồn Lực để đạt được Thành Công Cực Đại

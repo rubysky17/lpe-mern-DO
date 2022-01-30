@@ -3,24 +3,38 @@ import useSiteTitle from "core/hooks/useSiteTitle";
 
 import "./styles/styles.scss";
 
+import identity01 from "../../assets/images/chuong-trinh-huan-luyen/offline/identity//tim-lai-nhan-dang-dich-thuc-lpe-banner.jpg";
+import identity02 from "../../assets/images/chuong-trinh-huan-luyen/offline/identity/tim-lai-nhan-dang-dich-thuc-lpe-gia-tri.png";
+import identity03 from "../../assets/images/chuong-trinh-huan-luyen/offline/identity/tim-lai-nhan-dang-dich-thuc-lpe-hinh-1.jpg";
+import identity04 from "../../assets/images/chuong-trinh-huan-luyen/offline/identity/tim-lai-nhan-dang-dich-thuc-lpe-hinh-2.jpg";
+import identity05 from "../../assets/images/chuong-trinh-huan-luyen/offline/identity/tim-lai-nhan-dang-dich-thuc-lpe-trai-nghiem.png";
+import identity06 from "../../assets/images/chuong-trinh-huan-luyen/offline/identity/tim-lai-nhan-dang-dich-thuc-lpe-day-1.png";
+import identity07 from "../../assets/images/chuong-trinh-huan-luyen/offline/identity/tim-lai-nhan-dang-dich-thuc-lpe-hinh-3.jpg";
+import identity08 from "../../assets/images/chuong-trinh-huan-luyen/offline/identity/tim-lai-nhan-dang-dich-thuc-lpe-day-2.png";
+import identity09 from "../../assets/images/chuong-trinh-huan-luyen/offline/identity/tim-lai-nhan-dang-dich-thuc-lpe-hinh-4.jpg";
+import identity10 from "../../assets/images/chuong-trinh-huan-luyen/offline/identity/tim-lai-nhan-dang-dich-thuc-lpe-day-3.png";
+import identity11 from "../../assets/images/chuong-trinh-huan-luyen/offline/identity/tim-lai-nhan-dang-dich-thuc-lpe-hinh-5.jpg";
+
+import identitybackground01 from "../../assets/images/chuong-trinh-huan-luyen/offline/identity/9-bg-02.jpg";
+import identitybackground02 from "../../assets/images/chuong-trinh-huan-luyen/offline/identity/9-bg-03.jpg";
+
 function IDENTITY() {
   useSiteTitle("identity_program");
+
   return (
     <div className="identity container-fluid">
       <div className="row">
-        <img
-          src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/identity//tim-lai-nhan-dang-dich-thuc-lpe-banner.jpg"
-          alt="img"
-          className="img-fluid w-100"
-        />
+        <img src={identity01} alt={identity01} className="img-fluid w-100" />
       </div>
 
-      <div className="row page1 pt-3">
+      <div
+        className="row page1 pt-3"
+        style={{
+          background: `url(${identitybackground01})`,
+        }}
+      >
         <div className="col-6 offset-3">
-          <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/identity/tim-lai-nhan-dang-dich-thuc-lpe-gia-tri.png"
-            alt="img"
-          />
+          <img src={identity02} alt={identity02} />
         </div>
         <div className="col-md-8 offset-md-2">
           <div className="row flex-alignitem mt-4 text-justify">
@@ -38,10 +52,7 @@ function IDENTITY() {
               </ul>
             </div>
             <div className="col-md-6">
-              <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/identity/tim-lai-nhan-dang-dich-thuc-lpe-hinh-1.jpg"
-                alt="img"
-              />
+              <img src={identity03} alt={identity03} />
             </div>
           </div>
           <div className="row flex-alignitem mt-3 text-justify pb-3">
@@ -58,32 +69,30 @@ function IDENTITY() {
               </ul>
             </div>
             <div className="col-md-6">
-              <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/identity/tim-lai-nhan-dang-dich-thuc-lpe-hinh-2.jpg"
-                alt="img"
-              />
+              <img src={identity04} alt={identity04} />
             </div>
           </div>
         </div>
       </div>
 
-      <div className="row page2 pt-4">
+      <div
+        className="row page2 pt-4"
+        style={{
+          background: `url(${identitybackground02})`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <div className="col-6 offset-3">
-          <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/identity/tim-lai-nhan-dang-dich-thuc-lpe-trai-nghiem.png"
-            alt="img"
-          />
+          <img src={identity05} alt={identity05} />
         </div>
         <img
-          src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/identity/tim-lai-nhan-dang-dich-thuc-lpe-day-1.png"
-          alt="img"
+          src={identity06}
+          alt={identity06}
           className="col-md-4 col-sm-5 mt-3"
         />
         <div className="col-md-8 offset-md-2 mt-3">
-          <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/identity/tim-lai-nhan-dang-dich-thuc-lpe-hinh-3.jpg"
-            alt="img"
-          />
+          <img src={identity07} alt={identity07} />
           <ul className="mt-3">
             <li>
               Cách Kiến Tạo Nhân Dạng và cộng hưởng với những đóng góp trọng đại
@@ -96,17 +105,10 @@ function IDENTITY() {
           </ul>
         </div>
 
-        <img
-          src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/identity/tim-lai-nhan-dang-dich-thuc-lpe-day-2.png"
-          alt="img"
-          className="col-md-4 col-sm-5 mt-3"
-        />
+        <img src={identity08} alt="img" className="col-md-4 col-sm-5 mt-3" />
 
         <div className="col-md-8 offset-md-2 mt-3">
-          <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/identity/tim-lai-nhan-dang-dich-thuc-lpe-hinh-4.jpg"
-            alt="img"
-          />
+          <img src={identity09} alt={identity09} />
           <ul className="mt-3">
             <li>Tiếp cận đời sống tâm linh trên phương diện khoa học</li>
             <li>
@@ -119,16 +121,13 @@ function IDENTITY() {
         </div>
 
         <img
-          src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/identity/tim-lai-nhan-dang-dich-thuc-lpe-day-3.png"
-          alt="img"
+          src={identity10}
+          alt={identity10}
           className="col-md-4 col-sm-5 mt-3"
         />
 
         <div className="col-md-8 offset-md-2 mt-3">
-          <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/identity/tim-lai-nhan-dang-dich-thuc-lpe-hinh-5.jpg"
-            alt="img"
-          />
+          <img src={identity11} alt={identity11} />
           <ul className="mt-3">
             <li>
               Chuẩn Bị Cuối Cùng về Thể Chất và Tinh Thân cho hành trình Chinh

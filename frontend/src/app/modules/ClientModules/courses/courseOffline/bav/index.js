@@ -1,6 +1,22 @@
 import React from "react";
 import useSiteTitle from "core/hooks/useSiteTitle";
 
+import bav01 from "../../assets/images/chuong-trinh-huan-luyen/offline/bav/niem-tin-va-gia-tri-banner.jpg";
+import bav02 from "../../assets/images/chuong-trinh-huan-luyen/offline/bav/niem-tin-va-gia-tri-lpe-gia-tri.png";
+import bav03 from "../../assets/images/chuong-trinh-huan-luyen/offline/bav/niem-tin-va-gia-tri-lpe-hinh-hoc-vien-1.jpg";
+import bav04 from "../../assets/images/chuong-trinh-huan-luyen/offline/bav/niem-tin-va-gia-tri-lpe-hinh-hoc-vien-2.jpg";
+import bav05 from "../../assets/images/chuong-trinh-huan-luyen/offline/bav/niem-tin-va-gia-tri-lpe-trai-nghiem.png";
+import bav06 from "../../assets/images/chuong-trinh-huan-luyen/offline/bav/niem-tin-va-gia-tri-lpe-ngay-1.png";
+import bav07 from "../../assets/images/chuong-trinh-huan-luyen/offline/bav/niem-tin-va-gia-tri-lpe-hinh-hoc-vien-3.jpg";
+import bav08 from "../../assets/images/chuong-trinh-huan-luyen/offline/bav/niem-tin-va-gia-tri-lpe-ngay-2.png";
+import bav09 from "../../assets/images/chuong-trinh-huan-luyen/offline/bav/niem-tin-va-gia-tri-lpe-hinh-hoc-vien-4.jpg";
+import bav10 from "../../assets/images/chuong-trinh-huan-luyen/offline/bav/niem-tin-va-gia-tri-lpe-ngay-3.png";
+import bav11 from "../../assets/images/chuong-trinh-huan-luyen/offline/bav/niem-tin-va-gia-tri-lpe-hinh-hoc-vien-5.jpg";
+
+import bavbackground01 from "../../assets/images/chuong-trinh-huan-luyen/offline/bav/7-bg-1.png";
+import bavbackground02 from "../../assets/images/chuong-trinh-huan-luyen/offline/bav/7-bg-2.png";
+import bavbackground03 from "../../assets/images/chuong-trinh-huan-luyen/offline/bav/7-bg-3.png";
+
 import "./styles/styles.scss";
 
 function BAV() {
@@ -9,17 +25,16 @@ function BAV() {
   return (
     <div className="bav container-fluid">
       <div className="row">
-        <img
-          src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/bav/niem-tin-va-gia-tri-banner.jpg"
-          alt="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/bav/niem-tin-va-gia-tri-banner.jpg"
-        />
+        <img src={bav01} alt={bav01} />
       </div>
-      <div className="row page1 pt-3">
+      <div
+        className="row page1 pt-3"
+        style={{
+          background: `url(${bavbackground01})`,
+        }}
+      >
         <div className="col-6 offset-3">
-          <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/bav/niem-tin-va-gia-tri-lpe-gia-tri.png"
-            alt="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/bav/niem-tin-va-gia-tri-lpe-gia-tri.png"
-          />
+          <img src={bav02} alt={bav02} />
         </div>
         <div className="col-md-8 offset-md-2">
           <div className="row flex-alignitem mt-4 text-justify">
@@ -40,10 +55,7 @@ function BAV() {
               </ul>
             </div>
             <div className="col-md-6">
-              <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/bav/niem-tin-va-gia-tri-lpe-hinh-hoc-vien-1.jpg"
-                alt="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/bav/niem-tin-va-gia-tri-lpe-hinh-hoc-vien-1.jpg"
-              />
+              <img src={bav03} alt={bav03} />
             </div>
           </div>
           <div className="row flex-alignitem mt-3 text-justify pb-3">
@@ -64,32 +76,24 @@ function BAV() {
               </ul>
             </div>
             <div className="col-md-6">
-              <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/bav/niem-tin-va-gia-tri-lpe-hinh-hoc-vien-2.jpg"
-                alt="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/bav/niem-tin-va-gia-tri-lpe-hinh-hoc-vien-2.jpg"
-              />
+              <img src={bav04} alt={bav04} />
             </div>
           </div>
         </div>
       </div>
 
-      <div className="row page2 pt-4">
+      <div
+        className="row page2 pt-4"
+        style={{
+          background: `url(${bavbackground02})`,
+        }}
+      >
         <div className="col-6 offset-3">
-          <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/bav/niem-tin-va-gia-tri-lpe-trai-nghiem.png"
-            alt="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/bav/niem-tin-va-gia-tri-lpe-trai-nghiem.png"
-          />
+          <img src={bav05} alt={bav05} />
         </div>
-        <img
-          src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/bav/niem-tin-va-gia-tri-lpe-ngay-1.png"
-          alt="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/bav/niem-tin-va-gia-tri-lpe-ngay-1.png"
-          className="col-md-4 col-sm-5 mt-3"
-        />
+        <img src={bav06} alt={bav06} className="col-md-4 col-sm-5 mt-3" />
         <div className="col-md-8 offset-md-2 mt-3">
-          <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/bav/niem-tin-va-gia-tri-lpe-hinh-hoc-vien-3.jpg"
-            alt="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/bav/niem-tin-va-gia-tri-lpe-hinh-hoc-vien-3.jpg"
-          />
+          <img src={bav07} alt={bav07} />
           <ul className="mt-3">
             <li>Nắm vững Cấu Trúc hình thành Niềm Tin</li>
             <li>
@@ -97,11 +101,7 @@ function BAV() {
             </li>
           </ul>
         </div>
-        <img
-          src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/bav/niem-tin-va-gia-tri-lpe-ngay-2.png"
-          alt="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/bav/niem-tin-va-gia-tri-lpe-ngay-2.png"
-          className="col-md-4 col-sm-5 mt-3"
-        />
+        <img src={bav08} alt={bav08} className="col-md-4 col-sm-5 mt-3" />
         <div className="col-md-8 offset-md-2 mt-3 ">
           <div className="row flex-alignitem mt-3 text-justify pb-3">
             <div className="col-md-6 ">
@@ -115,26 +115,21 @@ function BAV() {
               </ul>
             </div>
             <div className="col-md-6">
-              <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/bav/niem-tin-va-gia-tri-lpe-hinh-hoc-vien-4.jpg"
-                alt="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/bav/niem-tin-va-gia-tri-lpe-hinh-hoc-vien-4.jpg"
-              />
+              <img src={bav09} alt={bav09} />
             </div>
           </div>
         </div>
       </div>
 
-      <div className="row page3 pt-4">
-        <img
-          src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/bav/niem-tin-va-gia-tri-lpe-ngay-3.png"
-          alt="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/bav/niem-tin-va-gia-tri-lpe-ngay-3.png"
-          className="col-md-4 col-sm-5 mt-3"
-        />
+      <div
+        className="row page3 pt-4"
+        style={{
+          background: `url(${bavbackground03})`,
+        }}
+      >
+        <img src={bav10} alt={bav10} className="col-md-4 col-sm-5 mt-3" />
         <div className="col-md-8 offset-md-2 mt-3">
-          <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/bav/niem-tin-va-gia-tri-lpe-hinh-hoc-vien-5.jpg"
-            alt="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/bav/niem-tin-va-gia-tri-lpe-hinh-hoc-vien-5.jpg"
-          />
+          <img src={bav11} alt={bav11} />
           <ul className="mt-3">
             <li>Quy Trình Tái Đóng Khung</li>
             <li>

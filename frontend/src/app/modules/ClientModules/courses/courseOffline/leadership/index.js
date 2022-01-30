@@ -1,5 +1,9 @@
 import React from "react";
 import useSiteTitle from "core/hooks/useSiteTitle";
+import { leadership } from "../../assets/images/chuong-trinh-huan-luyen/offline";
+
+import background01 from "../../assets/images/chuong-trinh-huan-luyen/offline/leadership/8-bg-02.jpg";
+import background02 from "../../assets/images/chuong-trinh-huan-luyen/offline/leadership/8-bg-03.jpg";
 
 import "./styles/styles.scss";
 
@@ -8,18 +12,17 @@ function LEADERSHIP() {
   return (
     <div className="leadership container-fluid">
       <div className="row">
-        <img
-          src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/leadership/nghe-thuat-lanh-dao-va-giao-tiep-cap-cao-banner.jpg"
-          alt="img"
-        />
+        <img src={leadership.leadership01} alt={leadership.leadership01} />
       </div>
 
-      <div className="row page1 pt-3">
+      <div
+        className="row page1 pt-3"
+        style={{
+          background: `url(${background01}) 100% 100%`,
+        }}
+      >
         <div className="col-6 offset-3">
-          <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/leadership/nghe-thuat-lanh-dao-xuat-chung-va-giao-tiep-cap-cao-lpe-gia-tri.png"
-            alt="img"
-          />
+          <img src={leadership.leadership02} alt={leadership.leadership02} />
         </div>
         <div className="col-md-8 offset-md-2">
           <div className="row flex-alignitem mt-4 text-justify">
@@ -37,8 +40,8 @@ function LEADERSHIP() {
             </div>
             <div className="col-md-6">
               <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/leadership/nghe-thuat-lanh-dao-xuat-chung-va-giao-tiep-cap-cao-lpe-hinh-1.jpg"
-                alt="img"
+                src={leadership.leadership03}
+                alt={leadership.leadership03}
               />
             </div>
           </div>
@@ -61,31 +64,30 @@ function LEADERSHIP() {
             </div>
             <div className="col-md-6">
               <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/leadership/nghe-thuat-lanh-dao-xuat-chung-va-giao-tiep-cap-cao-lpe-hinh-2.jpg"
-                alt="img"
+                src={leadership.leadership04}
+                alt={leadership.leadership04}
               />
             </div>
           </div>
         </div>
       </div>
 
-      <div className="row page2 pt-4">
+      <div
+        className="row page2 pt-4"
+        style={{
+          background: `url(${background02}) 100% 100%`,
+        }}
+      >
         <div className="col-6 offset-3">
-          <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/leadership/nghe-thuat-lanh-dao-xuat-chung-va-giao-tiep-cap-cao-lpe-trai-nghiem.png"
-            alt="img"
-          />
+          <img src={leadership.leadership05} alt={leadership.leadership05} />
         </div>
         <img
-          src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/leadership/nghe-thuat-lanh-dao-xuat-chung-va-giao-tiep-cap-cao-lpe-day-1.png"
-          alt="img"
+          src={leadership.leadership06}
+          alt={leadership.leadership06}
           className="col-md-4 col-sm-5 mt-3"
         />
         <div className="col-md-8 offset-md-2 mt-3">
-          <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/leadership/nghe-thuat-lanh-dao-xuat-chung-va-giao-tiep-cap-cao-lpe-hinh-3.jpg"
-            alt="img"
-          />
+          <img src={leadership.leadership07} alt={leadership.leadership07} />
           <ul className="mt-3">
             <li>
               Làm Chủ Ma Thuật Kỹ Năng Giao Tiếp Cấp Cao (ACS) với ngành khoa
@@ -103,16 +105,13 @@ function LEADERSHIP() {
         </div>
 
         <img
-          src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/leadership/nghe-thuat-lanh-dao-xuat-chung-va-giao-tiep-cap-cao-lpe-day-2.png"
-          alt="img"
+          src={leadership.leadership08}
+          alt={leadership.leadership08}
           className="col-md-4 col-sm-5 mt-3"
         />
 
         <div className="col-md-8 offset-md-2 mt-3">
-          <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/leadership/nghe-thuat-lanh-dao-xuat-chung-va-giao-tiep-cap-cao-lpe-hinh-4.jpg"
-            alt="img"
-          />
+          <img src={leadership.leadership09} alt={leadership.leadership09} />
           <ul className="mt-3">
             <li>
               Khởi Đầu Hành Trình của bạn về việc Thuần Thục Mô Thức Ngôn Ngữ
@@ -122,16 +121,13 @@ function LEADERSHIP() {
         </div>
 
         <img
-          src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/leadership/nghe-thuat-lanh-dao-xuat-chung-va-giao-tiep-cap-cao-lpe-day-3.png"
-          alt="img"
+          src={leadership.leadership10}
+          alt={leadership.leadership10}
           className="col-md-4 col-sm-5 mt-3"
         />
 
         <div className="col-md-8 offset-md-2 mt-3">
-          <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/leadership/nghe-thuat-lanh-dao-xuat-chung-va-giao-tiep-cap-cao-lpe-hinh-5.jpg"
-            alt="img"
-          />
+          <img src={leadership.leadership11} alt={leadership.leadership11} />
           <ul className="mt-3">
             <li>
               Học về Quy Trình Thống Nhất Các Cấp Bậc Tư Duy và Sử Dụng nó cho

@@ -2,25 +2,19 @@ import React from "react";
 import useSiteTitle from "core/hooks/useSiteTitle";
 
 import "./styles/styles.scss";
+import { moe } from "../../assets/images/chuong-trinh-huan-luyen/offline";
 
 function MOE() {
   useSiteTitle("mindset_program");
 
   return (
     <div className="moe container-fluid">
-      <img
-        src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/moe/tu-duy-xuat-chung-moe-lpe-banner.jpg"
-        alt="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/moe/tu-duy-xuat-chung-moe-lpe-banner.jpg"
-        className="img-fluid w-100"
-      />
+      <img src={moe.moe01} alt={moe.moe01} className="img-fluid w-100" />
 
       <div className="container">
         <div className="row flex-alignitem">
           <div className="col-md-6">
-            <img
-              src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/moe/tu-duy-xuat-chung-moe-lpe-ban-co-biet.png"
-              alt="img"
-            />
+            <img src={moe.moe02} alt={moe.moe02} />
           </div>
           <div className="col-md-6 text-center ">
             <div className="reason">
@@ -34,19 +28,11 @@ function MOE() {
         </div>
 
         <div className="row mt-3">
-          <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/moe/tu-duy-xuat-chung-moe-lpe-think-diffirent.png"
-            alt="img"
-            className="col-10 offset-1"
-          />
+          <img src={moe.moe03} alt={moe.moe03} className="col-10 offset-1" />
           <div className="col-10 offset-1 thinkDiffirent mt-3">
             <div className="row flex-alignitem">
               <div className="col-md-3">
-                <img
-                  src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/moe/tu-duy-xuat-chung-moe-lpe-think-diffirent-2.png"
-                  alt="img"
-                  className="apple"
-                />
+                <img src={moe.moe04} alt={moe.moe04} className="apple" />
               </div>
               <div className="col-md-9 text-justify">
                 <p>
@@ -112,54 +98,30 @@ function MOE() {
                   Hiểu được cách hình thành tư duy và chúng tác động đến ta như
                   thế nào.
                 </p>
-                <img
-                  src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/moe/moe-mui-ten-xuong.png"
-                  alt="img"
-                  className="mx-auto"
-                />
+                <img src={moe.moe05} alt={moe.moe05} className="mx-auto" />
                 <p className="value">
                   Học cách bắt nguồn/khơi nguồn tư duy trong NLP.
                 </p>
-                <img
-                  src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/moe/moe-mui-ten-xuong.png"
-                  alt="img"
-                  className="mx-auto"
-                />
+                <img src={moe.moe05} alt={moe.moe05} className="mx-auto" />
                 <p className="value">
                   Cách nắm bắt được các tư duy của bản thân.
                 </p>
-                <img
-                  src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/moe/moe-mui-ten-xuong.png"
-                  alt="img"
-                  className="mx-auto"
-                />
+                <img src={moe.moe05} alt={moe.moe05} className="mx-auto" />
                 <p className="value">
                   Thảo luận và áp dụng các tư duy này trong từng khía cạnh của
                   cuộc sống.
                 </p>
-                <img
-                  src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/moe/moe-mui-ten-xuong.png"
-                  alt="img"
-                  className="mx-auto"
-                />
+                <img src={moe.moe05} alt={moe.moe05} className="mx-auto" />
                 <p className="value">
                   Hành động ra bên ngoài và kích neo các hành vi tương thích phù
                   hợp.
                 </p>
-                <img
-                  src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/moe/moe-mui-ten-xuong.png"
-                  alt="img"
-                  className="mx-auto"
-                />
+                <img src={moe.moe05} alt={moe.moe05} className="mx-auto" />
                 <p className="value">
                   Áp dụng tất cả các tư duy đã học nhằm nâng cao các thành tựu,
                   tầm nhìn và mục tiêu.
                 </p>
-                <img
-                  src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/moe/moe-mui-ten-xuong.png"
-                  alt="img"
-                  className="mx-auto"
-                />
+                <img src={moe.moe05} alt={moe.moe05} className="mx-auto" />
                 <p className="value">
                   Hợp nhất tất cả các tư duy lại với nhau trong hệ thần kinh của
                   bạn để sử dụng chúng một cách nhuần nhuyễn.
@@ -170,11 +132,7 @@ function MOE() {
         </div>
 
         <div className="row mt-3 pb-3">
-          <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/moe/tu-duy-xuat-chung-moe-lpe-hinh-hoc-vien.jpg"
-            alt="img"
-            className="col-8 offset-2"
-          />
+          <img src={moe.moe06} alt={moe.moe06} className="col-8 offset-2" />
           <a
             href="https://docs.google.com/forms/d/e/1FAIpQLScTOD67cmeSZY5vcHEPfSCPwuW1344QLSvj7fWCpoQvWHeuGg/viewform"
             className="register mt-3"

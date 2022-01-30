@@ -198,16 +198,6 @@ export const publicRoutes = [
     path: ONLINE_PATH_CLIENT.VL,
   },
   {
-    component: Client.CourseOnlineISB,
-    exact: true,
-    path: ONLINE_PATH_CLIENT.ISB,
-  },
-  {
-    component: Client.CourseOnlineISBREGISTER,
-    exact: true,
-    path: ONLINE_PATH_CLIENT.ISBREGISTER,
-  },
-  {
     component: Client.CourseMedia,
     exact: true,
     path: URL_PATH_CLIENT.COURSEMEDIA,

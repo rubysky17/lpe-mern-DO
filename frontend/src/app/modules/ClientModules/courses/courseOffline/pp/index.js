@@ -1,28 +1,54 @@
 import React from "react";
 import useSiteTitle from "core/hooks/useSiteTitle";
+import { pp } from "../../assets/images/chuong-trinh-huan-luyen/offline";
 
 import "./styles/styles.scss";
 
 function PP() {
   useSiteTitle("finding_porpose");
 
+  const block01 = [
+    {
+      img: pp.pp03,
+      text: "“Tôi không tài giỏi, tôi không thể làm điều gì lớn lao cả”",
+    },
+    {
+      img: pp.pp04,
+      text: "“Cuộc đời tôi là những mảng đen mù mịt, không biết đi về đâu”",
+    },
+    {
+      img: pp.pp05,
+      text: "“Tôi muốn kiếm nhiều tiền nhưng không biết làm như thế nào”",
+    },
+    {
+      img: pp.pp06,
+      text: "“Tôi sợ, sợ rủi ro, sợ thất bại nên cứ e ngại mà không dám bắt đầu”",
+    },
+    {
+      img: pp.pp07,
+      text: "“Tôi luôn bị vỡ kế hoạch bởi sự trì hoãn, cứ ngồi yên chờ thời cơ”",
+    },
+    {
+      img: pp.pp08,
+      text: "“Tôi không kiểm soát được mình, dễ bị cảm xúc tiêu cực chi phối”",
+    },
+  ];
+
   return (
     <div className="container-fluid pp">
       <div className="row">
-        <img
-          src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-hcm-banner.jpg"
-          alt="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-hcm-banner.jpg"
-          className="img-fluid background-pp"
-        />
+        <img src={pp.pp01} alt={pp.pp01} className="img-fluid background-pp" />
       </div>
 
-      <div className="row video flex-alignitem">
+      <div
+        className="row video flex-alignitem"
+        style={{
+          background: `url(${pp.backgroundpp01})`,
+          backgroundSize: "100% 100%",
+        }}
+      >
         <div className="col-12 col-md-6 mt-3">
-          <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-01.png"
-            alt="img"
-            className="col-sm-8 offset-sm-2"
-          />
+          <img src={pp.pp02} alt={pp.pp02} className="col-sm-8 offset-sm-2" />
         </div>
 
         <div className="col-md-6 mt-3">
@@ -36,71 +62,31 @@ function PP() {
           ></iframe>
         </div>
       </div>
-
-      <div className="row problem pt-5 pb-3">
+      {/*  */}
+      <div
+        className="row problem pt-5 pb-3"
+        style={{
+          background: `url(${pp.backgroundpp02})`,
+          backgroundSize: "100% 100%",
+        }}
+      >
         <h2>
           HẦU HẾT CHÚNG TA <br />
           ĐỀU GẶP PHẢI CÁC VẤN ĐỀ
         </h2>
-        <div className="col-sm-6 col-md-4 ">
-          <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-van-de-01.png"
-            alt="img"
-            className="col-10 offset-1"
-          />
-          <p>“Tôi không tài giỏi, tôi không thể làm điều gì lớn lao cả”</p>
-        </div>
 
-        <div className=" col-sm-6 col-md-4">
-          <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-van-de-02.png"
-            alt="img"
-            className="col-10 offset-1"
-          />
-          <p>“Cuộc đời tôi là những mảng đen mù mịt, không biết đi về đâu”</p>
-        </div>
-
-        <div className=" col-sm-6 col-md-4">
-          <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-van-de-03.png"
-            alt="img"
-            className="col-10 offset-1"
-          />
-          <p>“Tôi muốn kiếm nhiều tiền nhưng không biết làm như thế nào”</p>
-        </div>
-
-        <div className="col-sm-6 col-md-4">
-          <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-van-de-04.png"
-            alt="img"
-            className="col-10 offset-1"
-          />
-          <p>
-            “Tôi sợ, sợ rủi ro, sợ thất bại nên cứ e ngại mà không dám bắt đầu”
-          </p>
-        </div>
-
-        <div className="col-sm-6 col-md-4">
-          <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-van-de-05.png"
-            alt="img"
-            className="col-10 offset-1"
-          />
-          <p>
-            “Tôi luôn bị vỡ kế hoạch bởi sự trì hoãn, cứ ngồi yên chờ thời cơ”
-          </p>
-        </div>
-
-        <div className="col-sm-6 col-md-4">
-          <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-van-de-06.png"
-            alt="img"
-            className="col-10 offset-1"
-          />
-          <p>
-            “Tôi không kiểm soát được mình, dễ bị cảm xúc tiêu cực chi phối”
-          </p>
-        </div>
+        {block01.map((block, index) => {
+          return (
+            <div className="col-sm-6 col-md-4 " key={index}>
+              <img
+                src={block.img}
+                alt={block.img}
+                className="col-10 offset-1"
+              />
+              <p>{block.text}</p>
+            </div>
+          );
+        })}
       </div>
 
       <div className="row change flex-alignitem">
@@ -143,10 +129,7 @@ function PP() {
           ></iframe>
         </div>
         <div className="col-md-10 offset-md-1">
-          <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-thay-doi-07.png"
-            alt="img"
-          />
+          <img src={pp.pp09} alt={pp.pp09} />
         </div>
       </div>
 
@@ -157,10 +140,7 @@ function PP() {
         </h2>
 
         <div className="col-md-6 mt-3">
-          <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-mr-vas.png"
-            alt="img"
-          />
+          <img src={pp.pp10} alt={pp.pp10} />
         </div>
 
         <div className="col-md-6 mt-3 ">
@@ -212,134 +192,77 @@ function PP() {
           </p>
         </div>
         <div className="col-md-6 mt-3 ">
-          <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-la-ha-giang-thanh.png"
-            alt="img"
-            className="mx-auto"
-          />
+          <img src={pp.pp11} alt={pp.pp11} className="mx-auto" />
         </div>
       </div>
 
-      <div className="row benefit">
+      <div
+        className="row benefit"
+        style={{
+          background: `url(${pp.backgroundpp03})`,
+          backgroundSize: "100% 100%",
+        }}
+      >
         <div className="col-md-10 offset-md-1">
-          <img
-            src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-quyen-loi-01.png"
-            alt="img"
-            className="col-md-10 offset-md-1"
-          />
+          <img src={pp.pp12} alt={pp.pp12} className="col-md-10 offset-md-1" />
 
           <div className="row text-center">
             <div className="col-md-4 offset-md-0 col-sm-8 offset-sm-2 mt-3">
-              <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-quyen-loi-02.jpg"
-                alt="img"
-                className="img-fluid w-100"
-              />
+              <img src={pp.pp13} alt={pp.pp13} className="img-fluid w-100" />
 
-              <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-gif-vip.gif"
-                alt="img"
-                className="img-fluid mt-3"
-              />
+              <img src={pp.pp14} alt={pp.pp14} className="img-fluid mt-3" />
             </div>
 
             <div className="col-md-4 offset-md-0 col-sm-8 offset-sm-2  mt-3">
-              <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-quyen-loi-03.jpg"
-                alt="img"
-              />
-              <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-gif-premium.gif"
-                alt="img"
-                className="img-fluid mt-3 "
-              />
+              <img src={pp.pp15} alt={pp.pp15} />
+
+              <img src={pp.pp16} alt={pp.pp16} className="img-fluid mt-3 " />
             </div>
             <div className="col-md-4 offset-md-0 col-sm-8 offset-sm-2 mt-3">
-              <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-quyen-loi-04.jpg"
-                alt="img"
-              />
-              <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-gif-general.gif"
-                alt="img"
-                className="img-fluid mt-3 "
-              />
+              <img src={pp.pp17} alt={pp.pp17} />
+
+              <img src={pp.pp18} alt={pp.pp18} className="img-fluid mt-3 " />
             </div>
           </div>
 
           <div className="row mt-5">
             <div className="col-8 offset-2">
               <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-uu-dai-dang-ky-premium.png"
-                alt="img"
+                src={pp.pp19}
+                alt={pp.pp19}
                 style={{ backgroundColor: "white" }}
               />
-              <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-uu-dai-dang-ky-vip.jpg"
-                alt="img"
-              />
-              <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-po-lpe-s8-08.png"
-                alt="img"
-              />
-              <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-map.jpg"
-                alt="img"
-              />
-              <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-qua-tang-premium.png"
-                alt="img"
-                className="mt-3"
-              />
+              <img src={pp.pp20} alt={pp.pp20} />
+              <img src={pp.pp21} alt={pp.pp21} />
+              <img src={pp.pp22} alt={pp.pp22} />
+              <img src={pp.pp23} alt={pp.pp23} className="mt-3" />
 
               <div className="row">
                 <div className="col-6">
-                  <img
-                    src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-qua-tang-binh-nuoc.png"
-                    alt="img"
-                  />
+                  <img src={pp.pp24} alt={pp.pp24} />
                 </div>
                 <div className="col-6">
-                  <img
-                    src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-qua-tang-tai-lieu-hoc-tap.png"
-                    alt="img"
-                  />
+                  <img src={pp.pp25} alt={pp.pp25} />
                 </div>
               </div>
-              <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-qua-tang-vip.png"
-                alt="img"
-                className="mt-3"
-              />
+              <img src={pp.pp26} alt={pp.pp26} className="mt-3" />
               <div className="row">
                 <div className="col-6">
-                  <img
-                    src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-qua-tang-binh-nuoc.png"
-                    alt="img"
-                  />
+                  <img src={pp.pp27} alt={pp.pp27} />
                 </div>
                 <div className="col-6">
-                  <img
-                    src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-qua-tang-tai-lieu-hoc-tap.png"
-                    alt="img"
-                  />
+                  <img src={pp.pp28} alt={pp.pp28} />
                 </div>
                 <div className="col-6">
-                  <img
-                    src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-qua-tang-ao.png"
-                    alt="img"
-                  />
+                  <img src={pp.pp29} alt={pp.pp29} />
                 </div>
                 <div className="col-6">
-                  <img
-                    src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-qua-tang-teabreak.png"
-                    alt="img"
-                  />
+                  <img src={pp.pp30} alt={pp.pp30} />
                 </div>
               </div>
               <img
-                src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/offline/pp/tim-lai-le-song-va-khat-vong-thanh-cong-gif-dang-ky-ngay.gif"
-                alt="img"
+                src={pp.pp31}
+                alt={pp.pp31}
                 className="mt-3 col-6 offset-3 mb-5"
               />
             </div>
