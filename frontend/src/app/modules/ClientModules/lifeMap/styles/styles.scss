@@ -228,31 +228,63 @@
   }
 
   h6 {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   p {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   &:hover {
     transform: scale(1);
   }
+}
 
-  &.top {
-    top: -25%;
+.small_popup {
+  // transform: scale(1);
+
+  &.vl {
+    bottom: 100px;
+    left: 140px;
   }
 
-  &.left {
-    left: 0;
+  &.pa {
+    bottom: 100px;
+    left: 140px;
   }
 
-  &.right {
-    right: 0;
+  @media screen and (max-width: 1200px) {
+    &.vl {
+      bottom: 50px;
+      left: 110px;
+    }
+
+    &.pa {
+      bottom: 100px;
+      left: 140px;
+    }
+  }
+}
+
+.big_popup {
+  &.start {
+    top: 75%;
+    left: 20%;
   }
 
-  &.bottom {
-    bottom: 0;
+  &.icpc {
+    top: 12%;
+    right: 60%;
+  }
+
+  &.imcpc {
+    top: 16%;
+    left: 0%;
+  }
+
+  &.ittc {
+    top: 77%;
+    left: 20%;
   }
 }
 
@@ -272,8 +304,7 @@
 // Hover Big island
 .big_popup {
   min-width: 200px;
-  height: 100px;
-  bottom: -0%;
+  min-height: 100px;
 
   &:hover {
     transform: scale(1);
@@ -294,6 +325,3 @@
 }
 
 // Modal popup
-.mobile-popup-modal {
-  padding: 20px;
-}
