@@ -27,7 +27,7 @@ function CourseItemOffline({ ...props }) {
         </div>
       </div>
 
-      <h3 className="text-center my-3">{props.name}</h3>
+      <h3 className="text-center my-3 text-capitalize">{props.name}</h3>
     </Link>
   );
 }

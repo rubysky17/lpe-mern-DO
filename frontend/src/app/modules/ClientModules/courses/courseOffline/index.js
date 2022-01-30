@@ -44,7 +44,7 @@ function CourseOffline() {
     {
       id: 2,
       name: "ITTC",
-      title: "người kế thừa dại học cuộc đời",
+      title: "người kế thừa đại học cuộc đời",
       bgCourse: khoa02,
       textColor: "#fff",
       link: "/chuong-trinh-huan-luyen/offline/nguoi-thua-ke-dai-hoc-cuoc-doi",
@@ -185,8 +185,18 @@ function CourseOffline() {
 
       <div className="container">
         <div className="heading">
-          <h3 className="heading-text">ICTA</h3>
-          <p className="heading-desc">Combo ICPC - IMCPC - ITTC</p>
+          <h3 className="heading-text">
+            INTERNATIONAL COACHING and TRAINING ALLIANCE
+          </h3>
+          <h5 className="heading-text pt-0">
+            HIỆP HỘI HUẤN LUYỆN VÀ ĐÀO TẠO QUỐC TẾ
+          </h5>
+          <p className="heading-desc">
+            Phù hợp với anh/chị có định hướng theo đuổi sự nghiệp coaching, diễn
+            giả NLP, người truyền cảm hứng... Ngoài ra, khóa học cũng đồng thời
+            giúp anh/chị xây dựng thêm kỹ năng coach cho chính bản thân để từ đó
+            làm chủ các vấn đề trong cuộc sống.
+          </p>
         </div>
 
         <Swiper
@@ -220,9 +230,13 @@ function CourseOffline() {
 
       <div className="container">
         <div className="heading">
-          <h3 className="heading-text">Combo 6</h3>
+          <h3 className="heading-text">
+            LIFE UNI - ĐẠI HỌC CUỘC ĐỜI - COMBO 6
+          </h3>
           <p className="heading-desc">
-            Combo gồm 6 khóa học của chương trình LPE nằm trong combo 10
+            Combo 6 thuộc chuỗi Đại Học Cuộc Đời sẽ giúp cho bạn hiểu cảm xúc
+            bên trong của chính mình, từ đó lý giải được các vấn đề xung quanh
+            đang tác động trực tiếp để rồi tìm ra hướng giải quyết chúng.
           </p>
         </div>
 
@@ -265,9 +279,17 @@ function CourseOffline() {
 
       <div className="container">
         <div className="heading">
-          <h3 className="heading-text">Combo 10</h3>
+          <h3 className="heading-text">
+            LIFE UNI - ĐẠI HỌC CUỘC ĐỜI - COMBO 10
+          </h3>
           <p className="heading-desc">
-            Combo đủ tất cả 10 khóa học của chương trình LPE
+            Combo 10 thuộc chuỗi Đại Học Cuộc Đời, có chứa các khóa nằm trong
+            Combo 6. Không dừng lại về các vấn đề bản thân, giờ đây với chuỗi
+            combo 10, bạn sẽ có cái nhìn toàn diện hơn về cách mà vũ trụ vận
+            hành. Kết thúc khóa học bằng 1 chuyến hành trình chinh phục đỉnh núi
+            cao nhất Đông Nam Á - Fansipan, bạn sẽ xây dựng được cho bản thân Dự
+            án cuộc đời nhằm cống hiến xã hội, mang trên mình tầm vóc lớn lao
+            hơn.
           </p>
         </div>
 
@@ -310,9 +332,10 @@ function CourseOffline() {
 
       <div className="container">
         <div className="heading">
-          <h3 className="heading-text">Khóa khác</h3>
+          <h3 className="heading-text">Các khóa Offline khác</h3>
           <p className="heading-desc">
-            Các khóa học nằm ngoài chương trình của LPE cho mọi lứa tuổi khác.
+            Bao gồm nhiều khóa lẻ, dành cho nhiều độ tuổi khác nhau và đạt được
+            những thành tựu khác nhau.
           </p>
         </div>
 

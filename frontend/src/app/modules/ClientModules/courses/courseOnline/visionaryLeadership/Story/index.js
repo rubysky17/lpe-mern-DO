@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import ModalVideo from "react-modal-video";
 
+import Vas from "../../../assets/images/chuong-trinh-huan-luyen/online/visionary-leadership/vas.png";
+import StoryImage from "../../../assets/images/chuong-trinh-huan-luyen/online/visionary-leadership/story01.png";
+
 import "./styles/styles.scss";
 
 function Story() {
@@ -26,11 +29,7 @@ function Story() {
           </div>
 
           <div className="col-md-6 wrapper-video">
-            <img
-              src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/visionary-leadership/vas.png"
-              className="img-fluid img-video"
-              alt="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/visionary-leadership/vas.png"
-            />
+            <img src={Vas} className="img-fluid img-video" alt={Vas} />
             <div className="box-color"></div>
             <div
               className="button-play"
@@ -60,11 +59,7 @@ function Story() {
           </div>
 
           <div className="col-md-6 ">
-            <img
-              src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/visionary-leadership/story01.png"
-              className="img-responsive"
-              alt="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/visionary-leadership/story01.png"
-            />
+            <img src={StoryImage} className="img-responsive" alt={StoryImage} />
           </div>
         </div>
 

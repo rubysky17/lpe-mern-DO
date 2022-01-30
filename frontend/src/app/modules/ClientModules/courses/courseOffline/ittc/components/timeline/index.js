@@ -48,7 +48,7 @@ function TimeLine() {
               }}
             >
               <div className="timestamp">
-                <span className="title">{item.title}</span>
+                <span className="desc">{item.title}</span>
                 {/* <span className="date">
                   11/15/2014<span></span>
                 </span> */}

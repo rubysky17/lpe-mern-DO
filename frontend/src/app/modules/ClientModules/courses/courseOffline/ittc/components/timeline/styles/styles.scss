@@ -67,7 +67,7 @@
   .li {
     &:hover {
       cursor: pointer;
-      .title {
+      .desc {
         color: #66dc71;
         transition: all 200ms ease-in;
       }
@@ -87,8 +87,9 @@
   }
 
   .li.complete {
-    .title {
+    .desc {
       color: #66dc71;
+      font-size: 16px;
     }
     .status {
       border-top: 2px solid #66dc71;

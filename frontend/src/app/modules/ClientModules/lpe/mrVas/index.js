@@ -192,11 +192,7 @@ function MrVas() {
       <Timeline />
 
       <div className="container mt-5">
-        <Title
-          title="CÁC CHỨNG NHẬN NLP"
-          description="At vero eos et accusamus et iusto odio dignissimos ducimus qui"
-          textAlign="center"
-        />
+        <Title title="CÁC CHỨNG NHẬN NLP" textAlign="center" />
 
         <div className="row mt-4 d-flex justify-content-center">
           {certificationList.map((src, index) => {
@@ -218,11 +214,7 @@ function MrVas() {
         </div>
       </div>
       <div className="container mt-5">
-        <Title
-          title="CÁC VIDEO GIỚI THIỆU THẦY VAS"
-          description="At vero eos et accusamus et iusto odio dignissimos ducimus qui"
-          textAlign="center"
-        />
+        <Title title="CÁC VIDEO GIỚI THIỆU THẦY VAS" textAlign="center" />
 
         <div className="row my-4">
           {/* {videoVas?.map((item) => {
@@ -274,11 +266,7 @@ function MrVas() {
         </div>
       </div>
       <div className="container mt-5">
-        <Title
-          title="HÌNH ẢNH"
-          description="At vero eos et accusamus et iusto odio dignissimos ducimus qui"
-          textAlign="center"
-        />
+        <Title title="HÌNH ẢNH" textAlign="center" />
 
         <div className="wrapperImg">
           {catelogyImg.map((catelogy, index) => {

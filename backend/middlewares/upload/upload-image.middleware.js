@@ -13,7 +13,7 @@ const uploadImageSingle = (type) => {
     storage: storage,
     fileFilter: function (req, file, cb) {
       const extensionImageList = [".png", ".jpg", ".jpeg"];
-      const extension = file.originalname.slice(-4);
+      const extension = file.originalname.slice(-4 | -5);
       const check = extensionImageList.includes(extension);
       if (check) {
         cb(null, true);

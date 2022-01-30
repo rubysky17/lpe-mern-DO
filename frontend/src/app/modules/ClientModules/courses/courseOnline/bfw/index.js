@@ -2,8 +2,32 @@ import React, { useEffect, useState } from "react";
 import ModalVideo from "react-modal-video";
 import useSiteTitle from "core/hooks/useSiteTitle";
 // component
-import FormDangKy from "./component/formDangKy";
+// import FormDangKy from "./component/formDangKy";
 import Loading from "./component/loading";
+
+import Hinh01 from "../../assets/images/chuong-trinh-huan-luyen/online/bfw/1.png";
+import Hinh02 from "../../assets/images/chuong-trinh-huan-luyen/online/bfw/2.png";
+import Hinh03 from "../../assets/images/chuong-trinh-huan-luyen/online/bfw/3.png";
+import Hinh04 from "../../assets/images/chuong-trinh-huan-luyen/online/bfw/4.png";
+import Hinh05 from "../../assets/images/chuong-trinh-huan-luyen/online/bfw/5.png";
+import Hinh06 from "../../assets/images/chuong-trinh-huan-luyen/online/bfw/6.png";
+import Hinh07 from "../../assets/images/chuong-trinh-huan-luyen/online/bfw/7.png";
+import Hinh08 from "../../assets/images/chuong-trinh-huan-luyen/online/bfw/8.png";
+
+import Card01 from "../../assets/images/chuong-trinh-huan-luyen/online/bfw/card1.png";
+import Card02 from "../../assets/images/chuong-trinh-huan-luyen/online/bfw/card2.png";
+import Card03 from "../../assets/images/chuong-trinh-huan-luyen/online/bfw/card3.png";
+import Card04 from "../../assets/images/chuong-trinh-huan-luyen/online/bfw/card4.png";
+import Card05 from "../../assets/images/chuong-trinh-huan-luyen/online/bfw/card5.png";
+import Card06 from "../../assets/images/chuong-trinh-huan-luyen/online/bfw/card6.png";
+
+import Background from "../../assets/images/chuong-trinh-huan-luyen/online/bfw/bg.jpg";
+import ThuNgo from "../../assets/images/chuong-trinh-huan-luyen/online/bfw/thuNgo.gif";
+
+import Khoa01 from "../../assets/images/chuong-trinh-huan-luyen/online/bfw/khoa1.png";
+import Khoa02 from "../../assets/images/chuong-trinh-huan-luyen/online/bfw/khoa2.png";
+
+import Bio from "../../assets/images/chuong-trinh-huan-luyen/online/bfw/bio.png";
 
 import "./styles/styles.scss";
 
@@ -27,24 +51,21 @@ const program = [
 const flipCardCourse1 = [
   {
     id: 1,
-    hinhAnh:
-      "https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/bfw/card1.png",
+    hinhAnh: Card01,
     front:
       "Tái định nghĩa về “Chuẩn đẹp”. Học cách để trở nên Tự tin. Vì tự tin là thần thái & là giao diện tuyệt vời nhất.",
     back: "Học được cách nhìn tích cực về vẻ đẹp riêng biệt của chính mình. Nhìn thấy được nét đẹp độc đáo của bản thân & người thân xung quanh. Tìm hiểu cách thức để đẹp từ cả “bên trong” lẫn “bên ngoài”. Hiểu được giá trị chân thật để bản thân luôn tự tin khi là chính mình. ",
   },
   {
     id: 2,
-    hinhAnh:
-      "https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/bfw/card2.png",
+    hinhAnh: Card02,
     front:
       "Học cách để thiết lập & giữ vững nguồn năng lượng dồi dào. Trở nên kiên cường bất biến trước mọi vấn đề trong cuộc sống.",
     back: "Rất nhiều người phụ nữ chúng ta hằng ngày đều bị chi phối bởi cảm xúc, đặc biệt là cảm xúc tiêu cực. Khi có quá nhiều thứ tiêu cực diễn ra trong cơ thể bạn, bạn sẽ không thể giữ cho mình nguồn năng lượng tích cực đủ đầy. Và vẻ đẹp của bạn cũng sẽ xuất phát từ nguồn năng lượng bên trong cũng như “giao diện” bên ngoài của bạn.",
   },
   {
     id: 3,
-    hinhAnh:
-      "https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/bfw/card3.png",
+    hinhAnh: Card03,
     front:
       "Đẹp từ “bên trong” lẫn “bên ngoài” có nghĩa là bạn cần chú ý đến những nguồn thức ăn được nạp vào cơ thể (Bên trong) và cách làm đẹp cho cơ thể, khuôn mặt của mình (Bên ngoài)",
     back: "Học cách chăm sóc cho cả cơ thể. Tìm hiểu bí quyết ăn uống hiệu quả, nạp chất dinh dưỡng hợp lý và giúp cơ thể hấp thụ đầy đủ, đào thải độc tố. Học & thực hành nghệ thuật trang điểm tôn lên vẻ đẹp cả nhân với phong cách ăn mặc phù hợp để mỗi quý cô trở nên xinh đẹp theo cách riêng.",
@@ -54,27 +75,21 @@ const flipCardCourse1 = [
 const flipCardCourse2 = [
   {
     id: 4,
-    hinhAnh:
-      "https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/bfw/card4.png",
-
+    hinhAnh: Card04,
     front:
       "Tham gia những trải nghiệm để đánh thức tình yêu thương đong đầy, vô điều kiện dành cho chính bản thân mình.",
     back: "Nhìn vào gương bạn thấy gì? Có phải bạn đang phán xét bản thân bằng những khuyết điểm của chính mình? Khi bạn dành cho bản thân một tình yêu thương chân thành & vô điều kiện, bạn sẽ nhận được tình yêu đó từ một người phù hợp, đầy giá trị.",
   },
   {
     id: 5,
-    hinhAnh:
-      "https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/bfw/card5.png",
-
+    hinhAnh: Card05,
     front:
       "Học cách xây dựng hình mẫu của người bạn đời. Cách để cư xử đúng & duy trì ngọn lửa hôn nhân Xoá bỏ niềm tin tiêu cực về tình yêu.",
     back: "Bạn không biết cách xây dựng mối quan hệ “dài hơi”, hay bạn vẫn đang loay hoay tìm kiếm cho mình người bạn đời phù hợp? Khi đã nâng cấp mình trở thành một cá thể độc đáo, đủ đầy, người bạn đời phù hợp nhất sẽ xuất hiện. Tìm hiểu & áp dụng những bí quyết để thu hút người bạn đời. Hiểu được rằng, mỗi người cần phải là một cá thể độc đáo riêng biệt để thu hút đối phương.",
   },
   {
     id: 6,
-    hinhAnh:
-      "https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/bfw/card6.png",
-
+    hinhAnh: Card06,
     front:
       "Trải nghiệm những qui trình đặc biệt để xây dựng ngọn lửa yêu thương.",
     back: "Kích hoạt nguồn năng lượng nữ giới ở bên trong. Kích hoạt thiên chức, quyền năng của người phụ nữ. Bí quyết toả sáng với vẻ đẹp tự nhiên. Hoàn toàn yêu thương chính mình, nhìn thế giới với đôi mắt của tình yêu thương & sự bình an.",
@@ -82,14 +97,14 @@ const flipCardCourse2 = [
 ];
 
 const picture = [
-  "https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/bfw/1.png",
-  "https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/bfw/2.png",
-  "https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/bfw/3.png",
-  "https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/bfw/4.png",
-  "https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/bfw/5.png",
-  "https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/bfw/6.png",
-  "https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/bfw/7.png",
-  "https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/bfw/8.png",
+  Hinh01,
+  Hinh02,
+  Hinh03,
+  Hinh04,
+  Hinh05,
+  Hinh06,
+  Hinh07,
+  Hinh08,
 ];
 
 function BeautyFromWomen() {
@@ -117,11 +132,7 @@ function BeautyFromWomen() {
         <div className="bfw">
           {/* background  */}
           <div className="bg-course">
-            <img
-              src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/bfw/bg.jpg"
-              alt="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/bfw/bg.jpg"
-              className="img-fluil"
-            />
+            <img src={Background} alt={Background} className="img-fluid" />
           </div>
 
           {/* Thư ngỏ */}
@@ -131,11 +142,7 @@ function BeautyFromWomen() {
                 className="col-12 col-lg-6 img-gif_big wow fadeInLeft"
                 data-wow-delay=".25s"
               >
-                <img
-                  src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/bfw/thuNgo.gif"
-                  alt="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/bfw/thuNgo.gif"
-                  className="img-fluid"
-                />
+                <img src={ThuNgo} alt={ThuNgo} className="img-fluid" />
               </div>
               <div
                 className="col-12 col-lg-6  letter-text wow fadeInRight"
@@ -171,11 +178,7 @@ function BeautyFromWomen() {
                 className="col-12 col-lg-6 img-gif_small wow fadeInLeft"
                 data-wow-delay=".25s"
               >
-                <img
-                  src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/bfw/thuNgo.gif"
-                  alt="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/bfw/thuNgo.gif"
-                  className="img-fluid"
-                />
+                <img src={ThuNgo} alt={ThuNgo} className="img-fluid" />
               </div>
               <div
                 className="col-12 mt-3 text-center wow fadeInLeft"
@@ -304,8 +307,8 @@ function BeautyFromWomen() {
               <div className="col-12">
                 <p className="text-level wow fadeInUp ">Level 1</p>
                 <img
-                  src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/bfw/khoa1.png"
-                  alt="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/bfw/khoa1.png"
+                  src={Khoa01}
+                  alt={Khoa01}
                   className="img-fluid img-khoa_1 wow fadeInUp "
                 />
               </div>
@@ -341,8 +344,8 @@ function BeautyFromWomen() {
                 <p className="text-level wow fadeInUp ">Level 2</p>
 
                 <img
-                  src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/bfw/khoa2.png"
-                  alt="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/bfw/khoa2.png"
+                  src={Khoa02}
+                  alt={Khoa02}
                   className="img-fluid img-khoa_1 wow fadeInUp "
                 />
               </div>
@@ -380,11 +383,7 @@ function BeautyFromWomen() {
           <div className="container my-5" id="bio">
             <div className="row wrapper-bio">
               <div className="col-12 col-md-6 wow fadeInLeft picture-bio">
-                <img
-                  src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/bfw/bio.png"
-                  alt="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/bfw/bio.png"
-                  className="img-fluid"
-                />
+                <img src={Bio} alt={Bio} className="img-fluid" />
 
                 <div className="play-video_bio">
                   <i
@@ -423,12 +422,11 @@ function BeautyFromWomen() {
           </div>
 
           {/* Học phí */}
-          <div className="container-fluid my-5" id="hocPhi">
+          {/* <div className="container-fluid my-5" id="hocPhi">
             <h1 className="text-center heading-title wow fadeInUp mb-4">
               Khóa học
             </h1>
 
-            {/* Gia moi se cong bo */}
             <div>
               <p
                 className="text-center mb-4 text-success"
@@ -457,17 +455,16 @@ function BeautyFromWomen() {
               }}
             >
               <p
-                // href="https://lpeonline.vn/dang-ky-khoa-hoc-bfw"
-                // href="#"
+                href="https://lpeonline.vn/dang-ky-khoa-hoc-bfw"
                 className="checkout-bfw-button"
               >
                 Thanh toán khóa học ngay
               </p>
             </div>
-          </div>
+          </div> */}
 
           {/* Form đăng ký */}
-          <div className="bg-dangKy">
+          {/* <div className="bg-dangKy">
             <div className="container-fluid py-5" id="dangKy">
               <h1 className="text-center heading-title wow fadeInUp">
                 Đăng ký tư vấn khóa học
@@ -478,7 +475,7 @@ function BeautyFromWomen() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
           <div className="container">
             <p className="text-center text-thank wow fadeInUp">

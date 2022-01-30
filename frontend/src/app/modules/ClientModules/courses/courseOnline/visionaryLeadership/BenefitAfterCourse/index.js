@@ -74,10 +74,7 @@ function BenefitAfterCourse() {
                       <div className="benefit_item-top">
                         <div className="benefit_item-icon">{item.icon}</div>
                         <div className="benefit_item-text">
-                          {/* <CountUp end={item.countUp} duration={5} /> */}
                           <p>{item.countUp}</p>
-                          {item.id === 2 && "K"}
-                          {item.id === 4 && "+"}
                         </div>
                       </div>
                       <div className="benefit_item-bottom">{item.text}</div>

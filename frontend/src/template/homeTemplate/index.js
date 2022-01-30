@@ -9,6 +9,7 @@ import Footer from "./layout/footer";
 import LPELoading from "app/components/loading";
 
 import { KEY_TOKEN } from "app/const/App";
+import CallIcon from "assets/images/icon-call-nh.png";
 
 export const HomeTemplate = ({ Component, ...restProps }) => {
   const dispatch = useDispatch();
@@ -32,6 +33,23 @@ export const HomeTemplate = ({ Component, ...restProps }) => {
             <Header />
             {loading ? <LPELoading /> : <Component {...propsRoute} />}
             <Footer />
+
+            <div className="hotline-phone-ring-wrap">
+              <div className="hotline-phone-ring">
+                <div className="hotline-phone-ring-circle"></div>
+                <div className="hotline-phone-ring-circle-fill"></div>
+                <div className="hotline-phone-ring-img-circle">
+                  <a href="tel:1900636034" className="pps-btn-img">
+                    <img src={CallIcon} alt={CallIcon} width="50" />
+                  </a>
+                </div>
+              </div>
+              <div className="hotline-bar">
+                <a href="tel:1900636034">
+                  <span className="text-hotline">1900.636.034</span>
+                </a>
+              </div>
+            </div>
           </>
         );
       }}

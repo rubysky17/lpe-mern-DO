@@ -1,7 +1,8 @@
 const from =
-  "ÁÄÂÀÃÅĂÁẰẲẴẶÂẤẦẨẪẬČÇĆĎÉĚËÈÊẼĔȆẾÊẾỀỂỄỆĞÍÌÎÏİỊÍỈĨŇÑÓÖÒÔÕØÔỐỒỔỖỘƠỚỜỞỠỢŘŔŠŞŤÚŮÜÙÛƯỨỪỬỮỰÝŸỲỶỸỴŽáäâàãåăắằẳẵặâấầẩẩẫậảčçćďéěëèêẽĕȇếêếềểễệğíìîïỉĩịıňñóöòôõøðôốồổỗộơớớờởỡợřŕšşťúůüùûưứửữựữủũýÿỳỷỹỵžþÞĐđßÆa·/_,:;";
+  "ÁÀẢÃẠĂẮẰẲẴẶÄÂẤẦẨẪẬÃÅĂÁẰẲẴÂẤẦẨẪČÇĆĎÉĚËÈÊẼĔȆẾÊẾỀỂỄỆĞÍÌÎÏİỊÍỈĨŇÑÓÖÒÔÕØÔỐỒỔỖỘƠỚỜỞỠỢŘŔŠŞŤÚŮÜÙÛƯỨỪỬỮỰÝŸỲỶỸỴŽáàảãạăắằẳẵặâấầẩẫậäâàãåăắằẳẵặâấầẩẩẫậảčçćďéěëèêẽĕȇếêếềểễệğíìîïỉĩịıňñóöòôõøðôốồổỗộơớớờởỡợřŕšşťúůüùûưứửữựữủũýÿỳỷỹỵžþÞĐđßÆa·/_,:;";
+
 const to =
-  "AAAAAAAAAAAAAAAAAACCCDEEEEEEEEEEEEEEEGIIIIIIIIINNOOOOOOOOOOOOOOOOOORRSSTUUUUUUUUUUUYYYYYYZaaaaaaaaaaaaaaaaaaaacccdeeeeeeeeeeeeeeegiiiiiiiinnoooooooooooooooooooorrsstuuuuuuuuuuuuuyyyyyyzbBDdBAa------";
+  "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAACCCDEEEEEEEEEEEEEEEGIIIIIIIIINNOOOOOOOOOOOOOOOOOORRSSTUUUUUUUUUUUYYYYYYZaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacccdeeeeeeeeeeeeeeegiiiiiiiinnoooooooooooooooooooorrsstuuuuuuuuuuuuuyyyyyyzbBDdBAa------";
 
 export const convertStringToSlug = (string) => {
   string = string.replace(/^\s+|\s+$/g, ""); // convert string to trim

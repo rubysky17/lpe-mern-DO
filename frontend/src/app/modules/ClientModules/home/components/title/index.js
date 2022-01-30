@@ -8,7 +8,7 @@ function Title({ textAlign, title, description }) {
         marginTop: "60px",
       }}
     >
-      <h1 className="title px-3">{title}</h1>
+      <h1 className={`title px-3`}>{title}</h1>
       <p className="description">{description}</p>
     </div>
   );

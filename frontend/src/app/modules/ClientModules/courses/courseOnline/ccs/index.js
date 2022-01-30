@@ -1,95 +1,103 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import useSiteTitle from "core/hooks/useSiteTitle";
-import { Button, InputLabel, TextField } from "@mui/material";
-import { makeStyles } from "@mui/styles";
+// import { Button, InputLabel, TextField } from "@mui/material";
+// import { makeStyles } from "@mui/styles";
+import Banner from "./assets/css-introduce.jpg";
+import Mrvas from "./assets/ccs-mrvas.png";
+import IntroContent from "./assets/ccs-introduceContent.png";
+import Timeline from "./assets/ccs-timeline.png";
+import Content1 from "./assets/ccs-degreeContent1.png";
+import Content2 from "./assets/ccs-degreeContent2.png";
+import Content3 from "./assets/ccs-degreeContent3.png";
+import Content4 from "./assets/ccs-degreeContent4.png";
+
+import Register from "./assets/ccs-register.png";
+import Promotion1 from "./assets/ccs-promotion1.png";
+import Promotion2 from "./assets/ccs-promotion2.png";
 
 import "./styles/styles.scss";
 
-const useStyles = makeStyles(() => ({
-  formInput: {
-    width: "100%",
-    marginBottom: "40px",
-  },
-  labelInput: {
-    textAlign: "left",
-    marginBottom: "10px",
-    marginTop: "10px",
-    textTransform: "uppercase",
-    fontWeight: "bold",
-  },
-}));
+// const useStyles = makeStyles(() => ({
+//   formInput: {
+//     width: "100%",
+//     marginBottom: "40px",
+//   },
+//   labelInput: {
+//     textAlign: "left",
+//     marginBottom: "10px",
+//     marginTop: "10px",
+//     textTransform: "uppercase",
+//     fontWeight: "bold",
+//   },
+// }));
 
 function CcsPage() {
   useSiteTitle("ccs");
+  // const refForm = useRef(null);
 
-  const classes = useStyles();
-  const refForm = useRef(null);
-  const [error, setError] = useState({});
-  const [loading, setLoading] = useState(false);
+  // const classes = useStyles();
+  // const [error, setError] = useState({});
+  // const [loading, setLoading] = useState(false);
   // const [success, setSuccess] = useState(false);
 
-  const handleSubmit = () => {
-    setLoading(true);
+  // const handleSubmit = () => {
+  //   setLoading(true);
 
-    const phoneRegex = /^(0)[0-9]{9}$/;
-    const emailRegex =
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  //   const phoneRegex = /^(0)[0-9]{9}$/;
+  //   const emailRegex =
+  //     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-    const errorMgs = {};
+  //   const errorMgs = {};
 
-    let name = refForm.current["name"].value;
-    let phone = refForm.current["phone"].value;
-    let email = refForm.current["email"].value;
+  //   let name = refForm.current["name"].value;
+  //   let phone = refForm.current["phone"].value;
+  //   let email = refForm.current["email"].value;
 
-    if (name.trim().length < 3) {
-      errorMgs["name"] = "Vui lòng nhập đầy đủ tên";
-    }
+  //   if (name.trim().length < 3) {
+  //     errorMgs["name"] = "Vui lòng nhập đầy đủ tên";
+  //   }
 
-    if (phone.trim().length === 0) {
-      errorMgs["phone"] = "Vui lòng nhập số điện thoại";
-    }
+  //   if (phone.trim().length === 0) {
+  //     errorMgs["phone"] = "Vui lòng nhập số điện thoại";
+  //   }
 
-    if (!phone.match(phoneRegex)) {
-      errorMgs["phone"] =
-        "Sai định dạng số điện thoại, phải bắt đầu từ 0 và gồm 10 số";
-    }
+  //   if (!phone.match(phoneRegex)) {
+  //     errorMgs["phone"] =
+  //       "Sai định dạng số điện thoại, phải bắt đầu từ 0 và gồm 10 số";
+  //   }
 
-    if (email.trim().length === 0) {
-      errorMgs["email"] = "Vui lòng nhập Email";
-    }
+  //   if (email.trim().length === 0) {
+  //     errorMgs["email"] = "Vui lòng nhập Email";
+  //   }
 
-    if (!emailRegex.test(email)) {
-      errorMgs["email"] = "Sai định dạng email";
-    }
+  //   if (!emailRegex.test(email)) {
+  //     errorMgs["email"] = "Sai định dạng email";
+  //   }
 
-    if (Object.keys(errorMgs).length === 0) {
-      // Kiểm tra object Error xem có rỗng không ? Rỗng là không có lỗi cho phép submit form
-      // const now = new Date();
-      // const date = timeToUnix(now);
-      // Submit thông tin của giỏ hàng
-      // const dataSubmit = {
-      //   date,
-      //   email,
-      //   name,
-      //   phone,
-      // };
-    } else {
-      setLoading(false);
-    }
+  //   if (Object.keys(errorMgs).length === 0) {
+  //     // Kiểm tra object Error xem có rỗng không ? Rỗng là không có lỗi cho phép submit form
+  //     // const now = new Date();
+  //     // const date = timeToUnix(now);
+  //     // Submit thông tin của giỏ hàng
+  //     // const dataSubmit = {
+  //     //   date,
+  //     //   email,
+  //     //   name,
+  //     //   phone,
+  //     // };
+  //   } else {
+  //     setLoading(false);
+  //   }
 
-    setError(errorMgs);
-  };
+  //   setError(errorMgs);
+  // };
 
   return (
     <div className="ccs">
       <section className="banner">
         <div className="container">
           <div className="row">
-            <img
-              src="https://lpe.vn/img/ccs/css-introduce.jpg"
-              className="img-responsive"
-              alt="https://lpe.vn/img/ccs/css-introduce.jpg"
-            />
+            <img src={Banner} className="img-responsive" alt={Banner} />
             <div className="bannerContent">
               <h3>VÌ SAO BẠN CẦN CHUỖI CHƯƠNG TRÌNH NÀY?</h3>
 
@@ -126,17 +134,13 @@ function CcsPage() {
         <div className="container">
           <div className="row">
             <div className="col-5">
-              <img
-                src="https://lpe.vn/img/ccs/ccs-mrvas.png"
-                className="img-responsive"
-                alt="https://lpe.vn/img/ccs/ccs-mrvas.png"
-              />
+              <img src={Mrvas} className="img-responsive" alt={Mrvas} />
             </div>
             <div className="col-7 introduceRight">
               <img
-                src="https://lpe.vn/img/ccs/ccs-introduceContent.png"
+                src={IntroContent}
                 className="img-responsive"
-                alt="https://lpe.vn/img/ccs/ccs-introduceContent.png"
+                alt={IntroContent}
               />
             </div>
           </div>
@@ -147,11 +151,7 @@ function CcsPage() {
         <div className="container">
           <div className="row timelineContent">
             <div className="col-12 mt-1">
-              <img
-                src="https://lpe.vn/img/ccs/ccs-timeline.png"
-                className="img-responsive"
-                alt="https://lpe.vn/img/ccs/ccs-timeline.png"
-              />
+              <img src={Timeline} className="img-responsive" alt={Timeline} />
             </div>
           </div>
         </div>
@@ -161,23 +161,11 @@ function CcsPage() {
         <div className="container degreeContent">
           <div className="row pt-4">
             <div className="col-7">
-              <img
-                src="https://lpe.vn/img/ccs/ccs-degreeContent1.png"
-                className="img-responsive"
-                alt="https://lpe.vn/img/ccs/ccs-degreeContent1.png"
-              />
-              <img
-                src="https://lpe.vn/img/ccs/ccs-degreeContent2.png"
-                className="img-responsive"
-                alt="https://lpe.vn/img/ccs/ccs-degreeContent2.png"
-              />
+              <img src={Content1} className="img-responsive" alt={Content1} />
+              <img src={Content2} className="img-responsive" alt={Content2} />
             </div>
             <div className="col-5">
-              <img
-                src="https://lpe.vn/img/ccs/ccs-degreeContent3.png"
-                className="img-responsive"
-                alt="https://lpe.vn/img/ccs/ccs-degreeContent3.png"
-              />
+              <img src={Content3} className="img-responsive" alt={Content3} />
             </div>
           </div>
         </div>
@@ -185,11 +173,7 @@ function CcsPage() {
         <div className="container degreeContent mt-5">
           <div className="row pt-4">
             <div className="offset-md-1 col-md-10 col-sm-12 col-xs-12">
-              <img
-                src="https://lpe.vn/img/ccs/ccs-degreeContent4.png"
-                className="img-responsive"
-                alt="https://lpe.vn/img/ccs/ccs-degreeContent4.png"
-              />
+              <img src={Content4} className="img-responsive" alt={Content4} />
               <iframe
                 className="pt-3"
                 src="https://www.youtube.com/embed/7Fz9jkt280U"
@@ -200,18 +184,19 @@ function CcsPage() {
               ></iframe>
             </div>
           </div>
-          <div className="row pt-3 ">
-            <div className="offset-2 col-8">
-              <img
-                src="https://lpe.vn/img/ccs/ccs-register.png"
-                className="img-responsive"
-                alt="https://lpe.vn/img/ccs/ccs-register.png"
-              />
-            </div>
+          <div className="row pt-3 mb-4">
+            <a
+              className="offset-2 col-8"
+              href="https://www.facebook.com/lpe.vn.lifeuni"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src={Register} className="img-responsive" alt={Register} />
+            </a>
           </div>
 
           {/* Form Đăng ký tư vấn */}
-          <form
+          {/* <form
             className="ccs-form advertisement mt-3"
             noValidate
             ref={refForm}
@@ -255,40 +240,6 @@ function CcsPage() {
               className={classes.formInput}
             />
 
-            {/* Tate Picker */}
-            {/* <TimePickerCCS
-              onHandleChangeTime={handleChangeTime}
-              className="mb-3"
-            /> */}
-
-            {/* {success && (
-              <>
-                <p className="mt-2 text-success fz-small">
-                  LPE đã ghi nhận thông tin của bạn. Quét mã QR hoặc truy cập
-                  <a
-                    href="https://zalo.me/g/wyuriw963"
-                    className="text-primary mx-1"
-                  >
-                    tại đây
-                  </a>
-                  để tham gia nhóm zalo và cập nhật thông tin mới nhất về
-                  "chương trình quà tặng".
-                </p>
-
-                <div className="d-flex justify-content-center mb-2">
-                  <img
-                    src="https://lpe.vn/img/ccs/ccs-qr.jpg"
-                    alt="https://lpe.vn/img/ccs/ccs-qr.jpg"
-                    className="img-fluid w-50 "
-                  />
-                </div>
-              </>
-            )} */}
-
-            {/* {error.timeAdvise && (
-              <p className="mt-2 text-danger fz-small">{error.timeAdvise}</p>
-            )} */}
-
             {loading && <div className="loader-ccs text-center m-auto"></div>}
 
             <Button
@@ -313,47 +264,26 @@ function CcsPage() {
             >
               Gửi thông tin
             </Button>
-          </form>
+          </form> */}
           <div className="row promotion">
             <div className="offset-2 col-8 pt-4">
               <img
-                src="https://lpe.vn/img/ccs/ccs-promotion1.png"
+                src={Promotion1}
                 className="img-responsive"
-                alt="https://lpe.vn/img/ccs/ccs-promotion1.png"
+                alt={Promotion1}
               />
             </div>
 
             <div className="col-12 pt-3 pb-5">
               <img
-                src="https://lpe.vn/img/ccs/promote-2.png"
+                src={Promotion2}
                 className="img-responsive"
-                alt="https://lpe.vn/img/ccs/promote-2.png"
+                alt={Promotion2}
               />
             </div>
           </div>
         </div>
       </section>
-
-      <div className="hotline-phone-ring-wrap">
-        <div className="hotline-phone-ring">
-          <div className="hotline-phone-ring-circle"></div>
-          <div className="hotline-phone-ring-circle-fill"></div>
-          <div className="hotline-phone-ring-img-circle">
-            <a href="tel:1900636034" className="pps-btn-img">
-              <img
-                src="https://nguyenhung.net/wp-content/uploads/2019/05/icon-call-nh.png"
-                alt="Gọi điện thoại"
-                width="50"
-              />
-            </a>
-          </div>
-        </div>
-        <div className="hotline-bar">
-          <a href="tel:1900636034">
-            <span className="text-hotline">1900.636.034</span>
-          </a>
-        </div>
-      </div>
     </div>
   );
 }

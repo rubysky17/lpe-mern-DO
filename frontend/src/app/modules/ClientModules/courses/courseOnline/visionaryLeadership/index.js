@@ -8,7 +8,7 @@ import JourneyCourse from "./JourneyCourse";
 import SkillOfCourse from "./SkillOfCourse";
 import Pricing from "./Pricing";
 import AboutMrVas from "./AboutMrVas";
-import FormRegister from "./FormRegister";
+// import FormRegister from "./FormRegister";
 import BenefitAfterCourse from "./BenefitAfterCourse";
 import Testimonior from "./Testimonior";
 
@@ -47,7 +47,7 @@ function VisionaryLeadership() {
       <BenefitAfterCourse />
       <Testimonior />
 
-      <div className="bg-dangKy">
+      {/* <div className="bg-dangKy">
         <div className="container-fluid" id="dangKy">
           <div className="row">
             <div className="col-12 col-md-6 offset-md-3">
@@ -63,7 +63,7 @@ function VisionaryLeadership() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

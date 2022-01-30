@@ -4,6 +4,9 @@ import Accordion from "app/components/accordion";
 import SwiperCore, { Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
+import Journey01 from "../../../assets/images/chuong-trinh-huan-luyen/online/visionary-leadership/journeyCourse01.jpeg";
+import Journey02 from "../../../assets/images/chuong-trinh-huan-luyen/online/visionary-leadership/journeyCourse02.jpeg";
+
 import "./styles/styles.scss";
 
 SwiperCore.use([Pagination]);
@@ -90,11 +93,7 @@ function JourneyCourse() {
           <SwiperSlide>
             <div className="row my-5">
               <div className="col-12 col-md-6">
-                <img
-                  src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/visionary-leadership/journeyCourse01.jpeg"
-                  alt="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/visionary-leadership/journeyCourse01.jpeg"
-                  className="img-fluid"
-                />
+                <img src={Journey01} alt={Journey01} className="img-fluid" />
               </div>
               <div className="col-12 col-md-6 mt-5 mt-md-0">
                 {dayOne.map((item, index) => {
@@ -114,11 +113,7 @@ function JourneyCourse() {
           <SwiperSlide>
             <div className="row my-5">
               <div className="col-12 col-md-6">
-                <img
-                  src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/visionary-leadership/journeyCourse02.jpeg"
-                  alt="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/visionary-leadership/journeyCourse02.jpeg"
-                  className="img-fluid"
-                />
+                <img src={Journey02} alt={Journey02} className="img-fluid" />
               </div>
               <div className="col-12 col-md-6 mt-5 mt-md-0">
                 {dayTwo.map((item, index) => {

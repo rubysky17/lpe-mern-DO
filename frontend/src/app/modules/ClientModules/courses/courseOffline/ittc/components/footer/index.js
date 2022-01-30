@@ -1,107 +1,108 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 
-import { timeToUnix } from "core/utils/dateUtil";
-import { create } from "app/const/firebase";
-import { InputLabel, makeStyles, TextField } from "@material-ui/core";
+// import { timeToUnix } from "core/utils/dateUtil";
+// import { create } from "app/const/firebase";
+// import { InputLabel, makeStyles, TextField } from "@material-ui/core";
 
 import "./styles/styles.scss";
 
-const useStyles = makeStyles(() => ({
-  formInput: {
-    width: "100%",
-  },
-  formSelect: {
-    width: "100%",
-    marginTop: "10px",
-  },
-  labelInput: {
-    textAlign: "left",
-    textTransform: "uppercase",
-    fontWeight: "bold",
-    margin: "20px 0",
-  },
-}));
+// const useStyles = makeStyles(() => ({
+//   formInput: {
+//     width: "100%",
+//   },
+//   formSelect: {
+//     width: "100%",
+//     marginTop: "10px",
+//   },
+//   labelInput: {
+//     textAlign: "left",
+//     textTransform: "uppercase",
+//     fontWeight: "bold",
+//     margin: "20px 0",
+//   },
+// }));
 
 function Footer() {
-  const [error, setError] = useState({});
-  const refForm = useRef(null);
-  const classes = useStyles();
-  const [status, setStatus] = useState(false);
+  // const [error, setError] = useState({});
+  // const refForm = useRef(null);
+  // const classes = useStyles();
+  // const [status, setStatus] = useState(false);
 
-  const onSubmit = (e) => {
-    e.preventDefault();
+  // const onSubmit = (e) => {
+  //   e.preventDefault();
 
-    const phoneRegex = /^(0)[0-9]{9}$/;
-    const emailRegex =
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  //   const phoneRegex = /^(0)[0-9]{9}$/;
+  //   const emailRegex =
+  //     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-    const errorMgs = {};
+  //   const errorMgs = {};
 
-    const name = refForm.current["name"].value;
-    const phone = refForm.current["phone"].value;
-    const email = refForm.current["email"].value;
-    // const code = refForm.current["code"].value;
+  //   const name = refForm.current["name"].value;
+  //   const phone = refForm.current["phone"].value;
+  //   const email = refForm.current["email"].value;
+  //   // const code = refForm.current["code"].value;
 
-    if (name.trim().length < 3) {
-      errorMgs["name"] = "Vui lòng nhập đầy đủ tên";
-    }
+  //   if (name.trim().length < 3) {
+  //     errorMgs["name"] = "Vui lòng nhập đầy đủ tên";
+  //   }
 
-    if (phone.trim().length === 0) {
-      errorMgs["phone"] = "Vui lòng nhập số điện thoại";
-    }
+  //   if (phone.trim().length === 0) {
+  //     errorMgs["phone"] = "Vui lòng nhập số điện thoại";
+  //   }
 
-    if (!phone.match(phoneRegex)) {
-      errorMgs["phone"] =
-        "Sai định dạng số điện thoại, phải bắt đầu từ 0 và gồm 10 số";
-    }
+  //   if (!phone.match(phoneRegex)) {
+  //     errorMgs["phone"] =
+  //       "Sai định dạng số điện thoại, phải bắt đầu từ 0 và gồm 10 số";
+  //   }
 
-    if (email.trim().length === 0) {
-      errorMgs["email"] = "Vui lòng nhập Email";
-    }
+  //   if (email.trim().length === 0) {
+  //     errorMgs["email"] = "Vui lòng nhập Email";
+  //   }
 
-    if (!emailRegex.test(email)) {
-      errorMgs["email"] = "Sai định dạng email";
-    }
+  //   if (!emailRegex.test(email)) {
+  //     errorMgs["email"] = "Sai định dạng email";
+  //   }
 
-    // Kiểm tra object Error xem có rỗng không ? Rỗng là không có lỗi cho phép submit form
-    if (Object.keys(errorMgs).length === 0) {
-      const now = new Date();
+  //   // Kiểm tra object Error xem có rỗng không ? Rỗng là không có lỗi cho phép submit form
+  //   if (Object.keys(errorMgs).length === 0) {
+  //     const now = new Date();
 
-      const date = timeToUnix(now);
+  //     const date = timeToUnix(now);
 
-      // Submit thông tin của giỏ hàng
-      const dataSubmit = {
-        date,
-        email,
-        name,
-        phone,
-      };
+  //     // Submit thông tin của giỏ hàng
+  //     const dataSubmit = {
+  //       date,
+  //       email,
+  //       name,
+  //       phone,
+  //     };
 
-      // Đưa thông tin lên database
-      create("ittc", dataSubmit)
-        .then((res) => {
-          console.log("complete create docID: ", res);
+  //     // Đưa thông tin lên database
+  //     create("ittc", dataSubmit)
+  //       .then((res) => {
+  //         console.log("complete create docID: ", res);
 
-          refForm.current["name"].value = "";
-          refForm.current["phone"].value = "";
-          refForm.current["email"].value = "";
+  //         refForm.current["name"].value = "";
+  //         refForm.current["phone"].value = "";
+  //         refForm.current["email"].value = "";
 
-          setStatus(true);
-        })
-        .catch((err) => {
-          console.log("error from database:", err);
-          setStatus(false);
-        });
-    }
+  //         setStatus(true);
+  //       })
+  //       .catch((err) => {
+  //         console.log("error from database:", err);
+  //         setStatus(false);
+  //       });
+  //   }
 
-    setTimeout(() => {
-      setStatus(false);
-    }, 3000);
+  //   setTimeout(() => {
+  //     setStatus(false);
+  //   }, 3000);
 
-    setError(errorMgs);
-  };
+  //   setError(errorMgs);
+  // };
+
   return (
-    <div className="ittc-footer  py-5">
+    <div className="ittc-footer py-5">
       <div className="container">
         <div className="row">
           <div className="col-12 col-md-4">
@@ -133,7 +134,7 @@ function Footer() {
             </button>
           </form> */}
 
-          <form ref={refForm} className="col-12 col-md-8">
+          {/* <form ref={refForm} className="col-12 col-md-8">
             <InputLabel id="paymentType" className={classes.labelInput}>
               Tên
             </InputLabel>
@@ -182,7 +183,16 @@ function Footer() {
             <button onClick={onSubmit} className="ittc-footer-btn mt-4">
               Gửi thông tin
             </button>
-          </form>
+          </form> */}
+
+          <a
+            href="https://www.facebook.com/lpe.vn.lifeuni"
+            target="_blank"
+            rel="noreferrer"
+            className="btn btn-secondary"
+          >
+            Nhận tư vấn
+          </a>
         </div>
       </div>
     </div>

@@ -250,10 +250,16 @@ export default function Home() {
         }}
       >
         <div className="wrapper-content_person">
-          <h2>{t("life_map")}</h2>
+          <h2 className="text-uppercase">{t("life_map")}</h2>
 
-          {/* <p>{t("comming_soon")}</p> */}
-          <Link to="/life-map" className="btn btn-success">
+          <p>
+            Hành trình cuộc đời là tấm bản đồ giúp cho bạn hiểu rõ hơn về chặn
+            đường học tại LPE. Từ đó, bạn có thể hiểu được khóa học nào là phù
+            hợp và thiết lập được cho mình một lộ trình phát triển tốt nhất cho
+            chính mình.
+          </p>
+
+          <Link to="/life-map" className="btn btn-success px-5 py-3">
             Đi tới
           </Link>
         </div>

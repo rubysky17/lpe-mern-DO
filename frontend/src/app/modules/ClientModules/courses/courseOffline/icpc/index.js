@@ -1,6 +1,14 @@
-import "./styles/styles.scss";
 import React, { useState } from "react";
 import Modal from "./components/modal";
+
+import banner from "./assets/banner-icpc.jpg";
+import certification from "./assets/bang-chung-nhan-nlp.png";
+import privilege01 from "./assets/privilege01.png";
+import privilege03 from "./assets/privilege03.png";
+// import quote1 from "./assets/quote-icpc.jpg";
+import quote2 from "./assets/quote2-icpc.jpg";
+
+import "./styles/styles.scss";
 
 function ICPC() {
   const data_apply = [
@@ -74,11 +82,7 @@ function ICPC() {
 
   return (
     <div className="ICPC">
-      <img
-        src="https://lpe.vn/img/icpc/banner-icpc.jpg"
-        className="img-fluid "
-        alt="https://lpe.vn/img/icpc/banner-icpc.jpg"
-      />
+      <img src={banner} className="img-fluid " alt={banner} />
       <div className="container">
         <div className="row mt-5">
           <h2 className="quote">
@@ -273,11 +277,7 @@ function ICPC() {
           ></Modal>
         </div>
         <div className="row quote2 mt-5">
-          <img
-            src="https://lpe.vn/img/icpc/quote2-icpc.jpg"
-            className="img-fluid"
-            alt="https://lpe.vn/img/icpc/quote2-icpc.jpg"
-          />
+          <img src={quote2} className="img-fluid" alt={quote2} />
         </div>
         <div className="row apply mt-5 justify-content-center align-items-center ">
           <h2 className="quote">ỨNG DỤNG THỰC TIỄN SAU CHƯƠNG TRÌNH </h2>
@@ -300,27 +300,19 @@ function ICPC() {
         <div className="row privilege mt-5 pt-3">
           <h2 className="quote">ĐẶC QUYỀN TỪ CHƯƠNG TRÌNH</h2>
           <div className="col-lg-4 col-md-4 col-sm-12 ">
-            <img
-              src="https://lpe.vn/img/icpc/privilege01.png"
-              className="img-fluid"
-              alt="https://lpe.vn/img/icpc/privilege01.png"
-            />
+            <img src={privilege01} className="img-fluid" alt={privilege01} />
             <p>Bộ quy trình NLP dành riêng cho việc Coaching Online</p>
           </div>
           <div className="col-lg-4 col-md-4 col-sm-12">
             <img
-              src="https://lpe.vn/img/icpc/bang-chung-nhan-nlp.png"
+              src={certification}
               className="img-fluid"
-              alt="https://lpe.vn/img/icpc/bang-chung-nhan-nlp.png"
+              alt={certification}
             />
             <p>Bằng chứng nhận NLP đẳng cấp quốc tế</p>
           </div>
           <div className="col-lg-4 col-md-4 col-sm-12">
-            <img
-              src="https://lpe.vn/img/icpc/privilege03.png"
-              className="img-fluid"
-              alt="https://lpe.vn/img/icpc/privilege03.png"
-            />
+            <img src={privilege03} className="img-fluid" alt={privilege03} />
             <p>
               Trở thành Nhà Tư Vấn Trị Liệu giải quyết vấn đề cho khách hàng,
               cho mọi người.

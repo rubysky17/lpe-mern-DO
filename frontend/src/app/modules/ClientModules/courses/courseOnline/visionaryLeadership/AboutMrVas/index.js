@@ -1,4 +1,5 @@
 import React from "react";
+import Vas from "../../../assets/images/chuong-trinh-huan-luyen/online/visionary-leadership/aboutMrVas01.png";
 
 import "./styles/styles.scss";
 
@@ -37,10 +38,7 @@ function AboutMrVas() {
           </div>
 
           <div className="col-12 col-lg-6 img-vas">
-            <img
-              src="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/visionary-leadership/aboutMrVas01.png"
-              alt="https://lpe.vn/img/lpe/chuong-trinh-huan-luyen/online/visionary-leadership/aboutMrVas01.png"
-            />
+            <img src={Vas} alt={Vas} />
           </div>
         </div>
       </div>
