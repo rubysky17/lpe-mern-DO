@@ -14,7 +14,7 @@ const LPEModal = forwardRef(({ children, title, width, height }, ref) => {
     background: "#fff",
     boxShadow: 24,
     overflowY: "auto",
-    p: 4,
+    p: 2,
   };
 
   const handleClose = () => {
