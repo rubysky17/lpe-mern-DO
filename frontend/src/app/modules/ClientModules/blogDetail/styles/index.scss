@@ -32,6 +32,7 @@ $color-lighter: rgb(113, 128, 150);
     .blog-title {
       font-family: $font-title;
       color: #333;
+      font-size: 35px;
     }
 
     .author-info-block {
@@ -64,6 +65,8 @@ $color-lighter: rgb(113, 128, 150);
   }
 
   .content-container {
+    margin-bottom: 100px;
+
     b {
       font-weight: 700;
     }
@@ -175,6 +178,18 @@ $color-lighter: rgb(113, 128, 150);
         z-index: 2;
         font-family: $font-para;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .lpe-blog-detail {
+    padding: 0 15px;
+  }
+
+  .author-container {
+    .blog-title {
+      font-size: 30px !important;
     }
   }
 }
