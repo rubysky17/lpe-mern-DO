@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Skeleton from "react-loading-skeleton";
 import LPESecondaryBlog from "../secondaryBlog";
 import LPEPrimaryBlog from "../primaryBlog";
@@ -18,13 +18,13 @@ function ItemList({ loading, data }) {
           <>
             {data.map((blog, index) => {
               return (
-                <>
+                <Fragment key={index}>
                   {index > 1 ? (
-                    <LPESecondaryBlog data={blog} key={index} />
+                    <LPESecondaryBlog data={blog} />
                   ) : (
-                    <LPEPrimaryBlog data={blog} key={index} />
+                    <LPEPrimaryBlog data={blog} />
                   )}
-                </>
+                </Fragment>
               );
             })}
           </>

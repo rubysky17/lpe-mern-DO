@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import LPELoading from "app/components/loading";
@@ -24,7 +24,6 @@ function BlogDetail() {
 
         const jsonConvert = JSON.parse(response.data.data.content);
         const newBlocks = convertBlocksToHtml(jsonConvert);
-        console.log(response.data.data);
         setBlocks(newBlocks);
         setBlogInfo(response.data.data);
       })
@@ -108,4 +107,4 @@ function BlogDetail() {
   );
 }
 
-export default BlogDetail;
+export default memo(BlogDetail);

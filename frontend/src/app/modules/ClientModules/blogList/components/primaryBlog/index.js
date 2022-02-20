@@ -16,13 +16,14 @@ function LPEPrimaryBlog({ data }) {
               <div className="blog-big_text">
                 <div>
                   <p className="blog-big_text--info">
-                    <Link to={`${data.topicId._id}`}>
+                    {/* <Link to={`${data.topicId._id}`}>
                       <p>
                         <span className="text-uppercase">
                           {data.topicId.name}
                         </span>
                       </p>
-                    </Link>
+                    </Link> */}
+                    <span className="text-uppercase">{data.topicId.name}</span>
                   </p>
 
                   <h2 className="blog-big_text--title">{data.title}</h2>

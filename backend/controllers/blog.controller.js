@@ -6,6 +6,7 @@ const getAll = async (req, res) => {
     const list = await Blog.find({
       blogStatus: true,
     })
+      .select({ content: 0 })
       .populate({
         path: "author",
         select: { name: 1, _id: 1, avatar: 1, email: 1 },

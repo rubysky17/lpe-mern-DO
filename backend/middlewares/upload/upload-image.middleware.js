@@ -12,14 +12,28 @@ const uploadImageSingle = (type) => {
   const upload = multer({
     storage: storage,
     fileFilter: function (req, file, cb) {
-      const extensionImageList = [".png", ".jpg", ".jpeg"];
-      const extension = file.originalname.slice(-4 | -5);
-      const check = extensionImageList.includes(extension);
+      // const extensionImageList = [".png", ".jpg", ".jpeg"];
+      // const extension = file.originalname.slice(-4 | -5);
+      // const check = extensionImageList.includes(extension);
+      // if (check) {
+      //   cb(null, true);
+      // } else {
+      //   cb(new Error("extension không hợp lệ"));
+      // }
+
+      let extensionImageList = [
+        "image/png",
+        "image/jpeg",
+        "image/jpg",
+        "image/gif",
+      ]; // Array của mimetype hình ảnh
+      const check = extensionImageList.indexOf(file.mimetype) === -1; // Tìm index của file nếu có sẽ trả về !== -1, không tồn tại trả về === -1
+
       if (check) {
-        cb(null, true);
-      } else {
         cb(new Error("extension không hợp lệ"));
       }
+
+      cb(null, true);
     },
   });
 
