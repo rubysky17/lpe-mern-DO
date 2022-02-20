@@ -101,6 +101,7 @@ function AccountInfo({ id }) {
     const file = e.target.files[0];
 
     if (!file) {
+      setLoadingImage(false);
       return;
     }
 

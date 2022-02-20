@@ -33,6 +33,7 @@ blogRouter.post(
 
 // All blog list
 blogRouter.get("/", getAll);
+
 // All blog list
 blogRouter.get("/:url", getDetail);
 
