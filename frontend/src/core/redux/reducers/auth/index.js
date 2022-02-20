@@ -29,14 +29,7 @@ export const authReducer = (state = initialState, action) => {
 
     // cập nhật hình ảnh đại diện
     case UPDATE_AVATAR: {
-      // Clone object from initial state
-      const result = { ...state.userInfo };
-      // update avatar
-      result.avatar = action.avatar;
-      // remake userInfo
-      state.userInfo = result;
-
-      return { ...state };
+      return { ...state.userInfo, avatar: action.payload };
     }
 
     // xóa ảnh đại diện
