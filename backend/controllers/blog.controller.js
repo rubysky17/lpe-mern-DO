@@ -15,6 +15,7 @@ const getAll = async (req, res) => {
         path: "topicId",
         select: { name: 1, _id: 1 },
       })
+      .sort({ createdAt: -1 })
       .exec();
 
     return res.status(200).send({

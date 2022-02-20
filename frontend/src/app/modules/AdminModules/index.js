@@ -3,6 +3,7 @@ import UserManager from "./userManager";
 import ProductsManager from "./productsManager";
 import AddUser from "./addUser";
 import AddPost from "./addPost";
+import BlogsManager from "./blogManager";
 
 const Admin = {
   Home,
@@ -10,6 +11,7 @@ const Admin = {
   ProductsManager,
   AddUser,
   AddPost,
+  BlogsManager,
 };
 
 export default Admin;

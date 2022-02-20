@@ -4,6 +4,7 @@ import axios from "axios";
 import LPELoading from "app/components/loading";
 import { API_ENDPOINT, BLOG } from "app/const/Api";
 import { convertBlocksToHtml } from "core/utils/editorUtil";
+import { convertFullDate } from "core/utils/dateUtil";
 
 import "./styles/index.scss";
 
@@ -61,7 +62,7 @@ function BlogDetail() {
               <div className="author-container">
                 <div className="category">
                   {blogInfo.topicId && (
-                    <Link to={`${blogInfo.topicId.name}`}>
+                    <Link to={`${blogInfo.topicId._id}`}>
                       {blogInfo.topicId.name}
                     </Link>
                   )}
@@ -86,7 +87,10 @@ function BlogDetail() {
                       )}
                     </p>
 
-                    <p className="created-at">14 tháng 1</p>
+                    <p className="created-at">
+                      Cập nhật lần cuối vào &nbsp;
+                      {convertFullDate(blogInfo.updatedAt, "DD-MM-yyyy")}
+                    </p>
                   </div>
                 </div>
               </div>

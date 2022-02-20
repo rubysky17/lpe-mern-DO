@@ -43,7 +43,6 @@ const useStyles = makeStyles(() => ({
   btnPopOver: {
     padding: "10px 20px!important",
     fontWeight: "bold!important",
-    fontFamily: "product-sans",
     color: "#333!important",
     width: "100%",
     "&:hover": {

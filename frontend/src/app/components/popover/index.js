@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
   ".MuiAppBar-colorPrimary": {
     padding: "0!important",
     color: "unset!important",
+    fontStyle: "Roboto",
   },
 }));
 

@@ -57,7 +57,7 @@ export const updateAvatarAction = (formData, setLoadingImage) => {
 
           dispatch({
             type: UPDATE_AVATAR,
-            avatar: res.data.data,
+            payload: res.data.data,
           });
 
           showToast("success", "Cập nhật hình ảnh thành công", {
