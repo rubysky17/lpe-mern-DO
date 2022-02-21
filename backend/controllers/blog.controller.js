@@ -115,7 +115,19 @@ const getDetail = async (req, res) => {
   }
 };
 
-const remove = (req, res) => {};
+const remove = async (req, res) => {
+  try {
+    const { id } = req.body;
+
+    const blogDelete = await Blog.deleteOne({
+      _id: id,
+    });
+
+    res.status(200).send(blogDelete);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
 
 const edit = (req, res) => {};
 
@@ -125,4 +137,5 @@ module.exports = {
   edit,
   getAll,
   getDetail,
+  remove,
 };
