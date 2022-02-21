@@ -29,7 +29,13 @@ export const authReducer = (state = initialState, action) => {
 
     // cập nhật hình ảnh đại diện
     case UPDATE_AVATAR: {
-      return { ...state.userInfo, avatar: action.payload };
+      return {
+        ...state,
+        userInfo: {
+          ...state.userInfo,
+          avatar: action.payload,
+        },
+      };
     }
 
     // xóa ảnh đại diện

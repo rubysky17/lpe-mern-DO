@@ -38,10 +38,10 @@ blogRouter.get("/", getAll);
 blogRouter.get("/:url", getDetail);
 
 // delete blog
-// blogRouter.delete("/delete-post", authenticate, authorize(["admin"]), remove);
+blogRouter.delete("/delete", authenticate, authorize(["admin"]), remove);
 
 // Edit blog
-// blogRouter.put("/edit-post", authenticate, authorize(["admin"]), edit);
+// blogRouter.put("/edit", authenticate, authorize(["admin"]), edit);
 
 // Find post by topic
 
