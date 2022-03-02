@@ -253,7 +253,7 @@ export default function Home() {
           <h2 className="text-uppercase">{t("life_map")}</h2>
 
           <p>
-            Hành trình cuộc đời là tấm bản đồ giúp cho bạn hiểu rõ hơn về chặn
+            Hành trình cuộc đời là tấm bản đồ giúp cho bạn hiểu rõ hơn về chặng
             đường học tại LPE. Từ đó, bạn có thể hiểu được khóa học nào là phù
             hợp và thiết lập được cho mình một lộ trình phát triển tốt nhất cho
             chính mình.

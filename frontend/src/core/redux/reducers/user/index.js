@@ -12,9 +12,8 @@ import {
 
 const initialState = {
   userList: [],
-  requesting: false,
-  success: false,
-  message: null,
+  loading: false,
+  error: null,
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -48,14 +47,13 @@ export const userReducer = (state = initialState, action) => {
 
     // DEMO NEW REDUX
     case FETCH_ALL_USER_REQUESTING: {
-      return { ...state, requesting: true };
+      return { ...state, loading: true };
     }
 
     case FETCH_ALL_USER_SUCCESS: {
       return {
         ...state,
-        requesting: false,
-        success: true,
+        loading: false,
         userList: action.payload,
       };
     }
@@ -63,9 +61,8 @@ export const userReducer = (state = initialState, action) => {
     case FETCH_ALL_USER_FAILED: {
       return {
         ...state,
-        requesting: false,
-        success: false,
-        message: action.message,
+        loading: false,
+        error: action.payload,
       };
     }
 

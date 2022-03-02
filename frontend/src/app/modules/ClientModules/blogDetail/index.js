@@ -1,10 +1,11 @@
 import React, { memo, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import axios from "axios";
+import axiosClient from "app/const/Instance";
 import LPELoading from "app/components/loading";
 import { API_ENDPOINT, BLOG } from "app/const/Api";
 import { convertBlocksToHtml } from "core/utils/editorUtil";
 import { convertFullDate } from "core/utils/dateUtil";
+import { Avatar } from "@mui/material";
 
 import "./styles/index.scss";
 
@@ -17,16 +18,14 @@ function BlogDetail() {
   const getBlogDetail = () => {
     setIsLoading(true);
 
-    axios({
-      url: API_ENDPOINT + BLOG + url,
-    })
+    axiosClient
+      .get(API_ENDPOINT + BLOG + url)
       .then((response) => {
         setIsLoading(false);
-
-        const jsonConvert = JSON.parse(response.data.data.content);
+        const jsonConvert = JSON.parse(response.data.content);
         const newBlocks = convertBlocksToHtml(jsonConvert);
         setBlocks(newBlocks);
-        setBlogInfo(response.data.data);
+        setBlogInfo(response.data);
       })
       .catch((error) => {
         setIsLoading(false);
@@ -72,12 +71,16 @@ function BlogDetail() {
                 <h1 className="blog-title">{blogInfo.title}</h1>
 
                 <div className="author-info-block">
-                  {blogInfo.author && (
+                  {blogInfo.author?.avatar ? (
                     <img
                       src={blogInfo.author.avatar}
                       alt={blogInfo.author.avatar}
                       className="img-fluid mr-2"
                     />
+                  ) : (
+                    <div className="mr-2">
+                      <Avatar />
+                    </div>
                   )}
 
                   <div className="author-info-block_name">

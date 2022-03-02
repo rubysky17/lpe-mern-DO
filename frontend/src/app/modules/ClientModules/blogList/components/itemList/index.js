@@ -8,7 +8,7 @@ function ItemList({ loading, data }) {
   return (
     <>
       <h1 className="blog-topic">
-        {loading ? <Skeleton width={200} height={70} /> : "Xin chào bạn"}
+        {loading ? <Skeleton width={200} height={70} /> : "Trạm đọc & cảm"}
       </h1>
 
       <div className="row blog-list">

@@ -11,6 +11,7 @@ const {
   deleteAvatar,
   updateWithRoleClient,
   updateWithRoleAdmin,
+  // hello,
 } = require("../controllers/user.controller");
 
 // import middleware
@@ -24,6 +25,9 @@ const {
 } = require("../middlewares/upload/upload-image.middleware");
 
 userRouter.get("/", authenticate, authorize(["admin"]), getList);
+
+// userRouter.get("/testing-api", hello);
+
 userRouter.get("/:id", getDetail);
 userRouter.post(
   "/",
@@ -54,8 +58,6 @@ userRouter.post(
 );
 
 userRouter.post("/delete-avatar", authenticate, deleteAvatar);
-
-userRouter.get("/search");
 
 module.exports = {
   userRouter,

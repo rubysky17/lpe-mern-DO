@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function LPEPrimaryBlog({ data }) {
   return (
     <div className="col-12 col-md-6 px-1 mb-3 mb-md-0">
-      <Link to={`/bai-dang/${data.url}`}>
+      <Link to={`/tram-doc-cam/${data.url}`}>
         <article
           className="lpe-blog big-item"
           style={{

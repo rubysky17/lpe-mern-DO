@@ -82,7 +82,7 @@ function InputField(props) {
                     {showPassword ? (
                       <i className="fal fa-eye-slash"></i>
                     ) : (
-                      <i class="far fa-eye"></i>
+                      <i className="far fa-eye"></i>
                     )}
                   </div>
                 ),

@@ -41,13 +41,13 @@ const LPEEditor = forwardRef((props, ref) => {
 LPEEditor.propTypes = {
   tools: PropTypes.object.isRequired,
   placeholder: PropTypes.string.isRequired,
-  defaultValue: PropTypes.object,
+  // defaultValue: PropTypes.object,
 };
 
 LPEEditor.defaultProps = {
   tools: {},
   placeholder: "",
-  defaultValue: {},
+  // defaultValue: {},
 };
 
 export default LPEEditor;

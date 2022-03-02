@@ -13,7 +13,7 @@ import AdminDrawer from "./components/drawer";
 
 // const and action
 import { KEY_TOKEN } from "app/const/App";
-import { appAction, adminAction } from "core/redux/actions/appAction";
+import { appAction } from "core/redux/actions/appAction";
 import { isEmpty } from "core/utils/isEmpty";
 
 import "./styles/styles.scss";
@@ -53,17 +53,14 @@ export const AdminTemplate = ({ Component, ...restProps }) => {
 
   const dispatch = useDispatch();
   const { userInfo } = useSelector((state) => state.auth);
-  const [isLoading, setIsLoading] = useState(false);
+  const { loading } = useSelector((state) => state.app);
+
   const [isOpen, setIsOpen] = useState(false);
   const accessToken = localStorage.getItem(KEY_TOKEN);
 
   useEffect(() => {
     if (accessToken !== null || isEmpty(userInfo)) {
-      setIsLoading(true);
-      dispatch(appAction(setIsLoading));
-      dispatch(adminAction(setIsLoading));
-    } else {
-      setIsLoading(false);
+      dispatch(appAction());
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -87,7 +84,7 @@ export const AdminTemplate = ({ Component, ...restProps }) => {
               <Redirect to="/" />
             ) : (
               <>
-                {isLoading ? (
+                {loading ? (
                   <LPELoading />
                 ) : (
                   <>

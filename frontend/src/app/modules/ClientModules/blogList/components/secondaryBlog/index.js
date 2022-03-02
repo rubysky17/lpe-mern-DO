@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function LPESecondaryBlog({ data }) {
   return (
     <div className="col-12 col-lg-3 mb-3 mb-md-0 mt-4">
-      <Link to={`/bai-dang/${data.url}`} id="#navid">
+      <Link to={`/tram-doc-cam/${data.url}`} id="#navid">
         <article className="lpe-blog small-item">
           <div className="right-content">
             <img

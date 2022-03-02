@@ -21,7 +21,7 @@ export const postBlogAction = (data, setIsLoading) => {
         .then((res) => {
           dispatch({
             type: POST_BLOG,
-            data: data,
+            payload: data,
           });
 
           setIsLoading(false);
