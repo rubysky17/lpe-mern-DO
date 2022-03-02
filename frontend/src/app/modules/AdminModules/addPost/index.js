@@ -30,7 +30,7 @@ function AddPost() {
   // Fetch Topic
   useEffect(() => {
     axiosClient
-      .get(API_ENDPOINT + TOPIC)
+      .get(TOPIC)
       .then((response) => {
         setListTopic(response.data);
       })
