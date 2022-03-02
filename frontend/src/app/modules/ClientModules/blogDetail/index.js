@@ -19,8 +19,9 @@ function BlogDetail() {
     setIsLoading(true);
 
     axiosClient
-      .get(API_ENDPOINT + BLOG + url)
+      .get(BLOG + url)
       .then((response) => {
+        console.log("url", url);
         setIsLoading(false);
         const jsonConvert = JSON.parse(response.data.content);
         const newBlocks = convertBlocksToHtml(jsonConvert);
