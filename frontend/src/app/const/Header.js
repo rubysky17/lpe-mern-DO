@@ -32,11 +32,11 @@ export const CONTENT_MENU = [
     childMenu: [
       {
         title: "live_course",
-        url: "/chuong-trinh-huan-luyen/online",
+        url: "/chuong-trinh-huan-luyen/offline",
       },
       {
         title: "online_course",
-        url: "/chuong-trinh-huan-luyen/offline",
+        url: "/chuong-trinh-huan-luyen/online",
       },
       {
         title: "media_course",
@@ -69,7 +69,7 @@ export const CONTENT_MENU = [
 
   {
     title: "posts",
-    url: "/bai-dang",
+    url: "/tram-doc-cam",
   },
   // {
   //   title: "personality_test",

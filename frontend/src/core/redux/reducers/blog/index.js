@@ -23,7 +23,7 @@ export const blogReducer = (state = initialState, action) => {
     case POST_BLOG:
       const newList = [...state.list];
 
-      newList.push(action.data);
+      newList.push(action.payload);
 
       state.list = newList;
       return { ...state };

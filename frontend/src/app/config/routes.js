@@ -21,8 +21,8 @@ export const URL_PATH_CLIENT = {
   CONFIRMREGISTER: "/xac-nhan-dang-ky/:token",
   CONFIRMFORGOTPASSWORD: "/xac-nhan-quen-mat-khau/:token",
   FORGOTPASSWORD: "/quen-mat-khau",
-  BLOG_LIST: "/bai-dang",
-  BLOG_DETAIL: "/bai-dang/:url",
+  BLOG_LIST: "/tram-doc-cam",
+  BLOG_DETAIL: "/tram-doc-cam/:url",
   LIFE_MAP: "/life-map",
   PERFORMANCE: "/hop-tac/toi-uu-thanh-tich",
   CORPORATION: "/hop-tac/huan-luyen-doanh-nghiep",
@@ -37,6 +37,7 @@ export const URL_PATH_ADMIN = {
   USER_MANAGER: "/quan-ly-nguoi-dung",
   PRODUCT_MANAGER: "/quan-ly-san-pham",
   ADD_USER: "/them-nguoi-dung",
+  BLOG_EDIT: "/sua-bai/:id",
   ADD_POST: "/them-bai-viet",
   BLOG_MANAGER: "/quan-ly-bai-viet",
 };
@@ -297,5 +298,10 @@ export const adminRoutes = [
     component: Admin.BlogsManager,
     exact: true,
     path: "/admin" + URL_PATH_ADMIN.BLOG_MANAGER,
+  },
+  {
+    component: Admin.EditPost,
+    exact: true,
+    path: "/admin" + URL_PATH_ADMIN.BLOG_EDIT,
   },
 ];

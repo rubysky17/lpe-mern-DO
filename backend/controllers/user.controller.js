@@ -1,16 +1,43 @@
 const { User } = require("../models/users.model");
 const bcrypt = require("bcryptjs");
-const fs = require("fs");
 
 const getList = async (req, res) => {
-  const opts = req.body;
+  const query = {};
+  let total;
+
+  if (req.query.keyword) {
+    query.$or = [
+      { email: { $regex: req.query.keyword || "", $options: "i" } },
+      { name: { $regex: req.query.keyword || "", $options: "i" } },
+      { phone: { $regex: req.query.keyword || "", $options: "i" } },
+    ];
+  }
+
+  if (req.query.role) {
+    query.role = req.query.role;
+  }
+
+  if (req.query.gender) {
+    query.gender = req.query.gender;
+  }
 
   try {
-    const userList = await User.find({}).exec();
+    const userList = await User.find(query)
+      .skip(parseInt(req.query.skip))
+      .limit(parseInt(req.query.limit))
+      .exec();
 
-    res.status(200).send(userList);
+    const count = await User.countDocuments(query);
+
+    return res.json({
+      data: userList,
+      total: count,
+    });
   } catch (error) {
-    res.status(500).send(error);
+    return res.json({
+      status: "failed",
+      message: error,
+    });
   }
 };
 
@@ -64,14 +91,21 @@ const create = async (req, res) => {
 
 const remove = async (req, res) => {
   try {
+    const { user } = req;
     const { id } = req.params;
-    let user = await User.findById(id);
 
-    const userDelete = await User.deleteOne({
-      _id: id,
-    });
+    console.log("user", user);
+    if (user._id === id) {
+      return res.status(400).send({
+        error: "Can't not delete user",
+      });
+    } else {
+      const userDelete = await User.deleteOne({
+        _id: id,
+      });
 
-    res.status(200).send(userDelete);
+      return res.status(200).send(userDelete);
+    }
   } catch (error) {
     res.status(500).send(error);
   }
@@ -173,15 +207,44 @@ const deleteAvatar = async (req, res) => {
   }
 };
 
-const postWithFormData = async (req, res) => {
-  const { file } = req;
+const hello = async (req, res) => {
+  const query = {};
+  let total;
 
-  const { name } = req.body;
+  if (req.query.keyword) {
+    query.$or = [
+      { email: { $regex: req.query.keyword || "", $options: "i" } },
+      { name: { $regex: req.query.keyword || "", $options: "i" } },
+      { phone: { $regex: req.query.keyword || "", $options: "i" } },
+    ];
+  }
 
-  res.json({
-    file,
-    name,
-  });
+  if (req.query.role) {
+    query.role = req.query.role;
+  }
+
+  if (req.query.gender) {
+    query.gender = req.query.gender;
+  }
+
+  try {
+    const userList = await User.find(query)
+      .skip(parseInt(req.query.skip))
+      .limit(parseInt(req.query.limit))
+      .exec();
+
+    const count = await User.countDocuments(query);
+
+    return res.json({
+      data: userList,
+      total: count,
+    });
+  } catch (error) {
+    return res.json({
+      status: "failed",
+      message: error,
+    });
+  }
 };
 
 module.exports = {
@@ -193,5 +256,5 @@ module.exports = {
   deleteAvatar,
   updateWithRoleClient,
   updateWithRoleAdmin,
-  postWithFormData,
+  hello,
 };

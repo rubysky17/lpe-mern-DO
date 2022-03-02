@@ -6,41 +6,35 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import { Button } from "@mui/material";
 
-function FilterUser({ onHandleFilter, onClosePopOver }) {
-  const [dataFilter, setDataFilter] = useState();
-
-  const handleClosePopOver = () => {
-    onClosePopOver && onClosePopOver();
-  };
+function Sort({ handleSort }) {
+  const [sortValue, setSortValue] = useState({
+    role: "",
+    gender: "",
+  });
 
   const handleChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
 
     if (name === "gender") {
-      setDataFilter({ ...dataFilter, gender: value });
+      setSortValue({ ...sortValue, gender: value });
     }
 
     if (name === "role") {
-      setDataFilter({ ...dataFilter, role: value });
+      setSortValue({ ...sortValue, role: value });
     }
   };
 
-  const handleCancelFilter = () => {
-    // Close Popover
-    handleClosePopOver();
-    // SetState empty filter
-    setDataFilter({});
+  const handleCancelSort = () => {
+    setSortValue({ role: "", gender: "" });
+    handleSort({ role: "", gender: "" });
   };
 
-  const handleFilter = () => {
-    onHandleFilter && onHandleFilter(dataFilter);
-    handleClosePopOver();
+  const handleClick = () => {
+    handleSort && handleSort(sortValue);
   };
-
   return (
     <form
-      onChange={handleChange}
       style={{
         padding: "15px 20px",
       }}
@@ -48,7 +42,12 @@ function FilterUser({ onHandleFilter, onClosePopOver }) {
       <div>
         <FormControl component="fieldset">
           <FormLabel component="legend">Giới tính</FormLabel>
-          <RadioGroup aria-label="gender" name="gender">
+          <RadioGroup
+            aria-label="gender"
+            name="gender"
+            value={sortValue.gender}
+            onChange={handleChange}
+          >
             <FormControlLabel value="nam" control={<Radio />} label="Nam" />
             <FormControlLabel value="nu" control={<Radio />} label="Nữ" />
           </RadioGroup>
@@ -58,7 +57,13 @@ function FilterUser({ onHandleFilter, onClosePopOver }) {
       <div>
         <FormControl component="fieldset">
           <FormLabel component="legend">Phân quyền</FormLabel>
-          <RadioGroup aria-label="role" name="role">
+
+          <RadioGroup
+            aria-label="role"
+            name="role"
+            value={sortValue.role}
+            onChange={handleChange}
+          >
             <FormControlLabel value="admin" control={<Radio />} label="Admin" />
             <FormControlLabel
               value="client"
@@ -79,11 +84,11 @@ function FilterUser({ onHandleFilter, onClosePopOver }) {
           style={{
             marginRight: "10px",
           }}
-          onClick={handleFilter}
+          onClick={handleClick}
         >
           Lưu
         </Button>
-        <Button variant="text" onClick={handleCancelFilter}>
+        <Button variant="text" onClick={handleCancelSort}>
           Hủy bỏ
         </Button>
       </div>
@@ -91,4 +96,4 @@ function FilterUser({ onHandleFilter, onClosePopOver }) {
   );
 }
 
-export default FilterUser;
+export default Sort;

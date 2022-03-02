@@ -7,7 +7,7 @@ const initialState = {
 export const topicReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_TOPIC:
-      state.list = action.data;
+      state.list = action.payload;
       return { ...state };
 
     default:

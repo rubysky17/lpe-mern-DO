@@ -1,10 +1,14 @@
 import React from "react";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
+
+import {
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Button,
+  Typography,
+} from "@mui/material";
 
 function BlogItem({ item }) {
   return (
@@ -23,8 +27,11 @@ function BlogItem({ item }) {
 
       <CardActions>
         <Button size="small" variant="contained" color="secondary">
-          Chỉnh sửa
+          <Link to={`/admin/sua-bai/${item._id}`} className="text-white">
+            Chỉnh sửa
+          </Link>
         </Button>
+
         <Button size="small" variant="contained" color="error">
           Xóa
         </Button>

@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import LPELoading from "app/components/loading";
 import LPEEditor from "app/components/editor";
 import LPEModal from "app/components/modal";
 
@@ -15,26 +14,29 @@ import { EDITOR_TOOLS_BLOG } from "app/const/tools";
 import { postBlogAction } from "core/redux/actions/blogAction";
 
 import "./styles/index.scss";
+import axiosClient from "app/const/Instance";
+import { API_ENDPOINT, TOPIC } from "app/const/Api";
 
 function AddPost() {
   const dispatch = useDispatch();
-  const [isLoading, setIsLoading] = useState(true);
   const [isLoadingPost, setIsLoadingPost] = useState(false);
   const [rawToHtml, setRawToHtml] = useState([]);
   const [errors, setErrors] = useState([]);
+  const [listTopic, setListTopic] = useState([]);
   const refEditor = useRef(null);
   const refModal = useRef(null);
   const refOutside = useRef(null);
 
-  // Loading Data
+  // Fetch Topic
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      setIsLoading(false);
-    }, 1200);
-
-    return () => {
-      clearTimeout(timeout);
-    };
+    axiosClient
+      .get(API_ENDPOINT + TOPIC)
+      .then((response) => {
+        setListTopic(response.data);
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
   }, []);
 
   const handlePostBlog = async () => {
@@ -45,7 +47,6 @@ function AddPost() {
     // const html = convertBlocksToHtml(val.blocks);
     const value = refOutside.current.getValue();
     const cover = refOutside.current.getImage();
-    console.log("cover", cover);
 
     if (!cover) {
       setIsLoadingPost(false);
@@ -74,8 +75,6 @@ function AddPost() {
       .toString(36)
       .replace(/[^a-z]+/g, "")
       .substr(0, 10);
-
-    console.log(generate);
 
     const formData = new FormData();
 
@@ -106,46 +105,50 @@ function AddPost() {
   };
 
   return (
-    <div className="addblog-screen">
-      {isLoading ? (
-        <LPELoading />
-      ) : (
-        <div className="row">
-          <InputOutside ref={refOutside} errors={errors} />
-
-          <div className="col-12 mt-4">
-            <LPEEditor
-              onHandleSubmit={handlePostBlog}
-              onPreview={handlePreview}
-              ref={refEditor}
-              tools={EDITOR_TOOLS_BLOG}
-              placeholder="Nhập nội dung bài viết"
+    <>
+      {!!listTopic.length && (
+        <div className="addblog-screen">
+          <div className="row">
+            <InputOutside
+              ref={refOutside}
+              errors={errors}
+              listTopic={listTopic}
             />
+
+            <div className="col-12 mt-4">
+              <LPEEditor
+                onHandleSubmit={handlePostBlog}
+                onPreview={handlePreview}
+                ref={refEditor}
+                tools={EDITOR_TOOLS_BLOG}
+                placeholder="Nhập nội dung bài viết"
+              />
+            </div>
+
+            <div className="fixed-layout">
+              <button
+                className="btn-addblog btn-addblog-preview"
+                onClick={handlePreview}
+              >
+                Preview
+              </button>
+
+              <button
+                className="btn-addblog btn-addblog-post"
+                onClick={handlePostBlog}
+                disabled={isLoadingPost}
+              >
+                Đăng bài
+              </button>
+            </div>
           </div>
 
-          <div className="fixed-layout">
-            <button
-              className="btn-addblog btn-addblog-preview"
-              onClick={handlePreview}
-            >
-              Preview
-            </button>
-
-            <button
-              className="btn-addblog btn-addblog-post"
-              onClick={handlePostBlog}
-              disabled={isLoadingPost}
-            >
-              Đăng bài
-            </button>
-          </div>
+          <LPEModal ref={refModal} width={900} height="80vh">
+            <PreviewBlog render={rawToHtml} />
+          </LPEModal>
         </div>
-      )}
-
-      <LPEModal ref={refModal} width={900} height="80vh">
-        <PreviewBlog render={rawToHtml} />
-      </LPEModal>
-    </div>
+      )}{" "}
+    </>
   );
 }
 

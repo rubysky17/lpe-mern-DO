@@ -55,6 +55,7 @@ function LPEAvatar({ name, avatar, action, hiddenName }) {
     return (
       <div style={styles}>
         <Avatar alt={name} src={avatar} />
+
         {!hiddenName && <span className="ml-1">{name}</span>}
       </div>
     );

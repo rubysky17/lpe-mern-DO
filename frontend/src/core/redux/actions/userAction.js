@@ -10,6 +10,9 @@ import {
 
 import {
   ADD_USER,
+  FETCH_ALL_USER_FAILED,
+  FETCH_ALL_USER_REQUESTING,
+  FETCH_ALL_USER_SUCCESS,
   GET_IP_LOCAL,
   UPDATE_USER_IN_LIST,
 } from "../constant/userConstant";
@@ -18,6 +21,7 @@ import { showToast } from "core/utils/toastUtil";
 import { KEY_TOKEN } from "app/const/App";
 
 import { DELETE_AVATAR, UPDATE_AVATAR } from "../constant/authConstant";
+import axiosClient from "app/const/Instance";
 
 export const getIpLocalAction = () => {
   return (dispatch) => {
@@ -199,6 +203,28 @@ export const addUserAction = (userInfo, setIsLoading) => {
 
       showToast("error", "Thêm thất bại", {
         timeout: 5000,
+      });
+    }
+  };
+};
+
+export const getUsersAction = () => {
+  return async (dispatch) => {
+    dispatch({
+      type: FETCH_ALL_USER_REQUESTING,
+    });
+
+    try {
+      axiosClient.get(USERS).then((response) => {
+        dispatch({
+          type: FETCH_ALL_USER_SUCCESS,
+          payload: response,
+        });
+      });
+    } catch (error) {
+      dispatch({
+        type: FETCH_ALL_USER_FAILED,
+        payload: error,
       });
     }
   };

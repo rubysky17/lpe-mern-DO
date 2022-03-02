@@ -1,87 +1,48 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
-import axios from "axios";
-import { TextField } from "@mui/material";
+import axiosClient from "app/const/Instance.js";
+import { stringify } from "query-string";
+import { Button } from "@mui/material";
+import EditUser from "./components/editUser/index.js";
+import FilterUser from "./components/filterUser/index.js";
 
-import LPELoading from "app/components/loading";
 import LPETable from "template/adminTemplate/components/lpeTable";
-import EditUser from "./components/editUser/index.js.js";
-import FilterUser from "./components/filerUser/index.js";
 import LPEPopover from "app/components/popover/index.js";
 import LPEDrawer from "app/components/drawer/index.js";
-
-import { API_ENDPOINT, USERS_SEARCH } from "app/const/Api.js";
-import { KEY_TOKEN } from "app/const/App.js";
+import LPEPagination from "app/components/pagination";
+import LPELoadingSkeleton from "app/components/loadingSkeleton";
 
 import "./styles/styles.scss";
+import { showToast } from "core/utils/toastUtil.js";
 
 const headCells = [
-  { id: "id", label: "ID", disableSorting: false, numeric: false },
-  { id: "name", label: "Tên", disableSorting: false, numeric: false },
-  { id: "email", label: "Email", disableSorting: false, numeric: false },
-  { id: "phone", label: "Số điện thoại", disableSorting: true, numeric: false },
-  { id: "role", label: "Quyền", disableSorting: true, numeric: false },
-  { id: "action", label: "Thao tác", disableSorting: true, numeric: false },
+  { id: "id", label: "ID" },
+  { id: "name", label: "Tên" },
+  { id: "email", label: "Email" },
+  { id: "phone", label: "Số điện thoại" },
+  { id: "role", label: "Quyền" },
+  { id: "action", label: "Thao tác" },
 ];
 
 const anchor = { vertical: "bottom", horizontal: "right" };
 const transfrom = { vertical: "top", horizontal: "right" };
 
 function UserManager() {
-  const { userList } = useSelector((state) => state.user);
-  const { userInfo } = useSelector((state) => state.auth);
+  const LIMIT = 10;
+
   const refFilter = useRef(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const [isLoading, setIsLoading] = useState(true);
-  const [dataTable, setDataTable] = useState([]);
+  const [list, setList] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [isFiltered, setIsFiltered] = useState(false);
+  const [dataFilter, setDataFilter] = useState({});
   const [openDrawer, setOpenDrawer] = useState(false);
-  const [userEdit, setUserEdit] = useState({});
-
-  // Loading Data
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setIsLoading(false);
-    }, 1200);
-
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, []);
-
-  useEffect(() => {
-    const dataTable = userList.filter((y) => y._id !== userInfo._id);
-
-    userList && setDataTable(dataTable);
-  }, [userInfo._id, userList]);
-
-  const handleSearch = (e) => {
-    let target = e.target;
-
-    if (target.value === "") return setDataTable(userList);
-
-    const dataSearchEmail = userList.filter((x) =>
-      x.email.toLowerCase().includes(target.value.toLowerCase())
-    );
-
-    const dataSearchName = userList.filter((x) =>
-      x.name.toLowerCase().includes(target.value.toLowerCase())
-    );
-
-    if (dataSearchEmail.length) {
-      return setDataTable(dataSearchEmail);
-    }
-
-    if (dataSearchName.length) {
-      return setDataTable(dataSearchName);
-    }
-  };
 
   const toggleDrawer = () => {
     setOpenDrawer(!openDrawer);
   };
 
   const handleOpenDrawer = (itemEditing) => {
-    setUserEdit(itemEditing);
     setOpenDrawer(true);
   };
 
@@ -89,56 +50,105 @@ function UserManager() {
     setOpenDrawer(false);
   };
 
-  const handleFilter = (filterData) => {
-    const token = localStorage.getItem(KEY_TOKEN);
-    console.log("filterData", filterData);
+  useEffect(() => {
+    getList(1);
+  }, []);
 
-    try {
-      axios({
-        url: API_ENDPOINT + USERS_SEARCH,
-        method: "get",
-        data: filterData,
-        headers: {
-          token: `${token}`,
-        },
+  // Fetch Table Data
+  const getList = (page, opts, isFiltered) => {
+    setIsLoading(true);
+
+    const skip = page === 0 ? 0 : (page - 1) * LIMIT;
+
+    const data = {
+      limit: LIMIT,
+      skip,
+      total: true,
+      ...opts,
+    };
+
+    axiosClient
+      .get(`users?${stringify(data)}`)
+      .then((response) => {
+        setIsLoading(false);
+
+        isFiltered
+          ? setTotal(response.total || 0)
+          : setTotal(response.total || 0);
+
+        setList(response.data);
+
+        setTotal(response.total);
       })
-        .then((res) => {
-          console.log("data", res.data);
-        })
-        .catch((err) => console.log(err));
-    } catch (err) {
-      console.log(err.response.data);
-    }
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const onChangePage = (page) => {
+    getList(page, dataFilter);
+  };
+
+  const handleFilter = (data) => {
+    setIsFiltered(true);
+    getList(1, data, true);
+    setDataFilter(data);
+  };
+
+  const handleDelete = (user_id) => {
+    axiosClient
+      .delete(`users/${user_id}`)
+      .then((response) => {
+        setList((list) => list.filter((item) => item._id !== user_id));
+        setTotal((total) => total - 1);
+
+        showToast("success", "Xóa người dùng thành công", {
+          timeout: 5000,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+
+        showToast("error", "Xóa người dùng thất bại", {
+          timeout: 5000,
+        });
+      });
   };
 
   return (
     <>
-      {isLoading ? (
-        <LPELoading />
-      ) : (
-        <div className="container-fluid">
-          <TextField
-            label="Tìm theo tên/email"
-            margin="normal"
-            InputProps={{ type: "search" }}
-            onChange={(e) => {
-              handleSearch(e);
-            }}
-            className="w-50 "
-          />
+      <div className="container-fluid">
+        <Button
+          onClick={(e) => {
+            refFilter.current.handleClick(e);
+          }}
+          variant="contained"
+          className="mb-3"
+        >
+          Lọc
+        </Button>
 
+        {isLoading ? (
+          <LPELoadingSkeleton count={LIMIT + 1} />
+        ) : (
           <LPETable
             tableName={"Quản lý user"}
             tableHead={headCells}
-            tableData={dataTable}
+            tableData={list}
             view="user"
-            onOpenPopover={(e) => {
-              refFilter.current.handleClick(e);
-            }}
             onOpenDrawer={handleOpenDrawer}
+            onHandleDelete={handleDelete}
           />
-        </div>
-      )}
+        )}
+
+        {/* Pagination */}
+        <LPEPagination
+          itemPerPage={LIMIT}
+          totalItem={total}
+          onChange={onChangePage}
+          isFiltered={isFiltered}
+        />
+      </div>
 
       {/* Popover filter here */}
       <LPEPopover
@@ -150,7 +160,10 @@ function UserManager() {
             onClosePopOver={(e) => {
               refFilter.current.handleCloseClick(e);
             }}
-            onHandleFilter={handleFilter}
+            handleSort={handleFilter}
+            filterList={handleFilter}
+            valueFilter={dataFilter}
+            dataFilter={dataFilter}
           />
         }
       />
@@ -163,7 +176,10 @@ function UserManager() {
         onToggle={handleCloseDrawer}
         disableScrollLock
       >
-        <EditUser onToggleDrawer={toggleDrawer} userEdit={userEdit} />
+        <EditUser
+          onToggleDrawer={toggleDrawer}
+          // userEdit={userEdit}
+        />
       </LPEDrawer>
     </>
   );

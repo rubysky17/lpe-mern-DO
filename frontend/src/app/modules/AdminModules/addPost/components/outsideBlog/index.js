@@ -1,17 +1,20 @@
 import React, { useState, forwardRef, useImperativeHandle } from "react";
 import UploadImage from "app/modules/AdminModules/addUser/components/uploadImage";
-import { useSelector } from "react-redux";
 
 const InputOutside = forwardRef((props, ref) => {
-  const { errors } = props;
-  const { list } = useSelector((state) => state.topic);
+  const { errors, listTopic } = props;
+
   const [errorImage, setErrorImage] = useState("");
   const [cover, setCover] = useState(null);
   const [file, setFile] = useState(null);
-  const [valueForm, setValueForm] = useState({
-    topic: list[0]._id,
-    title: "",
-  });
+  const [valueForm, setValueForm] = useState({});
+
+  React.useEffect(() => {
+    setValueForm({
+      topic: listTopic[0]?._id,
+      title: "",
+    });
+  }, [listTopic]);
 
   const changeImage = (e) => {
     setErrorImage("");
@@ -93,7 +96,7 @@ const InputOutside = forwardRef((props, ref) => {
           onChange={handleChangeForm}
           value={valueForm.topic}
         >
-          {list?.map((option, index) => {
+          {listTopic?.map((option, index) => {
             return (
               <option value={option._id} key={index}>
                 {option.name.toLowerCase()}
