@@ -1,9 +1,9 @@
 import React from "react";
 import LPEEditor from "app/components/editor";
-import LPEModal from "app/components/modal";
+// import LPEModal from "app/components/modal";
+// import InputOutside from "../addPost/components/outsideBlog";
+// import PreviewBlog from "../addPost/components/preview";
 import { EDITOR_TOOLS_BLOG } from "app/const/tools";
-import InputOutside from "../addPost/components/outsideBlog";
-import PreviewBlog from "../addPost/components/preview";
 
 function EditPost() {
   const miss = {

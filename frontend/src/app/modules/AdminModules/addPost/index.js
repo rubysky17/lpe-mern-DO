@@ -15,7 +15,8 @@ import { postBlogAction } from "core/redux/actions/blogAction";
 
 import "./styles/index.scss";
 import axiosClient from "app/const/Instance";
-import { API_ENDPOINT, TOPIC } from "app/const/Api";
+import { TOPIC } from "app/const/Api";
+// import { API_ENDPOINT } from "app/const/Api";
 
 function AddPost() {
   const dispatch = useDispatch();

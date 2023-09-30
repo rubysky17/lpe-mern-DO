@@ -1,17 +1,17 @@
 import React, { useImperativeHandle, useRef, forwardRef } from "react";
 import PropTypes from "prop-types";
-import { createReactEditorJS } from "react-editor-js";
+// import { createReactEditorJS } from "react-editor-js";
 
-const ReactEditorJS = createReactEditorJS();
+// const ReactEditorJS = createReactEditorJS();
 
 const LPEEditor = forwardRef((props, ref) => {
-  const { tools, placeholder, defaultValue } = props;
+  // const { tools, placeholder, defaultValue } = props;
 
   const editorCore = useRef(null);
 
-  const handleInitialize = React.useCallback((instance) => {
-    editorCore.current = instance;
-  }, []);
+  // const handleInitialize = React.useCallback((instance) => {
+  //   editorCore.current = instance;
+  // }, []);
 
   const handleSave = React.useCallback(async () => {
     const savedData = await editorCore.current.save();
@@ -29,12 +29,13 @@ const LPEEditor = forwardRef((props, ref) => {
   }));
 
   return (
-    <ReactEditorJS
-      tools={tools}
-      placeholder={placeholder}
-      onInitialize={handleInitialize}
-      defaultValue={defaultValue}
-    />
+    // <ReactEditorJS
+    //   tools={tools}
+    //   placeholder={placeholder}
+    //   onInitialize={handleInitialize}
+    //   defaultValue={defaultValue}
+    // />
+    <div></div>
   );
 });
 
